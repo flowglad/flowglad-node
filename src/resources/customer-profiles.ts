@@ -28,7 +28,7 @@ export namespace CustomerProfileCreateResponse {
     export interface CustomerProfile {
       id: string;
 
-      archived: boolean | null;
+      archived: boolean;
 
       billingAddress: CustomerProfile.BillingAddress | null;
 
@@ -105,7 +105,7 @@ export namespace CustomerProfileCreateParams {
 
     OrganizationId: string;
 
-    archived?: boolean | null;
+    archived?: boolean;
 
     customerTaxId?: string | null;
 
