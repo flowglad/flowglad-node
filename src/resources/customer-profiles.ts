@@ -36,8 +36,6 @@ export namespace CustomerProfileCreateResponse {
 
       CustomerId: string;
 
-      customerTaxId: string | null;
-
       domain: string | null;
 
       email: string;
@@ -53,10 +51,6 @@ export namespace CustomerProfileCreateResponse {
       name: string | null;
 
       OrganizationId: string;
-
-      slackId: string | null;
-
-      stripeCustomerId: string | null;
 
       updatedAt: string | null;
     }
