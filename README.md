@@ -29,18 +29,6 @@ const client = new Flowglad();
 
 async function main() {
   const customerProfile = await client.customerProfiles.create({
-    customer: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
     customerProfile: {
       '0': 'R',
       '1': 'E',
@@ -73,18 +61,6 @@ const client = new Flowglad();
 
 async function main() {
   const params: Flowglad.CustomerProfileCreateParams = {
-    customer: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
     customerProfile: {
       '0': 'R',
       '1': 'E',
@@ -119,18 +95,6 @@ a subclass of `APIError` will be thrown:
 async function main() {
   const customerProfile = await client.customerProfiles
     .create({
-      customer: {
-        '0': 'R',
-        '1': 'E',
-        '2': 'P',
-        '3': 'L',
-        '4': 'A',
-        '5': 'C',
-        '6': 'E',
-        '7': '_',
-        '8': 'M',
-        '9': 'E',
-      },
       customerProfile: {
         '0': 'R',
         '1': 'E',
@@ -187,7 +151,7 @@ const client = new Flowglad({
 });
 
 // Or, configure per-request:
-await client.customerProfiles.create({ customer: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' }, customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
+await client.customerProfiles.create({ customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
   maxRetries: 5,
 });
 ```
@@ -204,7 +168,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.customerProfiles.create({ customer: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' }, customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
+await client.customerProfiles.create({ customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -227,18 +191,6 @@ const client = new Flowglad();
 
 const response = await client.customerProfiles
   .create({
-    customer: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
     customerProfile: {
       '0': 'R',
       '1': 'E',
@@ -258,18 +210,6 @@ console.log(response.statusText); // access the underlying Response object
 
 const { data: customerProfile, response: raw } = await client.customerProfiles
   .create({
-    customer: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
     customerProfile: {
       '0': 'R',
       '1': 'E',
@@ -391,18 +331,6 @@ const client = new Flowglad({
 // Override per-request:
 await client.customerProfiles.create(
   {
-    customer: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
     customerProfile: {
       '0': 'R',
       '1': 'E',
