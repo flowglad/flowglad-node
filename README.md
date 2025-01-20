@@ -26,18 +26,7 @@ const client = new Flowglad();
 
 async function main() {
   const customerProfile = await client.customerProfiles.create({
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
+    customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' },
   });
 
   console.log(customerProfile.data);
@@ -58,18 +47,7 @@ const client = new Flowglad();
 
 async function main() {
   const params: Flowglad.CustomerProfileCreateParams = {
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
+    customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' },
   };
   const customerProfile: Flowglad.CustomerProfileCreateResponse = await client.customerProfiles.create(
     params,
@@ -91,20 +69,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const customerProfile = await client.customerProfiles
-    .create({
-      customerProfile: {
-        '0': 'R',
-        '1': 'E',
-        '2': 'P',
-        '3': 'L',
-        '4': 'A',
-        '5': 'C',
-        '6': 'E',
-        '7': '_',
-        '8': 'M',
-        '9': 'E',
-      },
-    })
+    .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
     .catch(async (err) => {
       if (err instanceof Flowglad.APIError) {
         console.log(err.status); // 400
@@ -148,7 +113,7 @@ const client = new Flowglad({
 });
 
 // Or, configure per-request:
-await client.customerProfiles.create({ customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
+await client.customerProfiles.create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } }, {
   maxRetries: 5,
 });
 ```
@@ -165,7 +130,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.customerProfiles.create({ customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
+await client.customerProfiles.create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -187,39 +152,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new Flowglad();
 
 const response = await client.customerProfiles
-  .create({
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
-  })
+  .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: customerProfile, response: raw } = await client.customerProfiles
-  .create({
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
-  })
+  .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(customerProfile.data);
@@ -327,20 +266,7 @@ const client = new Flowglad({
 
 // Override per-request:
 await client.customerProfiles.create(
-  {
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
-  },
+  { customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
