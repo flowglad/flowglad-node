@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Flowglad from 'flowglad';
-import { APIUserAbortError } from 'flowglad';
-import { Headers } from 'flowglad/core';
+import Flowglad from '@flowglad/node';
+import { APIUserAbortError } from '@flowglad/node';
+import { Headers } from '@flowglad/node/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
