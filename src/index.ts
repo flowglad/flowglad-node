@@ -13,7 +13,7 @@ import {
 
 export interface ClientOptions {
   /**
-   * API key used for accessing the Flowglad API
+   * API key for accessing the Flowglad API
    */
   apiKey?: string | undefined;
 
