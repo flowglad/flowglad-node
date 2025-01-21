@@ -168,13 +168,26 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['FLOWGLAD_BASE_URL'] = ''; // empty
       const client = new Flowglad({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:3000/');
+      expect(client.baseURL).toEqual('https://app.flowglad.com/api/v1');
     });
 
     test('blank env variable', () => {
       process.env['FLOWGLAD_BASE_URL'] = '  '; // blank
       const client = new Flowglad({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:3000/');
+      expect(client.baseURL).toEqual('https://app.flowglad.com/api/v1');
+    });
+
+    test('env variable with environment', () => {
+      process.env['FLOWGLAD_BASE_URL'] = 'https://example.com/from_env';
+
+      expect(
+        () => new Flowglad({ apiKey: 'My API Key', environment: 'production' }),
+      ).toThrowErrorMatchingInlineSnapshot(
+        `"Ambiguous URL; The \`baseURL\` option (or FLOWGLAD_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+      );
+
+      const client = new Flowglad({ apiKey: 'My API Key', baseURL: null, environment: 'production' });
+      expect(client.baseURL).toEqual('https://app.flowglad.com/api/v1');
     });
   });
 
