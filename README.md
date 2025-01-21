@@ -22,7 +22,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Flowglad from '@flowglad/node';
 
-const client = new Flowglad();
+const client = new Flowglad({
+  environment: 'staging', // defaults to 'production'
+});
 
 async function main() {
   const customerProfile = await client.customerProfiles.create({
@@ -43,7 +45,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Flowglad from '@flowglad/node';
 
-const client = new Flowglad();
+const client = new Flowglad({
+  environment: 'staging', // defaults to 'production'
+});
 
 async function main() {
   const params: Flowglad.CustomerProfileCreateParams = {
