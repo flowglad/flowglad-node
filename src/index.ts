@@ -6,10 +6,36 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  ProductCreateParams,
+  ProductCreateResponse,
+  ProductListParams,
+  ProductListResponse,
+  ProductUpdateParams,
+  ProductUpdateResponse,
+  Products,
+} from './resources/products';
+import {
+  PurchaseSessionCreateParams,
+  PurchaseSessionCreateResponse,
+  PurchaseSessions,
+} from './resources/purchase-sessions';
+import {
+  VariantCreateParams,
+  VariantCreateResponse,
+  VariantListParams,
+  VariantListResponse,
+  VariantUpdateParams,
+  VariantUpdateResponse,
+  Variants,
+} from './resources/variants';
+import {
   CustomerProfileCreateParams,
   CustomerProfileCreateResponse,
+  CustomerProfileRetrieveResponse,
+  CustomerProfileUpdateParams,
+  CustomerProfileUpdateResponse,
   CustomerProfiles,
-} from './resources/customer-profiles';
+} from './resources/customer-profiles/customer-profiles';
 
 const environments = {
   production: 'https://app.flowglad.com/api/v1',
@@ -19,7 +45,7 @@ type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * API key used for authentication in the 'Authorization' header
+   * API key required for authentication, provided in the 'Authorization' header.
    */
   apiKey?: string | undefined;
 
@@ -100,7 +126,7 @@ export class Flowglad extends Core.APIClient {
   /**
    * API Client for interfacing with the Flowglad API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['AUTHORIZATION_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? https://app.flowglad.com/api/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -112,12 +138,12 @@ export class Flowglad extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('FLOWGLAD_BASE_URL'),
-    apiKey = Core.readEnv('FLOWGLAD_API_KEY'),
+    apiKey = Core.readEnv('AUTHORIZATION_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.FlowgladError(
-        "The FLOWGLAD_API_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
+        "The AUTHORIZATION_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -147,6 +173,9 @@ export class Flowglad extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
+  purchaseSessions: API.PurchaseSessions = new API.PurchaseSessions(this);
+  products: API.Products = new API.Products(this);
+  variants: API.Variants = new API.Variants(this);
   customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -185,14 +214,46 @@ export class Flowglad extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
+Flowglad.PurchaseSessions = PurchaseSessions;
+Flowglad.Products = Products;
+Flowglad.Variants = Variants;
 Flowglad.CustomerProfiles = CustomerProfiles;
 export declare namespace Flowglad {
   export type RequestOptions = Core.RequestOptions;
 
   export {
+    PurchaseSessions as PurchaseSessions,
+    type PurchaseSessionCreateResponse as PurchaseSessionCreateResponse,
+    type PurchaseSessionCreateParams as PurchaseSessionCreateParams,
+  };
+
+  export {
+    Products as Products,
+    type ProductCreateResponse as ProductCreateResponse,
+    type ProductUpdateResponse as ProductUpdateResponse,
+    type ProductListResponse as ProductListResponse,
+    type ProductCreateParams as ProductCreateParams,
+    type ProductUpdateParams as ProductUpdateParams,
+    type ProductListParams as ProductListParams,
+  };
+
+  export {
+    Variants as Variants,
+    type VariantCreateResponse as VariantCreateResponse,
+    type VariantUpdateResponse as VariantUpdateResponse,
+    type VariantListResponse as VariantListResponse,
+    type VariantCreateParams as VariantCreateParams,
+    type VariantUpdateParams as VariantUpdateParams,
+    type VariantListParams as VariantListParams,
+  };
+
+  export {
     CustomerProfiles as CustomerProfiles,
     type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
+    type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
+    type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
+    type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
   };
 }
 
