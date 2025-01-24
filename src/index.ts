@@ -45,7 +45,7 @@ type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * API key required for authentication, provided in the 'Authorization' header.
+   * API key to be set in the Authorization header
    */
   apiKey?: string | undefined;
 
@@ -126,7 +126,7 @@ export class Flowglad extends Core.APIClient {
   /**
    * API Client for interfacing with the Flowglad API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['AUTHORIZATION_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_SECRET_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? https://app.flowglad.com/api/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -138,12 +138,12 @@ export class Flowglad extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('FLOWGLAD_BASE_URL'),
-    apiKey = Core.readEnv('AUTHORIZATION_KEY'),
+    apiKey = Core.readEnv('FLOWGLAD_SECRET_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.FlowgladError(
-        "The AUTHORIZATION_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
+        "The FLOWGLAD_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
       );
     }
 
