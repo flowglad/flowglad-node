@@ -8,10 +8,11 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource customerProfiles', () => {
+describe('resource purchaseSessions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.customerProfiles.create({
-      customerProfile: { CustomerId: 'CustomerId', email: 'email', OrganizationId: 'OrganizationId' },
+    const responsePromise = client.purchaseSessions.create({
+      customerProfileExternalId: 'customerProfileExternalId',
+      VariantId: 'VariantId',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -23,22 +24,9 @@ describe('resource customerProfiles', () => {
   });
 
   test('create: required and optional params', async () => {
-    const response = await client.customerProfiles.create({
-      customerProfile: {
-        CustomerId: 'CustomerId',
-        email: 'email',
-        OrganizationId: 'OrganizationId',
-        archived: true,
-        customerTaxId: 'customerTaxId',
-        domain: 'domain',
-        iconURL: 'iconURL',
-        invoiceNumberBase: 'invoiceNumberBase',
-        livemode: true,
-        logoURL: 'logoURL',
-        name: 'name',
-        slackId: 'slackId',
-        stripeCustomerId: 'stripeCustomerId',
-      },
+    const response = await client.purchaseSessions.create({
+      customerProfileExternalId: 'customerProfileExternalId',
+      VariantId: 'VariantId',
     });
   });
 });

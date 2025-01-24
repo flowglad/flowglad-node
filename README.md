@@ -22,22 +22,13 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Flowglad from '@flowglad/node';
 
-const client = new Flowglad();
+const client = new Flowglad({
+  environment: 'staging', // defaults to 'production'
+});
 
 async function main() {
   const customerProfile = await client.customerProfiles.create({
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
+    customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' },
   });
 
   console.log(customerProfile.data);
@@ -54,22 +45,13 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Flowglad from '@flowglad/node';
 
-const client = new Flowglad();
+const client = new Flowglad({
+  environment: 'staging', // defaults to 'production'
+});
 
 async function main() {
   const params: Flowglad.CustomerProfileCreateParams = {
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
+    customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' },
   };
   const customerProfile: Flowglad.CustomerProfileCreateResponse = await client.customerProfiles.create(
     params,
@@ -91,20 +73,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const customerProfile = await client.customerProfiles
-    .create({
-      customerProfile: {
-        '0': 'R',
-        '1': 'E',
-        '2': 'P',
-        '3': 'L',
-        '4': 'A',
-        '5': 'C',
-        '6': 'E',
-        '7': '_',
-        '8': 'M',
-        '9': 'E',
-      },
-    })
+    .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
     .catch(async (err) => {
       if (err instanceof Flowglad.APIError) {
         console.log(err.status); // 400
@@ -148,7 +117,7 @@ const client = new Flowglad({
 });
 
 // Or, configure per-request:
-await client.customerProfiles.create({ customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
+await client.customerProfiles.create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } }, {
   maxRetries: 5,
 });
 ```
@@ -165,7 +134,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.customerProfiles.create({ customerProfile: { '0': 'R', '1': 'E', '2': 'P', '3': 'L', '4': 'A', '5': 'C', '6': 'E', '7': '_', '8': 'M', '9': 'E' } }, {
+await client.customerProfiles.create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } }, {
   timeout: 5 * 1000,
 });
 ```
@@ -187,39 +156,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new Flowglad();
 
 const response = await client.customerProfiles
-  .create({
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
-  })
+  .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: customerProfile, response: raw } = await client.customerProfiles
-  .create({
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
-  })
+  .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(customerProfile.data);
@@ -285,7 +228,7 @@ import Flowglad from '@flowglad/node';
 ```
 
 To do the inverse, add `import "@flowglad/node/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/flowglad/flowglad-ts/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/flowglad/flowglad-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -327,20 +270,7 @@ const client = new Flowglad({
 
 // Override per-request:
 await client.customerProfiles.create(
-  {
-    customerProfile: {
-      '0': 'R',
-      '1': 'E',
-      '2': 'P',
-      '3': 'L',
-      '4': 'A',
-      '5': 'C',
-      '6': 'E',
-      '7': '_',
-      '8': 'M',
-      '9': 'E',
-    },
-  },
+  { customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
@@ -357,7 +287,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/flowglad/flowglad-ts/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/flowglad/flowglad-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
