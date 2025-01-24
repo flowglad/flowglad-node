@@ -113,7 +113,7 @@ export namespace ProductListResponse {
   export interface ProductListResponseItem {
     product: ProductListResponseItem.Product;
 
-    variant: ProductListResponseItem.UnionMember0 | ProductListResponseItem.UnionMember1;
+    variant: ProductListResponseItem.SubscriptionVariant | ProductListResponseItem.SinglePaymentVariant;
   }
 
   export namespace ProductListResponseItem {
@@ -145,7 +145,7 @@ export namespace ProductListResponse {
       updatedAt: string | string;
     }
 
-    export interface UnionMember0 {
+    export interface SubscriptionVariant {
       id: string;
 
       active: boolean;
@@ -157,7 +157,7 @@ export namespace ProductListResponse {
        */
       intervalCount: string | number;
 
-      intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+      intervalUnit: 'day' | 'week' | 'month' | 'year';
 
       isDefault: boolean;
 
@@ -187,7 +187,7 @@ export namespace ProductListResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember1 {
+    export interface SinglePaymentVariant {
       id: string;
 
       active: boolean;
@@ -236,17 +236,19 @@ export namespace ProductListResponse {
 
 export interface ProductCreateParams {
   offerings: Array<
-    ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1 | ProductCreateParams.UnionMember2
+    | ProductCreateParams.FileOffering
+    | ProductCreateParams.CommunityOffering
+    | ProductCreateParams.LinkOffering
   >;
 
   product: ProductCreateParams.Product;
 
-  variant: ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1;
+  variant: ProductCreateParams.SubscriptionVariant | ProductCreateParams.SinglePaymentVariant;
 }
 
 export namespace ProductCreateParams {
-  export interface UnionMember0 {
-    file: UnionMember0.File;
+  export interface FileOffering {
+    file: File;
 
     type: 'file';
 
@@ -269,20 +271,18 @@ export namespace ProductCreateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember0 {
-    export interface File {
-      id: string | null;
+  export interface File {
+    id: string | null;
 
-      name: string;
+    name: string;
 
-      objectKey: string;
+    objectKey: string;
 
-      ProductId?: string | null;
-    }
+    ProductId?: string | null;
   }
 
-  export interface UnionMember1 {
-    community: UnionMember1.Community;
+  export interface CommunityOffering {
+    community: Community;
 
     type: 'community';
 
@@ -305,26 +305,24 @@ export namespace ProductCreateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember1 {
-    export interface Community {
-      id: string | null;
+  export interface Community {
+    id: string | null;
 
-      name: string;
+    name: string;
 
-      platform: 'discord' | 'slack' | (string & {});
+    platform: 'discord' | 'slack' | (string & {});
 
-      IntegrationId?: string | null;
+    IntegrationId?: string | null;
 
-      inviteURL?: string | null;
+    inviteURL?: string | null;
 
-      platformId?: string | null;
+    platformId?: string | null;
 
-      ProductId?: string | null;
-    }
+    ProductId?: string | null;
   }
 
-  export interface UnionMember2 {
-    link: UnionMember2.Link;
+  export interface LinkOffering {
+    link: Link;
 
     type: 'link';
 
@@ -347,16 +345,14 @@ export namespace ProductCreateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember2 {
-    export interface Link {
-      id: string | null;
+  export interface Link {
+    id: string | null;
 
-      name: string;
+    name: string;
 
-      url: string;
+    url: string;
 
-      ProductId?: string | null;
-    }
+    ProductId?: string | null;
   }
 
   export interface Product {
@@ -371,7 +367,7 @@ export namespace ProductCreateParams {
     imageURL?: string | null;
   }
 
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     active: boolean;
 
     /**
@@ -379,7 +375,7 @@ export namespace ProductCreateParams {
      */
     intervalCount: string | number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -405,7 +401,7 @@ export namespace ProductCreateParams {
     unitPrice: string | number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     active: boolean;
 
     isDefault: boolean;
@@ -445,17 +441,19 @@ export namespace ProductCreateParams {
 
 export interface ProductUpdateParams {
   offerings: Array<
-    ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1 | ProductUpdateParams.UnionMember2
+    | ProductUpdateParams.FileOffering
+    | ProductUpdateParams.LinkOffering
+    | ProductUpdateParams.CommunityOffering
   >;
 
   product: ProductUpdateParams.Product;
 
-  variant: ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1;
+  variant: ProductUpdateParams.SubscriptionVariant | ProductUpdateParams.SinglePaymentVariant;
 }
 
 export namespace ProductUpdateParams {
-  export interface UnionMember0 {
-    file: UnionMember0.File;
+  export interface FileOffering {
+    file: File;
 
     type: 'file';
 
@@ -478,20 +476,18 @@ export namespace ProductUpdateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember0 {
-    export interface File {
-      id: string | null;
+  export interface File {
+    id: string | null;
 
-      name: string;
+    name: string;
 
-      objectKey: string;
+    objectKey: string;
 
-      ProductId?: string | null;
-    }
+    ProductId?: string | null;
   }
 
-  export interface UnionMember1 {
-    community: UnionMember1.Community;
+  export interface CommunityOffering {
+    community: Community;
 
     type: 'community';
 
@@ -514,26 +510,24 @@ export namespace ProductUpdateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember1 {
-    export interface Community {
-      id: string | null;
+  export interface Community {
+    id: string | null;
 
-      name: string;
+    name: string;
 
-      platform: 'discord' | 'slack' | (string & {});
+    platform: 'discord' | 'slack' | (string & {});
 
-      IntegrationId?: string | null;
+    IntegrationId?: string | null;
 
-      inviteURL?: string | null;
+    inviteURL?: string | null;
 
-      platformId?: string | null;
+    platformId?: string | null;
 
-      ProductId?: string | null;
-    }
+    ProductId?: string | null;
   }
 
-  export interface UnionMember2 {
-    link: UnionMember2.Link;
+  export interface LinkOffering {
+    link: Link;
 
     type: 'link';
 
@@ -556,16 +550,14 @@ export namespace ProductUpdateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember2 {
-    export interface Link {
-      id: string | null;
+  export interface Link {
+    id: string | null;
 
-      name: string;
+    name: string;
 
-      url: string;
+    url: string;
 
-      ProductId?: string | null;
-    }
+    ProductId?: string | null;
   }
 
   export interface Product {
@@ -590,7 +582,7 @@ export namespace ProductUpdateParams {
     type?: 'service' | 'digital' | (string & {});
   }
 
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     priceType: 'subscription';
@@ -630,7 +622,7 @@ export namespace ProductUpdateParams {
     unitPrice?: string | number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     priceType: 'single_payment';
