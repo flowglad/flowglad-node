@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-02-05)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **client:** send `X-Stainless-Timeout` header ([#10](https://github.com/flowglad/flowglad-node/issues/10)) ([012d02c](https://github.com/flowglad/flowglad-node/commit/012d02c2061af443bbecae7cd793e9cfaf5f52a6))
+
 ## 0.1.0-alpha.1 (2025-01-24)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/flowglad/flowglad-node/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
