@@ -25,9 +25,9 @@ import Flowglad from '@flowglad/node';
 const client = new Flowglad();
 
 async function main() {
-  const response = await client.api.v1.listPayments();
+  const payment = await client.api.payments.list();
 
-  console.log(response.data);
+  console.log(payment.data);
 }
 
 main();
@@ -44,7 +44,7 @@ import Flowglad from '@flowglad/node';
 const client = new Flowglad();
 
 async function main() {
-  const response: Flowglad.API.V1ListPaymentsResponse = await client.api.v1.listPayments();
+  const payment: Flowglad.API.PaymentListResponse = await client.api.payments.list();
 }
 
 main();
@@ -61,7 +61,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.api.v1.listPayments().catch(async (err) => {
+  const payment = await client.api.payments.list().catch(async (err) => {
     if (err instanceof Flowglad.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -104,7 +104,7 @@ const client = new Flowglad({
 });
 
 // Or, configure per-request:
-await client.api.v1.listPayments({
+await client.api.payments.list({
   maxRetries: 5,
 });
 ```
@@ -121,7 +121,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.api.v1.listPayments({
+await client.api.payments.list({
   timeout: 5 * 1000,
 });
 ```
@@ -142,13 +142,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Flowglad();
 
-const response = await client.api.v1.listPayments().asResponse();
+const response = await client.api.payments.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.api.v1.listPayments().withResponse();
+const { data: payment, response: raw } = await client.api.payments.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.data);
+console.log(payment.data);
 ```
 
 ### Making custom/undocumented requests
@@ -252,7 +252,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.api.v1.listPayments({
+await client.api.payments.list({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

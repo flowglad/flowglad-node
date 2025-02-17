@@ -11,7 +11,7 @@ const client = new Flowglad({
 describe('resource customerProfile', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.api.v1.customerProfile.create({
+    const responsePromise = client.api.customerProfile.create({
       customerProfile: { email: 'email', externalId: 'externalId' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -25,7 +25,7 @@ describe('resource customerProfile', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.api.v1.customerProfile.create({
+    const response = await client.api.customerProfile.create({
       customerProfile: {
         email: 'email',
         externalId: 'externalId',
@@ -40,7 +40,7 @@ describe('resource customerProfile', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
-    const responsePromise = client.api.v1.customerProfile.update('externalId', {
+    const responsePromise = client.api.customerProfile.update('externalId', {
       customerProfile: { id: 'id' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -54,7 +54,7 @@ describe('resource customerProfile', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
-    const response = await client.api.v1.customerProfile.update('externalId', {
+    const response = await client.api.customerProfile.update('externalId', {
       customerProfile: {
         id: 'id',
         archived: true,
@@ -69,8 +69,36 @@ describe('resource customerProfile', () => {
   });
 
   // skipped: tests are disabled for the time being
+  test.skip('list', async () => {
+    const responsePromise = client.api.customerProfile.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.api.customerProfile.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Flowglad.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.api.customerProfile.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Flowglad.NotFoundError);
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('get', async () => {
-    const responsePromise = client.api.v1.customerProfile.get('externalId');
+    const responsePromise = client.api.customerProfile.get('externalId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -84,13 +112,13 @@ describe('resource customerProfile', () => {
   test.skip('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.api.v1.customerProfile.get('externalId', { path: '/_stainless_unknown_path' }),
+      client.api.customerProfile.get('externalId', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('getBilling', async () => {
-    const responsePromise = client.api.v1.customerProfile.getBilling('externalId');
+    const responsePromise = client.api.customerProfile.getBilling('externalId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -104,7 +132,7 @@ describe('resource customerProfile', () => {
   test.skip('getBilling: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.api.v1.customerProfile.getBilling('externalId', { path: '/_stainless_unknown_path' }),
+      client.api.customerProfile.getBilling('externalId', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

@@ -11,7 +11,7 @@ const client = new Flowglad({
 describe('resource variant', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.api.v1.variant.create({
+    const responsePromise = client.api.variant.create({
       variant: {
         active: true,
         intervalCount: 'string',
@@ -37,7 +37,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.api.v1.variant.create({
+    const response = await client.api.variant.create({
       variant: {
         active: true,
         intervalCount: 'string',
@@ -57,7 +57,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
-    const responsePromise = client.api.v1.variant.update('id', {
+    const responsePromise = client.api.variant.update('id', {
       variant: { id: 'id', priceType: 'subscription' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -71,7 +71,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
-    const response = await client.api.v1.variant.update('id', {
+    const response = await client.api.variant.update('id', {
       variant: {
         id: 'id',
         priceType: 'subscription',
@@ -88,5 +88,33 @@ describe('resource variant', () => {
         unitPrice: 'string',
       },
     });
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list', async () => {
+    const responsePromise = client.api.variant.list();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.api.variant.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Flowglad.NotFoundError,
+    );
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.api.variant.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });
