@@ -11,7 +11,7 @@ const client = new Flowglad({
 describe('resource subscriptions', () => {
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.api.v1.subscriptions.list();
+    const responsePromise = client.api.subscriptions.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -24,7 +24,7 @@ describe('resource subscriptions', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.api.v1.subscriptions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.api.subscriptions.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Flowglad.NotFoundError,
     );
   });
@@ -33,13 +33,13 @@ describe('resource subscriptions', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.api.v1.subscriptions.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.api.subscriptions.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('adjust: only required params', async () => {
-    const responsePromise = client.api.v1.subscriptions.adjust('id', {
+    const responsePromise = client.api.subscriptions.adjust('id', {
       adjustment: {
         newSubscriptionItems: [
           {
@@ -68,7 +68,7 @@ describe('resource subscriptions', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('adjust: required and optional params', async () => {
-    const response = await client.api.v1.subscriptions.adjust('id', {
+    const response = await client.api.subscriptions.adjust('id', {
       adjustment: {
         newSubscriptionItems: [
           {
@@ -90,7 +90,7 @@ describe('resource subscriptions', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('cancel: only required params', async () => {
-    const responsePromise = client.api.v1.subscriptions.cancel('id', {
+    const responsePromise = client.api.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -104,14 +104,14 @@ describe('resource subscriptions', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('cancel: required and optional params', async () => {
-    const response = await client.api.v1.subscriptions.cancel('id', {
+    const response = await client.api.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('get', async () => {
-    const responsePromise = client.api.v1.subscriptions.get('id');
+    const responsePromise = client.api.subscriptions.get('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -124,7 +124,7 @@ describe('resource subscriptions', () => {
   // skipped: tests are disabled for the time being
   test.skip('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.api.v1.subscriptions.get('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.api.subscriptions.get('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Flowglad.NotFoundError,
     );
   });

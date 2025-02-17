@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
+import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import * as Core from '../../core';
 
 export class Variant extends APIResource {
   /**
@@ -20,6 +21,21 @@ export class Variant extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<VariantUpdateResponse> {
     return this._client.put(`/api/v1/variant/${id}`, { body, ...options });
+  }
+
+  /**
+   * List Variants
+   */
+  list(query?: VariantListParams, options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
+  list(
+    query: VariantListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<VariantListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v1/variants', { query, ...options });
   }
 }
 
@@ -121,6 +137,105 @@ export interface VariantUpdateResponse {
 }
 
 export namespace VariantUpdateResponse {
+  export interface UnionMember0 {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: string | number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'subscription';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'single_payment';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalCount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalUnit?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: unknown | unknown | null;
+  }
+}
+
+export interface VariantListResponse {
+  data: Array<VariantListResponse.UnionMember0 | VariantListResponse.UnionMember1>;
+
+  hasMore: boolean;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
+}
+
+export namespace VariantListResponse {
   export interface UnionMember0 {
     id: string;
 
@@ -383,11 +498,19 @@ export namespace VariantUpdateParams {
   }
 }
 
+export interface VariantListParams {
+  cursor?: string;
+
+  limit?: number;
+}
+
 export declare namespace Variant {
   export {
     type VariantCreateResponse as VariantCreateResponse,
     type VariantUpdateResponse as VariantUpdateResponse,
+    type VariantListResponse as VariantListResponse,
     type VariantCreateParams as VariantCreateParams,
     type VariantUpdateParams as VariantUpdateParams,
+    type VariantListParams as VariantListParams,
   };
 }
