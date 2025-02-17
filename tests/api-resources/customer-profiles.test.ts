@@ -115,8 +115,8 @@ describe('resource customerProfiles', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('getBilling', async () => {
-    const responsePromise = client.customerProfiles.getBilling('externalId');
+  test.skip('billing', async () => {
+    const responsePromise = client.customerProfiles.billing('externalId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -127,10 +127,10 @@ describe('resource customerProfiles', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('getBilling: request options instead of params are passed correctly', async () => {
+  test.skip('billing: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.customerProfiles.getBilling('externalId', { path: '/_stainless_unknown_path' }),
+      client.customerProfiles.billing('externalId', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

@@ -88,7 +88,7 @@ Types:
 - <code><a href="./src/resources/customer-profiles.ts">CustomerProfileRetrieveResponse</a></code>
 - <code><a href="./src/resources/customer-profiles.ts">CustomerProfileUpdateResponse</a></code>
 - <code><a href="./src/resources/customer-profiles.ts">CustomerProfileListResponse</a></code>
-- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileGetBillingResponse</a></code>
+- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileBillingResponse</a></code>
 
 Methods:
 
@@ -96,7 +96,7 @@ Methods:
 - <code title="get /api/v1/customer-profile/{externalId}">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">retrieve</a>(externalId) -> CustomerProfileRetrieveResponse</code>
 - <code title="put /api/v1/customer-profile/{externalId}">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">update</a>(externalId, { ...params }) -> CustomerProfileUpdateResponse</code>
 - <code title="get /api/v1/customer-profiles">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">list</a>({ ...params }) -> CustomerProfileListResponse</code>
-- <code title="get /api/v1/customer-profile/{externalId}/billing">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">getBilling</a>(externalId) -> CustomerProfileGetBillingResponse</code>
+- <code title="get /api/v1/customer-profile/{externalId}/billing">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">billing</a>(externalId) -> CustomerProfileBillingResponse</code>
 
 # Payments
 
