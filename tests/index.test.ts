@@ -177,13 +177,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['FLOWGLAD_BASE_URL'] = ''; // empty
       const client = new Flowglad({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:3000/');
+      expect(client.baseURL).toEqual('https://app.flowglad.com/');
     });
 
     test('blank env variable', () => {
       process.env['FLOWGLAD_BASE_URL'] = '  '; // blank
       const client = new Flowglad({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:3000/');
+      expect(client.baseURL).toEqual('https://app.flowglad.com/');
     });
   });
 

@@ -10,6 +10,13 @@ export {
   type CustomerProfileUpdateParams,
 } from './customer-profile';
 export {
+  Discounts,
+  type DiscountCreateResponse,
+  type DiscountUpdateResponse,
+  type DiscountCreateParams,
+  type DiscountUpdateParams,
+} from './discounts';
+export {
   Product,
   type ProductCreateResponse,
   type ProductUpdateResponse,
