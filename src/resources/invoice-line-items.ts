@@ -1,10 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
 
-export class InvoiceLineItem extends APIResource {
+export class InvoiceLineItems extends APIResource {
+  /**
+   * Get Invoice Line Item
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<InvoiceLineItemRetrieveResponse> {
+    return this._client.get(`/api/v1/invoice-line-item/${id}`, options);
+  }
+
   /**
    * List Invoice Line Items
    */
@@ -22,13 +29,29 @@ export class InvoiceLineItem extends APIResource {
     }
     return this._client.get('/api/v1/invoice-line-items', { query, ...options });
   }
+}
+
+export interface InvoiceLineItemRetrieveResponse {
+  id: string;
+
+  createdAt: string;
+
+  description: string | null;
+
+  InvoiceId: string;
+
+  livemode: boolean;
+
+  price: number;
 
   /**
-   * Get Invoice Line Item
+   * safeZodPositiveInteger
    */
-  get(id: string, options?: Core.RequestOptions): Core.APIPromise<InvoiceLineItemGetResponse> {
-    return this._client.get(`/api/v1/invoice-line-item/${id}`, options);
-  }
+  quantity: string | number;
+
+  updatedAt: string | null;
+
+  VariantId: string | null;
 }
 
 export interface InvoiceLineItemListResponse {
@@ -66,39 +89,16 @@ export namespace InvoiceLineItemListResponse {
   }
 }
 
-export interface InvoiceLineItemGetResponse {
-  id: string;
-
-  createdAt: string;
-
-  description: string | null;
-
-  InvoiceId: string;
-
-  livemode: boolean;
-
-  price: number;
-
-  /**
-   * safeZodPositiveInteger
-   */
-  quantity: string | number;
-
-  updatedAt: string | null;
-
-  VariantId: string | null;
-}
-
 export interface InvoiceLineItemListParams {
   cursor?: string;
 
   limit?: number;
 }
 
-export declare namespace InvoiceLineItem {
+export declare namespace InvoiceLineItems {
   export {
+    type InvoiceLineItemRetrieveResponse as InvoiceLineItemRetrieveResponse,
     type InvoiceLineItemListResponse as InvoiceLineItemListResponse,
-    type InvoiceLineItemGetResponse as InvoiceLineItemGetResponse,
     type InvoiceLineItemListParams as InvoiceLineItemListParams,
   };
 }

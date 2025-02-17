@@ -5,7 +5,80 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { API as ApiapiAPI } from './resources/api/api';
+import {
+  CustomerProfileCreateParams,
+  CustomerProfileCreateResponse,
+  CustomerProfileGetBillingResponse,
+  CustomerProfileListParams,
+  CustomerProfileListResponse,
+  CustomerProfileRetrieveResponse,
+  CustomerProfileUpdateParams,
+  CustomerProfileUpdateResponse,
+  CustomerProfiles,
+} from './resources/customer-profiles';
+import {
+  DiscountCreateParams,
+  DiscountCreateResponse,
+  DiscountRetrieveResponse,
+  DiscountUpdateParams,
+  DiscountUpdateResponse,
+  Discounts,
+} from './resources/discounts';
+import {
+  Invoice,
+  InvoiceListParams,
+  InvoiceListResponse,
+  InvoiceRetrieveResponse,
+} from './resources/invoice';
+import {
+  InvoiceLineItemListParams,
+  InvoiceLineItemListResponse,
+  InvoiceLineItemRetrieveResponse,
+  InvoiceLineItems,
+} from './resources/invoice-line-items';
+import {
+  PaymentListParams,
+  PaymentListResponse,
+  PaymentRetrieveResponse,
+  Payments,
+} from './resources/payments';
+import {
+  ProductCreateParams,
+  ProductCreateResponse,
+  ProductListParams,
+  ProductListResponse,
+  ProductRetrieveResponse,
+  ProductUpdateParams,
+  ProductUpdateResponse,
+  Products,
+} from './resources/products';
+import {
+  PurchaseSessionCreateParams,
+  PurchaseSessionCreateResponse,
+  PurchaseSessionListParams,
+  PurchaseSessionListResponse,
+  PurchaseSessionRetrieveResponse,
+  PurchaseSessions,
+} from './resources/purchase-sessions';
+import {
+  SubscriptionAdjustParams,
+  SubscriptionAdjustResponse,
+  SubscriptionCancelParams,
+  SubscriptionCancelResponse,
+  SubscriptionListParams,
+  SubscriptionListResponse,
+  SubscriptionRetrieveResponse,
+  Subscriptions,
+} from './resources/subscriptions';
+import {
+  VariantCreateParams,
+  VariantCreateResponse,
+  VariantListParams,
+  VariantListResponse,
+  VariantUpdateParams,
+  VariantUpdateResponse,
+  Variants,
+} from './resources/variants';
 
 export interface ClientOptions {
   /**
@@ -120,7 +193,15 @@ export class Flowglad extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  api: API.API = new API.API(this);
+  invoice: API.Invoice = new API.Invoice(this);
+  invoiceLineItems: API.InvoiceLineItems = new API.InvoiceLineItems(this);
+  purchaseSessions: API.PurchaseSessions = new API.PurchaseSessions(this);
+  products: API.Products = new API.Products(this);
+  variants: API.Variants = new API.Variants(this);
+  discounts: API.Discounts = new API.Discounts(this);
+  customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
+  payments: API.Payments = new API.Payments(this);
+  subscriptions: API.Subscriptions = new API.Subscriptions(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -158,11 +239,100 @@ export class Flowglad extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Flowglad.API = ApiapiAPI;
+Flowglad.Invoice = Invoice;
+Flowglad.InvoiceLineItems = InvoiceLineItems;
+Flowglad.PurchaseSessions = PurchaseSessions;
+Flowglad.Products = Products;
+Flowglad.Variants = Variants;
+Flowglad.Discounts = Discounts;
+Flowglad.CustomerProfiles = CustomerProfiles;
+Flowglad.Payments = Payments;
+Flowglad.Subscriptions = Subscriptions;
 export declare namespace Flowglad {
   export type RequestOptions = Core.RequestOptions;
 
-  export { ApiapiAPI as API };
+  export {
+    Invoice as Invoice,
+    type InvoiceRetrieveResponse as InvoiceRetrieveResponse,
+    type InvoiceListResponse as InvoiceListResponse,
+    type InvoiceListParams as InvoiceListParams,
+  };
+
+  export {
+    InvoiceLineItems as InvoiceLineItems,
+    type InvoiceLineItemRetrieveResponse as InvoiceLineItemRetrieveResponse,
+    type InvoiceLineItemListResponse as InvoiceLineItemListResponse,
+    type InvoiceLineItemListParams as InvoiceLineItemListParams,
+  };
+
+  export {
+    PurchaseSessions as PurchaseSessions,
+    type PurchaseSessionCreateResponse as PurchaseSessionCreateResponse,
+    type PurchaseSessionRetrieveResponse as PurchaseSessionRetrieveResponse,
+    type PurchaseSessionListResponse as PurchaseSessionListResponse,
+    type PurchaseSessionCreateParams as PurchaseSessionCreateParams,
+    type PurchaseSessionListParams as PurchaseSessionListParams,
+  };
+
+  export {
+    Products as Products,
+    type ProductCreateResponse as ProductCreateResponse,
+    type ProductRetrieveResponse as ProductRetrieveResponse,
+    type ProductUpdateResponse as ProductUpdateResponse,
+    type ProductListResponse as ProductListResponse,
+    type ProductCreateParams as ProductCreateParams,
+    type ProductUpdateParams as ProductUpdateParams,
+    type ProductListParams as ProductListParams,
+  };
+
+  export {
+    Variants as Variants,
+    type VariantCreateResponse as VariantCreateResponse,
+    type VariantUpdateResponse as VariantUpdateResponse,
+    type VariantListResponse as VariantListResponse,
+    type VariantCreateParams as VariantCreateParams,
+    type VariantUpdateParams as VariantUpdateParams,
+    type VariantListParams as VariantListParams,
+  };
+
+  export {
+    Discounts as Discounts,
+    type DiscountCreateResponse as DiscountCreateResponse,
+    type DiscountRetrieveResponse as DiscountRetrieveResponse,
+    type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountCreateParams as DiscountCreateParams,
+    type DiscountUpdateParams as DiscountUpdateParams,
+  };
+
+  export {
+    CustomerProfiles as CustomerProfiles,
+    type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
+    type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
+    type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
+    type CustomerProfileListResponse as CustomerProfileListResponse,
+    type CustomerProfileGetBillingResponse as CustomerProfileGetBillingResponse,
+    type CustomerProfileCreateParams as CustomerProfileCreateParams,
+    type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
+    type CustomerProfileListParams as CustomerProfileListParams,
+  };
+
+  export {
+    Payments as Payments,
+    type PaymentRetrieveResponse as PaymentRetrieveResponse,
+    type PaymentListResponse as PaymentListResponse,
+    type PaymentListParams as PaymentListParams,
+  };
+
+  export {
+    Subscriptions as Subscriptions,
+    type SubscriptionRetrieveResponse as SubscriptionRetrieveResponse,
+    type SubscriptionListResponse as SubscriptionListResponse,
+    type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
+    type SubscriptionCancelResponse as SubscriptionCancelResponse,
+    type SubscriptionListParams as SubscriptionListParams,
+    type SubscriptionAdjustParams as SubscriptionAdjustParams,
+    type SubscriptionCancelParams as SubscriptionCancelParams,
+  };
 }
 
 export { toFile, fileFromPath } from './uploads';

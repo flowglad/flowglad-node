@@ -1,3 +1,76 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { API } from './api/api';
+export {
+  CustomerProfiles,
+  type CustomerProfileCreateResponse,
+  type CustomerProfileRetrieveResponse,
+  type CustomerProfileUpdateResponse,
+  type CustomerProfileListResponse,
+  type CustomerProfileGetBillingResponse,
+  type CustomerProfileCreateParams,
+  type CustomerProfileUpdateParams,
+  type CustomerProfileListParams,
+} from './customer-profiles';
+export {
+  Discounts,
+  type DiscountCreateResponse,
+  type DiscountRetrieveResponse,
+  type DiscountUpdateResponse,
+  type DiscountCreateParams,
+  type DiscountUpdateParams,
+} from './discounts';
+export {
+  Invoice,
+  type InvoiceRetrieveResponse,
+  type InvoiceListResponse,
+  type InvoiceListParams,
+} from './invoice';
+export {
+  InvoiceLineItems,
+  type InvoiceLineItemRetrieveResponse,
+  type InvoiceLineItemListResponse,
+  type InvoiceLineItemListParams,
+} from './invoice-line-items';
+export {
+  Payments,
+  type PaymentRetrieveResponse,
+  type PaymentListResponse,
+  type PaymentListParams,
+} from './payments';
+export {
+  Products,
+  type ProductCreateResponse,
+  type ProductRetrieveResponse,
+  type ProductUpdateResponse,
+  type ProductListResponse,
+  type ProductCreateParams,
+  type ProductUpdateParams,
+  type ProductListParams,
+} from './products';
+export {
+  PurchaseSessions,
+  type PurchaseSessionCreateResponse,
+  type PurchaseSessionRetrieveResponse,
+  type PurchaseSessionListResponse,
+  type PurchaseSessionCreateParams,
+  type PurchaseSessionListParams,
+} from './purchase-sessions';
+export {
+  Subscriptions,
+  type SubscriptionRetrieveResponse,
+  type SubscriptionListResponse,
+  type SubscriptionAdjustResponse,
+  type SubscriptionCancelResponse,
+  type SubscriptionListParams,
+  type SubscriptionAdjustParams,
+  type SubscriptionCancelParams,
+} from './subscriptions';
+export {
+  Variants,
+  type VariantCreateResponse,
+  type VariantUpdateResponse,
+  type VariantListResponse,
+  type VariantCreateParams,
+  type VariantUpdateParams,
+  type VariantListParams,
+} from './variants';

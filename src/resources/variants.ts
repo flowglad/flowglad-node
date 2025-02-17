@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
 
-export class Variant extends APIResource {
+export class Variants extends APIResource {
   /**
    * Create Variant
    */
@@ -504,7 +504,7 @@ export interface VariantListParams {
   limit?: number;
 }
 
-export declare namespace Variant {
+export declare namespace Variants {
   export {
     type VariantCreateResponse as VariantCreateResponse,
     type VariantUpdateResponse as VariantUpdateResponse,
