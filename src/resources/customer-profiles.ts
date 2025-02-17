@@ -57,10 +57,10 @@ export class CustomerProfiles extends APIResource {
   /**
    * Get Billing Details
    */
-  getBilling(
+  billing(
     externalId: string,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileGetBillingResponse> {
+  ): Core.APIPromise<CustomerProfileBillingResponse> {
     return this._client.get(`/api/v1/customer-profile/${externalId}/billing`, options);
   }
 }
@@ -355,15 +355,15 @@ export namespace CustomerProfileListResponse {
   }
 }
 
-export interface CustomerProfileGetBillingResponse {
-  catalog: CustomerProfileGetBillingResponse.Catalog;
+export interface CustomerProfileBillingResponse {
+  catalog: CustomerProfileBillingResponse.Catalog;
 
-  customerProfile: CustomerProfileGetBillingResponse.CustomerProfile;
+  customerProfile: CustomerProfileBillingResponse.CustomerProfile;
 
-  subscriptions: Array<CustomerProfileGetBillingResponse.Subscription>;
+  subscriptions: Array<CustomerProfileBillingResponse.Subscription>;
 }
 
-export namespace CustomerProfileGetBillingResponse {
+export namespace CustomerProfileBillingResponse {
   export interface Catalog {
     products: Array<Catalog.Product>;
   }
@@ -666,7 +666,7 @@ export declare namespace CustomerProfiles {
     type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileListResponse as CustomerProfileListResponse,
-    type CustomerProfileGetBillingResponse as CustomerProfileGetBillingResponse,
+    type CustomerProfileBillingResponse as CustomerProfileBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
     type CustomerProfileListParams as CustomerProfileListParams,

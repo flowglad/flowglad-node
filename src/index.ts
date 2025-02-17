@@ -6,9 +6,9 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  CustomerProfileBillingResponse,
   CustomerProfileCreateParams,
   CustomerProfileCreateResponse,
-  CustomerProfileGetBillingResponse,
   CustomerProfileListParams,
   CustomerProfileListResponse,
   CustomerProfileRetrieveResponse,
@@ -310,7 +310,7 @@ export declare namespace Flowglad {
     type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileListResponse as CustomerProfileListResponse,
-    type CustomerProfileGetBillingResponse as CustomerProfileGetBillingResponse,
+    type CustomerProfileBillingResponse as CustomerProfileBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
     type CustomerProfileListParams as CustomerProfileListParams,
