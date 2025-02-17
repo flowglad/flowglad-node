@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'flowglad/core';
-import { Blob } from 'flowglad/_shims/index';
-import { toFile } from 'flowglad';
+import { multipartFormRequestOptions, createForm } from '@flowglad/node/core';
+import { Blob } from '@flowglad/node/_shims/index';
+import { toFile } from '@flowglad/node';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
