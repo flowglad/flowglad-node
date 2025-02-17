@@ -1,6 +1,6 @@
 # Flowglad Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/@flowglad/node.svg)](https://npmjs.org/package/@flowglad/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flowglad/node)
+[![NPM version](https://img.shields.io/npm/v/flowglad.svg)](https://npmjs.org/package/flowglad) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/flowglad)
 
 This library provides convenient access to the Flowglad REST API from server-side TypeScript or JavaScript.
 
@@ -11,8 +11,11 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install @flowglad/node
+npm install git+ssh://git@github.com:flowglad/flowglad-node.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install flowglad`
 
 ## Usage
 
@@ -20,18 +23,14 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Flowglad from '@flowglad/node';
+import Flowglad from 'flowglad';
 
-const client = new Flowglad({
-  environment: 'staging', // defaults to 'production'
-});
+const client = new Flowglad();
 
 async function main() {
-  const customerProfile = await client.customerProfiles.create({
-    customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' },
-  });
+  const response = await client.api.v1.listPayments();
 
-  console.log(customerProfile.data);
+  console.log(response.data);
 }
 
 main();
@@ -43,19 +42,12 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Flowglad from '@flowglad/node';
+import Flowglad from 'flowglad';
 
-const client = new Flowglad({
-  environment: 'staging', // defaults to 'production'
-});
+const client = new Flowglad();
 
 async function main() {
-  const params: Flowglad.CustomerProfileCreateParams = {
-    customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' },
-  };
-  const customerProfile: Flowglad.CustomerProfileCreateResponse = await client.customerProfiles.create(
-    params,
-  );
+  const response: Flowglad.API.V1ListPaymentsResponse = await client.api.v1.listPayments();
 }
 
 main();
@@ -72,17 +64,15 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const customerProfile = await client.customerProfiles
-    .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
-    .catch(async (err) => {
-      if (err instanceof Flowglad.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
+  const response = await client.api.v1.listPayments().catch(async (err) => {
+    if (err instanceof Flowglad.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 }
 
 main();
@@ -117,7 +107,7 @@ const client = new Flowglad({
 });
 
 // Or, configure per-request:
-await client.customerProfiles.create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } }, {
+await client.api.v1.listPayments({
   maxRetries: 5,
 });
 ```
@@ -134,7 +124,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.customerProfiles.create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } }, {
+await client.api.v1.listPayments({
   timeout: 5 * 1000,
 });
 ```
@@ -155,17 +145,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Flowglad();
 
-const response = await client.customerProfiles
-  .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
-  .asResponse();
+const response = await client.api.v1.listPayments().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: customerProfile, response: raw } = await client.customerProfiles
-  .create({ customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } })
-  .withResponse();
+const { data: response, response: raw } = await client.api.v1.listPayments().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(customerProfile.data);
+console.log(response.data);
 ```
 
 ### Making custom/undocumented requests
@@ -223,11 +209,11 @@ add the following import before your first import `from "Flowglad"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import '@flowglad/node/shims/web';
-import Flowglad from '@flowglad/node';
+import 'flowglad/shims/web';
+import Flowglad from 'flowglad';
 ```
 
-To do the inverse, add `import "@flowglad/node/shims/node"` (which does import polyfills).
+To do the inverse, add `import "flowglad/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/flowglad/flowglad-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -237,7 +223,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Flowglad from '@flowglad/node';
+import Flowglad from 'flowglad';
 
 const client = new Flowglad({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
@@ -269,12 +255,9 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.customerProfiles.create(
-  { customerProfile: { externalId: 'myId', email: 'scrooge@mcduck.me', name: 'Scrooge McDuck' } },
-  {
-    httpAgent: new http.Agent({ keepAlive: false }),
-  },
-);
+await client.api.v1.listPayments({
+  httpAgent: new http.Agent({ keepAlive: false }),
+});
 ```
 
 ## Semantic versioning

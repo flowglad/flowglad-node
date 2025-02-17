@@ -1,41 +1,32 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIResource } from '../../../resource';
+import * as Core from '../../../core';
 
-export class Products extends APIResource {
+export class Product extends APIResource {
   /**
-   * Create products
+   * Create Product
    */
   create(body: ProductCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProductCreateResponse> {
-    return this._client.post('/api/v1/products', { body, ...options });
+    return this._client.post('/api/v1/product', { body, ...options });
   }
 
   /**
-   * Update products
+   * Update Product
    */
   update(
     id: string,
     body: ProductUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ProductUpdateResponse> {
-    return this._client.put(`/api/v1/products/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/product/${id}`, { body, ...options });
   }
 
   /**
-   * List products
+   * Get Product
    */
-  list(query?: ProductListParams, options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
-  list(
-    query: ProductListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ProductListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.get('/api/v1/products', { query, ...options });
+  get(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductGetResponse> {
+    return this._client.get(`/api/v1/product/${id}`, options);
   }
 }
 
@@ -64,7 +55,7 @@ export namespace ProductCreateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
 
     /**
      * safeZodDate
@@ -98,7 +89,7 @@ export namespace ProductUpdateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
 
     /**
      * safeZodDate
@@ -107,137 +98,42 @@ export namespace ProductUpdateResponse {
   }
 }
 
-export type ProductListResponse = Array<ProductListResponse.ProductListResponseItem>;
+export interface ProductGetResponse {
+  product: ProductGetResponse.Product;
+}
 
-export namespace ProductListResponse {
-  export interface ProductListResponseItem {
-    product: ProductListResponseItem.Product;
+export namespace ProductGetResponse {
+  export interface Product {
+    id: string;
 
-    variant: ProductListResponseItem.UnionMember0 | ProductListResponseItem.UnionMember1;
-  }
+    active: boolean;
 
-  export namespace ProductListResponseItem {
-    export interface Product {
-      id: string;
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
 
-      active: boolean;
+    description: string | null;
 
-      /**
-       * safeZodDate
-       */
-      createdAt: string | string;
+    imageURL: string | null;
 
-      description: string | null;
+    livemode: boolean;
 
-      imageURL: string | null;
+    name: string;
 
-      livemode: boolean;
+    OrganizationId: string;
 
-      name: string;
+    type: 'service' | 'digital';
 
-      OrganizationId: string;
-
-      type: 'service' | 'digital' | (string & {});
-
-      /**
-       * safeZodDate
-       */
-      updatedAt: string | string;
-    }
-
-    export interface UnionMember0 {
-      id: string;
-
-      active: boolean;
-
-      createdAt: string;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      intervalCount: string | number;
-
-      intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
-
-      isDefault: boolean;
-
-      livemode: boolean;
-
-      name: string | null;
-
-      priceType: 'subscription';
-
-      ProductId: string;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      setupFeeAmount: string | number | 0 | null;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      trialPeriodDays: string | number | 0 | null;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: string | number;
-
-      updatedAt: string | null;
-    }
-
-    export interface UnionMember1 {
-      id: string;
-
-      active: boolean;
-
-      createdAt: string;
-
-      isDefault: boolean;
-
-      livemode: boolean;
-
-      name: string | null;
-
-      priceType: 'single_payment';
-
-      ProductId: string;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: string | number;
-
-      updatedAt: string | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalCount?: unknown | unknown | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalUnit?: unknown | unknown | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      setupFeeAmount?: unknown | unknown | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      trialPeriodDays?: unknown | unknown | null;
-    }
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string;
   }
 }
 
 export interface ProductCreateParams {
-  offerings: Array<
-    ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1 | ProductCreateParams.UnionMember2
-  >;
+  offerings: Array<ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1>;
 
   product: ProductCreateParams.Product;
 
@@ -282,49 +178,7 @@ export namespace ProductCreateParams {
   }
 
   export interface UnionMember1 {
-    community: UnionMember1.Community;
-
-    type: 'community';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export namespace UnionMember1 {
-    export interface Community {
-      id: string | null;
-
-      name: string;
-
-      platform: 'discord' | 'slack' | (string & {});
-
-      IntegrationId?: string | null;
-
-      inviteURL?: string | null;
-
-      platformId?: string | null;
-
-      ProductId?: string | null;
-    }
-  }
-
-  export interface UnionMember2 {
-    link: UnionMember2.Link;
+    link: UnionMember1.Link;
 
     type: 'link';
 
@@ -347,7 +201,7 @@ export namespace ProductCreateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace UnionMember1 {
     export interface Link {
       id: string | null;
 
@@ -360,15 +214,15 @@ export namespace ProductCreateParams {
   }
 
   export interface Product {
+    active: boolean;
+
+    description: string | null;
+
+    imageURL: string | null;
+
     name: string;
 
-    type: 'service' | 'digital' | (string & {});
-
-    active?: boolean;
-
-    description?: string | null;
-
-    imageURL?: string | null;
+    type: 'service' | 'digital';
   }
 
   export interface UnionMember0 {
@@ -379,7 +233,7 @@ export namespace ProductCreateParams {
      */
     intervalCount: string | number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -444,9 +298,7 @@ export namespace ProductCreateParams {
 }
 
 export interface ProductUpdateParams {
-  offerings: Array<
-    ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1 | ProductUpdateParams.UnionMember2
-  >;
+  offerings: Array<ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1>;
 
   product: ProductUpdateParams.Product;
 
@@ -491,49 +343,7 @@ export namespace ProductUpdateParams {
   }
 
   export interface UnionMember1 {
-    community: UnionMember1.Community;
-
-    type: 'community';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export namespace UnionMember1 {
-    export interface Community {
-      id: string | null;
-
-      name: string;
-
-      platform: 'discord' | 'slack' | (string & {});
-
-      IntegrationId?: string | null;
-
-      inviteURL?: string | null;
-
-      platformId?: string | null;
-
-      ProductId?: string | null;
-    }
-  }
-
-  export interface UnionMember2 {
-    link: UnionMember2.Link;
+    link: UnionMember1.Link;
 
     type: 'link';
 
@@ -556,7 +366,7 @@ export namespace ProductUpdateParams {
     VariantId?: string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace UnionMember1 {
     export interface Link {
       id: string | null;
 
@@ -587,7 +397,7 @@ export namespace ProductUpdateParams {
 
     stripeProductId?: string | null;
 
-    type?: 'service' | 'digital' | (string & {});
+    type?: 'service' | 'digital';
   }
 
   export interface UnionMember0 {
@@ -602,7 +412,7 @@ export namespace ProductUpdateParams {
      */
     intervalCount?: string | number;
 
-    intervalUnit?: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
 
@@ -674,17 +484,12 @@ export namespace ProductUpdateParams {
   }
 }
 
-export interface ProductListParams {
-  active?: boolean;
-}
-
-export declare namespace Products {
+export declare namespace Product {
   export {
     type ProductCreateResponse as ProductCreateResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
-    type ProductListResponse as ProductListResponse,
+    type ProductGetResponse as ProductGetResponse,
     type ProductCreateParams as ProductCreateParams,
     type ProductUpdateParams as ProductUpdateParams,
-    type ProductListParams as ProductListParams,
   };
 }

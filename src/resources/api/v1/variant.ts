@@ -1,41 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIResource } from '../../../resource';
+import * as Core from '../../../core';
 
-export class Variants extends APIResource {
+export class Variant extends APIResource {
   /**
-   * Create variants
+   * Create Variant
    */
   create(body: VariantCreateParams, options?: Core.RequestOptions): Core.APIPromise<VariantCreateResponse> {
-    return this._client.post('/api/v1/variants', { body, ...options });
+    return this._client.post('/api/v1/variant', { body, ...options });
   }
 
   /**
-   * Update variants
+   * Update Variant
    */
   update(
     id: string,
     body: VariantUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<VariantUpdateResponse> {
-    return this._client.put(`/api/v1/variants/${id}`, { body, ...options });
-  }
-
-  /**
-   * List variants
-   */
-  list(query?: VariantListParams, options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
-  list(
-    query: VariantListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<VariantListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.get('/api/v1/variants', { query, ...options });
+    return this._client.put(`/api/v1/variant/${id}`, { body, ...options });
   }
 }
 
@@ -56,7 +40,7 @@ export namespace VariantCreateResponse {
      */
     intervalCount: string | number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -149,100 +133,7 @@ export namespace VariantUpdateResponse {
      */
     intervalCount: string | number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    priceType: 'subscription';
-
-    ProductId: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: string | number | 0 | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    trialPeriodDays: string | number | 0 | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: string | number;
-
-    updatedAt: string | null;
-  }
-
-  export interface UnionMember1 {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    priceType: 'single_payment';
-
-    ProductId: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: string | number;
-
-    updatedAt: string | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalCount?: unknown | unknown | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalUnit?: unknown | unknown | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: unknown | unknown | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: unknown | unknown | null;
-  }
-}
-
-export interface VariantListResponse {
-  variants: Array<VariantListResponse.UnionMember0 | VariantListResponse.UnionMember1>;
-}
-
-export namespace VariantListResponse {
-  export interface UnionMember0 {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: string | number;
-
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -331,7 +222,7 @@ export namespace VariantCreateParams {
      */
     intervalCount: string | number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -420,7 +311,7 @@ export namespace VariantUpdateParams {
      */
     intervalCount?: string | number;
 
-    intervalUnit?: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
 
@@ -492,17 +383,11 @@ export namespace VariantUpdateParams {
   }
 }
 
-export interface VariantListParams {
-  ProductId?: string;
-}
-
-export declare namespace Variants {
+export declare namespace Variant {
   export {
     type VariantCreateResponse as VariantCreateResponse,
     type VariantUpdateResponse as VariantUpdateResponse,
-    type VariantListResponse as VariantListResponse,
     type VariantCreateParams as VariantCreateParams,
     type VariantUpdateParams as VariantUpdateParams,
-    type VariantListParams as VariantListParams,
   };
 }

@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import '@flowglad/node/shims/${shims.kind}'\` before importing anything else from @flowglad/node`,
+      `you must \`import 'flowglad/shims/${shims.kind}'\` before importing anything else from flowglad`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import '@flowglad/node/shims/${shims.kind}'\` after \`import '@flowglad/node/shims/${kind}'\``,
+      `can't \`import 'flowglad/shims/${shims.kind}'\` after \`import 'flowglad/shims/${kind}'\``,
     );
   }
   auto = options.auto;

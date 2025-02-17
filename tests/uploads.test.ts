@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from '@flowglad/node/uploads';
-import { File } from '@flowglad/node/_shims/index';
+import { toFile, type ResponseLike } from 'flowglad/uploads';
+import { File } from 'flowglad/_shims/index';
 
 class MyClass {
   name: string = 'foo';

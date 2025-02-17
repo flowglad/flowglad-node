@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Flowglad } from '@flowglad/node';
+import { Flowglad } from 'flowglad';
 
 const { stringifyQuery } = Flowglad.prototype as any;
 

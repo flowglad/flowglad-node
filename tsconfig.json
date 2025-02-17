@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "@flowglad/node/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "@flowglad/node/*": ["src/*"],
-      "@flowglad/node": ["src/index.ts"]
+      "flowglad/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "flowglad/*": ["src/*"],
+      "flowglad": ["src/index.ts"]
     },
     "noEmit": true,
 

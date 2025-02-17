@@ -3,67 +3,15 @@
 import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as Errors from './error';
-import * as Pagination from './pagination';
-import {
-  type ProductsListParams,
-  ProductsListResponse,
-  type VariantsListParams,
-  VariantsListResponse,
-} from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import {
-  ProductCreateParams,
-  ProductCreateResponse,
-  ProductListParams,
-  ProductListResponse,
-  ProductUpdateParams,
-  ProductUpdateResponse,
-  Products,
-} from './resources/products';
-import {
-  PurchaseSessionCreateParams,
-  PurchaseSessionCreateResponse,
-  PurchaseSessions,
-} from './resources/purchase-sessions';
-import {
-  VariantCreateParams,
-  VariantCreateResponse,
-  VariantListParams,
-  VariantListResponse,
-  VariantUpdateParams,
-  VariantUpdateResponse,
-  Variants,
-} from './resources/variants';
-import {
-  CustomerProfileCreateParams,
-  CustomerProfileCreateResponse,
-  CustomerProfileRetrieveResponse,
-  CustomerProfileUpdateParams,
-  CustomerProfileUpdateResponse,
-  CustomerProfiles,
-} from './resources/customer-profiles/customer-profiles';
-
-const environments = {
-  production: 'https://app.flowglad.com/api/v1',
-  staging: 'https://staging.flowglad.com/api/v1',
-};
-type Environment = keyof typeof environments;
+import { API as ApiapiAPI } from './resources/api/api';
 
 export interface ClientOptions {
   /**
-   * API key to be set in the Authorization header
+   * API key for accessing the Flowglad API
    */
   apiKey?: string | undefined;
-
-  /**
-   * Specifies the environment to use for the API.
-   *
-   * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://app.flowglad.com/api/v1`
-   * - `staging` corresponds to `https://staging.flowglad.com/api/v1`
-   */
-  environment?: Environment | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -133,9 +81,8 @@ export class Flowglad extends Core.APIClient {
   /**
    * API Client for interfacing with the Flowglad API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_SECRET_KEY'] ?? undefined]
-   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? https://app.flowglad.com/api/v1] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_API_KEY'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? http://localhost:3000/] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -145,30 +92,23 @@ export class Flowglad extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('FLOWGLAD_BASE_URL'),
-    apiKey = Core.readEnv('FLOWGLAD_SECRET_KEY'),
+    apiKey = Core.readEnv('FLOWGLAD_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.FlowgladError(
-        "The FLOWGLAD_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
+        "The FLOWGLAD_API_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL,
-      environment: opts.environment ?? 'production',
+      baseURL: baseURL || `http://localhost:3000/`,
     };
 
-    if (baseURL && opts.environment) {
-      throw new Errors.FlowgladError(
-        'Ambiguous URL; The `baseURL` option (or FLOWGLAD_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
-      );
-    }
-
     super({
-      baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURL: options.baseURL!,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -180,10 +120,7 @@ export class Flowglad extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
-  purchaseSessions: API.PurchaseSessions = new API.PurchaseSessions(this);
-  products: API.Products = new API.Products(this);
-  variants: API.Variants = new API.Variants(this);
-  customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
+  api: API.API = new API.API(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -221,53 +158,11 @@ export class Flowglad extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Flowglad.PurchaseSessions = PurchaseSessions;
-Flowglad.Products = Products;
-Flowglad.Variants = Variants;
-Flowglad.CustomerProfiles = CustomerProfiles;
+Flowglad.API = ApiapiAPI;
 export declare namespace Flowglad {
   export type RequestOptions = Core.RequestOptions;
 
-  export import ProductsList = Pagination.ProductsList;
-  export { type ProductsListParams as ProductsListParams, type ProductsListResponse as ProductsListResponse };
-
-  export import VariantsList = Pagination.VariantsList;
-  export { type VariantsListParams as VariantsListParams, type VariantsListResponse as VariantsListResponse };
-
-  export {
-    PurchaseSessions as PurchaseSessions,
-    type PurchaseSessionCreateResponse as PurchaseSessionCreateResponse,
-    type PurchaseSessionCreateParams as PurchaseSessionCreateParams,
-  };
-
-  export {
-    Products as Products,
-    type ProductCreateResponse as ProductCreateResponse,
-    type ProductUpdateResponse as ProductUpdateResponse,
-    type ProductListResponse as ProductListResponse,
-    type ProductCreateParams as ProductCreateParams,
-    type ProductUpdateParams as ProductUpdateParams,
-    type ProductListParams as ProductListParams,
-  };
-
-  export {
-    Variants as Variants,
-    type VariantCreateResponse as VariantCreateResponse,
-    type VariantUpdateResponse as VariantUpdateResponse,
-    type VariantListResponse as VariantListResponse,
-    type VariantCreateParams as VariantCreateParams,
-    type VariantUpdateParams as VariantUpdateParams,
-    type VariantListParams as VariantListParams,
-  };
-
-  export {
-    CustomerProfiles as CustomerProfiles,
-    type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
-    type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
-    type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
-    type CustomerProfileCreateParams as CustomerProfileCreateParams,
-    type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
-  };
+  export { ApiapiAPI as API };
 }
 
 export { toFile, fileFromPath } from './uploads';
