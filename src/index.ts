@@ -3,6 +3,8 @@
 import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as Errors from './error';
+import * as Pagination from './pagination';
+import { type ProductsParams, ProductsResponse } from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
@@ -12,7 +14,7 @@ import {
   ProductListResponse,
   ProductUpdateParams,
   ProductUpdateResponse,
-  Products,
+  Products as ProductsAPIProducts,
 } from './resources/products';
 import {
   PurchaseSessionCreateParams,
@@ -215,11 +217,14 @@ export class Flowglad extends Core.APIClient {
 }
 
 Flowglad.PurchaseSessions = PurchaseSessions;
-Flowglad.Products = Products;
+Flowglad.Products = ProductsAPIProducts;
 Flowglad.Variants = Variants;
 Flowglad.CustomerProfiles = CustomerProfiles;
 export declare namespace Flowglad {
   export type RequestOptions = Core.RequestOptions;
+
+  export import Products = Pagination.Products;
+  export { type ProductsParams as ProductsParams, type ProductsResponse as ProductsResponse };
 
   export {
     PurchaseSessions as PurchaseSessions,
@@ -228,7 +233,7 @@ export declare namespace Flowglad {
   };
 
   export {
-    Products as Products,
+    ProductsAPIProducts as Products,
     type ProductCreateResponse as ProductCreateResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
     type ProductListResponse as ProductListResponse,
