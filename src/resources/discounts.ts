@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import * as Core from '../core';
 
 export class Discounts extends APIResource {
   /**
@@ -9,6 +9,13 @@ export class Discounts extends APIResource {
    */
   create(body: DiscountCreateParams, options?: Core.RequestOptions): Core.APIPromise<DiscountCreateResponse> {
     return this._client.post('/api/v1/discount', { body, ...options });
+  }
+
+  /**
+   * Get Discount
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<DiscountRetrieveResponse> {
+    return this._client.get(`/api/v1/discount/${id}`, options);
   }
 
   /**
@@ -20,13 +27,6 @@ export class Discounts extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<DiscountUpdateResponse> {
     return this._client.put(`/api/v1/discount/${id}`, { body, ...options });
-  }
-
-  /**
-   * Get Discount
-   */
-  get(id: string, options?: Core.RequestOptions): Core.APIPromise<DiscountGetResponse> {
-    return this._client.get(`/api/v1/discount/${id}`, options);
   }
 }
 
@@ -135,14 +135,14 @@ export namespace DiscountCreateResponse {
   }
 }
 
-export interface DiscountUpdateResponse {
+export interface DiscountRetrieveResponse {
   discount:
-    | DiscountUpdateResponse.UnionMember0
-    | DiscountUpdateResponse.UnionMember1
-    | DiscountUpdateResponse.UnionMember2;
+    | DiscountRetrieveResponse.UnionMember0
+    | DiscountRetrieveResponse.UnionMember1
+    | DiscountRetrieveResponse.UnionMember2;
 }
 
-export namespace DiscountUpdateResponse {
+export namespace DiscountRetrieveResponse {
   export interface UnionMember0 {
     id: string;
 
@@ -240,14 +240,14 @@ export namespace DiscountUpdateResponse {
   }
 }
 
-export interface DiscountGetResponse {
+export interface DiscountUpdateResponse {
   discount:
-    | DiscountGetResponse.UnionMember0
-    | DiscountGetResponse.UnionMember1
-    | DiscountGetResponse.UnionMember2;
+    | DiscountUpdateResponse.UnionMember0
+    | DiscountUpdateResponse.UnionMember1
+    | DiscountUpdateResponse.UnionMember2;
 }
 
-export namespace DiscountGetResponse {
+export namespace DiscountUpdateResponse {
   export interface UnionMember0 {
     id: string;
 
@@ -504,8 +504,8 @@ export namespace DiscountUpdateParams {
 export declare namespace Discounts {
   export {
     type DiscountCreateResponse as DiscountCreateResponse,
+    type DiscountRetrieveResponse as DiscountRetrieveResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,
-    type DiscountGetResponse as DiscountGetResponse,
     type DiscountCreateParams as DiscountCreateParams,
     type DiscountUpdateParams as DiscountUpdateParams,
   };

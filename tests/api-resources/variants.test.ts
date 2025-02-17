@@ -8,10 +8,10 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource variant', () => {
+describe('resource variants', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.api.variant.create({
+    const responsePromise = client.variants.create({
       variant: {
         active: true,
         intervalCount: 'string',
@@ -37,7 +37,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.api.variant.create({
+    const response = await client.variants.create({
       variant: {
         active: true,
         intervalCount: 'string',
@@ -57,7 +57,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
-    const responsePromise = client.api.variant.update('id', {
+    const responsePromise = client.variants.update('id', {
       variant: { id: 'id', priceType: 'subscription' },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -71,7 +71,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
-    const response = await client.api.variant.update('id', {
+    const response = await client.variants.update('id', {
       variant: {
         id: 'id',
         priceType: 'subscription',
@@ -92,7 +92,7 @@ describe('resource variant', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.api.variant.list();
+    const responsePromise = client.variants.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -105,7 +105,7 @@ describe('resource variant', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.api.variant.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.variants.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Flowglad.NotFoundError,
     );
   });
@@ -114,7 +114,7 @@ describe('resource variant', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.api.variant.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.variants.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

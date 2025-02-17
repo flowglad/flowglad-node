@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
 
-export class CustomerProfile extends APIResource {
+export class CustomerProfiles extends APIResource {
   /**
    * Create Customer Profile
    */
@@ -13,6 +13,16 @@ export class CustomerProfile extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<CustomerProfileCreateResponse> {
     return this._client.post('/api/v1/customer-profile', { body, ...options });
+  }
+
+  /**
+   * Get Customer Profile
+   */
+  retrieve(
+    externalId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CustomerProfileRetrieveResponse> {
+    return this._client.get(`/api/v1/customer-profile/${externalId}`, options);
   }
 
   /**
@@ -42,13 +52,6 @@ export class CustomerProfile extends APIResource {
       return this.list({}, query);
     }
     return this._client.get('/api/v1/customer-profiles', { query, ...options });
-  }
-
-  /**
-   * Get Customer Profile
-   */
-  get(externalId: string, options?: Core.RequestOptions): Core.APIPromise<CustomerProfileGetResponse> {
-    return this._client.get(`/api/v1/customer-profile/${externalId}`, options);
   }
 
   /**
@@ -131,6 +134,74 @@ export namespace CustomerProfileCreateResponse {
 
           state: string;
         }
+      }
+    }
+  }
+}
+
+export interface CustomerProfileRetrieveResponse {
+  customerProfile: CustomerProfileRetrieveResponse.CustomerProfile;
+}
+
+export namespace CustomerProfileRetrieveResponse {
+  export interface CustomerProfile {
+    id: string;
+
+    archived: boolean;
+
+    billingAddress: CustomerProfile.BillingAddress | null;
+
+    createdAt: string;
+
+    CustomerId: string;
+
+    domain: string | null;
+
+    email: string;
+
+    externalId: string;
+
+    iconURL: string | null;
+
+    invoiceNumberBase: string | null;
+
+    livemode: boolean;
+
+    logoURL: string | null;
+
+    name: string | null;
+
+    OrganizationId: string;
+
+    updatedAt: string | null;
+  }
+
+  export namespace CustomerProfile {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
       }
     }
   }
@@ -254,74 +325,6 @@ export namespace CustomerProfileListResponse {
   }
 
   export namespace Data {
-    export interface BillingAddress {
-      address: BillingAddress.Address;
-
-      name: string;
-
-      firstName?: string;
-
-      lastName?: string;
-
-      phone?: string;
-    }
-
-    export namespace BillingAddress {
-      export interface Address {
-        city: string;
-
-        country: string;
-
-        line1: string;
-
-        line2: string | null;
-
-        postal_code: string;
-
-        state: string;
-      }
-    }
-  }
-}
-
-export interface CustomerProfileGetResponse {
-  customerProfile: CustomerProfileGetResponse.CustomerProfile;
-}
-
-export namespace CustomerProfileGetResponse {
-  export interface CustomerProfile {
-    id: string;
-
-    archived: boolean;
-
-    billingAddress: CustomerProfile.BillingAddress | null;
-
-    createdAt: string;
-
-    CustomerId: string;
-
-    domain: string | null;
-
-    email: string;
-
-    externalId: string;
-
-    iconURL: string | null;
-
-    invoiceNumberBase: string | null;
-
-    livemode: boolean;
-
-    logoURL: string | null;
-
-    name: string | null;
-
-    OrganizationId: string;
-
-    updatedAt: string | null;
-  }
-
-  export namespace CustomerProfile {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -657,12 +660,12 @@ export interface CustomerProfileListParams {
   limit?: number;
 }
 
-export declare namespace CustomerProfile {
+export declare namespace CustomerProfiles {
   export {
     type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
+    type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileListResponse as CustomerProfileListResponse,
-    type CustomerProfileGetResponse as CustomerProfileGetResponse,
     type CustomerProfileGetBillingResponse as CustomerProfileGetBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
