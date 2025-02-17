@@ -2,7 +2,7 @@
 
 import { AbstractPage, Response, APIClient, FinalRequestOptions, PageInfo } from './core';
 
-export interface ProductsResponse<Item> {
+export interface ProductsListResponse<Item> {
   data: Array<Item>;
 
   hasMore: boolean;
@@ -12,13 +12,13 @@ export interface ProductsResponse<Item> {
   nextCursor: string;
 }
 
-export interface ProductsParams {
+export interface ProductsListParams {
   limit?: unknown;
 
   cursor?: unknown;
 }
 
-export class Products<Item> extends AbstractPage<Item> implements ProductsResponse<Item> {
+export class ProductsList<Item> extends AbstractPage<Item> implements ProductsListResponse<Item> {
   data: Array<Item>;
 
   hasMore: boolean;
@@ -30,7 +30,7 @@ export class Products<Item> extends AbstractPage<Item> implements ProductsRespon
   constructor(
     client: APIClient,
     response: Response,
-    body: ProductsResponse<Item>,
+    body: ProductsListResponse<Item>,
     options: FinalRequestOptions,
   ) {
     super(client, response, body, options);
@@ -54,7 +54,7 @@ export class Products<Item> extends AbstractPage<Item> implements ProductsRespon
   }
 
   // @deprecated Please use `nextPageInfo()` instead
-  nextPageParams(): Partial<ProductsParams> | null {
+  nextPageParams(): Partial<ProductsListParams> | null {
     const info = this.nextPageInfo();
     if (!info) return null;
     if ('params' in info) return info.params;
