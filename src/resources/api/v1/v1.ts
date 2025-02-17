@@ -17,6 +17,7 @@ import * as DiscountsAPI from './discounts';
 import {
   DiscountCreateParams,
   DiscountCreateResponse,
+  DiscountGetResponse,
   DiscountUpdateParams,
   DiscountUpdateResponse,
   Discounts,
@@ -3109,6 +3110,7 @@ export declare namespace V1 {
     Discounts as Discounts,
     type DiscountCreateResponse as DiscountCreateResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountGetResponse as DiscountGetResponse,
     type DiscountCreateParams as DiscountCreateParams,
     type DiscountUpdateParams as DiscountUpdateParams,
   };

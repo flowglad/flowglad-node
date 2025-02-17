@@ -13,6 +13,7 @@ export {
   Discounts,
   type DiscountCreateResponse,
   type DiscountUpdateResponse,
+  type DiscountGetResponse,
   type DiscountCreateParams,
   type DiscountUpdateParams,
 } from './discounts';
