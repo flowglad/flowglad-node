@@ -76,11 +76,13 @@ Types:
 
 - <code><a href="./src/resources/api/v1/discounts.ts">DiscountCreateResponse</a></code>
 - <code><a href="./src/resources/api/v1/discounts.ts">DiscountUpdateResponse</a></code>
+- <code><a href="./src/resources/api/v1/discounts.ts">DiscountGetResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/discount">client.api.v1.discounts.<a href="./src/resources/api/v1/discounts.ts">create</a>({ ...params }) -> DiscountCreateResponse</code>
 - <code title="put /api/v1/discount/{id}">client.api.v1.discounts.<a href="./src/resources/api/v1/discounts.ts">update</a>(id, { ...params }) -> DiscountUpdateResponse</code>
+- <code title="get /api/v1/discount/{id}">client.api.v1.discounts.<a href="./src/resources/api/v1/discounts.ts">get</a>(id) -> DiscountGetResponse</code>
 
 ### CustomerProfile
 
