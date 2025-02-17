@@ -70,6 +70,18 @@ Methods:
 - <code title="post /api/v1/variant">client.api.v1.variant.<a href="./src/resources/api/v1/variant.ts">create</a>({ ...params }) -> VariantCreateResponse</code>
 - <code title="put /api/v1/variant/{id}">client.api.v1.variant.<a href="./src/resources/api/v1/variant.ts">update</a>(id, { ...params }) -> VariantUpdateResponse</code>
 
+### Discounts
+
+Types:
+
+- <code><a href="./src/resources/api/v1/discounts.ts">DiscountCreateResponse</a></code>
+- <code><a href="./src/resources/api/v1/discounts.ts">DiscountUpdateResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/discount">client.api.v1.discounts.<a href="./src/resources/api/v1/discounts.ts">create</a>({ ...params }) -> DiscountCreateResponse</code>
+- <code title="put /api/v1/discount/{id}">client.api.v1.discounts.<a href="./src/resources/api/v1/discounts.ts">update</a>(id, { ...params }) -> DiscountUpdateResponse</code>
+
 ### CustomerProfile
 
 Types:
