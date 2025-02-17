@@ -7,9 +7,9 @@ export interface ProductsListResponse<Item> {
 
   hasMore: boolean;
 
-  currentCursor: string;
+  lolTest: string;
 
-  nextCursor: string;
+  lolTest3: string;
 }
 
 export interface ProductsListParams {
@@ -23,9 +23,9 @@ export class ProductsList<Item> extends AbstractPage<Item> implements ProductsLi
 
   hasMore: boolean;
 
-  currentCursor: string;
+  lolTest: string;
 
-  nextCursor: string;
+  lolTest3: string;
 
   constructor(
     client: APIClient,
@@ -37,8 +37,8 @@ export class ProductsList<Item> extends AbstractPage<Item> implements ProductsLi
 
     this.data = body.data || [];
     this.hasMore = body.hasMore || false;
-    this.currentCursor = body.currentCursor || '';
-    this.nextCursor = body.nextCursor || '';
+    this.lolTest = body.lolTest || '';
+    this.lolTest3 = body.lolTest3 || '';
   }
 
   getPaginatedItems(): Item[] {
@@ -64,7 +64,7 @@ export class ProductsList<Item> extends AbstractPage<Item> implements ProductsLi
   }
 
   nextPageInfo(): PageInfo | null {
-    const cursor = this.nextCursor;
+    const cursor = this.lolTest3;
     if (!cursor) {
       return null;
     }
