@@ -1,5 +1,5 @@
-import { createResponseHeaders } from '@flowglad/node/core';
-import { Headers } from '@flowglad/node/_shims/index';
+import { createResponseHeaders } from 'flowglad/core';
+import { Headers } from 'flowglad/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters
