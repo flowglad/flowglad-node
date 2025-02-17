@@ -13,6 +13,14 @@ import {
   CustomerProfileUpdateParams,
   CustomerProfileUpdateResponse,
 } from './customer-profile';
+import * as DiscountsAPI from './discounts';
+import {
+  DiscountCreateParams,
+  DiscountCreateResponse,
+  DiscountUpdateParams,
+  DiscountUpdateResponse,
+  Discounts,
+} from './discounts';
 import * as ProductAPI from './product';
 import {
   Product,
@@ -55,6 +63,7 @@ export class V1 extends APIResource {
   purchaseSession: PurchaseSessionAPI.PurchaseSession = new PurchaseSessionAPI.PurchaseSession(this._client);
   product: ProductAPI.Product = new ProductAPI.Product(this._client);
   variant: VariantAPI.Variant = new VariantAPI.Variant(this._client);
+  discounts: DiscountsAPI.Discounts = new DiscountsAPI.Discounts(this._client);
   customerProfile: CustomerProfileAPI.CustomerProfile = new CustomerProfileAPI.CustomerProfile(this._client);
   subscriptions: SubscriptionsAPI.Subscriptions = new SubscriptionsAPI.Subscriptions(this._client);
 
@@ -3043,6 +3052,7 @@ export interface V1ListVariantsParams {
 V1.PurchaseSession = PurchaseSession;
 V1.Product = Product;
 V1.Variant = Variant;
+V1.Discounts = Discounts;
 V1.CustomerProfile = CustomerProfile;
 V1.Subscriptions = Subscriptions;
 
@@ -3093,6 +3103,14 @@ export declare namespace V1 {
     type VariantUpdateResponse as VariantUpdateResponse,
     type VariantCreateParams as VariantCreateParams,
     type VariantUpdateParams as VariantUpdateParams,
+  };
+
+  export {
+    Discounts as Discounts,
+    type DiscountCreateResponse as DiscountCreateResponse,
+    type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountCreateParams as DiscountCreateParams,
+    type DiscountUpdateParams as DiscountUpdateParams,
   };
 
   export {
