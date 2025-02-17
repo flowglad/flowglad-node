@@ -1,41 +1,32 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIResource } from '../../../resource';
+import * as Core from '../../../core';
 
-export class Products extends APIResource {
+export class Product extends APIResource {
   /**
-   * Create products
+   * Create Product
    */
   create(body: ProductCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProductCreateResponse> {
-    return this._client.post('/api/v1/products', { body, ...options });
+    return this._client.post('/api/v1/product', { body, ...options });
   }
 
   /**
-   * Update products
+   * Update Product
    */
   update(
     id: string,
     body: ProductUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ProductUpdateResponse> {
-    return this._client.put(`/api/v1/products/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/product/${id}`, { body, ...options });
   }
 
   /**
-   * List products
+   * Get Product
    */
-  list(query?: ProductListParams, options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
-  list(
-    query: ProductListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ProductListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
-    return this._client.get('/api/v1/products', { query, ...options });
+  get(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductGetResponse> {
+    return this._client.get(`/api/v1/product/${id}`, options);
   }
 }
 
@@ -64,7 +55,7 @@ export namespace ProductCreateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
 
     /**
      * safeZodDate
@@ -98,7 +89,7 @@ export namespace ProductUpdateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
 
     /**
      * safeZodDate
@@ -113,31 +104,31 @@ export namespace ProductListResponse {
   export interface ProductListResponseItem {
     product: ProductListResponseItem.Product;
 
-    variant: ProductListResponseItem.SubscriptionVariant | ProductListResponseItem.SinglePaymentVariant;
+    variant: ProductListResponseItem.UnionMember0 | ProductListResponseItem.UnionMember1;
   }
 
-  export namespace ProductListResponseItem {
-    export interface Product {
-      id: string;
+export namespace ProductGetResponse {
+  export interface Product {
+    id: string;
 
-      active: boolean;
+    active: boolean;
 
-      /**
-       * safeZodDate
-       */
-      createdAt: string | string;
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
 
-      description: string | null;
+    description: string | null;
 
-      imageURL: string | null;
+    imageURL: string | null;
 
-      livemode: boolean;
+    livemode: boolean;
 
-      name: string;
+    name: string;
 
-      OrganizationId: string;
+    OrganizationId: string;
 
-      type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
 
       /**
        * safeZodDate
@@ -145,7 +136,7 @@ export namespace ProductListResponse {
       updatedAt: string | string;
     }
 
-    export interface SubscriptionVariant {
+    export interface UnionMember0 {
       id: string;
 
       active: boolean;
@@ -157,7 +148,7 @@ export namespace ProductListResponse {
        */
       intervalCount: string | number;
 
-      intervalUnit: 'day' | 'week' | 'month' | 'year';
+      intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
 
       isDefault: boolean;
 
@@ -187,7 +178,7 @@ export namespace ProductListResponse {
       updatedAt: string | null;
     }
 
-    export interface SinglePaymentVariant {
+    export interface UnionMember1 {
       id: string;
 
       active: boolean;
@@ -236,9 +227,7 @@ export namespace ProductListResponse {
 
 export interface ProductCreateParams {
   offerings: Array<
-    | ProductCreateParams.FileOffering
-    | ProductCreateParams.CommunityOffering
-    | ProductCreateParams.LinkOffering
+    ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1 | ProductCreateParams.UnionMember2
   >;
 
   product: ProductCreateParams.Product;
@@ -281,8 +270,8 @@ export namespace ProductCreateParams {
     ProductId?: string | null;
   }
 
-  export interface CommunityOffering {
-    community: Community;
+  export interface UnionMember1 {
+    community: UnionMember1.Community;
 
     type: 'community';
 
@@ -305,24 +294,26 @@ export namespace ProductCreateParams {
     VariantId?: string | null;
   }
 
-  export interface Community {
-    id: string | null;
+  export namespace UnionMember1 {
+    export interface Community {
+      id: string | null;
 
-    name: string;
+      name: string;
 
-    platform: 'discord' | 'slack' | (string & {});
+      platform: 'discord' | 'slack' | (string & {});
 
-    IntegrationId?: string | null;
+      IntegrationId?: string | null;
 
-    inviteURL?: string | null;
+      inviteURL?: string | null;
 
-    platformId?: string | null;
+      platformId?: string | null;
 
-    ProductId?: string | null;
+      ProductId?: string | null;
+    }
   }
 
-  export interface LinkOffering {
-    link: Link;
+  export interface UnionMember2 {
+    link: UnionMember2.Link;
 
     type: 'link';
 
@@ -345,8 +336,9 @@ export namespace ProductCreateParams {
     VariantId?: string | null;
   }
 
-  export interface Link {
-    id: string | null;
+  export namespace UnionMember2 {
+    export interface Link {
+      id: string | null;
 
     name: string;
 
@@ -356,15 +348,15 @@ export namespace ProductCreateParams {
   }
 
   export interface Product {
+    active: boolean;
+
+    description: string | null;
+
+    imageURL: string | null;
+
     name: string;
 
-    type: 'service' | 'digital' | (string & {});
-
-    active?: boolean;
-
-    description?: string | null;
-
-    imageURL?: string | null;
+    type: 'service' | 'digital';
   }
 
   export interface SubscriptionVariant {
@@ -441,9 +433,7 @@ export namespace ProductCreateParams {
 
 export interface ProductUpdateParams {
   offerings: Array<
-    | ProductUpdateParams.FileOffering
-    | ProductUpdateParams.LinkOffering
-    | ProductUpdateParams.CommunityOffering
+    ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1 | ProductUpdateParams.UnionMember2
   >;
 
   product: ProductUpdateParams.Product;
@@ -486,8 +476,8 @@ export namespace ProductUpdateParams {
     ProductId?: string | null;
   }
 
-  export interface CommunityOffering {
-    community: Community;
+  export interface UnionMember1 {
+    community: UnionMember1.Community;
 
     type: 'community';
 
@@ -510,24 +500,26 @@ export namespace ProductUpdateParams {
     VariantId?: string | null;
   }
 
-  export interface Community {
-    id: string | null;
+  export namespace UnionMember1 {
+    export interface Community {
+      id: string | null;
 
-    name: string;
+      name: string;
 
-    platform: 'discord' | 'slack' | (string & {});
+      platform: 'discord' | 'slack' | (string & {});
 
-    IntegrationId?: string | null;
+      IntegrationId?: string | null;
 
-    inviteURL?: string | null;
+      inviteURL?: string | null;
 
-    platformId?: string | null;
+      platformId?: string | null;
 
-    ProductId?: string | null;
+      ProductId?: string | null;
+    }
   }
 
-  export interface LinkOffering {
-    link: Link;
+  export interface UnionMember2 {
+    link: UnionMember2.Link;
 
     type: 'link';
 
@@ -550,8 +542,9 @@ export namespace ProductUpdateParams {
     VariantId?: string | null;
   }
 
-  export interface Link {
-    id: string | null;
+  export namespace UnionMember2 {
+    export interface Link {
+      id: string | null;
 
     name: string;
 
@@ -579,7 +572,7 @@ export namespace ProductUpdateParams {
 
     stripeProductId?: string | null;
 
-    type?: 'service' | 'digital' | (string & {});
+    type?: 'service' | 'digital';
   }
 
   export interface SubscriptionVariant {
@@ -594,7 +587,7 @@ export namespace ProductUpdateParams {
      */
     intervalCount?: string | number;
 
-    intervalUnit?: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
 
@@ -666,17 +659,12 @@ export namespace ProductUpdateParams {
   }
 }
 
-export interface ProductListParams {
-  active?: boolean;
-}
-
-export declare namespace Products {
+export declare namespace Product {
   export {
     type ProductCreateResponse as ProductCreateResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
-    type ProductListResponse as ProductListResponse,
+    type ProductGetResponse as ProductGetResponse,
     type ProductCreateParams as ProductCreateParams,
     type ProductUpdateParams as ProductUpdateParams,
-    type ProductListParams as ProductListParams,
   };
 }

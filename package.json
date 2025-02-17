@@ -1,5 +1,5 @@
 {
-  "name": "@flowglad/node",
+  "name": "flowglad",
   "version": "0.1.0-alpha.1",
   "description": "The official TypeScript library for the Flowglad API",
   "author": "Flowglad <dev-feedback@flowglad.com>",
@@ -59,8 +59,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "@flowglad/node": ".",
-    "@flowglad/node/*": "./src/*"
+    "flowglad": ".",
+    "flowglad/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

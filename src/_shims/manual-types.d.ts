@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import '@flowglad/node/shims/node'
- *   import '@flowglad/node/shims/web'
+ *   import 'flowglad/shims/node'
+ *   import 'flowglad/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

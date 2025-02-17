@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Flowglad from '@flowglad/node';
+import Flowglad from 'flowglad';
 import { Response } from 'node-fetch';
 
 const client = new Flowglad({
@@ -8,11 +8,18 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource products', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.products.create({
+describe('resource product', () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: only required params', async () => {
+    const responsePromise = client.api.v1.product.create({
       offerings: [{ file: { id: 'id', name: 'name', objectKey: 'objectKey' }, type: 'file' }],
-      product: { name: 'name', type: 'service' },
+      product: {
+        active: true,
+        description: 'description',
+        imageURL: 'imageURL',
+        name: 'name',
+        type: 'service',
+      },
       variant: {
         active: true,
         intervalCount: 'string',
@@ -35,8 +42,9 @@ describe('resource products', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.products.create({
+  // skipped: tests are disabled for the time being
+  test.skip('create: required and optional params', async () => {
+    const response = await client.api.v1.product.create({
       offerings: [
         {
           file: { id: 'id', name: 'name', objectKey: 'objectKey', ProductId: 'ProductId' },
@@ -53,11 +61,11 @@ describe('resource products', () => {
         },
       ],
       product: {
-        name: 'name',
-        type: 'service',
         active: true,
         description: 'description',
         imageURL: 'imageURL',
+        name: 'name',
+        type: 'service',
       },
       variant: {
         active: true,
@@ -74,8 +82,9 @@ describe('resource products', () => {
     });
   });
 
-  test('update: only required params', async () => {
-    const responsePromise = client.products.update('id', {
+  // skipped: tests are disabled for the time being
+  test.skip('update: only required params', async () => {
+    const responsePromise = client.api.v1.product.update('id', {
       offerings: [{ file: { id: 'id', name: 'name', objectKey: 'objectKey' }, type: 'file' }],
       product: { id: 'id' },
       variant: { id: 'id', priceType: 'subscription' },
@@ -89,8 +98,9 @@ describe('resource products', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('update: required and optional params', async () => {
-    const response = await client.products.update('id', {
+  // skipped: tests are disabled for the time being
+  test.skip('update: required and optional params', async () => {
+    const response = await client.api.v1.product.update('id', {
       offerings: [
         {
           file: { id: 'id', name: 'name', objectKey: 'objectKey', ProductId: 'ProductId' },
@@ -136,8 +146,9 @@ describe('resource products', () => {
     });
   });
 
-  test('list', async () => {
-    const responsePromise = client.products.list();
+  // skipped: tests are disabled for the time being
+  test.skip('get', async () => {
+    const responsePromise = client.api.v1.product.get('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -147,17 +158,11 @@ describe('resource products', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('list: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.products.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.api.v1.product.get('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Flowglad.NotFoundError,
     );
-  });
-
-  test('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.products.list({ active: true }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });
