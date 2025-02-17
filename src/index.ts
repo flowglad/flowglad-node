@@ -4,7 +4,12 @@ import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Pagination from './pagination';
-import { type ProductsListParams, ProductsListResponse } from './pagination';
+import {
+  type ProductsListParams,
+  ProductsListResponse,
+  type VariantsListParams,
+  VariantsListResponse,
+} from './pagination';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
@@ -225,6 +230,9 @@ export declare namespace Flowglad {
 
   export import ProductsList = Pagination.ProductsList;
   export { type ProductsListParams as ProductsListParams, type ProductsListResponse as ProductsListResponse };
+
+  export import VariantsList = Pagination.VariantsList;
+  export { type VariantsListParams as VariantsListParams, type VariantsListResponse as VariantsListResponse };
 
   export {
     PurchaseSessions as PurchaseSessions,
