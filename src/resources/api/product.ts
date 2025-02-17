@@ -1,7 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
+import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import * as Core from '../../core';
 
 export class Product extends APIResource {
   /**
@@ -20,6 +21,21 @@ export class Product extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<ProductUpdateResponse> {
     return this._client.put(`/api/v1/product/${id}`, { body, ...options });
+  }
+
+  /**
+   * List Products
+   */
+  list(query?: ProductListParams, options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
+  list(
+    query: ProductListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ProductListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v1/products', { query, ...options });
   }
 
   /**
@@ -70,6 +86,46 @@ export interface ProductUpdateResponse {
 
 export namespace ProductUpdateResponse {
   export interface Product {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
+
+    description: string | null;
+
+    imageURL: string | null;
+
+    livemode: boolean;
+
+    name: string;
+
+    OrganizationId: string;
+
+    type: 'service' | 'digital';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string;
+  }
+}
+
+export interface ProductListResponse {
+  data: Array<ProductListResponse.Data>;
+
+  hasMore: boolean;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
+}
+
+export namespace ProductListResponse {
+  export interface Data {
     id: string;
 
     active: boolean;
@@ -659,12 +715,20 @@ export namespace ProductUpdateParams {
   }
 }
 
+export interface ProductListParams {
+  cursor?: string;
+
+  limit?: number;
+}
+
 export declare namespace Product {
   export {
     type ProductCreateResponse as ProductCreateResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
+    type ProductListResponse as ProductListResponse,
     type ProductGetResponse as ProductGetResponse,
     type ProductCreateParams as ProductCreateParams,
     type ProductUpdateParams as ProductUpdateParams,
+    type ProductListParams as ProductListParams,
   };
 }

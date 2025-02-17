@@ -8,37 +8,10 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource purchaseSession', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.api.v1.purchaseSession.create({
-      cancelUrl: 'cancelUrl',
-      customerProfileExternalId: 'customerProfileExternalId',
-      successUrl: 'successUrl',
-      VariantId: 'VariantId',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('create: required and optional params', async () => {
-    const response = await client.api.v1.purchaseSession.create({
-      cancelUrl: 'cancelUrl',
-      customerProfileExternalId: 'customerProfileExternalId',
-      successUrl: 'successUrl',
-      VariantId: 'VariantId',
-    });
-  });
-
+describe('resource invoice', () => {
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.api.v1.purchaseSession.list();
+    const responsePromise = client.api.invoice.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -51,7 +24,7 @@ describe('resource purchaseSession', () => {
   // skipped: tests are disabled for the time being
   test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.api.v1.purchaseSession.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.api.invoice.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Flowglad.NotFoundError,
     );
   });
@@ -60,16 +33,13 @@ describe('resource purchaseSession', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.api.v1.purchaseSession.list(
-        { cursor: 'cursor', limit: 1 },
-        { path: '/_stainless_unknown_path' },
-      ),
+      client.api.invoice.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
   // skipped: tests are disabled for the time being
   test.skip('get', async () => {
-    const responsePromise = client.api.v1.purchaseSession.get('id');
+    const responsePromise = client.api.invoice.get('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -82,8 +52,8 @@ describe('resource purchaseSession', () => {
   // skipped: tests are disabled for the time being
   test.skip('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.api.v1.purchaseSession.get('id', { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Flowglad.NotFoundError);
+    await expect(client.api.invoice.get('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
+      Flowglad.NotFoundError,
+    );
   });
 });
