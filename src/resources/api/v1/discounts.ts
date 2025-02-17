@@ -21,6 +21,13 @@ export class Discounts extends APIResource {
   ): Core.APIPromise<DiscountUpdateResponse> {
     return this._client.put(`/api/v1/discount/${id}`, { body, ...options });
   }
+
+  /**
+   * Get Discount
+   */
+  get(id: string, options?: Core.RequestOptions): Core.APIPromise<DiscountGetResponse> {
+    return this._client.get(`/api/v1/discount/${id}`, options);
+  }
 }
 
 export interface DiscountCreateResponse {
@@ -136,6 +143,111 @@ export interface DiscountUpdateResponse {
 }
 
 export namespace DiscountUpdateResponse {
+  export interface UnionMember0 {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    amount: string | number;
+
+    amountType: 'percent' | 'fixed';
+
+    code: string;
+
+    createdAt: string;
+
+    duration: 'once';
+
+    livemode: boolean;
+
+    name: string;
+
+    numberOfPayments: unknown;
+
+    OrganizationId: string;
+
+    stripeCouponId: string | null;
+
+    updatedAt: string | null;
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    amount: string | number;
+
+    amountType: 'percent' | 'fixed';
+
+    code: string;
+
+    createdAt: string;
+
+    duration: 'number_of_payments';
+
+    livemode: boolean;
+
+    name: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    numberOfPayments: string | number;
+
+    OrganizationId: string;
+
+    stripeCouponId: string | null;
+
+    updatedAt: string | null;
+  }
+
+  export interface UnionMember2 {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    amount: string | number;
+
+    amountType: 'percent' | 'fixed';
+
+    code: string;
+
+    createdAt: string;
+
+    duration: 'forever';
+
+    livemode: boolean;
+
+    name: string;
+
+    numberOfPayments: unknown;
+
+    OrganizationId: string;
+
+    stripeCouponId: string | null;
+
+    updatedAt: string | null;
+  }
+}
+
+export interface DiscountGetResponse {
+  discount:
+    | DiscountGetResponse.UnionMember0
+    | DiscountGetResponse.UnionMember1
+    | DiscountGetResponse.UnionMember2;
+}
+
+export namespace DiscountGetResponse {
   export interface UnionMember0 {
     id: string;
 
@@ -393,6 +505,7 @@ export declare namespace Discounts {
   export {
     type DiscountCreateResponse as DiscountCreateResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountGetResponse as DiscountGetResponse,
     type DiscountCreateParams as DiscountCreateParams,
     type DiscountUpdateParams as DiscountUpdateParams,
   };
