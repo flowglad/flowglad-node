@@ -16,8 +16,10 @@ export {
   type DiscountCreateResponse,
   type DiscountRetrieveResponse,
   type DiscountUpdateResponse,
+  type DiscountListResponse,
   type DiscountCreateParams,
   type DiscountUpdateParams,
+  type DiscountListParams,
 } from './discounts';
 export {
   Invoice,

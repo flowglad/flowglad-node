@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
 import * as Core from '../core';
 
 export class Discounts extends APIResource {
@@ -27,6 +28,21 @@ export class Discounts extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<DiscountUpdateResponse> {
     return this._client.put(`/api/v1/discount/${id}`, { body, ...options });
+  }
+
+  /**
+   * List Discounts
+   */
+  list(query?: DiscountListParams, options?: Core.RequestOptions): Core.APIPromise<DiscountListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<DiscountListResponse>;
+  list(
+    query: DiscountListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<DiscountListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v1/discounts', { query, ...options });
   }
 }
 
@@ -345,6 +361,116 @@ export namespace DiscountUpdateResponse {
   }
 }
 
+export interface DiscountListResponse {
+  data: Array<
+    DiscountListResponse.UnionMember0 | DiscountListResponse.UnionMember1 | DiscountListResponse.UnionMember2
+  >;
+
+  hasMore: boolean;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
+}
+
+export namespace DiscountListResponse {
+  export interface UnionMember0 {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    amount: number;
+
+    amountType: 'percent' | 'fixed';
+
+    code: string;
+
+    createdAt: string;
+
+    duration: 'once';
+
+    livemode: boolean;
+
+    name: string;
+
+    numberOfPayments: unknown;
+
+    OrganizationId: string;
+
+    stripeCouponId: string | null;
+
+    updatedAt: string | null;
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    amount: number;
+
+    amountType: 'percent' | 'fixed';
+
+    code: string;
+
+    createdAt: string;
+
+    duration: 'number_of_payments';
+
+    livemode: boolean;
+
+    name: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    numberOfPayments: number;
+
+    OrganizationId: string;
+
+    stripeCouponId: string | null;
+
+    updatedAt: string | null;
+  }
+
+  export interface UnionMember2 {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    amount: number;
+
+    amountType: 'percent' | 'fixed';
+
+    code: string;
+
+    createdAt: string;
+
+    duration: 'forever';
+
+    livemode: boolean;
+
+    name: string;
+
+    numberOfPayments: unknown;
+
+    OrganizationId: string;
+
+    stripeCouponId: string | null;
+
+    updatedAt: string | null;
+  }
+}
+
 export interface DiscountCreateParams {
   discount:
     | DiscountCreateParams.UnionMember0
@@ -501,12 +627,20 @@ export namespace DiscountUpdateParams {
   }
 }
 
+export interface DiscountListParams {
+  cursor?: string;
+
+  limit?: number;
+}
+
 export declare namespace Discounts {
   export {
     type DiscountCreateResponse as DiscountCreateResponse,
     type DiscountRetrieveResponse as DiscountRetrieveResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountListResponse as DiscountListResponse,
     type DiscountCreateParams as DiscountCreateParams,
     type DiscountUpdateParams as DiscountUpdateParams,
+    type DiscountListParams as DiscountListParams,
   };
 }

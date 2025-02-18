@@ -19,6 +19,8 @@ import {
 import {
   DiscountCreateParams,
   DiscountCreateResponse,
+  DiscountListParams,
+  DiscountListResponse,
   DiscountRetrieveResponse,
   DiscountUpdateParams,
   DiscountUpdateResponse,
@@ -300,8 +302,10 @@ export declare namespace Flowglad {
     type DiscountCreateResponse as DiscountCreateResponse,
     type DiscountRetrieveResponse as DiscountRetrieveResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountListResponse as DiscountListResponse,
     type DiscountCreateParams as DiscountCreateParams,
     type DiscountUpdateParams as DiscountUpdateParams,
+    type DiscountListParams as DiscountListParams,
   };
 
   export {
