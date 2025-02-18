@@ -181,98 +181,97 @@ export namespace ProductListResponse {
 
     type: 'service' | 'digital';
 
-      /**
-       * safeZodDate
-       */
-      updatedAt: string | string;
-    }
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string;
+  }
 
-    export interface UnionMember0 {
-      id: string;
+  export interface SubscriptionVariant {
+    id: string;
 
-      active: boolean;
+    active: boolean;
 
-      createdAt: string;
+    createdAt: string;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      intervalCount: string | number;
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: string | number;
 
-      intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
 
-      isDefault: boolean;
+    isDefault: boolean;
 
-      livemode: boolean;
+    livemode: boolean;
 
-      name: string | null;
+    name: string | null;
 
-      priceType: 'subscription';
+    priceType: 'subscription';
 
-      ProductId: string;
+    ProductId: string;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      setupFeeAmount: string | number | 0 | null;
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: string | number | 0 | null;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      trialPeriodDays: string | number | 0 | null;
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: string | number | 0 | null;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: string | number;
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
 
-      updatedAt: string | null;
-    }
+    updatedAt: string | null;
+  }
 
-    export interface UnionMember1 {
-      id: string;
+  export interface SinglePaymentVariant {
+    id: string;
 
-      active: boolean;
+    active: boolean;
 
-      createdAt: string;
+    createdAt: string;
 
-      isDefault: boolean;
+    isDefault: boolean;
 
-      livemode: boolean;
+    livemode: boolean;
 
-      name: string | null;
+    name: string | null;
 
-      priceType: 'single_payment';
+    priceType: 'single_payment';
 
-      ProductId: string;
+    ProductId: string;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: string | number;
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
 
-      updatedAt: string | null;
+    updatedAt: string | null;
 
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalCount?: unknown | unknown | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalCount?: unknown | unknown | null;
 
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalUnit?: unknown | unknown | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalUnit?: unknown | unknown | null;
 
-      /**
-       * safeZodNullOrUndefined
-       */
-      setupFeeAmount?: unknown | unknown | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: unknown | unknown | null;
 
-      /**
-       * safeZodNullOrUndefined
-       */
-      trialPeriodDays?: unknown | unknown | null;
-    }
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: unknown | unknown | null;
   }
 }
 

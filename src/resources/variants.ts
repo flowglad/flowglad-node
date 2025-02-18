@@ -40,11 +40,11 @@ export class Variants extends APIResource {
 }
 
 export interface VariantCreateResponse {
-  variant: VariantCreateResponse.UnionMember0 | VariantCreateResponse.UnionMember1;
+  variant: VariantCreateResponse.SubscriptionVariant | VariantCreateResponse.SinglePaymentVariant;
 }
 
 export namespace VariantCreateResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     active: boolean;
@@ -86,7 +86,7 @@ export namespace VariantCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     active: boolean;
@@ -133,11 +133,11 @@ export namespace VariantCreateResponse {
 }
 
 export interface VariantUpdateResponse {
-  variant: VariantUpdateResponse.UnionMember0 | VariantUpdateResponse.UnionMember1;
+  variant: VariantUpdateResponse.SubscriptionVariant | VariantUpdateResponse.SinglePaymentVariant;
 }
 
 export namespace VariantUpdateResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     active: boolean;
@@ -179,7 +179,7 @@ export namespace VariantUpdateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     active: boolean;
@@ -226,7 +226,7 @@ export namespace VariantUpdateResponse {
 }
 
 export interface VariantListResponse {
-  data: Array<VariantListResponse.UnionMember0 | VariantListResponse.UnionMember1>;
+  data: Array<VariantListResponse.SubscriptionVariant | VariantListResponse.SinglePaymentVariant>;
 
   hasMore: boolean;
 
@@ -236,7 +236,7 @@ export interface VariantListResponse {
 }
 
 export namespace VariantListResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     active: boolean;
@@ -278,7 +278,7 @@ export namespace VariantListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     active: boolean;
@@ -325,11 +325,11 @@ export namespace VariantListResponse {
 }
 
 export interface VariantCreateParams {
-  variant: VariantCreateParams.UnionMember0 | VariantCreateParams.UnionMember1;
+  variant: VariantCreateParams.SubscriptionVariant | VariantCreateParams.SinglePaymentVariant;
 }
 
 export namespace VariantCreateParams {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     active: boolean;
 
     /**
@@ -367,7 +367,7 @@ export namespace VariantCreateParams {
     stripePriceId?: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     active: boolean;
 
     isDefault: boolean;
@@ -410,11 +410,11 @@ export namespace VariantCreateParams {
 }
 
 export interface VariantUpdateParams {
-  variant: VariantUpdateParams.UnionMember0 | VariantUpdateParams.UnionMember1;
+  variant: VariantUpdateParams.SubscriptionVariant | VariantUpdateParams.SinglePaymentVariant;
 }
 
 export namespace VariantUpdateParams {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     priceType: 'subscription';
@@ -454,7 +454,7 @@ export namespace VariantUpdateParams {
     unitPrice?: number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     priceType: 'single_payment';

@@ -372,7 +372,7 @@ export namespace CustomerProfileBillingResponse {
     export interface Product {
       product: Product.Product;
 
-      variants: Array<Product.UnionMember0 | Product.UnionMember1>;
+      variants: Array<Product.SubscriptionVariant | Product.SinglePaymentVariant>;
     }
 
     export namespace Product {
@@ -404,7 +404,7 @@ export namespace CustomerProfileBillingResponse {
         updatedAt: string | string;
       }
 
-      export interface UnionMember0 {
+      export interface SubscriptionVariant {
         id: string;
 
         active: boolean;
@@ -446,7 +446,7 @@ export namespace CustomerProfileBillingResponse {
         updatedAt: string | null;
       }
 
-      export interface UnionMember1 {
+      export interface SinglePaymentVariant {
         id: string;
 
         active: boolean;

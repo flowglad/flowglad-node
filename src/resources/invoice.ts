@@ -29,11 +29,11 @@ export class Invoice extends APIResource {
 }
 
 export type InvoiceRetrieveResponse =
-  | InvoiceRetrieveResponse.UnionMember0
-  | InvoiceRetrieveResponse.UnionMember1;
+  | InvoiceRetrieveResponse.PurchaseInvoice
+  | InvoiceRetrieveResponse.SubscriptionInvoice;
 
 export namespace InvoiceRetrieveResponse {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -351,7 +351,7 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -671,7 +671,7 @@ export namespace InvoiceRetrieveResponse {
 }
 
 export interface InvoiceListResponse {
-  data: Array<InvoiceListResponse.UnionMember0 | InvoiceListResponse.UnionMember1>;
+  data: Array<InvoiceListResponse.PurchaseInvoice | InvoiceListResponse.SubscriptionInvoice>;
 
   hasMore: boolean;
 
@@ -681,7 +681,7 @@ export interface InvoiceListResponse {
 }
 
 export namespace InvoiceListResponse {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -999,7 +999,7 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
