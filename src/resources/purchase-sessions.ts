@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import { isRequestOptions } from '../../core';
-import * as Core from '../../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
 
-export class PurchaseSession extends APIResource {
+export class PurchaseSessions extends APIResource {
   /**
    * Create Purchase Session
    */
@@ -13,6 +13,13 @@ export class PurchaseSession extends APIResource {
     options?: Core.RequestOptions,
   ): Core.APIPromise<PurchaseSessionCreateResponse> {
     return this._client.post('/api/v1/purchase-session', { body, ...options });
+  }
+
+  /**
+   * Get Purchase Session
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionRetrieveResponse> {
+    return this._client.get(`/api/v1/purchase-session/${id}`, options);
   }
 
   /**
@@ -32,13 +39,6 @@ export class PurchaseSession extends APIResource {
     }
     return this._client.get('/api/v1/purchase-sessions', { query, ...options });
   }
-
-  /**
-   * Get Purchase Session
-   */
-  get(id: string, options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionGetResponse> {
-    return this._client.get(`/api/v1/purchase-session/${id}`, options);
-  }
 }
 
 export interface PurchaseSessionCreateResponse {
@@ -46,6 +46,76 @@ export interface PurchaseSessionCreateResponse {
 }
 
 export namespace PurchaseSessionCreateResponse {
+  export interface PurchaseSession {
+    id: string;
+
+    billingAddress: PurchaseSession.BillingAddress | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    CustomerProfileId: string | null;
+
+    DiscountId: string | null;
+
+    livemode: boolean;
+
+    OrganizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    PurchaseId: string | null;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string | null;
+
+    VariantId: string;
+  }
+
+  export namespace PurchaseSession {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+}
+
+export interface PurchaseSessionRetrieveResponse {
+  purchaseSession: PurchaseSessionRetrieveResponse.PurchaseSession;
+}
+
+export namespace PurchaseSessionRetrieveResponse {
   export interface PurchaseSession {
     id: string;
 
@@ -187,76 +257,6 @@ export namespace PurchaseSessionListResponse {
   }
 }
 
-export interface PurchaseSessionGetResponse {
-  purchaseSession: PurchaseSessionGetResponse.PurchaseSession;
-}
-
-export namespace PurchaseSessionGetResponse {
-  export interface PurchaseSession {
-    id: string;
-
-    billingAddress: PurchaseSession.BillingAddress | null;
-
-    /**
-     * safeZodDate
-     */
-    createdAt: string | string;
-
-    customerEmail: string | null;
-
-    customerName: string | null;
-
-    CustomerProfileId: string | null;
-
-    DiscountId: string | null;
-
-    livemode: boolean;
-
-    OrganizationId: string;
-
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
-
-    PurchaseId: string | null;
-
-    /**
-     * safeZodDate
-     */
-    updatedAt: string | string | null;
-
-    VariantId: string;
-  }
-
-  export namespace PurchaseSession {
-    export interface BillingAddress {
-      address: BillingAddress.Address;
-
-      name: string;
-
-      firstName?: string;
-
-      lastName?: string;
-
-      phone?: string;
-    }
-
-    export namespace BillingAddress {
-      export interface Address {
-        city: string;
-
-        country: string;
-
-        line1: string;
-
-        line2: string | null;
-
-        postal_code: string;
-
-        state: string;
-      }
-    }
-  }
-}
-
 export interface PurchaseSessionCreateParams {
   /**
    * The URL to redirect to after the purchase is cancelled or fails
@@ -286,11 +286,11 @@ export interface PurchaseSessionListParams {
   limit?: number;
 }
 
-export declare namespace PurchaseSession {
+export declare namespace PurchaseSessions {
   export {
     type PurchaseSessionCreateResponse as PurchaseSessionCreateResponse,
+    type PurchaseSessionRetrieveResponse as PurchaseSessionRetrieveResponse,
     type PurchaseSessionListResponse as PurchaseSessionListResponse,
-    type PurchaseSessionGetResponse as PurchaseSessionGetResponse,
     type PurchaseSessionCreateParams as PurchaseSessionCreateParams,
     type PurchaseSessionListParams as PurchaseSessionListParams,
   };
