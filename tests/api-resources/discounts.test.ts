@@ -13,7 +13,7 @@ describe('resource discounts', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.discounts.create({
       discount: {
-        amount: 'string',
+        amount: 0,
         amountType: 'percent',
         code: 'xxx',
         duration: 'once',
@@ -34,7 +34,7 @@ describe('resource discounts', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.discounts.create({
       discount: {
-        amount: 'string',
+        amount: 0,
         amountType: 'percent',
         code: 'xxx',
         duration: 'once',
@@ -87,7 +87,7 @@ describe('resource discounts', () => {
         duration: 'once',
         numberOfPayments: {},
         active: true,
-        amount: 'string',
+        amount: 0,
         amountType: 'percent',
         code: 'xxx',
         createdAt: '2019-12-27T18:11:19.117Z',

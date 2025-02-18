@@ -47,7 +47,7 @@ export interface InvoiceLineItemRetrieveResponse {
   /**
    * safeZodPositiveInteger
    */
-  quantity: string | number;
+  quantity: number;
 
   updatedAt: string | null;
 
@@ -81,7 +81,7 @@ export namespace InvoiceLineItemListResponse {
     /**
      * safeZodPositiveInteger
      */
-    quantity: string | number;
+    quantity: number;
 
     updatedAt: string | null;
 

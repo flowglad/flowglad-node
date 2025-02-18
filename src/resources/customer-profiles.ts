@@ -414,7 +414,7 @@ export namespace CustomerProfileBillingResponse {
         /**
          * safeZodPositiveInteger
          */
-        intervalCount: string | number;
+        intervalCount: number;
 
         intervalUnit: 'day' | 'week' | 'month' | 'year';
 
@@ -431,17 +431,17 @@ export namespace CustomerProfileBillingResponse {
         /**
          * safeZodPositiveInteger
          */
-        setupFeeAmount: string | number | 0 | null;
+        setupFeeAmount: number | 0 | null;
 
         /**
          * safeZodPositiveInteger
          */
-        trialPeriodDays: string | number | 0 | null;
+        trialPeriodDays: number | 0 | null;
 
         /**
          * safeZodPositiveInteger
          */
-        unitPrice: string | number;
+        unitPrice: number;
 
         updatedAt: string | null;
       }
@@ -466,7 +466,7 @@ export namespace CustomerProfileBillingResponse {
         /**
          * safeZodPositiveInteger
          */
-        unitPrice: string | number;
+        unitPrice: number;
 
         updatedAt: string | null;
 
@@ -581,7 +581,7 @@ export namespace CustomerProfileBillingResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     livemode: boolean;
 

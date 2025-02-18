@@ -14,16 +14,16 @@ describe('resource variants', () => {
     const responsePromise = client.variants.create({
       variant: {
         active: true,
-        intervalCount: 'string',
+        intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
         livemode: true,
         name: 'name',
         priceType: 'subscription',
         ProductId: 'ProductId',
-        setupFeeAmount: 'string',
-        trialPeriodDays: 'string',
-        unitPrice: 'string',
+        setupFeeAmount: 0,
+        trialPeriodDays: 0,
+        unitPrice: 0,
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -40,16 +40,16 @@ describe('resource variants', () => {
     const response = await client.variants.create({
       variant: {
         active: true,
-        intervalCount: 'string',
+        intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
         livemode: true,
         name: 'name',
         priceType: 'subscription',
         ProductId: 'ProductId',
-        setupFeeAmount: 'string',
-        trialPeriodDays: 'string',
-        unitPrice: 'string',
+        setupFeeAmount: 0,
+        trialPeriodDays: 0,
+        unitPrice: 0,
         stripePriceId: 'stripePriceId',
       },
     });
@@ -76,16 +76,16 @@ describe('resource variants', () => {
         id: 'id',
         priceType: 'subscription',
         active: true,
-        intervalCount: 'string',
+        intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
         livemode: true,
         name: 'name',
         ProductId: 'ProductId',
-        setupFeeAmount: 'string',
+        setupFeeAmount: 0,
         stripePriceId: 'stripePriceId',
-        trialPeriodDays: 'string',
-        unitPrice: 'string',
+        trialPeriodDays: 0,
+        unitPrice: 0,
       },
     });
   });
