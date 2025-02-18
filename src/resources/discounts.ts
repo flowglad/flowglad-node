@@ -46,7 +46,7 @@ export namespace DiscountCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -77,7 +77,7 @@ export namespace DiscountCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -94,7 +94,7 @@ export namespace DiscountCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    numberOfPayments: string | number;
+    numberOfPayments: number;
 
     OrganizationId: string;
 
@@ -111,7 +111,7 @@ export namespace DiscountCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -151,7 +151,7 @@ export namespace DiscountRetrieveResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -182,7 +182,7 @@ export namespace DiscountRetrieveResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -199,7 +199,7 @@ export namespace DiscountRetrieveResponse {
     /**
      * safeZodPositiveInteger
      */
-    numberOfPayments: string | number;
+    numberOfPayments: number;
 
     OrganizationId: string;
 
@@ -216,7 +216,7 @@ export namespace DiscountRetrieveResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -256,7 +256,7 @@ export namespace DiscountUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -287,7 +287,7 @@ export namespace DiscountUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -304,7 +304,7 @@ export namespace DiscountUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    numberOfPayments: string | number;
+    numberOfPayments: number;
 
     OrganizationId: string;
 
@@ -321,7 +321,7 @@ export namespace DiscountUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -357,7 +357,7 @@ export namespace DiscountCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -376,7 +376,7 @@ export namespace DiscountCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -389,7 +389,7 @@ export namespace DiscountCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    numberOfPayments: string | number;
+    numberOfPayments: number;
 
     active?: boolean;
   }
@@ -398,7 +398,7 @@ export namespace DiscountCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number;
+    amount: number;
 
     amountType: 'percent' | 'fixed';
 
@@ -434,7 +434,7 @@ export namespace DiscountUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    amount?: string | number;
+    amount?: number;
 
     amountType?: 'percent' | 'fixed';
 
@@ -455,14 +455,14 @@ export namespace DiscountUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    numberOfPayments: string | number;
+    numberOfPayments: number;
 
     active?: boolean;
 
     /**
      * safeZodPositiveInteger
      */
-    amount?: string | number;
+    amount?: number;
 
     amountType?: 'percent' | 'fixed';
 
@@ -487,7 +487,7 @@ export namespace DiscountUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    amount?: string | number;
+    amount?: number;
 
     amountType?: 'percent' | 'fixed';
 

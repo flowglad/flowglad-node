@@ -54,7 +54,7 @@ export namespace VariantCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
@@ -71,17 +71,17 @@ export namespace VariantCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
   }
@@ -106,7 +106,7 @@ export namespace VariantCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
 
@@ -147,7 +147,7 @@ export namespace VariantUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
@@ -164,17 +164,17 @@ export namespace VariantUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
   }
@@ -199,7 +199,7 @@ export namespace VariantUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
 
@@ -246,7 +246,7 @@ export namespace VariantListResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
@@ -263,17 +263,17 @@ export namespace VariantListResponse {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
   }
@@ -298,7 +298,7 @@ export namespace VariantListResponse {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
 
@@ -335,7 +335,7 @@ export namespace VariantCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
@@ -352,17 +352,17 @@ export namespace VariantCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     stripePriceId?: string | null;
   }
@@ -383,7 +383,7 @@ export namespace VariantCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     /**
      * safeZodNullOrUndefined
@@ -424,7 +424,7 @@ export namespace VariantUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount?: string | number;
+    intervalCount?: number;
 
     intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
@@ -439,19 +439,19 @@ export namespace VariantUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount?: string | number | 0 | null;
+    setupFeeAmount?: number | 0 | null;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays?: string | number | 0 | null;
+    trialPeriodDays?: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 
   export interface UnionMember1 {
@@ -494,7 +494,7 @@ export namespace VariantUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 }
 

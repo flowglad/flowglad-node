@@ -416,7 +416,7 @@ export namespace ProductCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
@@ -431,17 +431,17 @@ export namespace ProductCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
   }
 
   export interface SinglePaymentVariant {
@@ -458,7 +458,7 @@ export namespace ProductCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     /**
      * safeZodNullOrUndefined
@@ -636,7 +636,7 @@ export namespace ProductUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount?: string | number;
+    intervalCount?: number;
 
     intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
@@ -651,19 +651,19 @@ export namespace ProductUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount?: string | number | 0 | null;
+    setupFeeAmount?: number | 0 | null;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays?: string | number | 0 | null;
+    trialPeriodDays?: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 
   export interface SinglePaymentVariant {
@@ -706,7 +706,7 @@ export namespace ProductUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 }
 

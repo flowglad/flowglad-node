@@ -84,7 +84,7 @@ export namespace SubscriptionRetrieveResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     livemode: boolean;
 
@@ -148,7 +148,7 @@ export namespace SubscriptionListResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     livemode: boolean;
 
@@ -208,7 +208,7 @@ export namespace SubscriptionAdjustResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     livemode: boolean;
 
@@ -250,14 +250,14 @@ export namespace SubscriptionAdjustResponse {
     /**
      * safeZodPositiveInteger
      */
-    quantity: string | number;
+    quantity: number;
 
     SubscriptionId: string;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number | 0;
+    unitPrice: number | 0;
 
     updatedAt: string | null;
 
@@ -296,7 +296,7 @@ export namespace SubscriptionCancelResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
     livemode: boolean;
 
@@ -355,14 +355,14 @@ export namespace SubscriptionAdjustParams {
       /**
        * safeZodPositiveInteger
        */
-      quantity: string | number;
+      quantity: number;
 
       SubscriptionId: string;
 
       /**
        * safeZodPositiveInteger
        */
-      unitPrice: string | number | 0;
+      unitPrice: number | 0;
 
       VariantId: string;
     }
@@ -383,14 +383,14 @@ export namespace SubscriptionAdjustParams {
       /**
        * safeZodPositiveInteger
        */
-      quantity: string | number;
+      quantity: number;
 
       SubscriptionId: string;
 
       /**
        * safeZodPositiveInteger
        */
-      unitPrice: string | number | 0;
+      unitPrice: number | 0;
 
       updatedAt: string | null;
 
@@ -417,14 +417,14 @@ export namespace SubscriptionAdjustParams {
       /**
        * safeZodPositiveInteger
        */
-      quantity: string | number;
+      quantity: number;
 
       SubscriptionId: string;
 
       /**
        * safeZodPositiveInteger
        */
-      unitPrice: string | number | 0;
+      unitPrice: number | 0;
 
       VariantId: string;
     }
@@ -445,14 +445,14 @@ export namespace SubscriptionAdjustParams {
       /**
        * safeZodPositiveInteger
        */
-      quantity: string | number;
+      quantity: number;
 
       SubscriptionId: string;
 
       /**
        * safeZodPositiveInteger
        */
-      unitPrice: string | number | 0;
+      unitPrice: number | 0;
 
       updatedAt: string | null;
 
