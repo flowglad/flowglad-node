@@ -73,12 +73,14 @@ Types:
 - <code><a href="./src/resources/discounts.ts">DiscountCreateResponse</a></code>
 - <code><a href="./src/resources/discounts.ts">DiscountRetrieveResponse</a></code>
 - <code><a href="./src/resources/discounts.ts">DiscountUpdateResponse</a></code>
+- <code><a href="./src/resources/discounts.ts">DiscountListResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/discount">client.discounts.<a href="./src/resources/discounts.ts">create</a>({ ...params }) -> DiscountCreateResponse</code>
 - <code title="get /api/v1/discount/{id}">client.discounts.<a href="./src/resources/discounts.ts">retrieve</a>(id) -> DiscountRetrieveResponse</code>
 - <code title="put /api/v1/discount/{id}">client.discounts.<a href="./src/resources/discounts.ts">update</a>(id, { ...params }) -> DiscountUpdateResponse</code>
+- <code title="get /api/v1/discounts">client.discounts.<a href="./src/resources/discounts.ts">list</a>({ ...params }) -> DiscountListResponse</code>
 
 # CustomerProfiles
 
