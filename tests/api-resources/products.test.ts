@@ -12,7 +12,6 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
     const responsePromise = client.products.create({
-      offerings: [{ file: { id: 'id', name: 'name', objectKey: 'objectKey' }, type: 'file' }],
       product: {
         active: true,
         description: 'description',
@@ -45,21 +44,6 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
     const response = await client.products.create({
-      offerings: [
-        {
-          file: { id: 'id', name: 'name', objectKey: 'objectKey', ProductId: 'ProductId' },
-          type: 'file',
-          id: 'id',
-          createdAt: '2019-12-27T18:11:19.117Z',
-          livemode: true,
-          OfferableId: 'OfferableId',
-          order: 0,
-          OrganizationId: 'OrganizationId',
-          ProductId: 'ProductId',
-          updatedAt: '2019-12-27T18:11:19.117Z',
-          VariantId: 'VariantId',
-        },
-      ],
       product: {
         active: true,
         description: 'description',
@@ -105,7 +89,6 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
     const responsePromise = client.products.update('id', {
-      offerings: [{ file: { id: 'id', name: 'name', objectKey: 'objectKey' }, type: 'file' }],
       product: { id: 'id' },
       variant: { id: 'id', priceType: 'subscription' },
     });
@@ -121,21 +104,6 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
     const response = await client.products.update('id', {
-      offerings: [
-        {
-          file: { id: 'id', name: 'name', objectKey: 'objectKey', ProductId: 'ProductId' },
-          type: 'file',
-          id: 'id',
-          createdAt: '2019-12-27T18:11:19.117Z',
-          livemode: true,
-          OfferableId: 'OfferableId',
-          order: 0,
-          OrganizationId: 'OrganizationId',
-          ProductId: 'ProductId',
-          updatedAt: '2019-12-27T18:11:19.117Z',
-          VariantId: 'VariantId',
-        },
-      ],
       product: {
         id: 'id',
         active: true,

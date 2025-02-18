@@ -189,86 +189,12 @@ export namespace ProductListResponse {
 }
 
 export interface ProductCreateParams {
-  offerings: Array<ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1>;
-
   product: ProductCreateParams.Product;
 
   variant: ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1;
 }
 
 export namespace ProductCreateParams {
-  export interface UnionMember0 {
-    file: UnionMember0.File;
-
-    type: 'file';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export namespace UnionMember0 {
-    export interface File {
-      id: string | null;
-
-      name: string;
-
-      objectKey: string;
-
-      ProductId?: string | null;
-    }
-  }
-
-  export interface UnionMember1 {
-    link: UnionMember1.Link;
-
-    type: 'link';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export namespace UnionMember1 {
-    export interface Link {
-      id: string | null;
-
-      name: string;
-
-      url: string;
-
-      ProductId?: string | null;
-    }
-  }
-
   export interface Product {
     active: boolean;
 
@@ -354,86 +280,12 @@ export namespace ProductCreateParams {
 }
 
 export interface ProductUpdateParams {
-  offerings: Array<ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1>;
-
   product: ProductUpdateParams.Product;
 
   variant: ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1;
 }
 
 export namespace ProductUpdateParams {
-  export interface UnionMember0 {
-    file: UnionMember0.File;
-
-    type: 'file';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export namespace UnionMember0 {
-    export interface File {
-      id: string | null;
-
-      name: string;
-
-      objectKey: string;
-
-      ProductId?: string | null;
-    }
-  }
-
-  export interface UnionMember1 {
-    link: UnionMember1.Link;
-
-    type: 'link';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export namespace UnionMember1 {
-    export interface Link {
-      id: string | null;
-
-      name: string;
-
-      url: string;
-
-      ProductId?: string | null;
-    }
-  }
-
   export interface Product {
     id: string;
 
