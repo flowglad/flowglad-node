@@ -34,7 +34,7 @@ export interface PaymentRetrieveResponse {
   /**
    * safeZodPositiveInteger
    */
-  amount: string | number | 0;
+  amount: number | 0;
 
   applicationFee: number | null;
 
@@ -503,7 +503,7 @@ export namespace PaymentListResponse {
     /**
      * safeZodPositiveInteger
      */
-    amount: string | number | 0;
+    amount: number | 0;
 
     applicationFee: number | null;
 
