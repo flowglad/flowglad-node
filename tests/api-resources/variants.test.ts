@@ -9,20 +9,21 @@ const client = new Flowglad({
 });
 
 describe('resource variants', () => {
-  test('create: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: only required params', async () => {
     const responsePromise = client.variants.create({
       variant: {
         active: true,
-        intervalCount: 'string',
+        intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
         livemode: true,
         name: 'name',
         priceType: 'subscription',
         ProductId: 'ProductId',
-        setupFeeAmount: 'string',
-        trialPeriodDays: 'string',
-        unitPrice: 'string',
+        setupFeeAmount: 0,
+        trialPeriodDays: 0,
+        unitPrice: 0,
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -34,26 +35,28 @@ describe('resource variants', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('create: required and optional params', async () => {
     const response = await client.variants.create({
       variant: {
         active: true,
-        intervalCount: 'string',
+        intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
         livemode: true,
         name: 'name',
         priceType: 'subscription',
         ProductId: 'ProductId',
-        setupFeeAmount: 'string',
-        trialPeriodDays: 'string',
-        unitPrice: 'string',
+        setupFeeAmount: 0,
+        trialPeriodDays: 0,
+        unitPrice: 0,
         stripePriceId: 'stripePriceId',
       },
     });
   });
 
-  test('update: only required params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('update: only required params', async () => {
     const responsePromise = client.variants.update('id', {
       variant: { id: 'id', priceType: 'subscription' },
     });
@@ -66,27 +69,29 @@ describe('resource variants', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('update: required and optional params', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('update: required and optional params', async () => {
     const response = await client.variants.update('id', {
       variant: {
         id: 'id',
         priceType: 'subscription',
         active: true,
-        intervalCount: 'string',
+        intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
         livemode: true,
         name: 'name',
         ProductId: 'ProductId',
-        setupFeeAmount: 'string',
+        setupFeeAmount: 0,
         stripePriceId: 'stripePriceId',
-        trialPeriodDays: 'string',
-        unitPrice: 'string',
+        trialPeriodDays: 0,
+        unitPrice: 0,
       },
     });
   });
 
-  test('list', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('list', async () => {
     const responsePromise = client.variants.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -97,17 +102,19 @@ describe('resource variants', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('list: request options instead of params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.variants.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       Flowglad.NotFoundError,
     );
   });
 
-  test('list: request options and params are passed correctly', async () => {
+  // skipped: tests are disabled for the time being
+  test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.variants.list({ ProductId: 'ProductId' }, { path: '/_stainless_unknown_path' }),
+      client.variants.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

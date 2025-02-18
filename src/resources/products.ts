@@ -6,25 +6,32 @@ import * as Core from '../core';
 
 export class Products extends APIResource {
   /**
-   * Create products
+   * Create Product
    */
   create(body: ProductCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProductCreateResponse> {
-    return this._client.post('/api/v1/products', { body, ...options });
+    return this._client.post('/api/v1/product', { body, ...options });
   }
 
   /**
-   * Update products
+   * Get Product
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductRetrieveResponse> {
+    return this._client.get(`/api/v1/product/${id}`, options);
+  }
+
+  /**
+   * Update Product
    */
   update(
     id: string,
     body: ProductUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ProductUpdateResponse> {
-    return this._client.put(`/api/v1/products/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/product/${id}`, { body, ...options });
   }
 
   /**
-   * List products
+   * List Products
    */
   list(query?: ProductListParams, options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
   list(options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
@@ -64,7 +71,41 @@ export namespace ProductCreateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string;
+  }
+}
+
+export interface ProductRetrieveResponse {
+  product: ProductRetrieveResponse.Product;
+}
+
+export namespace ProductRetrieveResponse {
+  export interface Product {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
+
+    description: string | null;
+
+    imageURL: string | null;
+
+    livemode: boolean;
+
+    name: string;
+
+    OrganizationId: string;
+
+    type: 'service' | 'digital';
 
     /**
      * safeZodDate
@@ -98,7 +139,7 @@ export namespace ProductUpdateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital' | (string & {});
+    type: 'service' | 'digital';
 
     /**
      * safeZodDate
@@ -107,277 +148,62 @@ export namespace ProductUpdateResponse {
   }
 }
 
-export type ProductListResponse = Array<ProductListResponse.ProductListResponseItem>;
+export interface ProductListResponse {
+  data: Array<ProductListResponse.Data>;
+
+  hasMore: boolean;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
+}
 
 export namespace ProductListResponse {
-  export interface ProductListResponseItem {
-    product: ProductListResponseItem.Product;
+  export interface Data {
+    id: string;
 
-    variant: ProductListResponseItem.SubscriptionVariant | ProductListResponseItem.SinglePaymentVariant;
-  }
+    active: boolean;
 
-  export namespace ProductListResponseItem {
-    export interface Product {
-      id: string;
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
 
-      active: boolean;
+    description: string | null;
 
-      /**
-       * safeZodDate
-       */
-      createdAt: string | string;
+    imageURL: string | null;
 
-      description: string | null;
-
-      imageURL: string | null;
-
-      livemode: boolean;
-
-      name: string;
-
-      OrganizationId: string;
-
-      type: 'service' | 'digital' | (string & {});
-
-      /**
-       * safeZodDate
-       */
-      updatedAt: string | string;
-    }
-
-    export interface SubscriptionVariant {
-      id: string;
-
-      active: boolean;
-
-      createdAt: string;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      intervalCount: string | number;
-
-      intervalUnit: 'day' | 'week' | 'month' | 'year';
-
-      isDefault: boolean;
-
-      livemode: boolean;
-
-      name: string | null;
-
-      priceType: 'subscription';
-
-      ProductId: string;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      setupFeeAmount: string | number | 0 | null;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      trialPeriodDays: string | number | 0 | null;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: string | number;
-
-      updatedAt: string | null;
-    }
-
-    export interface SinglePaymentVariant {
-      id: string;
-
-      active: boolean;
-
-      createdAt: string;
-
-      isDefault: boolean;
-
-      livemode: boolean;
-
-      name: string | null;
-
-      priceType: 'single_payment';
-
-      ProductId: string;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: string | number;
-
-      updatedAt: string | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalCount?: unknown | unknown | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalUnit?: unknown | unknown | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      setupFeeAmount?: unknown | unknown | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      trialPeriodDays?: unknown | unknown | null;
-    }
-  }
-}
-
-export interface ProductCreateParams {
-  offerings: Array<
-    | ProductCreateParams.FileOffering
-    | ProductCreateParams.CommunityOffering
-    | ProductCreateParams.LinkOffering
-  >;
-
-  product: ProductCreateParams.Product;
-
-  variant: ProductCreateParams.SubscriptionVariant | ProductCreateParams.SinglePaymentVariant;
-}
-
-export namespace ProductCreateParams {
-  export interface FileOffering {
-    file: File;
-
-    type: 'file';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export interface File {
-    id: string | null;
+    livemode: boolean;
 
     name: string;
 
-    objectKey: string;
+    OrganizationId: string;
 
-    ProductId?: string | null;
-  }
+    type: 'service' | 'digital';
 
-  export interface CommunityOffering {
-    community: Community;
-
-    type: 'community';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export interface Community {
-    id: string | null;
-
-    name: string;
-
-    platform: 'discord' | 'slack' | (string & {});
-
-    IntegrationId?: string | null;
-
-    inviteURL?: string | null;
-
-    platformId?: string | null;
-
-    ProductId?: string | null;
-  }
-
-  export interface LinkOffering {
-    link: Link;
-
-    type: 'link';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export interface Link {
-    id: string | null;
-
-    name: string;
-
-    url: string;
-
-    ProductId?: string | null;
-  }
-
-  export interface Product {
-    name: string;
-
-    type: 'service' | 'digital' | (string & {});
-
-    active?: boolean;
-
-    description?: string | null;
-
-    imageURL?: string | null;
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string;
   }
 
   export interface SubscriptionVariant {
+    id: string;
+
     active: boolean;
+
+    createdAt: string;
 
     /**
      * safeZodPositiveInteger
      */
     intervalCount: string | number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year';
+    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
 
     isDefault: boolean;
+
+    livemode: boolean;
 
     name: string | null;
 
@@ -399,6 +225,107 @@ export namespace ProductCreateParams {
      * safeZodPositiveInteger
      */
     unitPrice: string | number;
+
+    updatedAt: string | null;
+  }
+
+  export interface SinglePaymentVariant {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'single_payment';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalCount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalUnit?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: unknown | unknown | null;
+  }
+}
+
+export interface ProductCreateParams {
+  product: ProductCreateParams.Product;
+
+  variant: ProductCreateParams.SubscriptionVariant | ProductCreateParams.SinglePaymentVariant;
+}
+
+export namespace ProductCreateParams {
+  export interface Product {
+    active: boolean;
+
+    description: string | null;
+
+    imageURL: string | null;
+
+    name: string;
+
+    type: 'service' | 'digital';
+  }
+
+  export interface SubscriptionVariant {
+    active: boolean;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    isDefault: boolean;
+
+    name: string | null;
+
+    priceType: 'subscription';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: number;
   }
 
   export interface SinglePaymentVariant {
@@ -415,7 +342,7 @@ export namespace ProductCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     /**
      * safeZodNullOrUndefined
@@ -440,126 +367,12 @@ export namespace ProductCreateParams {
 }
 
 export interface ProductUpdateParams {
-  offerings: Array<
-    | ProductUpdateParams.FileOffering
-    | ProductUpdateParams.LinkOffering
-    | ProductUpdateParams.CommunityOffering
-  >;
-
   product: ProductUpdateParams.Product;
 
   variant: ProductUpdateParams.SubscriptionVariant | ProductUpdateParams.SinglePaymentVariant;
 }
 
 export namespace ProductUpdateParams {
-  export interface FileOffering {
-    file: File;
-
-    type: 'file';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export interface File {
-    id: string | null;
-
-    name: string;
-
-    objectKey: string;
-
-    ProductId?: string | null;
-  }
-
-  export interface CommunityOffering {
-    community: Community;
-
-    type: 'community';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export interface Community {
-    id: string | null;
-
-    name: string;
-
-    platform: 'discord' | 'slack' | (string & {});
-
-    IntegrationId?: string | null;
-
-    inviteURL?: string | null;
-
-    platformId?: string | null;
-
-    ProductId?: string | null;
-  }
-
-  export interface LinkOffering {
-    link: Link;
-
-    type: 'link';
-
-    id?: string | null;
-
-    createdAt?: string;
-
-    livemode?: boolean;
-
-    OfferableId?: string | null;
-
-    order?: number | null;
-
-    OrganizationId?: string;
-
-    ProductId?: string | null;
-
-    updatedAt?: string | null;
-
-    VariantId?: string | null;
-  }
-
-  export interface Link {
-    id: string | null;
-
-    name: string;
-
-    url: string;
-
-    ProductId?: string | null;
-  }
-
   export interface Product {
     id: string;
 
@@ -579,7 +392,7 @@ export namespace ProductUpdateParams {
 
     stripeProductId?: string | null;
 
-    type?: 'service' | 'digital' | (string & {});
+    type?: 'service' | 'digital';
   }
 
   export interface SubscriptionVariant {
@@ -592,9 +405,9 @@ export namespace ProductUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount?: string | number;
+    intervalCount?: number;
 
-    intervalUnit?: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
 
@@ -607,19 +420,19 @@ export namespace ProductUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount?: string | number | 0 | null;
+    setupFeeAmount?: number | 0 | null;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays?: string | number | 0 | null;
+    trialPeriodDays?: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 
   export interface SinglePaymentVariant {
@@ -662,17 +475,20 @@ export namespace ProductUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 }
 
 export interface ProductListParams {
-  active?: boolean;
+  cursor?: string;
+
+  limit?: number;
 }
 
 export declare namespace Products {
   export {
     type ProductCreateResponse as ProductCreateResponse,
+    type ProductRetrieveResponse as ProductRetrieveResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
     type ProductListResponse as ProductListResponse,
     type ProductCreateParams as ProductCreateParams,

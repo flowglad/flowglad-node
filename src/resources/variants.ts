@@ -6,25 +6,25 @@ import * as Core from '../core';
 
 export class Variants extends APIResource {
   /**
-   * Create variants
+   * Create Variant
    */
   create(body: VariantCreateParams, options?: Core.RequestOptions): Core.APIPromise<VariantCreateResponse> {
-    return this._client.post('/api/v1/variants', { body, ...options });
+    return this._client.post('/api/v1/variant', { body, ...options });
   }
 
   /**
-   * Update variants
+   * Update Variant
    */
   update(
     id: string,
     body: VariantUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<VariantUpdateResponse> {
-    return this._client.put(`/api/v1/variants/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/variant/${id}`, { body, ...options });
   }
 
   /**
-   * List variants
+   * List Variants
    */
   list(query?: VariantListParams, options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
   list(options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
@@ -40,11 +40,11 @@ export class Variants extends APIResource {
 }
 
 export interface VariantCreateResponse {
-  variant: VariantCreateResponse.UnionMember0 | VariantCreateResponse.UnionMember1;
+  variant: VariantCreateResponse.SubscriptionVariant | VariantCreateResponse.SinglePaymentVariant;
 }
 
 export namespace VariantCreateResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     active: boolean;
@@ -54,9 +54,9 @@ export namespace VariantCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -71,22 +71,22 @@ export namespace VariantCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     active: boolean;
@@ -106,7 +106,7 @@ export namespace VariantCreateResponse {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
 
@@ -133,11 +133,11 @@ export namespace VariantCreateResponse {
 }
 
 export interface VariantUpdateResponse {
-  variant: VariantUpdateResponse.UnionMember0 | VariantUpdateResponse.UnionMember1;
+  variant: VariantUpdateResponse.SubscriptionVariant | VariantUpdateResponse.SinglePaymentVariant;
 }
 
 export namespace VariantUpdateResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     active: boolean;
@@ -147,9 +147,9 @@ export namespace VariantUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -164,22 +164,22 @@ export namespace VariantUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     active: boolean;
@@ -199,7 +199,7 @@ export namespace VariantUpdateResponse {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
 
@@ -226,11 +226,17 @@ export namespace VariantUpdateResponse {
 }
 
 export interface VariantListResponse {
-  variants: Array<VariantListResponse.UnionMember0 | VariantListResponse.UnionMember1>;
+  data: Array<VariantListResponse.SubscriptionVariant | VariantListResponse.SinglePaymentVariant>;
+
+  hasMore: boolean;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
 }
 
 export namespace VariantListResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     active: boolean;
@@ -240,9 +246,9 @@ export namespace VariantListResponse {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -257,22 +263,22 @@ export namespace VariantListResponse {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     active: boolean;
@@ -292,7 +298,7 @@ export namespace VariantListResponse {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     updatedAt: string | null;
 
@@ -319,19 +325,19 @@ export namespace VariantListResponse {
 }
 
 export interface VariantCreateParams {
-  variant: VariantCreateParams.UnionMember0 | VariantCreateParams.UnionMember1;
+  variant: VariantCreateParams.SubscriptionVariant | VariantCreateParams.SinglePaymentVariant;
 }
 
 export namespace VariantCreateParams {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     active: boolean;
 
     /**
      * safeZodPositiveInteger
      */
-    intervalCount: string | number;
+    intervalCount: number;
 
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
 
@@ -346,22 +352,22 @@ export namespace VariantCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount: string | number | 0 | null;
+    setupFeeAmount: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays: string | number | 0 | null;
+    trialPeriodDays: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     stripePriceId?: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     active: boolean;
 
     isDefault: boolean;
@@ -377,7 +383,7 @@ export namespace VariantCreateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice: string | number;
+    unitPrice: number;
 
     /**
      * safeZodNullOrUndefined
@@ -404,11 +410,11 @@ export namespace VariantCreateParams {
 }
 
 export interface VariantUpdateParams {
-  variant: VariantUpdateParams.UnionMember0 | VariantUpdateParams.UnionMember1;
+  variant: VariantUpdateParams.SubscriptionVariant | VariantUpdateParams.SinglePaymentVariant;
 }
 
 export namespace VariantUpdateParams {
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     priceType: 'subscription';
@@ -418,9 +424,9 @@ export namespace VariantUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    intervalCount?: string | number;
+    intervalCount?: number;
 
-    intervalUnit?: 'day' | 'week' | 'month' | 'year' | (string & {});
+    intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
 
@@ -433,22 +439,22 @@ export namespace VariantUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    setupFeeAmount?: string | number | 0 | null;
+    setupFeeAmount?: number | 0 | null;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodPositiveInteger
      */
-    trialPeriodDays?: string | number | 0 | null;
+    trialPeriodDays?: number | 0 | null;
 
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     priceType: 'single_payment';
@@ -488,12 +494,14 @@ export namespace VariantUpdateParams {
     /**
      * safeZodPositiveInteger
      */
-    unitPrice?: string | number;
+    unitPrice?: number;
   }
 }
 
 export interface VariantListParams {
-  ProductId?: string;
+  cursor?: string;
+
+  limit?: number;
 }
 
 export declare namespace Variants {

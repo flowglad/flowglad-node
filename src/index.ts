@@ -6,10 +6,50 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  CustomerProfileBillingResponse,
+  CustomerProfileCreateParams,
+  CustomerProfileCreateResponse,
+  CustomerProfileListParams,
+  CustomerProfileListResponse,
+  CustomerProfileRetrieveResponse,
+  CustomerProfileUpdateParams,
+  CustomerProfileUpdateResponse,
+  CustomerProfiles,
+} from './resources/customer-profiles';
+import {
+  DiscountCreateParams,
+  DiscountCreateResponse,
+  DiscountListParams,
+  DiscountListResponse,
+  DiscountRetrieveResponse,
+  DiscountUpdateParams,
+  DiscountUpdateResponse,
+  Discounts,
+} from './resources/discounts';
+import {
+  Invoice,
+  InvoiceListParams,
+  InvoiceListResponse,
+  InvoiceRetrieveResponse,
+} from './resources/invoice';
+import {
+  InvoiceLineItemListParams,
+  InvoiceLineItemListResponse,
+  InvoiceLineItemRetrieveResponse,
+  InvoiceLineItems,
+} from './resources/invoice-line-items';
+import {
+  PaymentListParams,
+  PaymentListResponse,
+  PaymentRetrieveResponse,
+  Payments,
+} from './resources/payments';
+import {
   ProductCreateParams,
   ProductCreateResponse,
   ProductListParams,
   ProductListResponse,
+  ProductRetrieveResponse,
   ProductUpdateParams,
   ProductUpdateResponse,
   Products,
@@ -17,8 +57,21 @@ import {
 import {
   PurchaseSessionCreateParams,
   PurchaseSessionCreateResponse,
+  PurchaseSessionListParams,
+  PurchaseSessionListResponse,
+  PurchaseSessionRetrieveResponse,
   PurchaseSessions,
 } from './resources/purchase-sessions';
+import {
+  SubscriptionAdjustParams,
+  SubscriptionAdjustResponse,
+  SubscriptionCancelParams,
+  SubscriptionCancelResponse,
+  SubscriptionListParams,
+  SubscriptionListResponse,
+  SubscriptionRetrieveResponse,
+  Subscriptions,
+} from './resources/subscriptions';
 import {
   VariantCreateParams,
   VariantCreateResponse,
@@ -28,35 +81,12 @@ import {
   VariantUpdateResponse,
   Variants,
 } from './resources/variants';
-import {
-  CustomerProfileCreateParams,
-  CustomerProfileCreateResponse,
-  CustomerProfileRetrieveResponse,
-  CustomerProfileUpdateParams,
-  CustomerProfileUpdateResponse,
-  CustomerProfiles,
-} from './resources/customer-profiles/customer-profiles';
-
-const environments = {
-  production: 'https://app.flowglad.com/api/v1',
-  staging: 'https://staging.flowglad.com/api/v1',
-};
-type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * API key to be set in the Authorization header
+   * API key for accessing the Flowglad API
    */
   apiKey?: string | undefined;
-
-  /**
-   * Specifies the environment to use for the API.
-   *
-   * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://app.flowglad.com/api/v1`
-   * - `staging` corresponds to `https://staging.flowglad.com/api/v1`
-   */
-  environment?: Environment | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -126,9 +156,8 @@ export class Flowglad extends Core.APIClient {
   /**
    * API Client for interfacing with the Flowglad API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_SECRET_KEY'] ?? undefined]
-   * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? https://app.flowglad.com/api/v1] - Override the default base URL for the API.
+   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_API_KEY'] ?? undefined]
+   * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? https://app.flowglad.com/] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -138,30 +167,23 @@ export class Flowglad extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('FLOWGLAD_BASE_URL'),
-    apiKey = Core.readEnv('FLOWGLAD_SECRET_KEY'),
+    apiKey = Core.readEnv('FLOWGLAD_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.FlowgladError(
-        "The FLOWGLAD_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
+        "The FLOWGLAD_API_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL,
-      environment: opts.environment ?? 'production',
+      baseURL: baseURL || `https://app.flowglad.com/`,
     };
 
-    if (baseURL && opts.environment) {
-      throw new Errors.FlowgladError(
-        'Ambiguous URL; The `baseURL` option (or FLOWGLAD_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
-      );
-    }
-
     super({
-      baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURL: options.baseURL!,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -173,10 +195,15 @@ export class Flowglad extends Core.APIClient {
     this.apiKey = apiKey;
   }
 
+  invoice: API.Invoice = new API.Invoice(this);
+  invoiceLineItems: API.InvoiceLineItems = new API.InvoiceLineItems(this);
   purchaseSessions: API.PurchaseSessions = new API.PurchaseSessions(this);
   products: API.Products = new API.Products(this);
   variants: API.Variants = new API.Variants(this);
+  discounts: API.Discounts = new API.Discounts(this);
   customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
+  payments: API.Payments = new API.Payments(this);
+  subscriptions: API.Subscriptions = new API.Subscriptions(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -214,22 +241,45 @@ export class Flowglad extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
+Flowglad.Invoice = Invoice;
+Flowglad.InvoiceLineItems = InvoiceLineItems;
 Flowglad.PurchaseSessions = PurchaseSessions;
 Flowglad.Products = Products;
 Flowglad.Variants = Variants;
+Flowglad.Discounts = Discounts;
 Flowglad.CustomerProfiles = CustomerProfiles;
+Flowglad.Payments = Payments;
+Flowglad.Subscriptions = Subscriptions;
 export declare namespace Flowglad {
   export type RequestOptions = Core.RequestOptions;
 
   export {
+    Invoice as Invoice,
+    type InvoiceRetrieveResponse as InvoiceRetrieveResponse,
+    type InvoiceListResponse as InvoiceListResponse,
+    type InvoiceListParams as InvoiceListParams,
+  };
+
+  export {
+    InvoiceLineItems as InvoiceLineItems,
+    type InvoiceLineItemRetrieveResponse as InvoiceLineItemRetrieveResponse,
+    type InvoiceLineItemListResponse as InvoiceLineItemListResponse,
+    type InvoiceLineItemListParams as InvoiceLineItemListParams,
+  };
+
+  export {
     PurchaseSessions as PurchaseSessions,
     type PurchaseSessionCreateResponse as PurchaseSessionCreateResponse,
+    type PurchaseSessionRetrieveResponse as PurchaseSessionRetrieveResponse,
+    type PurchaseSessionListResponse as PurchaseSessionListResponse,
     type PurchaseSessionCreateParams as PurchaseSessionCreateParams,
+    type PurchaseSessionListParams as PurchaseSessionListParams,
   };
 
   export {
     Products as Products,
     type ProductCreateResponse as ProductCreateResponse,
+    type ProductRetrieveResponse as ProductRetrieveResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
     type ProductListResponse as ProductListResponse,
     type ProductCreateParams as ProductCreateParams,
@@ -248,12 +298,44 @@ export declare namespace Flowglad {
   };
 
   export {
+    Discounts as Discounts,
+    type DiscountCreateResponse as DiscountCreateResponse,
+    type DiscountRetrieveResponse as DiscountRetrieveResponse,
+    type DiscountUpdateResponse as DiscountUpdateResponse,
+    type DiscountListResponse as DiscountListResponse,
+    type DiscountCreateParams as DiscountCreateParams,
+    type DiscountUpdateParams as DiscountUpdateParams,
+    type DiscountListParams as DiscountListParams,
+  };
+
+  export {
     CustomerProfiles as CustomerProfiles,
     type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
     type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
+    type CustomerProfileListResponse as CustomerProfileListResponse,
+    type CustomerProfileBillingResponse as CustomerProfileBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
+    type CustomerProfileListParams as CustomerProfileListParams,
+  };
+
+  export {
+    Payments as Payments,
+    type PaymentRetrieveResponse as PaymentRetrieveResponse,
+    type PaymentListResponse as PaymentListResponse,
+    type PaymentListParams as PaymentListParams,
+  };
+
+  export {
+    Subscriptions as Subscriptions,
+    type SubscriptionRetrieveResponse as SubscriptionRetrieveResponse,
+    type SubscriptionListResponse as SubscriptionListResponse,
+    type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
+    type SubscriptionCancelResponse as SubscriptionCancelResponse,
+    type SubscriptionListParams as SubscriptionListParams,
+    type SubscriptionAdjustParams as SubscriptionAdjustParams,
+    type SubscriptionCancelParams as SubscriptionCancelParams,
   };
 }
 
