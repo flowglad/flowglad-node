@@ -1,10 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import { isRequestOptions } from '../../../core';
-import * as Core from '../../../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
 
 export class Subscriptions extends APIResource {
+  /**
+   * Get Subscription
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SubscriptionRetrieveResponse> {
+    return this._client.get(`/api/v1/subscription/${id}`, options);
+  }
+
   /**
    * List Subscriptions
    */
@@ -44,12 +51,63 @@ export class Subscriptions extends APIResource {
   ): Core.APIPromise<SubscriptionCancelResponse> {
     return this._client.post(`/api/v1/subscriptions/${id}/cancel`, { body, ...options });
   }
+}
 
-  /**
-   * Get Subscription
-   */
-  get(id: string, options?: Core.RequestOptions): Core.APIPromise<SubscriptionGetResponse> {
-    return this._client.get(`/api/v1/subscription/${id}`, options);
+export interface SubscriptionRetrieveResponse {
+  subscription: SubscriptionRetrieveResponse.Subscription;
+}
+
+export namespace SubscriptionRetrieveResponse {
+  export interface Subscription {
+    id: string;
+
+    backupPaymentMethodId: string | null;
+
+    billingCycleAnchorDate: string;
+
+    canceledAt: string | null;
+
+    cancelScheduledAt: string | null;
+
+    createdAt: string;
+
+    currentBillingPeriodEnd: string;
+
+    currentBillingPeriodStart: string;
+
+    CustomerProfileId: string;
+
+    defaultPaymentMethodId: string | null;
+
+    interval: 'day' | 'week' | 'month' | 'year';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: string | number;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    OrganizationId: string;
+
+    status:
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'trialing'
+      | 'active'
+      | 'past_due'
+      | 'canceled'
+      | 'unpaid'
+      | 'paused'
+      | 'cancellation_scheduled';
+
+    trialEnd: string | null;
+
+    updatedAt: string | null;
+
+    VariantId: string;
   }
 }
 
@@ -212,64 +270,6 @@ export interface SubscriptionCancelResponse {
 }
 
 export namespace SubscriptionCancelResponse {
-  export interface Subscription {
-    id: string;
-
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    CustomerProfileId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: string | number;
-
-    livemode: boolean;
-
-    metadata: Record<string, unknown> | null;
-
-    OrganizationId: string;
-
-    status:
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'canceled'
-      | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    VariantId: string;
-  }
-}
-
-export interface SubscriptionGetResponse {
-  subscription: SubscriptionGetResponse.Subscription;
-}
-
-export namespace SubscriptionGetResponse {
   export interface Subscription {
     id: string;
 
@@ -486,10 +486,10 @@ export namespace SubscriptionCancelParams {
 
 export declare namespace Subscriptions {
   export {
+    type SubscriptionRetrieveResponse as SubscriptionRetrieveResponse,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
     type SubscriptionCancelResponse as SubscriptionCancelResponse,
-    type SubscriptionGetResponse as SubscriptionGetResponse,
     type SubscriptionListParams as SubscriptionListParams,
     type SubscriptionAdjustParams as SubscriptionAdjustParams,
     type SubscriptionCancelParams as SubscriptionCancelParams,

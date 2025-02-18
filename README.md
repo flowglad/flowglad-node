@@ -1,6 +1,6 @@
 # Flowglad Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/flowglad.svg)](https://npmjs.org/package/flowglad) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/flowglad)
+[![NPM version](https://img.shields.io/npm/v/@flowglad/node.svg)](https://npmjs.org/package/@flowglad/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flowglad/node)
 
 This library provides convenient access to the Flowglad REST API from server-side TypeScript or JavaScript.
 
@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:flowglad/flowglad-node.git
+npm install @flowglad/node
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install flowglad`
 
 ## Usage
 
@@ -23,14 +20,14 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Flowglad from 'flowglad';
+import Flowglad from '@flowglad/node';
 
 const client = new Flowglad();
 
 async function main() {
-  const response = await client.api.v1.listPayments();
+  const payment = await client.payments.list();
 
-  console.log(response.data);
+  console.log(payment.data);
 }
 
 main();
@@ -42,12 +39,12 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Flowglad from 'flowglad';
+import Flowglad from '@flowglad/node';
 
 const client = new Flowglad();
 
 async function main() {
-  const response: Flowglad.API.V1ListPaymentsResponse = await client.api.v1.listPayments();
+  const payment: Flowglad.PaymentListResponse = await client.payments.list();
 }
 
 main();
@@ -64,7 +61,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.api.v1.listPayments().catch(async (err) => {
+  const payment = await client.payments.list().catch(async (err) => {
     if (err instanceof Flowglad.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -107,7 +104,7 @@ const client = new Flowglad({
 });
 
 // Or, configure per-request:
-await client.api.v1.listPayments({
+await client.payments.list({
   maxRetries: 5,
 });
 ```
@@ -124,7 +121,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.api.v1.listPayments({
+await client.payments.list({
   timeout: 5 * 1000,
 });
 ```
@@ -145,13 +142,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Flowglad();
 
-const response = await client.api.v1.listPayments().asResponse();
+const response = await client.payments.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.api.v1.listPayments().withResponse();
+const { data: payment, response: raw } = await client.payments.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.data);
+console.log(payment.data);
 ```
 
 ### Making custom/undocumented requests
@@ -209,11 +206,11 @@ add the following import before your first import `from "Flowglad"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'flowglad/shims/web';
-import Flowglad from 'flowglad';
+import '@flowglad/node/shims/web';
+import Flowglad from '@flowglad/node';
 ```
 
-To do the inverse, add `import "flowglad/shims/node"` (which does import polyfills).
+To do the inverse, add `import "@flowglad/node/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/flowglad/flowglad-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -223,7 +220,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Flowglad from 'flowglad';
+import Flowglad from '@flowglad/node';
 
 const client = new Flowglad({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
@@ -255,7 +252,7 @@ const client = new Flowglad({
 });
 
 // Override per-request:
-await client.api.v1.listPayments({
+await client.payments.list({
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

@@ -1,14 +1,22 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../../resource';
-import * as Core from '../../../core';
+import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
+import * as Core from '../core';
 
-export class Product extends APIResource {
+export class Products extends APIResource {
   /**
    * Create Product
    */
   create(body: ProductCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProductCreateResponse> {
     return this._client.post('/api/v1/product', { body, ...options });
+  }
+
+  /**
+   * Get Product
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductRetrieveResponse> {
+    return this._client.get(`/api/v1/product/${id}`, options);
   }
 
   /**
@@ -23,10 +31,18 @@ export class Product extends APIResource {
   }
 
   /**
-   * Get Product
+   * List Products
    */
-  get(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductGetResponse> {
-    return this._client.get(`/api/v1/product/${id}`, options);
+  list(query?: ProductListParams, options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
+  list(options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
+  list(
+    query: ProductListParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ProductListResponse> {
+    if (isRequestOptions(query)) {
+      return this.list({}, query);
+    }
+    return this._client.get('/api/v1/products', { query, ...options });
   }
 }
 
@@ -35,6 +51,40 @@ export interface ProductCreateResponse {
 }
 
 export namespace ProductCreateResponse {
+  export interface Product {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: string | string;
+
+    description: string | null;
+
+    imageURL: string | null;
+
+    livemode: boolean;
+
+    name: string;
+
+    OrganizationId: string;
+
+    type: 'service' | 'digital';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: string | string;
+  }
+}
+
+export interface ProductRetrieveResponse {
+  product: ProductRetrieveResponse.Product;
+}
+
+export namespace ProductRetrieveResponse {
   export interface Product {
     id: string;
 
@@ -98,17 +148,18 @@ export namespace ProductUpdateResponse {
   }
 }
 
-export type ProductListResponse = Array<ProductListResponse.ProductListResponseItem>;
+export interface ProductListResponse {
+  data: Array<ProductListResponse.Data>;
+
+  hasMore: boolean;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
+}
 
 export namespace ProductListResponse {
-  export interface ProductListResponseItem {
-    product: ProductListResponseItem.Product;
-
-    variant: ProductListResponseItem.UnionMember0 | ProductListResponseItem.UnionMember1;
-  }
-
-export namespace ProductGetResponse {
-  export interface Product {
+  export interface Data {
     id: string;
 
     active: boolean;
@@ -659,12 +710,20 @@ export namespace ProductUpdateParams {
   }
 }
 
-export declare namespace Product {
+export interface ProductListParams {
+  cursor?: string;
+
+  limit?: number;
+}
+
+export declare namespace Products {
   export {
     type ProductCreateResponse as ProductCreateResponse,
+    type ProductRetrieveResponse as ProductRetrieveResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
-    type ProductGetResponse as ProductGetResponse,
+    type ProductListResponse as ProductListResponse,
     type ProductCreateParams as ProductCreateParams,
     type ProductUpdateParams as ProductUpdateParams,
+    type ProductListParams as ProductListParams,
   };
 }
