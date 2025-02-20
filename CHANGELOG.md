@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-02-20)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** rich subscriptions ([#31](https://github.com/flowglad/flowglad-node/issues/31)) ([c0bce44](https://github.com/flowglad/flowglad-node/commit/c0bce441725419bfb2a9612401741b5f58d6e3ac))
+
 ## 0.1.0-alpha.2 (2025-02-18)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
