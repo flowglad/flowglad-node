@@ -107,7 +107,6 @@ describe('resource products', () => {
       product: {
         id: 'id',
         active: true,
-        defaultStripePriceId: 'defaultStripePriceId',
         description: 'description',
         imageURL: 'imageURL',
         livemode: true,
@@ -120,6 +119,7 @@ describe('resource products', () => {
         id: 'id',
         priceType: 'subscription',
         active: true,
+        currency: 'USD',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,

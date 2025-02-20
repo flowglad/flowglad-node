@@ -6,7 +6,7 @@ import * as Core from '../core';
 
 export class PurchaseSessions extends APIResource {
   /**
-   * Create Purchase Session
+   * Create purchaseSession
    */
   create(
     body: PurchaseSessionCreateParams,
@@ -16,14 +16,14 @@ export class PurchaseSessions extends APIResource {
   }
 
   /**
-   * Get Purchase Session
+   * Get purchaseSession
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionRetrieveResponse> {
     return this._client.get(`/api/v1/purchase-session/${id}`, options);
   }
 
   /**
-   * List Purchase Sessions
+   * List purchaseSessions
    */
   list(
     query?: PurchaseSessionListParams,
@@ -51,6 +51,8 @@ export namespace PurchaseSessionCreateResponse {
 
     billingAddress: PurchaseSession.BillingAddress | null;
 
+    cancelUrl: string | null;
+
     /**
      * safeZodDate
      */
@@ -71,6 +73,10 @@ export namespace PurchaseSessionCreateResponse {
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     PurchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
 
     /**
      * safeZodDate
@@ -121,6 +127,8 @@ export namespace PurchaseSessionRetrieveResponse {
 
     billingAddress: PurchaseSession.BillingAddress | null;
 
+    cancelUrl: string | null;
+
     /**
      * safeZodDate
      */
@@ -141,6 +149,10 @@ export namespace PurchaseSessionRetrieveResponse {
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     PurchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
 
     /**
      * safeZodDate
@@ -197,6 +209,8 @@ export namespace PurchaseSessionListResponse {
 
     billingAddress: Data.BillingAddress | null;
 
+    cancelUrl: string | null;
+
     /**
      * safeZodDate
      */
@@ -217,6 +231,10 @@ export namespace PurchaseSessionListResponse {
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     PurchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
 
     /**
      * safeZodDate

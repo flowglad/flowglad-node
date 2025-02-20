@@ -14,6 +14,7 @@ describe('resource variants', () => {
     const responsePromise = client.variants.create({
       variant: {
         active: true,
+        currency: 'USD',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
@@ -40,6 +41,7 @@ describe('resource variants', () => {
     const response = await client.variants.create({
       variant: {
         active: true,
+        currency: 'USD',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
@@ -76,6 +78,7 @@ describe('resource variants', () => {
         id: 'id',
         priceType: 'subscription',
         active: true,
+        currency: 'USD',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
