@@ -7,6 +7,7 @@ Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/flowglad/fl
 ### Features
 
 * **api:** rich subscriptions ([#31](https://github.com/flowglad/flowglad-node/issues/31)) ([c0bce44](https://github.com/flowglad/flowglad-node/commit/c0bce441725419bfb2a9612401741b5f58d6e3ac))
+* **api:** rich subscriptions only have subscription variants ([#33](https://github.com/flowglad/flowglad-node/issues/33)) ([5d203f8](https://github.com/flowglad/flowglad-node/commit/5d203f8a07b3fce718a1c2436eb3a50d2c62f142))
 
 ## 0.1.0-alpha.2 (2025-02-18)
 

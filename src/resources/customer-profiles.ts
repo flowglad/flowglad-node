@@ -909,13 +909,13 @@ export namespace CustomerProfileBillingResponse {
 
       updatedAt: string | null;
 
-      variant: SubscriptionItem.UnionMember0 | SubscriptionItem.UnionMember1;
+      variant: SubscriptionItem.Variant;
 
       VariantId: string;
     }
 
     export namespace SubscriptionItem {
-      export interface UnionMember0 {
+      export interface Variant {
         id: string;
 
         active: boolean;
@@ -1091,187 +1091,6 @@ export namespace CustomerProfileBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
-      }
-
-      export interface UnionMember1 {
-        id: string;
-
-        active: boolean;
-
-        createdAt: string;
-
-        currency:
-          | 'USD'
-          | 'AED'
-          | 'AFN'
-          | 'ALL'
-          | 'AMD'
-          | 'ANG'
-          | 'AOA'
-          | 'ARS'
-          | 'AUD'
-          | 'AWG'
-          | 'AZN'
-          | 'BAM'
-          | 'BBD'
-          | 'BDT'
-          | 'BGN'
-          | 'BIF'
-          | 'BMD'
-          | 'BND'
-          | 'BOB'
-          | 'BRL'
-          | 'BSD'
-          | 'BWP'
-          | 'BYN'
-          | 'BZD'
-          | 'CAD'
-          | 'CDF'
-          | 'CHF'
-          | 'CLP'
-          | 'CNY'
-          | 'COP'
-          | 'CRC'
-          | 'CVE'
-          | 'CZK'
-          | 'DJF'
-          | 'DKK'
-          | 'DOP'
-          | 'DZD'
-          | 'EGP'
-          | 'ETB'
-          | 'EUR'
-          | 'FJD'
-          | 'FKP'
-          | 'GBP'
-          | 'GEL'
-          | 'GIP'
-          | 'GMD'
-          | 'GNF'
-          | 'GTQ'
-          | 'GYD'
-          | 'HKD'
-          | 'HNL'
-          | 'HTG'
-          | 'HUF'
-          | 'IDR'
-          | 'ILS'
-          | 'INR'
-          | 'ISK'
-          | 'JMD'
-          | 'JPY'
-          | 'KES'
-          | 'KGS'
-          | 'KHR'
-          | 'KMF'
-          | 'KRW'
-          | 'KYD'
-          | 'KZT'
-          | 'LAK'
-          | 'LBP'
-          | 'LKR'
-          | 'LRD'
-          | 'LSL'
-          | 'MAD'
-          | 'MDL'
-          | 'MGA'
-          | 'MKD'
-          | 'MMK'
-          | 'MNT'
-          | 'MOP'
-          | 'MUR'
-          | 'MVR'
-          | 'MWK'
-          | 'MXN'
-          | 'MYR'
-          | 'MZN'
-          | 'NAD'
-          | 'NGN'
-          | 'NIO'
-          | 'NOK'
-          | 'NPR'
-          | 'NZD'
-          | 'PAB'
-          | 'PEN'
-          | 'PGK'
-          | 'PHP'
-          | 'PKR'
-          | 'PLN'
-          | 'PYG'
-          | 'QAR'
-          | 'RON'
-          | 'RSD'
-          | 'RUB'
-          | 'RWF'
-          | 'SAR'
-          | 'SBD'
-          | 'SCR'
-          | 'SEK'
-          | 'SGD'
-          | 'SHP'
-          | 'SLE'
-          | 'SOS'
-          | 'SRD'
-          | 'STD'
-          | 'SZL'
-          | 'THB'
-          | 'TJS'
-          | 'TOP'
-          | 'TRY'
-          | 'TTD'
-          | 'TWD'
-          | 'TZS'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'UZS'
-          | 'VND'
-          | 'VUV'
-          | 'WST'
-          | 'XAF'
-          | 'XCD'
-          | 'XOF'
-          | 'XPF'
-          | 'YER'
-          | 'ZAR'
-          | 'ZMW';
-
-        isDefault: boolean;
-
-        livemode: boolean;
-
-        name: string | null;
-
-        priceType: 'single_payment';
-
-        ProductId: string;
-
-        /**
-         * safeZodPositiveInteger
-         */
-        unitPrice: number;
-
-        updatedAt: string | null;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        intervalCount?: unknown | unknown | null;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        intervalUnit?: unknown | unknown | null;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        setupFeeAmount?: unknown | unknown | null;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        trialPeriodDays?: unknown | unknown | null;
       }
     }
   }
