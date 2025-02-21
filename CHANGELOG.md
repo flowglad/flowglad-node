@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0 (2025-02-21)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.5...v0.1.0)
+
+### Features
+
+* **api:** add url to open api purchase session response schema ([#45](https://github.com/flowglad/flowglad-node/issues/45)) ([58e5eaf](https://github.com/flowglad/flowglad-node/commit/58e5eafa85656de933d9dce9e6c57263b5fa51a3))
+
 ## 0.1.0-alpha.5 (2025-02-21)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
