@@ -10,6 +10,7 @@ import {
   CustomerProfileCreateResponse,
   CustomerProfileListParams,
   CustomerProfileListResponse,
+  CustomerProfileRetrieveBillingResponse,
   CustomerProfileRetrieveResponse,
   CustomerProfileUpdateParams,
   CustomerProfileUpdateResponse,
@@ -34,6 +35,7 @@ import {
 import {
   InvoiceLineItemListParams,
   InvoiceLineItemListResponse,
+  InvoiceLineItemRetrieveResponse,
   InvoiceLineItems,
 } from './resources/invoice-line-items';
 import {
@@ -259,6 +261,7 @@ export declare namespace Flowglad {
 
   export {
     InvoiceLineItems as InvoiceLineItems,
+    type InvoiceLineItemRetrieveResponse as InvoiceLineItemRetrieveResponse,
     type InvoiceLineItemListResponse as InvoiceLineItemListResponse,
     type InvoiceLineItemListParams as InvoiceLineItemListParams,
   };
@@ -310,6 +313,7 @@ export declare namespace Flowglad {
     type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileListResponse as CustomerProfileListResponse,
+    type CustomerProfileRetrieveBillingResponse as CustomerProfileRetrieveBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
     type CustomerProfileListParams as CustomerProfileListParams,

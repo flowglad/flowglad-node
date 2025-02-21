@@ -53,6 +53,16 @@ export class CustomerProfiles extends APIResource {
     }
     return this._client.get('/api/v1/customer-profiles', { query, ...options });
   }
+
+  /**
+   * Get Billing Details
+   */
+  retrieveBilling(
+    externalId: string,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<CustomerProfileRetrieveBillingResponse> {
+    return this._client.get(`/api/v1/customer-profiles/${externalId}/billing`, options);
+  }
 }
 
 export interface CustomerProfileCreateResponse {
@@ -572,6 +582,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
+
       export interface SinglePaymentVariant {
         id: string;
 
@@ -1086,7 +1097,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
   }
 }
 
-
 export interface CustomerProfileCreateParams {
   customerProfile: CustomerProfileCreateParams.CustomerProfile;
 }
@@ -1145,6 +1155,7 @@ export declare namespace CustomerProfiles {
     type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileListResponse as CustomerProfileListResponse,
+    type CustomerProfileRetrieveBillingResponse as CustomerProfileRetrieveBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
     type CustomerProfileListParams as CustomerProfileListParams,

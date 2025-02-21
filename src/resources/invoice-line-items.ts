@@ -6,6 +6,13 @@ import * as Core from '../core';
 
 export class InvoiceLineItems extends APIResource {
   /**
+   * Get Invoice Line Item
+   */
+  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<InvoiceLineItemRetrieveResponse> {
+    return this._client.get(`/api/v1/invoice-line-items/${id}`, options);
+  }
+
+  /**
    * List Invoice Line Items
    */
   list(
@@ -22,6 +29,29 @@ export class InvoiceLineItems extends APIResource {
     }
     return this._client.get('/api/v1/invoice-line-items', { query, ...options });
   }
+}
+
+export interface InvoiceLineItemRetrieveResponse {
+  id: string;
+
+  createdAt: string;
+
+  description: string | null;
+
+  InvoiceId: string;
+
+  livemode: boolean;
+
+  price: number;
+
+  /**
+   * safeZodPositiveInteger
+   */
+  quantity: number;
+
+  updatedAt: string | null;
+
+  VariantId: string | null;
 }
 
 export interface InvoiceLineItemListResponse {
@@ -67,6 +97,7 @@ export interface InvoiceLineItemListParams {
 
 export declare namespace InvoiceLineItems {
   export {
+    type InvoiceLineItemRetrieveResponse as InvoiceLineItemRetrieveResponse,
     type InvoiceLineItemListResponse as InvoiceLineItemListResponse,
     type InvoiceLineItemListParams as InvoiceLineItemListParams,
   };
