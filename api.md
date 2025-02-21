@@ -14,10 +14,12 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/invoice-line-items.ts">InvoiceLineItemRetrieveResponse</a></code>
 - <code><a href="./src/resources/invoice-line-items.ts">InvoiceLineItemListResponse</a></code>
 
 Methods:
 
+- <code title="get /api/v1/invoice-line-items/{id}">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">retrieve</a>(id) -> InvoiceLineItemRetrieveResponse</code>
 - <code title="get /api/v1/invoice-line-items">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">list</a>({ ...params }) -> InvoiceLineItemListResponse</code>
 
 # PurchaseSessions
@@ -88,6 +90,7 @@ Types:
 - <code><a href="./src/resources/customer-profiles.ts">CustomerProfileRetrieveResponse</a></code>
 - <code><a href="./src/resources/customer-profiles.ts">CustomerProfileUpdateResponse</a></code>
 - <code><a href="./src/resources/customer-profiles.ts">CustomerProfileListResponse</a></code>
+- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileRetrieveBillingResponse</a></code>
 
 Methods:
 
@@ -95,6 +98,7 @@ Methods:
 - <code title="get /api/v1/customer-profiles/{externalId}">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">retrieve</a>(externalId) -> CustomerProfileRetrieveResponse</code>
 - <code title="put /api/v1/customer-profiles/{externalId}">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">update</a>(externalId, { ...params }) -> CustomerProfileUpdateResponse</code>
 - <code title="get /api/v1/customer-profiles">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">list</a>({ ...params }) -> CustomerProfileListResponse</code>
+- <code title="get /api/v1/customer-profiles/{externalId}/billing">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">retrieveBilling</a>(externalId) -> CustomerProfileRetrieveBillingResponse</code>
 
 # Payments
 

@@ -6,6 +6,7 @@ export {
   type CustomerProfileRetrieveResponse,
   type CustomerProfileUpdateResponse,
   type CustomerProfileListResponse,
+  type CustomerProfileRetrieveBillingResponse,
   type CustomerProfileCreateParams,
   type CustomerProfileUpdateParams,
   type CustomerProfileListParams,
@@ -28,6 +29,7 @@ export {
 } from './invoice';
 export {
   InvoiceLineItems,
+  type InvoiceLineItemRetrieveResponse,
   type InvoiceLineItemListResponse,
   type InvoiceLineItemListParams,
 } from './invoice-line-items';
