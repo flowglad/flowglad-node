@@ -6,7 +6,7 @@ export {
   type CustomerProfileRetrieveResponse,
   type CustomerProfileUpdateResponse,
   type CustomerProfileListResponse,
-  type CustomerProfileBillingResponse,
+  type CustomerProfileRetrieveBillingResponse,
   type CustomerProfileCreateParams,
   type CustomerProfileUpdateParams,
   type CustomerProfileListParams,
