@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-02-21)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** retrieve billing ([#35](https://github.com/flowglad/flowglad-node/issues/35)) ([42fc320](https://github.com/flowglad/flowglad-node/commit/42fc320ff335bfc609d8b0696aefba9aa3cbff9c))
+
 ## 0.1.0-alpha.3 (2025-02-20)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
