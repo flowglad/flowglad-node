@@ -9,14 +9,14 @@ export class Discounts extends APIResource {
    * Create Discount
    */
   create(body: DiscountCreateParams, options?: Core.RequestOptions): Core.APIPromise<DiscountCreateResponse> {
-    return this._client.post('/api/v1/discount', { body, ...options });
+    return this._client.post('/api/v1/discounts', { body, ...options });
   }
 
   /**
    * Get Discount
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<DiscountRetrieveResponse> {
-    return this._client.get(`/api/v1/discount/${id}`, options);
+    return this._client.get(`/api/v1/discounts/${id}`, options);
   }
 
   /**
@@ -27,7 +27,7 @@ export class Discounts extends APIResource {
     body: DiscountUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<DiscountUpdateResponse> {
-    return this._client.put(`/api/v1/discount/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/discounts/${id}`, { body, ...options });
   }
 
   /**

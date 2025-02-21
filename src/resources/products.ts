@@ -9,14 +9,14 @@ export class Products extends APIResource {
    * Create Product
    */
   create(body: ProductCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProductCreateResponse> {
-    return this._client.post('/api/v1/product', { body, ...options });
+    return this._client.post('/api/v1/products', { body, ...options });
   }
 
   /**
    * Get Product
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductRetrieveResponse> {
-    return this._client.get(`/api/v1/product/${id}`, options);
+    return this._client.get(`/api/v1/products/${id}`, options);
   }
 
   /**
@@ -27,7 +27,7 @@ export class Products extends APIResource {
     body: ProductUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ProductUpdateResponse> {
-    return this._client.put(`/api/v1/product/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/products/${id}`, { body, ...options });
   }
 
   /**
