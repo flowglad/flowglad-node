@@ -43,6 +43,11 @@ export class PurchaseSessions extends APIResource {
 
 export interface PurchaseSessionCreateResponse {
   purchaseSession: PurchaseSessionCreateResponse.PurchaseSession;
+
+  /**
+   * The URL to redirect to complete the purchase
+   */
+  url: string;
 }
 
 export namespace PurchaseSessionCreateResponse {
@@ -119,6 +124,11 @@ export namespace PurchaseSessionCreateResponse {
 
 export interface PurchaseSessionRetrieveResponse {
   purchaseSession: PurchaseSessionRetrieveResponse.PurchaseSession;
+
+  /**
+   * The URL to redirect to complete the purchase
+   */
+  url: string;
 }
 
 export namespace PurchaseSessionRetrieveResponse {
