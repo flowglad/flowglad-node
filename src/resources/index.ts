@@ -6,7 +6,6 @@ export {
   type CustomerProfileRetrieveResponse,
   type CustomerProfileUpdateResponse,
   type CustomerProfileListResponse,
-  type CustomerProfileRetrieveBillingResponse,
   type CustomerProfileCreateParams,
   type CustomerProfileUpdateParams,
   type CustomerProfileListParams,
@@ -29,7 +28,6 @@ export {
 } from './invoice';
 export {
   InvoiceLineItems,
-  type InvoiceLineItemRetrieveResponse,
   type InvoiceLineItemListResponse,
   type InvoiceLineItemListParams,
 } from './invoice-line-items';
@@ -59,7 +57,6 @@ export {
 } from './purchase-sessions';
 export {
   Subscriptions,
-  type SubscriptionRetrieveResponse,
   type SubscriptionListResponse,
   type SubscriptionAdjustResponse,
   type SubscriptionCancelResponse,
