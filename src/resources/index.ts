@@ -59,6 +59,7 @@ export {
 } from './purchase-sessions';
 export {
   Subscriptions,
+  type SubscriptionRetrieveResponse,
   type SubscriptionListResponse,
   type SubscriptionAdjustResponse,
   type SubscriptionCancelResponse,

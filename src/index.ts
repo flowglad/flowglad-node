@@ -69,6 +69,7 @@ import {
   SubscriptionCancelResponse,
   SubscriptionListParams,
   SubscriptionListResponse,
+  SubscriptionRetrieveResponse,
   Subscriptions,
 } from './resources/subscriptions';
 import {
@@ -328,6 +329,7 @@ export declare namespace Flowglad {
 
   export {
     Subscriptions as Subscriptions,
+    type SubscriptionRetrieveResponse as SubscriptionRetrieveResponse,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
     type SubscriptionCancelResponse as SubscriptionCancelResponse,
