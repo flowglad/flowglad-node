@@ -155,7 +155,7 @@ export class Flowglad extends Core.APIClient {
   /**
    * API Client for interfacing with the Flowglad API.
    *
-   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['FLOWGLAD_SECRET_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['FLOWGLAD_BASE_URL'] ?? https://app.flowglad.com/] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -166,12 +166,12 @@ export class Flowglad extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('FLOWGLAD_BASE_URL'),
-    apiKey = Core.readEnv('FLOWGLAD_API_KEY'),
+    apiKey = Core.readEnv('FLOWGLAD_SECRET_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
       throw new Errors.FlowgladError(
-        "The FLOWGLAD_API_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
+        "The FLOWGLAD_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Flowglad client with an apiKey option, like new Flowglad({ apiKey: 'My API Key' }).",
       );
     }
 

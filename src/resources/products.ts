@@ -186,12 +186,99 @@ export namespace ProductListResponse {
      */
     updatedAt: string | string;
   }
+
+  export interface SubscriptionVariant {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: string | number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'subscription';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+  }
+
+  export interface SinglePaymentVariant {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'single_payment';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalCount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalUnit?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: unknown | unknown | null;
+  }
 }
 
 export interface ProductCreateParams {
   product: ProductCreateParams.Product;
 
-  variant: ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1;
+  variant: ProductCreateParams.SubscriptionVariant | ProductCreateParams.SinglePaymentVariant;
 }
 
 export namespace ProductCreateParams {
@@ -207,7 +294,7 @@ export namespace ProductCreateParams {
     type: 'service' | 'digital';
   }
 
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     active: boolean;
 
     /**
@@ -241,7 +328,7 @@ export namespace ProductCreateParams {
     unitPrice: number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     active: boolean;
 
     isDefault: boolean;
@@ -282,7 +369,7 @@ export namespace ProductCreateParams {
 export interface ProductUpdateParams {
   product: ProductUpdateParams.Product;
 
-  variant: ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1;
+  variant: ProductUpdateParams.SubscriptionVariant | ProductUpdateParams.SinglePaymentVariant;
 }
 
 export namespace ProductUpdateParams {
@@ -306,7 +393,7 @@ export namespace ProductUpdateParams {
     type?: 'service' | 'digital';
   }
 
-  export interface UnionMember0 {
+  export interface SubscriptionVariant {
     id: string;
 
     priceType: 'subscription';
@@ -482,7 +569,7 @@ export namespace ProductUpdateParams {
     unitPrice?: number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentVariant {
     id: string;
 
     priceType: 'single_payment';
