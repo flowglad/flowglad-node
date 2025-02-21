@@ -582,7 +582,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
-
       export interface SinglePaymentVariant {
         id: string;
 
