@@ -9,7 +9,7 @@ export class Subscriptions extends APIResource {
    * Get Subscription
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SubscriptionRetrieveResponse> {
-    return this._client.get(`/api/v1/subscription/${id}`, options);
+    return this._client.get(`/api/v1/subscriptions/${id}`, options);
   }
 
   /**
@@ -31,7 +31,7 @@ export class Subscriptions extends APIResource {
   }
 
   /**
-   * Adjust a subscription
+   * Adjust a Subscription
    */
   adjust(
     id: string,
@@ -42,7 +42,7 @@ export class Subscriptions extends APIResource {
   }
 
   /**
-   * Cancel a subscription
+   * Cancel a Subscription
    */
   cancel(
     id: string,

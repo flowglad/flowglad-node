@@ -9,7 +9,7 @@ export class Variants extends APIResource {
    * Create Variant
    */
   create(body: VariantCreateParams, options?: Core.RequestOptions): Core.APIPromise<VariantCreateResponse> {
-    return this._client.post('/api/v1/variant', { body, ...options });
+    return this._client.post('/api/v1/variants', { body, ...options });
   }
 
   /**
@@ -20,7 +20,7 @@ export class Variants extends APIResource {
     body: VariantUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<VariantUpdateResponse> {
-    return this._client.put(`/api/v1/variant/${id}`, { body, ...options });
+    return this._client.put(`/api/v1/variants/${id}`, { body, ...options });
   }
 
   /**

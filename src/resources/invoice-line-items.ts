@@ -9,7 +9,7 @@ export class InvoiceLineItems extends APIResource {
    * Get Invoice Line Item
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<InvoiceLineItemRetrieveResponse> {
-    return this._client.get(`/api/v1/invoice-line-item/${id}`, options);
+    return this._client.get(`/api/v1/invoice-line-items/${id}`, options);
   }
 
   /**
