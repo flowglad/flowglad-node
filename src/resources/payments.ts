@@ -9,7 +9,7 @@ export class Payments extends APIResource {
    * Get Payment
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PaymentRetrieveResponse> {
-    return this._client.get(`/api/v1/payment/${id}`, options);
+    return this._client.get(`/api/v1/payments/${id}`, options);
   }
 
   /**

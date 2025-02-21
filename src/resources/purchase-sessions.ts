@@ -12,14 +12,14 @@ export class PurchaseSessions extends APIResource {
     body: PurchaseSessionCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<PurchaseSessionCreateResponse> {
-    return this._client.post('/api/v1/purchase-session', { body, ...options });
+    return this._client.post('/api/v1/purchase-sessions', { body, ...options });
   }
 
   /**
    * Get purchaseSession
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionRetrieveResponse> {
-    return this._client.get(`/api/v1/purchase-session/${id}`, options);
+    return this._client.get(`/api/v1/purchase-sessions/${id}`, options);
   }
 
   /**

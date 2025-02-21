@@ -12,7 +12,7 @@ export class CustomerProfiles extends APIResource {
     body: CustomerProfileCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CustomerProfileCreateResponse> {
-    return this._client.post('/api/v1/customer-profile', { body, ...options });
+    return this._client.post('/api/v1/customer-profiles', { body, ...options });
   }
 
   /**
@@ -22,7 +22,7 @@ export class CustomerProfiles extends APIResource {
     externalId: string,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CustomerProfileRetrieveResponse> {
-    return this._client.get(`/api/v1/customer-profile/${externalId}`, options);
+    return this._client.get(`/api/v1/customer-profiles/${externalId}`, options);
   }
 
   /**
@@ -33,7 +33,7 @@ export class CustomerProfiles extends APIResource {
     body: CustomerProfileUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<CustomerProfileUpdateResponse> {
-    return this._client.put(`/api/v1/customer-profile/${externalId}`, { body, ...options });
+    return this._client.put(`/api/v1/customer-profiles/${externalId}`, { body, ...options });
   }
 
   /**
@@ -52,16 +52,6 @@ export class CustomerProfiles extends APIResource {
       return this.list({}, query);
     }
     return this._client.get('/api/v1/customer-profiles', { query, ...options });
-  }
-
-  /**
-   * Get Billing Details
-   */
-  retrieveBilling(
-    externalId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileRetrieveBillingResponse> {
-    return this._client.get(`/api/v1/customer-profile/${externalId}/billing`, options);
   }
 }
 
@@ -1096,6 +1086,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
   }
 }
 
+
 export interface CustomerProfileCreateParams {
   customerProfile: CustomerProfileCreateParams.CustomerProfile;
 }
@@ -1154,7 +1145,6 @@ export declare namespace CustomerProfiles {
     type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
     type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
     type CustomerProfileListResponse as CustomerProfileListResponse,
-    type CustomerProfileRetrieveBillingResponse as CustomerProfileRetrieveBillingResponse,
     type CustomerProfileCreateParams as CustomerProfileCreateParams,
     type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
     type CustomerProfileListParams as CustomerProfileListParams,
