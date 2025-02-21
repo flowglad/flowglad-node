@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-02-21)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** pluralize all resource calls ([#38](https://github.com/flowglad/flowglad-node/issues/38)) ([0afdff4](https://github.com/flowglad/flowglad-node/commit/0afdff48dce6338c6fa797559dad7bce344e4445))
+* **api:** pluralize customer profile billing ([#40](https://github.com/flowglad/flowglad-node/issues/40)) ([85be3a2](https://github.com/flowglad/flowglad-node/commit/85be3a2fccdba789b97d60bb99d2b91921b2839b))
+* **api:** pluralize subscriptions ([#41](https://github.com/flowglad/flowglad-node/issues/41)) ([d17de86](https://github.com/flowglad/flowglad-node/commit/d17de869165d0022393fc9fb0d5ce5289ecba123))
+
 ## 0.1.0-alpha.4 (2025-02-21)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
