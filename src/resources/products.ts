@@ -59,7 +59,7 @@ export namespace ProductCreateResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     description: string | null;
 
@@ -76,7 +76,7 @@ export namespace ProductCreateResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string;
+    updatedAt: (string & {}) | string;
   }
 }
 
@@ -93,7 +93,7 @@ export namespace ProductRetrieveResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     description: string | null;
 
@@ -110,7 +110,7 @@ export namespace ProductRetrieveResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string;
+    updatedAt: (string & {}) | string;
   }
 }
 
@@ -127,7 +127,7 @@ export namespace ProductUpdateResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     description: string | null;
 
@@ -144,7 +144,7 @@ export namespace ProductUpdateResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string;
+    updatedAt: (string & {}) | string;
   }
 }
 
@@ -167,7 +167,7 @@ export namespace ProductListResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     description: string | null;
 
@@ -184,7 +184,7 @@ export namespace ProductListResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string;
+    updatedAt: (string & {}) | string;
   }
 }
 
