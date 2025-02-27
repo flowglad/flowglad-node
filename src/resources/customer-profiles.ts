@@ -384,7 +384,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         /**
          * safeZodDate
          */
-        createdAt: string | string;
+        createdAt: (string & {}) | string;
 
         description: string | null;
 
@@ -401,7 +401,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         /**
          * safeZodDate
          */
-        updatedAt: string | string;
+        updatedAt: (string & {}) | string;
       }
 
       export interface SubscriptionVariant {
