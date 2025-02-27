@@ -61,7 +61,7 @@ export namespace PurchaseSessionCreateResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     customerEmail: string | null;
 
@@ -86,7 +86,7 @@ export namespace PurchaseSessionCreateResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string | null;
+    updatedAt: (string & {}) | string | null;
 
     VariantId: string;
   }
@@ -142,7 +142,7 @@ export namespace PurchaseSessionRetrieveResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     customerEmail: string | null;
 
@@ -167,7 +167,7 @@ export namespace PurchaseSessionRetrieveResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string | null;
+    updatedAt: (string & {}) | string | null;
 
     VariantId: string;
   }
@@ -224,7 +224,7 @@ export namespace PurchaseSessionListResponse {
     /**
      * safeZodDate
      */
-    createdAt: string | string;
+    createdAt: (string & {}) | string;
 
     customerEmail: string | null;
 
@@ -249,7 +249,7 @@ export namespace PurchaseSessionListResponse {
     /**
      * safeZodDate
      */
-    updatedAt: string | string | null;
+    updatedAt: (string & {}) | string | null;
 
     VariantId: string;
   }

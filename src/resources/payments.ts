@@ -43,7 +43,7 @@ export interface PaymentRetrieveResponse {
   /**
    * safeZodDate
    */
-  chargeDate: string | string;
+  chargeDate: (string & {}) | string;
 
   createdAt: string;
 
@@ -202,12 +202,12 @@ export interface PaymentRetrieveResponse {
   /**
    * safeZodDate
    */
-  refundedAt: string | string | null;
+  refundedAt: (string & {}) | string | null;
 
   /**
    * safeZodDate
    */
-  settlementDate: string | string | null;
+  settlementDate: (string & {}) | string | null;
 
   status:
     | 'canceled'
@@ -514,7 +514,7 @@ export namespace PaymentListResponse {
     /**
      * safeZodDate
      */
-    chargeDate: string | string;
+    chargeDate: (string & {}) | string;
 
     createdAt: string;
 
@@ -673,12 +673,12 @@ export namespace PaymentListResponse {
     /**
      * safeZodDate
      */
-    refundedAt: string | string | null;
+    refundedAt: (string & {}) | string | null;
 
     /**
      * safeZodDate
      */
-    settlementDate: string | string | null;
+    settlementDate: (string & {}) | string | null;
 
     status:
       | 'canceled'
