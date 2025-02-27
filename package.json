@@ -1,6 +1,6 @@
 {
   "name": "@flowglad/node",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The official TypeScript library for the Flowglad API",
   "author": "Flowglad <dev-feedback@flowglad.com>",
   "types": "dist/index.d.ts",
