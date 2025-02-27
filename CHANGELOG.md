@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2025-02-27)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/flowglad/flowglad-node/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#48](https://github.com/flowglad/flowglad-node/issues/48)) ([7fc1d20](https://github.com/flowglad/flowglad-node/commit/7fc1d20e0b56e97092b821577e7c5538bce258db))
+* **internal:** type updates ([#50](https://github.com/flowglad/flowglad-node/issues/50)) ([f9f786e](https://github.com/flowglad/flowglad-node/commit/f9f786e9f3c401b5ad04c553d72edcfc8ab26e19))
+
 ## 0.1.0 (2025-02-21)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0](https://github.com/flowglad/flowglad-node/compare/v0.1.0-alpha.5...v0.1.0)
