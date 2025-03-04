@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2025-03-04)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/flowglad/flowglad-node/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+* **api:** get customer profile return type  ([#62](https://github.com/flowglad/flowglad-node/issues/62)) ([488457d](https://github.com/flowglad/flowglad-node/commit/488457d3c2641bad5617e9fab45c6db21578c736))
+
 ## 0.4.0 (2025-03-04)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/flowglad/flowglad-node/compare/v0.3.0...v0.4.0)
