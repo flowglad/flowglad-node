@@ -140,63 +140,69 @@ export namespace CustomerProfileCreateResponse {
 }
 
 export interface CustomerProfileRetrieveResponse {
-  id: string;
-
-  archived: boolean;
-
-  billingAddress: CustomerProfileRetrieveResponse.BillingAddress | null;
-
-  createdAt: string;
-
-  CustomerId: string;
-
-  domain: string | null;
-
-  email: string;
-
-  externalId: string;
-
-  iconURL: string | null;
-
-  invoiceNumberBase: string | null;
-
-  livemode: boolean;
-
-  logoURL: string | null;
-
-  name: string | null;
-
-  OrganizationId: string;
-
-  updatedAt: string | null;
+  customerProfile: CustomerProfileRetrieveResponse.CustomerProfile;
 }
 
 export namespace CustomerProfileRetrieveResponse {
-  export interface BillingAddress {
-    address: BillingAddress.Address;
+  export interface CustomerProfile {
+    id: string;
 
-    name: string;
+    archived: boolean;
 
-    firstName?: string;
+    billingAddress: CustomerProfile.BillingAddress | null;
 
-    lastName?: string;
+    createdAt: string;
 
-    phone?: string;
+    CustomerId: string;
+
+    domain: string | null;
+
+    email: string;
+
+    externalId: string;
+
+    iconURL: string | null;
+
+    invoiceNumberBase: string | null;
+
+    livemode: boolean;
+
+    logoURL: string | null;
+
+    name: string | null;
+
+    OrganizationId: string;
+
+    updatedAt: string | null;
   }
 
-  export namespace BillingAddress {
-    export interface Address {
-      city: string;
+  export namespace CustomerProfile {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
 
-      country: string;
+      name: string;
 
-      line1: string;
+      firstName?: string;
 
-      line2: string | null;
+      lastName?: string;
 
-      postal_code: string;
+      phone?: string;
+    }
 
-      state: string;
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
     }
   }
 }
