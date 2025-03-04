@@ -388,6 +388,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
         description: string | null;
 
+        displayFeatures: Array<Product.DisplayFeature> | null;
+
         imageURL: string | null;
 
         livemode: boolean;
@@ -396,12 +398,20 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
         OrganizationId: string;
 
-        type: 'service' | 'digital';
-
         /**
          * safeZodDate
          */
         updatedAt: (string & {}) | string;
+      }
+
+      export namespace Product {
+        export interface DisplayFeature {
+          details: string;
+
+          enabled: boolean;
+
+          label: string;
+        }
       }
 
       export interface UnionMember0 {
