@@ -38,6 +38,7 @@ import {
   InvoiceLineItemRetrieveResponse,
   InvoiceLineItems,
 } from './resources/invoice-line-items';
+import { PaymentMethods } from './resources/payment-methods';
 import {
   PaymentListParams,
   PaymentListResponse,
@@ -203,6 +204,7 @@ export class Flowglad extends Core.APIClient {
   discounts: API.Discounts = new API.Discounts(this);
   customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
   payments: API.Payments = new API.Payments(this);
+  paymentMethods: API.PaymentMethods = new API.PaymentMethods(this);
   subscriptions: API.Subscriptions = new API.Subscriptions(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -249,6 +251,7 @@ Flowglad.Variants = Variants;
 Flowglad.Discounts = Discounts;
 Flowglad.CustomerProfiles = CustomerProfiles;
 Flowglad.Payments = Payments;
+Flowglad.PaymentMethods = PaymentMethods;
 Flowglad.Subscriptions = Subscriptions;
 export declare namespace Flowglad {
   export type RequestOptions = Core.RequestOptions;
@@ -326,6 +329,8 @@ export declare namespace Flowglad {
     type PaymentListResponse as PaymentListResponse,
     type PaymentListParams as PaymentListParams,
   };
+
+  export { PaymentMethods as PaymentMethods };
 
   export {
     Subscriptions as Subscriptions,

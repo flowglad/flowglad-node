@@ -33,6 +33,7 @@ export {
   type InvoiceLineItemListResponse,
   type InvoiceLineItemListParams,
 } from './invoice-line-items';
+export { PaymentMethods } from './payment-methods';
 export {
   Payments,
   type PaymentRetrieveResponse,
