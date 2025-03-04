@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2025-03-04)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/flowglad/flowglad-node/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** add payment methods to openapi spec ([#56](https://github.com/flowglad/flowglad-node/issues/56)) ([9e61941](https://github.com/flowglad/flowglad-node/commit/9e61941a218efa0c2aa485e0f5b288af9af5fec6))
+
 ## 0.2.0 (2025-03-04)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/flowglad/flowglad-node/compare/v0.1.1...v0.2.0)
