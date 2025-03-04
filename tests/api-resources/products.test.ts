@@ -15,9 +15,9 @@ describe('resource products', () => {
       product: {
         active: true,
         description: 'description',
+        displayFeatures: [{ details: 'details', enabled: true, label: 'label' }],
         imageURL: 'imageURL',
         name: 'name',
-        type: 'service',
       },
       variant: {
         active: true,
@@ -47,9 +47,9 @@ describe('resource products', () => {
       product: {
         active: true,
         description: 'description',
+        displayFeatures: [{ details: 'details', enabled: true, label: 'label' }],
         imageURL: 'imageURL',
         name: 'name',
-        type: 'service',
       },
       variant: {
         active: true,
@@ -108,12 +108,12 @@ describe('resource products', () => {
         id: 'id',
         active: true,
         description: 'description',
+        displayFeatures: [{ details: 'details', enabled: true, label: 'label' }],
         imageURL: 'imageURL',
         livemode: true,
         name: 'name',
         OrganizationId: 'OrganizationId',
         stripeProductId: 'stripeProductId',
-        type: 'service',
       },
       variant: {
         id: 'id',

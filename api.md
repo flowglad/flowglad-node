@@ -112,6 +112,8 @@ Methods:
 - <code title="get /api/v1/payments/{id}">client.payments.<a href="./src/resources/payments.ts">retrieve</a>(id) -> PaymentRetrieveResponse</code>
 - <code title="get /api/v1/payments">client.payments.<a href="./src/resources/payments.ts">list</a>({ ...params }) -> PaymentListResponse</code>
 
+# PaymentMethods
+
 # Subscriptions
 
 Types:

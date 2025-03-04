@@ -16,14 +16,14 @@ export class PurchaseSessions extends APIResource {
   }
 
   /**
-   * Get purchaseSession
+   * Get PurchaseSession
    */
   retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionRetrieveResponse> {
     return this._client.get(`/api/v1/purchase-sessions/${id}`, options);
   }
 
   /**
-   * List purchaseSessions
+   * List PurchaseSessions
    */
   list(
     query?: PurchaseSessionListParams,
