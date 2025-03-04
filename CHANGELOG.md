@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2025-03-04)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/flowglad/flowglad-node/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** fix payment method return type ([#59](https://github.com/flowglad/flowglad-node/issues/59)) ([1ba2778](https://github.com/flowglad/flowglad-node/commit/1ba2778717cce15d741bae18f14daf91234f4518))
+
 ## 0.3.0 (2025-03-04)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/flowglad/flowglad-node/compare/v0.2.0...v0.3.0)
