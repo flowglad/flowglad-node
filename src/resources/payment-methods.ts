@@ -32,54 +32,60 @@ export class PaymentMethods extends APIResource {
 }
 
 export interface PaymentMethodRetrieveResponse {
-  id: string;
-
-  billingDetails: PaymentMethodRetrieveResponse.BillingDetails;
-
-  createdAt: string;
-
-  CustomerProfileId: string;
-
-  livemode: boolean;
-
-  metadata: Record<string, unknown> | null;
-
-  paymentMethodData: Record<string, unknown>;
-
-  type: 'card' | 'us_bank_account' | 'sepa_debit';
-
-  updatedAt: string | null;
+  paymentMethod: PaymentMethodRetrieveResponse.PaymentMethod;
 }
 
 export namespace PaymentMethodRetrieveResponse {
-  export interface BillingDetails {
-    address: BillingDetails.Address;
+  export interface PaymentMethod {
+    id: string;
 
-    email: string | null;
+    billingDetails: PaymentMethod.BillingDetails;
 
-    name: string | null;
+    createdAt: string;
+
+    CustomerProfileId: string;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    paymentMethodData: Record<string, unknown>;
+
+    type: 'card' | 'us_bank_account' | 'sepa_debit';
+
+    updatedAt: string | null;
   }
 
-  export namespace BillingDetails {
-    export interface Address {
-      address: Address.Address | null;
+  export namespace PaymentMethod {
+    export interface BillingDetails {
+      address: BillingDetails.Address;
+
+      email: string | null;
 
       name: string | null;
     }
 
-    export namespace Address {
+    export namespace BillingDetails {
       export interface Address {
-        city: string | null;
+        address: Address.Address | null;
 
-        country: string | null;
+        name: string | null;
+      }
 
-        line1: string | null;
+      export namespace Address {
+        export interface Address {
+          city: string | null;
 
-        line2: string | null;
+          country: string | null;
 
-        postal_code: string | null;
+          line1: string | null;
 
-        state: string | null;
+          line2: string | null;
+
+          postal_code: string | null;
+
+          state: string | null;
+        }
       }
     }
   }
