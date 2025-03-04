@@ -63,6 +63,8 @@ export namespace ProductCreateResponse {
 
     description: string | null;
 
+    displayFeatures: Array<Product.DisplayFeature> | null;
+
     imageURL: string | null;
 
     livemode: boolean;
@@ -71,12 +73,20 @@ export namespace ProductCreateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital';
-
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+  }
+
+  export namespace Product {
+    export interface DisplayFeature {
+      details: string;
+
+      enabled: boolean;
+
+      label: string;
+    }
   }
 }
 
@@ -97,6 +107,8 @@ export namespace ProductRetrieveResponse {
 
     description: string | null;
 
+    displayFeatures: Array<Product.DisplayFeature> | null;
+
     imageURL: string | null;
 
     livemode: boolean;
@@ -105,12 +117,20 @@ export namespace ProductRetrieveResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital';
-
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+  }
+
+  export namespace Product {
+    export interface DisplayFeature {
+      details: string;
+
+      enabled: boolean;
+
+      label: string;
+    }
   }
 }
 
@@ -131,6 +151,8 @@ export namespace ProductUpdateResponse {
 
     description: string | null;
 
+    displayFeatures: Array<Product.DisplayFeature> | null;
+
     imageURL: string | null;
 
     livemode: boolean;
@@ -139,12 +161,20 @@ export namespace ProductUpdateResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital';
-
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+  }
+
+  export namespace Product {
+    export interface DisplayFeature {
+      details: string;
+
+      enabled: boolean;
+
+      label: string;
+    }
   }
 }
 
@@ -171,6 +201,8 @@ export namespace ProductListResponse {
 
     description: string | null;
 
+    displayFeatures: Array<Data.DisplayFeature> | null;
+
     imageURL: string | null;
 
     livemode: boolean;
@@ -179,12 +211,20 @@ export namespace ProductListResponse {
 
     OrganizationId: string;
 
-    type: 'service' | 'digital';
-
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+  }
+
+  export namespace Data {
+    export interface DisplayFeature {
+      details: string;
+
+      enabled: boolean;
+
+      label: string;
+    }
   }
 
   export interface SubscriptionVariant {
@@ -287,11 +327,21 @@ export namespace ProductCreateParams {
 
     description: string | null;
 
+    displayFeatures: Array<Product.DisplayFeature> | null;
+
     imageURL: string | null;
 
     name: string;
+  }
 
-    type: 'service' | 'digital';
+  export namespace Product {
+    export interface DisplayFeature {
+      details: string;
+
+      enabled: boolean;
+
+      label: string;
+    }
   }
 
   export interface SubscriptionVariant {
@@ -380,6 +430,8 @@ export namespace ProductUpdateParams {
 
     description?: string | null;
 
+    displayFeatures?: Array<Product.DisplayFeature> | null;
+
     imageURL?: string | null;
 
     livemode?: boolean;
@@ -389,8 +441,16 @@ export namespace ProductUpdateParams {
     OrganizationId?: string;
 
     stripeProductId?: string | null;
+  }
 
-    type?: 'service' | 'digital';
+  export namespace Product {
+    export interface DisplayFeature {
+      details: string;
+
+      enabled: boolean;
+
+      label: string;
+    }
   }
 
   export interface SubscriptionVariant {
