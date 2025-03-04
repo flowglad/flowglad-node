@@ -114,6 +114,16 @@ Methods:
 
 # PaymentMethods
 
+Types:
+
+- <code><a href="./src/resources/payment-methods.ts">PaymentMethodRetrieveResponse</a></code>
+- <code><a href="./src/resources/payment-methods.ts">PaymentMethodListResponse</a></code>
+
+Methods:
+
+- <code title="get /api/v1/payment-methods/{id}">client.paymentMethods.<a href="./src/resources/payment-methods.ts">retrieve</a>(id) -> PaymentMethodRetrieveResponse</code>
+- <code title="get /api/v1/payment-methods">client.paymentMethods.<a href="./src/resources/payment-methods.ts">list</a>({ ...params }) -> PaymentMethodListResponse</code>
+
 # Subscriptions
 
 Types:
