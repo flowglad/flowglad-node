@@ -140,69 +140,63 @@ export namespace CustomerProfileCreateResponse {
 }
 
 export interface CustomerProfileRetrieveResponse {
-  customerProfile: CustomerProfileRetrieveResponse.CustomerProfile;
+  id: string;
+
+  archived: boolean;
+
+  billingAddress: CustomerProfileRetrieveResponse.BillingAddress | null;
+
+  createdAt: string;
+
+  CustomerId: string;
+
+  domain: string | null;
+
+  email: string;
+
+  externalId: string;
+
+  iconURL: string | null;
+
+  invoiceNumberBase: string | null;
+
+  livemode: boolean;
+
+  logoURL: string | null;
+
+  name: string | null;
+
+  OrganizationId: string;
+
+  updatedAt: string | null;
 }
 
 export namespace CustomerProfileRetrieveResponse {
-  export interface CustomerProfile {
-    id: string;
+  export interface BillingAddress {
+    address: BillingAddress.Address;
 
-    archived: boolean;
+    name: string;
 
-    billingAddress: CustomerProfile.BillingAddress | null;
+    firstName?: string;
 
-    createdAt: string;
+    lastName?: string;
 
-    CustomerId: string;
-
-    domain: string | null;
-
-    email: string;
-
-    externalId: string;
-
-    iconURL: string | null;
-
-    invoiceNumberBase: string | null;
-
-    livemode: boolean;
-
-    logoURL: string | null;
-
-    name: string | null;
-
-    OrganizationId: string;
-
-    updatedAt: string | null;
+    phone?: string;
   }
 
-  export namespace CustomerProfile {
-    export interface BillingAddress {
-      address: BillingAddress.Address;
+  export namespace BillingAddress {
+    export interface Address {
+      city: string;
 
-      name: string;
+      country: string;
 
-      firstName?: string;
+      line1: string;
 
-      lastName?: string;
+      line2: string | null;
 
-      phone?: string;
-    }
+      postal_code: string;
 
-    export namespace BillingAddress {
-      export interface Address {
-        city: string;
-
-        country: string;
-
-        line1: string;
-
-        line2: string | null;
-
-        postal_code: string;
-
-        state: string;
-      }
+      state: string;
     }
   }
 }
