@@ -38,7 +38,12 @@ import {
   InvoiceLineItemRetrieveResponse,
   InvoiceLineItems,
 } from './resources/invoice-line-items';
-import { PaymentMethods } from './resources/payment-methods';
+import {
+  PaymentMethodListParams,
+  PaymentMethodListResponse,
+  PaymentMethodRetrieveResponse,
+  PaymentMethods,
+} from './resources/payment-methods';
 import {
   PaymentListParams,
   PaymentListResponse,
@@ -330,7 +335,12 @@ export declare namespace Flowglad {
     type PaymentListParams as PaymentListParams,
   };
 
-  export { PaymentMethods as PaymentMethods };
+  export {
+    PaymentMethods as PaymentMethods,
+    type PaymentMethodRetrieveResponse as PaymentMethodRetrieveResponse,
+    type PaymentMethodListResponse as PaymentMethodListResponse,
+    type PaymentMethodListParams as PaymentMethodListParams,
+  };
 
   export {
     Subscriptions as Subscriptions,
