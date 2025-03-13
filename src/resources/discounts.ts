@@ -78,7 +78,7 @@ export namespace DiscountCreateResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -112,7 +112,7 @@ export namespace DiscountCreateResponse {
      */
     numberOfPayments: number;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -143,7 +143,7 @@ export namespace DiscountCreateResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -183,7 +183,7 @@ export namespace DiscountRetrieveResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -217,7 +217,7 @@ export namespace DiscountRetrieveResponse {
      */
     numberOfPayments: number;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -248,7 +248,7 @@ export namespace DiscountRetrieveResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -288,7 +288,7 @@ export namespace DiscountUpdateResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -322,7 +322,7 @@ export namespace DiscountUpdateResponse {
      */
     numberOfPayments: number;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -353,7 +353,7 @@ export namespace DiscountUpdateResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -369,6 +369,8 @@ export interface DiscountListResponse {
   >;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -400,7 +402,7 @@ export namespace DiscountListResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -434,7 +436,7 @@ export namespace DiscountListResponse {
      */
     numberOfPayments: number;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 
@@ -465,7 +467,7 @@ export namespace DiscountListResponse {
 
     numberOfPayments: unknown;
 
-    OrganizationId: string;
+    organizationId: string;
 
     stripeCouponId: string | null;
 

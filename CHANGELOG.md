@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 (2025-03-13)
+
+Full Changelog: [v0.4.1...v0.5.0](https://github.com/flowglad/flowglad-node/compare/v0.4.1...v0.5.0)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#65](https://github.com/flowglad/flowglad-node/issues/65)) ([028f384](https://github.com/flowglad/flowglad-node/commit/028f384d60118ee13bd5e3ae339608d12f7d2280))
+* **api:** all camel case everything ([#68](https://github.com/flowglad/flowglad-node/issues/68)) ([489ed56](https://github.com/flowglad/flowglad-node/commit/489ed56d680f911ee4359d5f9b864beb8170bf40))
+* **client:** accept RFC6838 JSON content types ([#67](https://github.com/flowglad/flowglad-node/issues/67)) ([e5edaf1](https://github.com/flowglad/flowglad-node/commit/e5edaf1863b10afbadcd1faf7194b9b787b81514))
+
 ## 0.4.1 (2025-03-04)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/flowglad/flowglad-node/compare/v0.4.0...v0.4.1)

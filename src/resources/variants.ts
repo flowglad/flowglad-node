@@ -202,7 +202,7 @@ export namespace VariantCreateResponse {
 
     priceType: 'subscription';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -373,7 +373,7 @@ export namespace VariantCreateResponse {
 
     priceType: 'single_payment';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -567,7 +567,7 @@ export namespace VariantUpdateResponse {
 
     priceType: 'subscription';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -738,7 +738,7 @@ export namespace VariantUpdateResponse {
 
     priceType: 'single_payment';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -773,6 +773,8 @@ export interface VariantListResponse {
   data: Array<VariantListResponse.SubscriptionVariant | VariantListResponse.SinglePaymentVariant>;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -938,7 +940,7 @@ export namespace VariantListResponse {
 
     priceType: 'subscription';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -1109,7 +1111,7 @@ export namespace VariantListResponse {
 
     priceType: 'single_payment';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -1299,7 +1301,7 @@ export namespace VariantCreateParams {
 
     priceType: 'subscription';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -1466,7 +1468,7 @@ export namespace VariantCreateParams {
 
     priceType: 'single_payment';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -1658,7 +1660,7 @@ export namespace VariantUpdateParams {
 
     name?: string | null;
 
-    ProductId?: string;
+    productId?: string;
 
     /**
      * safeZodPositiveInteger
@@ -1837,7 +1839,7 @@ export namespace VariantUpdateParams {
 
     name?: string | null;
 
-    ProductId?: string;
+    productId?: string;
 
     /**
      * safeZodNullOrUndefined
