@@ -363,9 +363,9 @@ export interface CustomerProfileRetrieveBillingResponse {
   customerProfile: CustomerProfileRetrieveBillingResponse.CustomerProfile;
 
   invoices: Array<
-    | CustomerProfileRetrieveBillingResponse.UnionMember0
-    | CustomerProfileRetrieveBillingResponse.UnionMember1
-    | CustomerProfileRetrieveBillingResponse.UnionMember2
+    | CustomerProfileRetrieveBillingResponse.PurchaseInvoice
+    | CustomerProfileRetrieveBillingResponse.SubscriptionInvoice
+    | CustomerProfileRetrieveBillingResponse.StandaloneInvoice
   >;
 
   paymentMethods: Array<CustomerProfileRetrieveBillingResponse.PaymentMethod>;
@@ -854,7 +854,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
     }
   }
 
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1314,7 +1314,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1774,7 +1774,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;

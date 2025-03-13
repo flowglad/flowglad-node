@@ -43,9 +43,9 @@ export class PurchaseSessions extends APIResource {
 
 export interface PurchaseSessionCreateResponse {
   purchaseSession:
-    | PurchaseSessionCreateResponse.UnionMember0
-    | PurchaseSessionCreateResponse.UnionMember1
-    | PurchaseSessionCreateResponse.UnionMember2;
+    | PurchaseSessionCreateResponse.PurchasePurchaseSession
+    | PurchaseSessionCreateResponse.InvoicePurchaseSession
+    | PurchaseSessionCreateResponse.ProductPurchaseSession;
 
   /**
    * The URL to redirect to complete the purchase
@@ -54,10 +54,10 @@ export interface PurchaseSessionCreateResponse {
 }
 
 export namespace PurchaseSessionCreateResponse {
-  export interface UnionMember0 {
+  export interface PurchasePurchaseSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchasePurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -98,7 +98,7 @@ export namespace PurchaseSessionCreateResponse {
     variantId: string;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchasePurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -128,10 +128,10 @@ export namespace PurchaseSessionCreateResponse {
     }
   }
 
-  export interface UnionMember1 {
+  export interface InvoicePurchaseSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoicePurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -172,7 +172,7 @@ export namespace PurchaseSessionCreateResponse {
     variantId: unknown;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoicePurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -202,10 +202,10 @@ export namespace PurchaseSessionCreateResponse {
     }
   }
 
-  export interface UnionMember2 {
+  export interface ProductPurchaseSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductPurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -246,7 +246,7 @@ export namespace PurchaseSessionCreateResponse {
     variantId: string;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductPurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -279,9 +279,9 @@ export namespace PurchaseSessionCreateResponse {
 
 export interface PurchaseSessionRetrieveResponse {
   purchaseSession:
-    | PurchaseSessionRetrieveResponse.UnionMember0
-    | PurchaseSessionRetrieveResponse.UnionMember1
-    | PurchaseSessionRetrieveResponse.UnionMember2;
+    | PurchaseSessionRetrieveResponse.PurchasePurchaseSession
+    | PurchaseSessionRetrieveResponse.InvoicePurchaseSession
+    | PurchaseSessionRetrieveResponse.ProductPurchaseSession;
 
   /**
    * The URL to redirect to complete the purchase
@@ -290,10 +290,10 @@ export interface PurchaseSessionRetrieveResponse {
 }
 
 export namespace PurchaseSessionRetrieveResponse {
-  export interface UnionMember0 {
+  export interface PurchasePurchaseSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchasePurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -334,7 +334,7 @@ export namespace PurchaseSessionRetrieveResponse {
     variantId: string;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchasePurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -364,10 +364,10 @@ export namespace PurchaseSessionRetrieveResponse {
     }
   }
 
-  export interface UnionMember1 {
+  export interface InvoicePurchaseSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoicePurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -408,7 +408,7 @@ export namespace PurchaseSessionRetrieveResponse {
     variantId: unknown;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoicePurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -438,10 +438,10 @@ export namespace PurchaseSessionRetrieveResponse {
     }
   }
 
-  export interface UnionMember2 {
+  export interface ProductPurchaseSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductPurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -482,7 +482,7 @@ export namespace PurchaseSessionRetrieveResponse {
     variantId: string;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductPurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -515,9 +515,9 @@ export namespace PurchaseSessionRetrieveResponse {
 
 export interface PurchaseSessionListResponse {
   data: Array<
-    | PurchaseSessionListResponse.UnionMember0
-    | PurchaseSessionListResponse.UnionMember1
-    | PurchaseSessionListResponse.UnionMember2
+    | PurchaseSessionListResponse.PurchasePurchaseSession
+    | PurchaseSessionListResponse.InvoicePurchaseSession
+    | PurchaseSessionListResponse.ProductPurchaseSession
   >;
 
   hasMore: boolean;
@@ -530,10 +530,10 @@ export interface PurchaseSessionListResponse {
 }
 
 export namespace PurchaseSessionListResponse {
-  export interface UnionMember0 {
+  export interface PurchasePurchaseSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchasePurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -574,7 +574,7 @@ export namespace PurchaseSessionListResponse {
     variantId: string;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchasePurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -604,10 +604,10 @@ export namespace PurchaseSessionListResponse {
     }
   }
 
-  export interface UnionMember1 {
+  export interface InvoicePurchaseSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoicePurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -648,7 +648,7 @@ export namespace PurchaseSessionListResponse {
     variantId: unknown;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoicePurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -678,10 +678,10 @@ export namespace PurchaseSessionListResponse {
     }
   }
 
-  export interface UnionMember2 {
+  export interface ProductPurchaseSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductPurchaseSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -722,7 +722,7 @@ export namespace PurchaseSessionListResponse {
     variantId: string;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductPurchaseSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 

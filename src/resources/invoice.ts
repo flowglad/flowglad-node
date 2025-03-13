@@ -29,10 +29,9 @@ export class Invoice extends APIResource {
 }
 
 export type InvoiceRetrieveResponse =
-  
   | InvoiceRetrieveResponse.PurchaseInvoice
   | InvoiceRetrieveResponse.SubscriptionInvoice
-  | InvoiceRetrieveResponse.UnionMember2;
+  | InvoiceRetrieveResponse.StandaloneInvoice;
 
 export namespace InvoiceRetrieveResponse {
   export interface PurchaseInvoice {
@@ -955,7 +954,7 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1418,7 +1417,9 @@ export namespace InvoiceRetrieveResponse {
 
 export interface InvoiceListResponse {
   data: Array<
-    InvoiceListResponse.PurchaseInvoice | InvoiceListResponse.SubscriptionInvoice | InvoiceListResponse.UnionMember2
+    | InvoiceListResponse.PurchaseInvoice
+    | InvoiceListResponse.SubscriptionInvoice
+    | InvoiceListResponse.StandaloneInvoice
   >;
 
   hasMore: boolean;
@@ -2351,7 +2352,7 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
