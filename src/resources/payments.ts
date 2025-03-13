@@ -43,7 +43,7 @@ export namespace PaymentRetrieveResponse {
 
     applicationFee: number | null;
 
-    BillingPeriodId: string | null;
+    billingPeriodId: string | null;
 
     /**
      * safeZodDate
@@ -188,17 +188,21 @@ export namespace PaymentRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     description: string | null;
 
-    InvoiceId: string;
+    invoiceId: string;
 
     paymentMethod: 'card' | 'us_bank_account' | 'sepa_debit';
 
-    PaymentMethodId: string | null;
+    paymentMethodId: string | null;
 
-    PurchaseId: string | null;
+    purchaseId: string | null;
+
+    receiptNumber: string | null;
+
+    receiptURL: string | null;
 
     refunded: boolean;
 
@@ -499,6 +503,8 @@ export interface PaymentListResponse {
 
   hasMore: boolean;
 
+  total: number;
+
   currentCursor?: string;
 
   nextCursor?: string;
@@ -515,7 +521,7 @@ export namespace PaymentListResponse {
 
     applicationFee: number | null;
 
-    BillingPeriodId: string | null;
+    billingPeriodId: string | null;
 
     /**
      * safeZodDate
@@ -660,17 +666,21 @@ export namespace PaymentListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     description: string | null;
 
-    InvoiceId: string;
+    invoiceId: string;
 
     paymentMethod: 'card' | 'us_bank_account' | 'sepa_debit';
 
-    PaymentMethodId: string | null;
+    paymentMethodId: string | null;
 
-    PurchaseId: string | null;
+    purchaseId: string | null;
+
+    receiptNumber: string | null;
+
+    receiptURL: string | null;
 
     refunded: boolean;
 

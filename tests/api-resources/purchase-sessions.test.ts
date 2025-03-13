@@ -15,7 +15,7 @@ describe('resource purchaseSessions', () => {
       cancelUrl: 'cancelUrl',
       customerProfileExternalId: 'customerProfileExternalId',
       successUrl: 'successUrl',
-      VariantId: 'VariantId',
+      variantId: 'variantId',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,7 +32,7 @@ describe('resource purchaseSessions', () => {
       cancelUrl: 'cancelUrl',
       customerProfileExternalId: 'customerProfileExternalId',
       successUrl: 'successUrl',
-      VariantId: 'VariantId',
+      variantId: 'variantId',
     });
   });
 

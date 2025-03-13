@@ -42,7 +42,10 @@ export class PurchaseSessions extends APIResource {
 }
 
 export interface PurchaseSessionCreateResponse {
-  purchaseSession: PurchaseSessionCreateResponse.PurchaseSession;
+  purchaseSession:
+    | PurchaseSessionCreateResponse.UnionMember0
+    | PurchaseSessionCreateResponse.UnionMember1
+    | PurchaseSessionCreateResponse.UnionMember2;
 
   /**
    * The URL to redirect to complete the purchase
@@ -51,10 +54,10 @@ export interface PurchaseSessionCreateResponse {
 }
 
 export namespace PurchaseSessionCreateResponse {
-  export interface PurchaseSession {
+  export interface UnionMember0 {
     id: string;
 
-    billingAddress: PurchaseSession.BillingAddress | null;
+    billingAddress: UnionMember0.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -67,31 +70,183 @@ export namespace PurchaseSessionCreateResponse {
 
     customerName: string | null;
 
-    CustomerProfileId: string | null;
+    customerProfileId: string | null;
 
-    DiscountId: string | null;
+    discountId: string | null;
+
+    invoiceId: string | null;
 
     livemode: boolean;
 
-    OrganizationId: string;
+    organizationId: string;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    PurchaseId: string | null;
+    purchaseId: string;
 
     quantity: number;
 
     successUrl: string | null;
+
+    type: 'purchase';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 
-  export namespace PurchaseSession {
+  export namespace UnionMember0 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    billingAddress: UnionMember1.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    customerProfileId: string | null;
+
+    discountId: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    purchaseId: unknown;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    type: 'invoice';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    variantId: unknown;
+  }
+
+  export namespace UnionMember1 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+
+  export interface UnionMember2 {
+    id: string;
+
+    billingAddress: UnionMember2.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    customerProfileId: string | null;
+
+    discountId: string | null;
+
+    invoiceId: unknown;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    purchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    type: 'product';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    variantId: string;
+  }
+
+  export namespace UnionMember2 {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -123,7 +278,10 @@ export namespace PurchaseSessionCreateResponse {
 }
 
 export interface PurchaseSessionRetrieveResponse {
-  purchaseSession: PurchaseSessionRetrieveResponse.PurchaseSession;
+  purchaseSession:
+    | PurchaseSessionRetrieveResponse.UnionMember0
+    | PurchaseSessionRetrieveResponse.UnionMember1
+    | PurchaseSessionRetrieveResponse.UnionMember2;
 
   /**
    * The URL to redirect to complete the purchase
@@ -132,10 +290,10 @@ export interface PurchaseSessionRetrieveResponse {
 }
 
 export namespace PurchaseSessionRetrieveResponse {
-  export interface PurchaseSession {
+  export interface UnionMember0 {
     id: string;
 
-    billingAddress: PurchaseSession.BillingAddress | null;
+    billingAddress: UnionMember0.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -148,31 +306,183 @@ export namespace PurchaseSessionRetrieveResponse {
 
     customerName: string | null;
 
-    CustomerProfileId: string | null;
+    customerProfileId: string | null;
 
-    DiscountId: string | null;
+    discountId: string | null;
+
+    invoiceId: string | null;
 
     livemode: boolean;
 
-    OrganizationId: string;
+    organizationId: string;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    PurchaseId: string | null;
+    purchaseId: string;
 
     quantity: number;
 
     successUrl: string | null;
+
+    type: 'purchase';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 
-  export namespace PurchaseSession {
+  export namespace UnionMember0 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    billingAddress: UnionMember1.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    customerProfileId: string | null;
+
+    discountId: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    purchaseId: unknown;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    type: 'invoice';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    variantId: unknown;
+  }
+
+  export namespace UnionMember1 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+
+  export interface UnionMember2 {
+    id: string;
+
+    billingAddress: UnionMember2.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    customerProfileId: string | null;
+
+    discountId: string | null;
+
+    invoiceId: unknown;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    purchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    type: 'product';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    variantId: string;
+  }
+
+  export namespace UnionMember2 {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -204,9 +514,15 @@ export namespace PurchaseSessionRetrieveResponse {
 }
 
 export interface PurchaseSessionListResponse {
-  data: Array<PurchaseSessionListResponse.Data>;
+  data: Array<
+    | PurchaseSessionListResponse.UnionMember0
+    | PurchaseSessionListResponse.UnionMember1
+    | PurchaseSessionListResponse.UnionMember2
+  >;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -214,10 +530,10 @@ export interface PurchaseSessionListResponse {
 }
 
 export namespace PurchaseSessionListResponse {
-  export interface Data {
+  export interface UnionMember0 {
     id: string;
 
-    billingAddress: Data.BillingAddress | null;
+    billingAddress: UnionMember0.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -230,31 +546,183 @@ export namespace PurchaseSessionListResponse {
 
     customerName: string | null;
 
-    CustomerProfileId: string | null;
+    customerProfileId: string | null;
 
-    DiscountId: string | null;
+    discountId: string | null;
+
+    invoiceId: string | null;
 
     livemode: boolean;
 
-    OrganizationId: string;
+    organizationId: string;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    PurchaseId: string | null;
+    purchaseId: string;
 
     quantity: number;
 
     successUrl: string | null;
+
+    type: 'purchase';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 
-  export namespace Data {
+  export namespace UnionMember0 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    billingAddress: UnionMember1.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    customerProfileId: string | null;
+
+    discountId: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    purchaseId: unknown;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    type: 'invoice';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    variantId: unknown;
+  }
+
+  export namespace UnionMember1 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      name: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string;
+
+        country: string;
+
+        line1: string;
+
+        line2: string | null;
+
+        postal_code: string;
+
+        state: string;
+      }
+    }
+  }
+
+  export interface UnionMember2 {
+    id: string;
+
+    billingAddress: UnionMember2.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerName: string | null;
+
+    customerProfileId: string | null;
+
+    discountId: string | null;
+
+    invoiceId: unknown;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+
+    purchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    type: 'product';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    variantId: string;
+  }
+
+  export namespace UnionMember2 {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -305,7 +773,7 @@ export interface PurchaseSessionCreateParams {
   /**
    * The ID of the variant the customer shall purchase
    */
-  VariantId: string;
+  variantId: string;
 }
 
 export interface PurchaseSessionListParams {

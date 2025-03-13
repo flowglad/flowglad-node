@@ -30,7 +30,8 @@ export class Invoice extends APIResource {
 
 export type InvoiceRetrieveResponse =
   | InvoiceRetrieveResponse.UnionMember0
-  | InvoiceRetrieveResponse.UnionMember1;
+  | InvoiceRetrieveResponse.UnionMember1
+  | InvoiceRetrieveResponse.UnionMember2;
 
 export namespace InvoiceRetrieveResponse {
   export interface UnionMember0 {
@@ -48,7 +49,7 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodEndDate: string | null;
 
-    BillingPeriodId: unknown;
+    billingPeriodId: unknown;
 
     billingPeriodStartDate: string | null;
 
@@ -190,7 +191,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     dueDate: string | null;
 
@@ -202,11 +203,15 @@ export namespace InvoiceRetrieveResponse {
 
     memo: string | null;
 
-    OrganizationId: string;
+    organizationId: string;
+
+    ownerMembershipId: string | null;
 
     pdfURL: string | null;
 
-    PurchaseId: string;
+    purchaseId: string;
+
+    receiptPdfURL: string | null;
 
     status:
       | 'draft'
@@ -504,7 +509,7 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodEndDate: string | null;
 
-    BillingPeriodId: string;
+    billingPeriodId: string;
 
     billingPeriodStartDate: string | null;
 
@@ -646,7 +651,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     dueDate: string | null;
 
@@ -658,11 +663,15 @@ export namespace InvoiceRetrieveResponse {
 
     memo: string | null;
 
-    OrganizationId: string;
+    organizationId: string;
+
+    ownerMembershipId: string | null;
 
     pdfURL: string | null;
 
-    PurchaseId: unknown;
+    purchaseId: unknown;
+
+    receiptPdfURL: string | null;
 
     status:
       | 'draft'
@@ -944,12 +953,476 @@ export namespace InvoiceRetrieveResponse {
 
     updatedAt: string | null;
   }
+
+  export interface UnionMember2 {
+    id: string;
+
+    applicationFee: number | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAnchorDate: string | null;
+
+    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
+
+    billingIntervalCount: number | null;
+
+    billingPeriodEndDate: string | null;
+
+    billingPeriodId: unknown;
+
+    billingPeriodStartDate: string | null;
+
+    createdAt: string;
+
+    currency:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    customerProfileId: string;
+
+    dueDate: string | null;
+
+    invoiceDate: string;
+
+    invoiceNumber: string;
+
+    livemode: boolean;
+
+    memo: string | null;
+
+    organizationId: string;
+
+    ownerMembershipId: string | null;
+
+    pdfURL: string | null;
+
+    purchaseId: unknown;
+
+    receiptPdfURL: string | null;
+
+    status:
+      | 'draft'
+      | 'open'
+      | 'paid'
+      | 'uncollectible'
+      | 'void'
+      | 'refunded'
+      | 'partially_refunded'
+      | 'awaiting_payment_confirmation';
+
+    subtotal: number | null;
+
+    taxAmount: number | null;
+
+    taxCountry:
+      | 'AF'
+      | 'AL'
+      | 'DZ'
+      | 'AS'
+      | 'AD'
+      | 'AO'
+      | 'AI'
+      | 'AQ'
+      | 'AG'
+      | 'AR'
+      | 'AM'
+      | 'AW'
+      | 'AU'
+      | 'AT'
+      | 'AZ'
+      | 'BS'
+      | 'BH'
+      | 'BD'
+      | 'BB'
+      | 'BY'
+      | 'BE'
+      | 'BZ'
+      | 'BJ'
+      | 'BM'
+      | 'BT'
+      | 'BO'
+      | 'BA'
+      | 'BW'
+      | 'BV'
+      | 'BR'
+      | 'IO'
+      | 'BN'
+      | 'BG'
+      | 'BF'
+      | 'BI'
+      | 'KH'
+      | 'CM'
+      | 'CA'
+      | 'CV'
+      | 'KY'
+      | 'CF'
+      | 'TD'
+      | 'CL'
+      | 'CN'
+      | 'CX'
+      | 'CC'
+      | 'CO'
+      | 'KM'
+      | 'CG'
+      | 'CD'
+      | 'CK'
+      | 'CR'
+      | 'CI'
+      | 'HR'
+      | 'CU'
+      | 'CY'
+      | 'CZ'
+      | 'DK'
+      | 'DJ'
+      | 'DM'
+      | 'DO'
+      | 'EC'
+      | 'EG'
+      | 'SV'
+      | 'GQ'
+      | 'ER'
+      | 'EE'
+      | 'ET'
+      | 'FK'
+      | 'FO'
+      | 'FJ'
+      | 'FI'
+      | 'FR'
+      | 'GF'
+      | 'PF'
+      | 'TF'
+      | 'GA'
+      | 'GM'
+      | 'GE'
+      | 'DE'
+      | 'GH'
+      | 'GI'
+      | 'GR'
+      | 'GL'
+      | 'GD'
+      | 'GP'
+      | 'GU'
+      | 'GT'
+      | 'GN'
+      | 'GW'
+      | 'GY'
+      | 'HT'
+      | 'HM'
+      | 'VA'
+      | 'HN'
+      | 'HK'
+      | 'HU'
+      | 'IS'
+      | 'IN'
+      | 'ID'
+      | 'IR'
+      | 'IQ'
+      | 'IE'
+      | 'IL'
+      | 'IT'
+      | 'JM'
+      | 'JP'
+      | 'JO'
+      | 'KZ'
+      | 'KE'
+      | 'KI'
+      | 'KP'
+      | 'KR'
+      | 'KW'
+      | 'KG'
+      | 'LA'
+      | 'LV'
+      | 'LB'
+      | 'LS'
+      | 'LR'
+      | 'LY'
+      | 'LI'
+      | 'LT'
+      | 'LU'
+      | 'ME'
+      | 'MO'
+      | 'MK'
+      | 'MG'
+      | 'MW'
+      | 'MY'
+      | 'MV'
+      | 'ML'
+      | 'MT'
+      | 'MH'
+      | 'MQ'
+      | 'MR'
+      | 'MU'
+      | 'YT'
+      | 'MX'
+      | 'FM'
+      | 'MD'
+      | 'MC'
+      | 'MN'
+      | 'MS'
+      | 'MA'
+      | 'MZ'
+      | 'MM'
+      | 'NA'
+      | 'NR'
+      | 'NP'
+      | 'NL'
+      | 'NC'
+      | 'NZ'
+      | 'NI'
+      | 'NE'
+      | 'NG'
+      | 'NU'
+      | 'NF'
+      | 'MP'
+      | 'NO'
+      | 'OM'
+      | 'PK'
+      | 'PW'
+      | 'PS'
+      | 'PA'
+      | 'PG'
+      | 'PY'
+      | 'PE'
+      | 'PH'
+      | 'PN'
+      | 'PL'
+      | 'PT'
+      | 'PR'
+      | 'QA'
+      | 'RE'
+      | 'RO'
+      | 'RU'
+      | 'RW'
+      | 'SH'
+      | 'KN'
+      | 'LC'
+      | 'PM'
+      | 'VC'
+      | 'WS'
+      | 'SM'
+      | 'ST'
+      | 'SA'
+      | 'SN'
+      | 'RS'
+      | 'SC'
+      | 'SL'
+      | 'SG'
+      | 'SK'
+      | 'SI'
+      | 'SB'
+      | 'SO'
+      | 'ZA'
+      | 'GS'
+      | 'ES'
+      | 'LK'
+      | 'SD'
+      | 'SR'
+      | 'SJ'
+      | 'SZ'
+      | 'SE'
+      | 'CH'
+      | 'SY'
+      | 'TW'
+      | 'TJ'
+      | 'TZ'
+      | 'TH'
+      | 'TL'
+      | 'TG'
+      | 'TK'
+      | 'TO'
+      | 'TT'
+      | 'TN'
+      | 'TR'
+      | 'TM'
+      | 'TC'
+      | 'TV'
+      | 'UG'
+      | 'UA'
+      | 'AE'
+      | 'GB'
+      | 'US'
+      | 'UM'
+      | 'UY'
+      | 'UZ'
+      | 'VU'
+      | 'VE'
+      | 'VN'
+      | 'VG'
+      | 'VI'
+      | 'WF'
+      | 'EH'
+      | 'YE'
+      | 'ZM'
+      | 'ZW'
+      | null;
+
+    taxRatePercentage: string | null;
+
+    taxState: string | null;
+
+    taxType:
+      | 'amusement_tax'
+      | 'communications_tax'
+      | 'gst'
+      | 'hst'
+      | 'igst'
+      | 'jct'
+      | 'lease_tax'
+      | 'pst'
+      | 'qst'
+      | 'rst'
+      | 'sales_tax'
+      | 'vat'
+      | 'none'
+      | null;
+
+    type: 'standalone';
+
+    updatedAt: string | null;
+  }
 }
 
 export interface InvoiceListResponse {
-  data: Array<InvoiceListResponse.UnionMember0 | InvoiceListResponse.UnionMember1>;
+  data: Array<
+    InvoiceListResponse.UnionMember0 | InvoiceListResponse.UnionMember1 | InvoiceListResponse.UnionMember2
+  >;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -972,7 +1445,7 @@ export namespace InvoiceListResponse {
 
     billingPeriodEndDate: string | null;
 
-    BillingPeriodId: unknown;
+    billingPeriodId: unknown;
 
     billingPeriodStartDate: string | null;
 
@@ -1114,7 +1587,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     dueDate: string | null;
 
@@ -1126,11 +1599,15 @@ export namespace InvoiceListResponse {
 
     memo: string | null;
 
-    OrganizationId: string;
+    organizationId: string;
+
+    ownerMembershipId: string | null;
 
     pdfURL: string | null;
 
-    PurchaseId: string;
+    purchaseId: string;
+
+    receiptPdfURL: string | null;
 
     status:
       | 'draft'
@@ -1428,7 +1905,7 @@ export namespace InvoiceListResponse {
 
     billingPeriodEndDate: string | null;
 
-    BillingPeriodId: string;
+    billingPeriodId: string;
 
     billingPeriodStartDate: string | null;
 
@@ -1570,7 +2047,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     dueDate: string | null;
 
@@ -1582,11 +2059,15 @@ export namespace InvoiceListResponse {
 
     memo: string | null;
 
-    OrganizationId: string;
+    organizationId: string;
+
+    ownerMembershipId: string | null;
 
     pdfURL: string | null;
 
-    PurchaseId: unknown;
+    purchaseId: unknown;
+
+    receiptPdfURL: string | null;
 
     status:
       | 'draft'
@@ -1865,6 +2346,466 @@ export namespace InvoiceListResponse {
       | null;
 
     type: 'subscription';
+
+    updatedAt: string | null;
+  }
+
+  export interface UnionMember2 {
+    id: string;
+
+    applicationFee: number | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAnchorDate: string | null;
+
+    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
+
+    billingIntervalCount: number | null;
+
+    billingPeriodEndDate: string | null;
+
+    billingPeriodId: unknown;
+
+    billingPeriodStartDate: string | null;
+
+    createdAt: string;
+
+    currency:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    customerProfileId: string;
+
+    dueDate: string | null;
+
+    invoiceDate: string;
+
+    invoiceNumber: string;
+
+    livemode: boolean;
+
+    memo: string | null;
+
+    organizationId: string;
+
+    ownerMembershipId: string | null;
+
+    pdfURL: string | null;
+
+    purchaseId: unknown;
+
+    receiptPdfURL: string | null;
+
+    status:
+      | 'draft'
+      | 'open'
+      | 'paid'
+      | 'uncollectible'
+      | 'void'
+      | 'refunded'
+      | 'partially_refunded'
+      | 'awaiting_payment_confirmation';
+
+    subtotal: number | null;
+
+    taxAmount: number | null;
+
+    taxCountry:
+      | 'AF'
+      | 'AL'
+      | 'DZ'
+      | 'AS'
+      | 'AD'
+      | 'AO'
+      | 'AI'
+      | 'AQ'
+      | 'AG'
+      | 'AR'
+      | 'AM'
+      | 'AW'
+      | 'AU'
+      | 'AT'
+      | 'AZ'
+      | 'BS'
+      | 'BH'
+      | 'BD'
+      | 'BB'
+      | 'BY'
+      | 'BE'
+      | 'BZ'
+      | 'BJ'
+      | 'BM'
+      | 'BT'
+      | 'BO'
+      | 'BA'
+      | 'BW'
+      | 'BV'
+      | 'BR'
+      | 'IO'
+      | 'BN'
+      | 'BG'
+      | 'BF'
+      | 'BI'
+      | 'KH'
+      | 'CM'
+      | 'CA'
+      | 'CV'
+      | 'KY'
+      | 'CF'
+      | 'TD'
+      | 'CL'
+      | 'CN'
+      | 'CX'
+      | 'CC'
+      | 'CO'
+      | 'KM'
+      | 'CG'
+      | 'CD'
+      | 'CK'
+      | 'CR'
+      | 'CI'
+      | 'HR'
+      | 'CU'
+      | 'CY'
+      | 'CZ'
+      | 'DK'
+      | 'DJ'
+      | 'DM'
+      | 'DO'
+      | 'EC'
+      | 'EG'
+      | 'SV'
+      | 'GQ'
+      | 'ER'
+      | 'EE'
+      | 'ET'
+      | 'FK'
+      | 'FO'
+      | 'FJ'
+      | 'FI'
+      | 'FR'
+      | 'GF'
+      | 'PF'
+      | 'TF'
+      | 'GA'
+      | 'GM'
+      | 'GE'
+      | 'DE'
+      | 'GH'
+      | 'GI'
+      | 'GR'
+      | 'GL'
+      | 'GD'
+      | 'GP'
+      | 'GU'
+      | 'GT'
+      | 'GN'
+      | 'GW'
+      | 'GY'
+      | 'HT'
+      | 'HM'
+      | 'VA'
+      | 'HN'
+      | 'HK'
+      | 'HU'
+      | 'IS'
+      | 'IN'
+      | 'ID'
+      | 'IR'
+      | 'IQ'
+      | 'IE'
+      | 'IL'
+      | 'IT'
+      | 'JM'
+      | 'JP'
+      | 'JO'
+      | 'KZ'
+      | 'KE'
+      | 'KI'
+      | 'KP'
+      | 'KR'
+      | 'KW'
+      | 'KG'
+      | 'LA'
+      | 'LV'
+      | 'LB'
+      | 'LS'
+      | 'LR'
+      | 'LY'
+      | 'LI'
+      | 'LT'
+      | 'LU'
+      | 'ME'
+      | 'MO'
+      | 'MK'
+      | 'MG'
+      | 'MW'
+      | 'MY'
+      | 'MV'
+      | 'ML'
+      | 'MT'
+      | 'MH'
+      | 'MQ'
+      | 'MR'
+      | 'MU'
+      | 'YT'
+      | 'MX'
+      | 'FM'
+      | 'MD'
+      | 'MC'
+      | 'MN'
+      | 'MS'
+      | 'MA'
+      | 'MZ'
+      | 'MM'
+      | 'NA'
+      | 'NR'
+      | 'NP'
+      | 'NL'
+      | 'NC'
+      | 'NZ'
+      | 'NI'
+      | 'NE'
+      | 'NG'
+      | 'NU'
+      | 'NF'
+      | 'MP'
+      | 'NO'
+      | 'OM'
+      | 'PK'
+      | 'PW'
+      | 'PS'
+      | 'PA'
+      | 'PG'
+      | 'PY'
+      | 'PE'
+      | 'PH'
+      | 'PN'
+      | 'PL'
+      | 'PT'
+      | 'PR'
+      | 'QA'
+      | 'RE'
+      | 'RO'
+      | 'RU'
+      | 'RW'
+      | 'SH'
+      | 'KN'
+      | 'LC'
+      | 'PM'
+      | 'VC'
+      | 'WS'
+      | 'SM'
+      | 'ST'
+      | 'SA'
+      | 'SN'
+      | 'RS'
+      | 'SC'
+      | 'SL'
+      | 'SG'
+      | 'SK'
+      | 'SI'
+      | 'SB'
+      | 'SO'
+      | 'ZA'
+      | 'GS'
+      | 'ES'
+      | 'LK'
+      | 'SD'
+      | 'SR'
+      | 'SJ'
+      | 'SZ'
+      | 'SE'
+      | 'CH'
+      | 'SY'
+      | 'TW'
+      | 'TJ'
+      | 'TZ'
+      | 'TH'
+      | 'TL'
+      | 'TG'
+      | 'TK'
+      | 'TO'
+      | 'TT'
+      | 'TN'
+      | 'TR'
+      | 'TM'
+      | 'TC'
+      | 'TV'
+      | 'UG'
+      | 'UA'
+      | 'AE'
+      | 'GB'
+      | 'US'
+      | 'UM'
+      | 'UY'
+      | 'UZ'
+      | 'VU'
+      | 'VE'
+      | 'VN'
+      | 'VG'
+      | 'VI'
+      | 'WF'
+      | 'EH'
+      | 'YE'
+      | 'ZM'
+      | 'ZW'
+      | null;
+
+    taxRatePercentage: string | null;
+
+    taxState: string | null;
+
+    taxType:
+      | 'amusement_tax'
+      | 'communications_tax'
+      | 'gst'
+      | 'hst'
+      | 'igst'
+      | 'jct'
+      | 'lease_tax'
+      | 'pst'
+      | 'qst'
+      | 'rst'
+      | 'sales_tax'
+      | 'vat'
+      | 'none'
+      | null;
+
+    type: 'standalone';
 
     updatedAt: string | null;
   }
