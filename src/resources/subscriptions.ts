@@ -75,7 +75,7 @@ export namespace SubscriptionRetrieveResponse {
 
     currentBillingPeriodStart: string;
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -90,7 +90,7 @@ export namespace SubscriptionRetrieveResponse {
 
     metadata: Record<string, unknown> | null;
 
-    OrganizationId: string;
+    organizationId: string;
 
     status:
       | 'incomplete'
@@ -107,7 +107,7 @@ export namespace SubscriptionRetrieveResponse {
 
     updatedAt: string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 }
 
@@ -115,6 +115,8 @@ export interface SubscriptionListResponse {
   data: Array<SubscriptionListResponse.Data>;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -139,7 +141,7 @@ export namespace SubscriptionListResponse {
 
     currentBillingPeriodStart: string;
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -154,7 +156,7 @@ export namespace SubscriptionListResponse {
 
     metadata: Record<string, unknown> | null;
 
-    OrganizationId: string;
+    organizationId: string;
 
     status:
       | 'incomplete'
@@ -171,7 +173,7 @@ export namespace SubscriptionListResponse {
 
     updatedAt: string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 }
 
@@ -199,7 +201,7 @@ export namespace SubscriptionAdjustResponse {
 
     currentBillingPeriodStart: string;
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -214,7 +216,7 @@ export namespace SubscriptionAdjustResponse {
 
     metadata: Record<string, unknown> | null;
 
-    OrganizationId: string;
+    organizationId: string;
 
     status:
       | 'incomplete'
@@ -231,7 +233,7 @@ export namespace SubscriptionAdjustResponse {
 
     updatedAt: string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 
   export interface SubscriptionItem {
@@ -252,7 +254,7 @@ export namespace SubscriptionAdjustResponse {
      */
     quantity: number;
 
-    SubscriptionId: string;
+    subscriptionId: string;
 
     /**
      * safeZodPositiveInteger
@@ -261,7 +263,7 @@ export namespace SubscriptionAdjustResponse {
 
     updatedAt: string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 }
 
@@ -287,7 +289,7 @@ export namespace SubscriptionCancelResponse {
 
     currentBillingPeriodStart: string;
 
-    CustomerProfileId: string;
+    customerProfileId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -302,7 +304,7 @@ export namespace SubscriptionCancelResponse {
 
     metadata: Record<string, unknown> | null;
 
-    OrganizationId: string;
+    organizationId: string;
 
     status:
       | 'incomplete'
@@ -319,7 +321,7 @@ export namespace SubscriptionCancelResponse {
 
     updatedAt: string | null;
 
-    VariantId: string;
+    variantId: string;
   }
 }
 
@@ -361,14 +363,14 @@ export namespace SubscriptionAdjustParams {
        */
       quantity: number;
 
-      SubscriptionId: string;
+      subscriptionId: string;
 
       /**
        * safeZodPositiveInteger
        */
       unitPrice: number | 0;
 
-      VariantId: string;
+      variantId: string;
     }
 
     export interface SubscriptionItemUpdate {
@@ -389,7 +391,7 @@ export namespace SubscriptionAdjustParams {
        */
       quantity: number;
 
-      SubscriptionId: string;
+      subscriptionId: string;
 
       /**
        * safeZodPositiveInteger
@@ -398,7 +400,7 @@ export namespace SubscriptionAdjustParams {
 
       updatedAt: string | null;
 
-      VariantId: string;
+      variantId: string;
     }
   }
 
@@ -425,14 +427,14 @@ export namespace SubscriptionAdjustParams {
        */
       quantity: number;
 
-      SubscriptionId: string;
+      subscriptionId: string;
 
       /**
        * safeZodPositiveInteger
        */
       unitPrice: number | 0;
 
-      VariantId: string;
+      variantId: string;
     }
 
     export interface SubscriptionItemUpdate {
@@ -453,7 +455,7 @@ export namespace SubscriptionAdjustParams {
        */
       quantity: number;
 
-      SubscriptionId: string;
+      subscriptionId: string;
 
       /**
        * safeZodPositiveInteger
@@ -462,7 +464,7 @@ export namespace SubscriptionAdjustParams {
 
       updatedAt: string | null;
 
-      VariantId: string;
+      variantId: string;
     }
   }
 }

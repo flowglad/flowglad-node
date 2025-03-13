@@ -38,7 +38,7 @@ export interface InvoiceLineItemRetrieveResponse {
 
   description: string | null;
 
-  InvoiceId: string;
+  invoiceId: string;
 
   livemode: boolean;
 
@@ -51,13 +51,15 @@ export interface InvoiceLineItemRetrieveResponse {
 
   updatedAt: string | null;
 
-  VariantId: string | null;
+  variantId: string | null;
 }
 
 export interface InvoiceLineItemListResponse {
   data: Array<InvoiceLineItemListResponse.Data>;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -72,7 +74,7 @@ export namespace InvoiceLineItemListResponse {
 
     description: string | null;
 
-    InvoiceId: string;
+    invoiceId: string;
 
     livemode: boolean;
 
@@ -85,7 +87,7 @@ export namespace InvoiceLineItemListResponse {
 
     updatedAt: string | null;
 
-    VariantId: string | null;
+    variantId: string | null;
   }
 }
 
