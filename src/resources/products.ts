@@ -71,7 +71,7 @@ export namespace ProductCreateResponse {
 
     name: string;
 
-    OrganizationId: string;
+    organizationId: string;
 
     /**
      * safeZodDate
@@ -81,11 +81,11 @@ export namespace ProductCreateResponse {
 
   export namespace Product {
     export interface DisplayFeature {
-      details: string;
-
       enabled: boolean;
 
       label: string;
+
+      details?: string | null;
     }
   }
 }
@@ -115,7 +115,7 @@ export namespace ProductRetrieveResponse {
 
     name: string;
 
-    OrganizationId: string;
+    organizationId: string;
 
     /**
      * safeZodDate
@@ -125,11 +125,11 @@ export namespace ProductRetrieveResponse {
 
   export namespace Product {
     export interface DisplayFeature {
-      details: string;
-
       enabled: boolean;
 
       label: string;
+
+      details?: string | null;
     }
   }
 }
@@ -159,7 +159,7 @@ export namespace ProductUpdateResponse {
 
     name: string;
 
-    OrganizationId: string;
+    organizationId: string;
 
     /**
      * safeZodDate
@@ -169,11 +169,11 @@ export namespace ProductUpdateResponse {
 
   export namespace Product {
     export interface DisplayFeature {
-      details: string;
-
       enabled: boolean;
 
       label: string;
+
+      details?: string | null;
     }
   }
 }
@@ -182,6 +182,8 @@ export interface ProductListResponse {
   data: Array<ProductListResponse.Data>;
 
   hasMore: boolean;
+
+  total: number;
 
   currentCursor?: string;
 
@@ -209,7 +211,7 @@ export namespace ProductListResponse {
 
     name: string;
 
-    OrganizationId: string;
+    organizationId: string;
 
     /**
      * safeZodDate
@@ -219,11 +221,11 @@ export namespace ProductListResponse {
 
   export namespace Data {
     export interface DisplayFeature {
-      details: string;
-
       enabled: boolean;
 
       label: string;
+
+      details?: string | null;
     }
   }
 }
@@ -249,11 +251,11 @@ export namespace ProductCreateParams {
 
   export namespace Product {
     export interface DisplayFeature {
-      details: string;
-
       enabled: boolean;
 
       label: string;
+
+      details?: string | null;
     }
   }
 
@@ -273,7 +275,7 @@ export namespace ProductCreateParams {
 
     priceType: 'subscription';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -300,7 +302,7 @@ export namespace ProductCreateParams {
 
     priceType: 'single_payment';
 
-    ProductId: string;
+    productId: string;
 
     /**
      * safeZodPositiveInteger
@@ -351,18 +353,18 @@ export namespace ProductUpdateParams {
 
     name?: string;
 
-    OrganizationId?: string;
+    organizationId?: string;
 
     stripeProductId?: string | null;
   }
 
   export namespace Product {
     export interface DisplayFeature {
-      details: string;
-
       enabled: boolean;
 
       label: string;
+
+      details?: string | null;
     }
   }
 
@@ -522,7 +524,7 @@ export namespace ProductUpdateParams {
 
     name?: string | null;
 
-    ProductId?: string;
+    productId?: string;
 
     /**
      * safeZodPositiveInteger
@@ -701,7 +703,7 @@ export namespace ProductUpdateParams {
 
     name?: string | null;
 
-    ProductId?: string;
+    productId?: string;
 
     /**
      * safeZodNullOrUndefined

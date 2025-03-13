@@ -43,7 +43,9 @@ export namespace PaymentMethodRetrieveResponse {
 
     createdAt: string;
 
-    CustomerProfileId: string;
+    customerProfileId: string;
+
+    default: boolean;
 
     livemode: boolean;
 
@@ -96,6 +98,8 @@ export interface PaymentMethodListResponse {
 
   hasMore: boolean;
 
+  total: number;
+
   currentCursor?: string;
 
   nextCursor?: string;
@@ -109,7 +113,9 @@ export namespace PaymentMethodListResponse {
 
     createdAt: string;
 
-    CustomerProfileId: string;
+    customerProfileId: string;
+
+    default: boolean;
 
     livemode: boolean;
 
