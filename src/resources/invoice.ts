@@ -28,10 +28,14 @@ export class Invoice extends APIResource {
   }
 }
 
-export type InvoiceRetrieveResponse =
-  | InvoiceRetrieveResponse.UnionMember0
-  | InvoiceRetrieveResponse.UnionMember1
-  | InvoiceRetrieveResponse.UnionMember2;
+export interface InvoiceRetrieveResponse {
+  invoice:
+    | InvoiceRetrieveResponse.UnionMember0
+    | InvoiceRetrieveResponse.UnionMember1
+    | InvoiceRetrieveResponse.UnionMember2;
+
+  invoiceLineItems: Array<InvoiceRetrieveResponse.InvoiceLineItem>;
+}
 
 export namespace InvoiceRetrieveResponse {
   export interface UnionMember0 {
@@ -1412,6 +1416,29 @@ export namespace InvoiceRetrieveResponse {
     type: 'standalone';
 
     updatedAt: string | null;
+  }
+
+  export interface InvoiceLineItem {
+    id: string;
+
+    createdAt: string;
+
+    description: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    price: number;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    updatedAt: string | null;
+
+    variantId: string | null;
   }
 }
 
