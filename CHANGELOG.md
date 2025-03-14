@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0 (2025-03-14)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/flowglad/flowglad-node/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** invoice with line items in customer ([#72](https://github.com/flowglad/flowglad-node/issues/72)) ([79ebcdb](https://github.com/flowglad/flowglad-node/commit/79ebcdbe79d027ea0586877bc9e0e780a510f3eb))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#70](https://github.com/flowglad/flowglad-node/issues/70)) ([c1992ec](https://github.com/flowglad/flowglad-node/commit/c1992ec3e9e0e25100bca1eccb039c0d367eff1e))
+
 ## 0.5.0 (2025-03-13)
 
 Full Changelog: [v0.4.1...v0.5.0](https://github.com/flowglad/flowglad-node/compare/v0.4.1...v0.5.0)

@@ -73,6 +73,10 @@ export namespace ProductCreateResponse {
 
     organizationId: string;
 
+    pluralQuantityLabel: string | null;
+
+    singularQuantityLabel: string | null;
+
     /**
      * safeZodDate
      */
@@ -117,6 +121,10 @@ export namespace ProductRetrieveResponse {
 
     organizationId: string;
 
+    pluralQuantityLabel: string | null;
+
+    singularQuantityLabel: string | null;
+
     /**
      * safeZodDate
      */
@@ -160,6 +168,10 @@ export namespace ProductUpdateResponse {
     name: string;
 
     organizationId: string;
+
+    pluralQuantityLabel: string | null;
+
+    singularQuantityLabel: string | null;
 
     /**
      * safeZodDate
@@ -212,6 +224,10 @@ export namespace ProductListResponse {
     name: string;
 
     organizationId: string;
+
+    pluralQuantityLabel: string | null;
+
+    singularQuantityLabel: string | null;
 
     /**
      * safeZodDate
@@ -334,6 +350,10 @@ export namespace ProductCreateParams {
     imageURL: string | null;
 
     name: string;
+
+    pluralQuantityLabel: string | null;
+
+    singularQuantityLabel: string | null;
   }
 
   export namespace Product {
@@ -441,6 +461,10 @@ export namespace ProductUpdateParams {
     name?: string;
 
     organizationId?: string;
+
+    pluralQuantityLabel?: string | null;
+
+    singularQuantityLabel?: string | null;
 
     stripeProductId?: string | null;
   }
