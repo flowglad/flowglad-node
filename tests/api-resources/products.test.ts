@@ -18,6 +18,8 @@ describe('resource products', () => {
         displayFeatures: [{ enabled: true, label: 'label' }],
         imageURL: 'imageURL',
         name: 'name',
+        pluralQuantityLabel: 'pluralQuantityLabel',
+        singularQuantityLabel: 'singularQuantityLabel',
       },
       variant: {
         active: true,
@@ -50,6 +52,8 @@ describe('resource products', () => {
         displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
         imageURL: 'imageURL',
         name: 'name',
+        pluralQuantityLabel: 'pluralQuantityLabel',
+        singularQuantityLabel: 'singularQuantityLabel',
       },
       variant: {
         active: true,
@@ -113,6 +117,8 @@ describe('resource products', () => {
         livemode: true,
         name: 'name',
         organizationId: 'organizationId',
+        pluralQuantityLabel: 'pluralQuantityLabel',
+        singularQuantityLabel: 'singularQuantityLabel',
         stripeProductId: 'stripeProductId',
       },
       variant: {
