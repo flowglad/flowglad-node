@@ -1,47 +1,39 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Products extends APIResource {
   /**
    * Create Product
    */
-  create(body: ProductCreateParams, options?: Core.RequestOptions): Core.APIPromise<ProductCreateResponse> {
+  create(body: ProductCreateParams, options?: RequestOptions): APIPromise<ProductCreateResponse> {
     return this._client.post('/api/v1/products', { body, ...options });
   }
 
   /**
    * Get Product
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<ProductRetrieveResponse> {
-    return this._client.get(`/api/v1/products/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<ProductRetrieveResponse> {
+    return this._client.get(path`/api/v1/products/${id}`, options);
   }
 
   /**
    * Update Product
    */
-  update(
-    id: string,
-    body: ProductUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ProductUpdateResponse> {
-    return this._client.put(`/api/v1/products/${id}`, { body, ...options });
+  update(id: string, body: ProductUpdateParams, options?: RequestOptions): APIPromise<ProductUpdateResponse> {
+    return this._client.put(path`/api/v1/products/${id}`, { body, ...options });
   }
 
   /**
    * List Products
    */
-  list(query?: ProductListParams, options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<ProductListResponse>;
   list(
-    query: ProductListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<ProductListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: ProductListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ProductListResponse> {
     return this._client.get('/api/v1/products', { query, ...options });
   }
 }

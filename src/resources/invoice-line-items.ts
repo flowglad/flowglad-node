@@ -1,32 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class InvoiceLineItems extends APIResource {
   /**
    * Get Invoice Line Item
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<InvoiceLineItemRetrieveResponse> {
-    return this._client.get(`/api/v1/invoice-line-items/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<InvoiceLineItemRetrieveResponse> {
+    return this._client.get(path`/api/v1/invoice-line-items/${id}`, options);
   }
 
   /**
    * List Invoice Line Items
    */
   list(
-    query?: InvoiceLineItemListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InvoiceLineItemListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<InvoiceLineItemListResponse>;
-  list(
-    query: InvoiceLineItemListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InvoiceLineItemListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: InvoiceLineItemListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<InvoiceLineItemListResponse> {
     return this._client.get('/api/v1/invoice-line-items', { query, ...options });
   }
 }
