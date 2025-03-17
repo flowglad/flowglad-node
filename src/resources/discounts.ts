@@ -1,22 +1,23 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Discounts extends APIResource {
   /**
    * Create Discount
    */
-  create(body: DiscountCreateParams, options?: Core.RequestOptions): Core.APIPromise<DiscountCreateResponse> {
+  create(body: DiscountCreateParams, options?: RequestOptions): APIPromise<DiscountCreateResponse> {
     return this._client.post('/api/v1/discounts', { body, ...options });
   }
 
   /**
    * Get Discount
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<DiscountRetrieveResponse> {
-    return this._client.get(`/api/v1/discounts/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<DiscountRetrieveResponse> {
+    return this._client.get(path`/api/v1/discounts/${id}`, options);
   }
 
   /**
@@ -25,23 +26,18 @@ export class Discounts extends APIResource {
   update(
     id: string,
     body: DiscountUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DiscountUpdateResponse> {
-    return this._client.put(`/api/v1/discounts/${id}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<DiscountUpdateResponse> {
+    return this._client.put(path`/api/v1/discounts/${id}`, { body, ...options });
   }
 
   /**
    * List Discounts
    */
-  list(query?: DiscountListParams, options?: Core.RequestOptions): Core.APIPromise<DiscountListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<DiscountListResponse>;
   list(
-    query: DiscountListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<DiscountListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: DiscountListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<DiscountListResponse> {
     return this._client.get('/api/v1/discounts', { query, ...options });
   }
 }

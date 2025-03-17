@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import Flowglad from '@flowglad/node';
-import { Response } from 'node-fetch';
 
 const client = new Flowglad({
   apiKey: 'My API Key',
@@ -22,14 +21,6 @@ describe('resource payments', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('retrieve: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.payments.retrieve('id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Flowglad.NotFoundError,
-    );
-  });
-
-  // skipped: tests are disabled for the time being
   test.skip('list', async () => {
     const responsePromise = client.payments.list();
     const rawResponse = await responsePromise.asResponse();
@@ -39,14 +30,6 @@ describe('resource payments', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.payments.list({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      Flowglad.NotFoundError,
-    );
   });
 
   // skipped: tests are disabled for the time being

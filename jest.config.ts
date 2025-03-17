@@ -8,7 +8,6 @@ const config: JestConfigWithTsJest = {
   },
   moduleNameMapper: {
     '^@flowglad/node$': '<rootDir>/src/index.ts',
-    '^@flowglad/node/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
     '^@flowglad/node/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [

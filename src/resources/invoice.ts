@@ -1,29 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Invoice extends APIResource {
   /**
    * Get Invoice
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<InvoiceRetrieveResponse> {
-    return this._client.get(`/api/v1/invoices/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<InvoiceRetrieveResponse> {
+    return this._client.get(path`/api/v1/invoices/${id}`, options);
   }
 
   /**
    * List Invoices
    */
-  list(query?: InvoiceListParams, options?: Core.RequestOptions): Core.APIPromise<InvoiceListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<InvoiceListResponse>;
   list(
-    query: InvoiceListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<InvoiceListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: InvoiceListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<InvoiceListResponse> {
     return this._client.get('/api/v1/invoices', { query, ...options });
   }
 }
