@@ -1,32 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Subscriptions extends APIResource {
   /**
    * Get Subscription
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<SubscriptionRetrieveResponse> {
-    return this._client.get(`/api/v1/subscriptions/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<SubscriptionRetrieveResponse> {
+    return this._client.get(path`/api/v1/subscriptions/${id}`, options);
   }
 
   /**
    * List Subscriptions
    */
   list(
-    query?: SubscriptionListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubscriptionListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<SubscriptionListResponse>;
-  list(
-    query: SubscriptionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubscriptionListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: SubscriptionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<SubscriptionListResponse> {
     return this._client.get('/api/v1/subscriptions', { query, ...options });
   }
 
@@ -36,9 +29,9 @@ export class Subscriptions extends APIResource {
   adjust(
     id: string,
     body: SubscriptionAdjustParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubscriptionAdjustResponse> {
-    return this._client.post(`/api/v1/subscriptions/${id}/adjust`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<SubscriptionAdjustResponse> {
+    return this._client.post(path`/api/v1/subscriptions/${id}/adjust`, { body, ...options });
   }
 
   /**
@@ -47,9 +40,9 @@ export class Subscriptions extends APIResource {
   cancel(
     id: string,
     body: SubscriptionCancelParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<SubscriptionCancelResponse> {
-    return this._client.post(`/api/v1/subscriptions/${id}/cancel`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<SubscriptionCancelResponse> {
+    return this._client.post(path`/api/v1/subscriptions/${id}/cancel`, { body, ...options });
   }
 }
 
@@ -91,6 +84,8 @@ export namespace SubscriptionRetrieveResponse {
     metadata: Record<string, unknown> | null;
 
     organizationId: string;
+
+    planName: string | null;
 
     status:
       | 'incomplete'
@@ -158,6 +153,8 @@ export namespace SubscriptionListResponse {
 
     organizationId: string;
 
+    planName: string | null;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -217,6 +214,8 @@ export namespace SubscriptionAdjustResponse {
     metadata: Record<string, unknown> | null;
 
     organizationId: string;
+
+    planName: string | null;
 
     status:
       | 'incomplete'
@@ -305,6 +304,8 @@ export namespace SubscriptionCancelResponse {
     metadata: Record<string, unknown> | null;
 
     organizationId: string;
+
+    planName: string | null;
 
     status:
       | 'incomplete'

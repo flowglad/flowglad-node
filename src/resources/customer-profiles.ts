@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class CustomerProfiles extends APIResource {
   /**
@@ -10,47 +11,36 @@ export class CustomerProfiles extends APIResource {
    */
   create(
     body: CustomerProfileCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileCreateResponse> {
+    options?: RequestOptions,
+  ): APIPromise<CustomerProfileCreateResponse> {
     return this._client.post('/api/v1/customer-profiles', { body, ...options });
   }
 
   /**
    * Get Customer Profile
    */
-  retrieve(
-    externalId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileRetrieveResponse> {
-    return this._client.get(`/api/v1/customer-profiles/${externalId}`, options);
+  retrieve(externalID: string, options?: RequestOptions): APIPromise<CustomerProfileRetrieveResponse> {
+    return this._client.get(path`/api/v1/customer-profiles/${externalID}`, options);
   }
 
   /**
    * Update Customer Profile
    */
   update(
-    externalId: string,
+    externalID: string,
     body: CustomerProfileUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileUpdateResponse> {
-    return this._client.put(`/api/v1/customer-profiles/${externalId}`, { body, ...options });
+    options?: RequestOptions,
+  ): APIPromise<CustomerProfileUpdateResponse> {
+    return this._client.put(path`/api/v1/customer-profiles/${externalID}`, { body, ...options });
   }
 
   /**
    * List Customer Profiles
    */
   list(
-    query?: CustomerProfileListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<CustomerProfileListResponse>;
-  list(
-    query: CustomerProfileListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: CustomerProfileListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<CustomerProfileListResponse> {
     return this._client.get('/api/v1/customer-profiles', { query, ...options });
   }
 
@@ -58,10 +48,10 @@ export class CustomerProfiles extends APIResource {
    * Get Billing Details
    */
   retrieveBilling(
-    externalId: string,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<CustomerProfileRetrieveBillingResponse> {
-    return this._client.get(`/api/v1/customer-profiles/${externalId}/billing`, options);
+    externalID: string,
+    options?: RequestOptions,
+  ): APIPromise<CustomerProfileRetrieveBillingResponse> {
+    return this._client.get(path`/api/v1/customer-profiles/${externalID}/billing`, options);
   }
 }
 
@@ -2355,6 +2345,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     organizationId: string;
 
+    planName: string | null;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -2622,6 +2614,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
     metadata: Record<string, unknown> | null;
 
     organizationId: string;
+
+    planName: string | null;
 
     status:
       | 'incomplete'

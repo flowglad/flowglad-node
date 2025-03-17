@@ -1,8 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class PurchaseSessions extends APIResource {
   /**
@@ -10,33 +11,25 @@ export class PurchaseSessions extends APIResource {
    */
   create(
     body: PurchaseSessionCreateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PurchaseSessionCreateResponse> {
+    options?: RequestOptions,
+  ): APIPromise<PurchaseSessionCreateResponse> {
     return this._client.post('/api/v1/purchase-sessions', { body, ...options });
   }
 
   /**
    * Get PurchaseSession
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionRetrieveResponse> {
-    return this._client.get(`/api/v1/purchase-sessions/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<PurchaseSessionRetrieveResponse> {
+    return this._client.get(path`/api/v1/purchase-sessions/${id}`, options);
   }
 
   /**
    * List PurchaseSessions
    */
   list(
-    query?: PurchaseSessionListParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PurchaseSessionListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<PurchaseSessionListResponse>;
-  list(
-    query: PurchaseSessionListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PurchaseSessionListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: PurchaseSessionListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<PurchaseSessionListResponse> {
     return this._client.get('/api/v1/purchase-sessions', { query, ...options });
   }
 }
