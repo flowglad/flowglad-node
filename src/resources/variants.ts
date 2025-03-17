@@ -1,40 +1,32 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Variants extends APIResource {
   /**
    * Create Variant
    */
-  create(body: VariantCreateParams, options?: Core.RequestOptions): Core.APIPromise<VariantCreateResponse> {
+  create(body: VariantCreateParams, options?: RequestOptions): APIPromise<VariantCreateResponse> {
     return this._client.post('/api/v1/variants', { body, ...options });
   }
 
   /**
    * Update Variant
    */
-  update(
-    id: string,
-    body: VariantUpdateParams,
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<VariantUpdateResponse> {
-    return this._client.put(`/api/v1/variants/${id}`, { body, ...options });
+  update(id: string, body: VariantUpdateParams, options?: RequestOptions): APIPromise<VariantUpdateResponse> {
+    return this._client.put(path`/api/v1/variants/${id}`, { body, ...options });
   }
 
   /**
    * List Variants
    */
-  list(query?: VariantListParams, options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<VariantListResponse>;
   list(
-    query: VariantListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<VariantListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: VariantListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<VariantListResponse> {
     return this._client.get('/api/v1/variants', { query, ...options });
   }
 }

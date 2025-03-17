@@ -1,29 +1,25 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIPromise } from '../api-promise';
+import { RequestOptions } from '../internal/request-options';
+import { path } from '../internal/utils/path';
 
 export class Payments extends APIResource {
   /**
    * Get Payment
    */
-  retrieve(id: string, options?: Core.RequestOptions): Core.APIPromise<PaymentRetrieveResponse> {
-    return this._client.get(`/api/v1/payments/${id}`, options);
+  retrieve(id: string, options?: RequestOptions): APIPromise<PaymentRetrieveResponse> {
+    return this._client.get(path`/api/v1/payments/${id}`, options);
   }
 
   /**
    * List Payments
    */
-  list(query?: PaymentListParams, options?: Core.RequestOptions): Core.APIPromise<PaymentListResponse>;
-  list(options?: Core.RequestOptions): Core.APIPromise<PaymentListResponse>;
   list(
-    query: PaymentListParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<PaymentListResponse> {
-    if (isRequestOptions(query)) {
-      return this.list({}, query);
-    }
+    query: PaymentListParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<PaymentListResponse> {
     return this._client.get('/api/v1/payments', { query, ...options });
   }
 }
