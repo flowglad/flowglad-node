@@ -1,6 +1,14 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  CheckoutSessions,
+  type CheckoutSessionCreateResponse,
+  type CheckoutSessionRetrieveResponse,
+  type CheckoutSessionListResponse,
+  type CheckoutSessionCreateParams,
+  type CheckoutSessionListParams,
+} from './checkout-sessions';
+export {
   CustomerProfiles,
   type CustomerProfileCreateResponse,
   type CustomerProfileRetrieveResponse,
@@ -22,17 +30,17 @@ export {
   type DiscountListParams,
 } from './discounts';
 export {
-  Invoice,
-  type InvoiceRetrieveResponse,
-  type InvoiceListResponse,
-  type InvoiceListParams,
-} from './invoice';
-export {
   InvoiceLineItems,
   type InvoiceLineItemRetrieveResponse,
   type InvoiceLineItemListResponse,
   type InvoiceLineItemListParams,
 } from './invoice-line-items';
+export {
+  Invoices,
+  type InvoiceRetrieveResponse,
+  type InvoiceListResponse,
+  type InvoiceListParams,
+} from './invoices';
 export {
   PaymentMethods,
   type PaymentMethodRetrieveResponse,
@@ -46,6 +54,15 @@ export {
   type PaymentListParams,
 } from './payments';
 export {
+  Prices,
+  type PriceCreateResponse,
+  type PriceUpdateResponse,
+  type PriceListResponse,
+  type PriceCreateParams,
+  type PriceUpdateParams,
+  type PriceListParams,
+} from './prices';
+export {
   Products,
   type ProductCreateResponse,
   type ProductRetrieveResponse,
@@ -55,7 +72,6 @@ export {
   type ProductUpdateParams,
   type ProductListParams,
 } from './products';
-export { PurchaseSessions } from './purchase-sessions';
 export {
   Subscriptions,
   type SubscriptionRetrieveResponse,
@@ -66,4 +82,3 @@ export {
   type SubscriptionAdjustParams,
   type SubscriptionCancelParams,
 } from './subscriptions';
-export { Variants } from './variants';

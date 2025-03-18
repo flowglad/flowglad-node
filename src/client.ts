@@ -19,6 +19,14 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
+  CheckoutSessionCreateParams,
+  CheckoutSessionCreateResponse,
+  CheckoutSessionListParams,
+  CheckoutSessionListResponse,
+  CheckoutSessionRetrieveResponse,
+  CheckoutSessions,
+} from './resources/checkout-sessions';
+import {
   CustomerProfileCreateParams,
   CustomerProfileCreateResponse,
   CustomerProfileListParams,
@@ -40,17 +48,17 @@ import {
   Discounts,
 } from './resources/discounts';
 import {
-  Invoice,
-  InvoiceListParams,
-  InvoiceListResponse,
-  InvoiceRetrieveResponse,
-} from './resources/invoice';
-import {
   InvoiceLineItemListParams,
   InvoiceLineItemListResponse,
   InvoiceLineItemRetrieveResponse,
   InvoiceLineItems,
 } from './resources/invoice-line-items';
+import {
+  InvoiceListParams,
+  InvoiceListResponse,
+  InvoiceRetrieveResponse,
+  Invoices,
+} from './resources/invoices';
 import {
   PaymentMethodListParams,
   PaymentMethodListResponse,
@@ -64,6 +72,15 @@ import {
   Payments,
 } from './resources/payments';
 import {
+  PriceCreateParams,
+  PriceCreateResponse,
+  PriceListParams,
+  PriceListResponse,
+  PriceUpdateParams,
+  PriceUpdateResponse,
+  Prices,
+} from './resources/prices';
+import {
   ProductCreateParams,
   ProductCreateResponse,
   ProductListParams,
@@ -73,7 +90,6 @@ import {
   ProductUpdateResponse,
   Products,
 } from './resources/products';
-import { PurchaseSessions } from './resources/purchase-sessions';
 import {
   SubscriptionAdjustParams,
   SubscriptionAdjustResponse,
@@ -84,7 +100,6 @@ import {
   SubscriptionRetrieveResponse,
   Subscriptions,
 } from './resources/subscriptions';
-import { Variants } from './resources/variants';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
@@ -782,22 +797,22 @@ export class Flowglad {
 
   static toFile = Uploads.toFile;
 
-  invoice: API.Invoice = new API.Invoice(this);
+  invoices: API.Invoices = new API.Invoices(this);
   invoiceLineItems: API.InvoiceLineItems = new API.InvoiceLineItems(this);
-  purchaseSessions: API.PurchaseSessions = new API.PurchaseSessions(this);
+  checkoutSessions: API.CheckoutSessions = new API.CheckoutSessions(this);
   products: API.Products = new API.Products(this);
-  variants: API.Variants = new API.Variants(this);
+  prices: API.Prices = new API.Prices(this);
   discounts: API.Discounts = new API.Discounts(this);
   customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
   payments: API.Payments = new API.Payments(this);
   paymentMethods: API.PaymentMethods = new API.PaymentMethods(this);
   subscriptions: API.Subscriptions = new API.Subscriptions(this);
 }
-Flowglad.Invoice = Invoice;
+Flowglad.Invoices = Invoices;
 Flowglad.InvoiceLineItems = InvoiceLineItems;
-Flowglad.PurchaseSessions = PurchaseSessions;
+Flowglad.CheckoutSessions = CheckoutSessions;
 Flowglad.Products = Products;
-Flowglad.Variants = Variants;
+Flowglad.Prices = Prices;
 Flowglad.Discounts = Discounts;
 Flowglad.CustomerProfiles = CustomerProfiles;
 Flowglad.Payments = Payments;
@@ -807,7 +822,7 @@ export declare namespace Flowglad {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
-    Invoice as Invoice,
+    Invoices as Invoices,
     type InvoiceRetrieveResponse as InvoiceRetrieveResponse,
     type InvoiceListResponse as InvoiceListResponse,
     type InvoiceListParams as InvoiceListParams,
@@ -820,7 +835,14 @@ export declare namespace Flowglad {
     type InvoiceLineItemListParams as InvoiceLineItemListParams,
   };
 
-  export { PurchaseSessions as PurchaseSessions };
+  export {
+    CheckoutSessions as CheckoutSessions,
+    type CheckoutSessionCreateResponse as CheckoutSessionCreateResponse,
+    type CheckoutSessionRetrieveResponse as CheckoutSessionRetrieveResponse,
+    type CheckoutSessionListResponse as CheckoutSessionListResponse,
+    type CheckoutSessionCreateParams as CheckoutSessionCreateParams,
+    type CheckoutSessionListParams as CheckoutSessionListParams,
+  };
 
   export {
     Products as Products,
@@ -833,7 +855,15 @@ export declare namespace Flowglad {
     type ProductListParams as ProductListParams,
   };
 
-  export { Variants as Variants };
+  export {
+    Prices as Prices,
+    type PriceCreateResponse as PriceCreateResponse,
+    type PriceUpdateResponse as PriceUpdateResponse,
+    type PriceListResponse as PriceListResponse,
+    type PriceCreateParams as PriceCreateParams,
+    type PriceUpdateParams as PriceUpdateParams,
+    type PriceListParams as PriceListParams,
+  };
 
   export {
     Discounts as Discounts,
