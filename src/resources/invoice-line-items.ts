@@ -37,14 +37,14 @@ export interface InvoiceLineItemRetrieveResponse {
 
   price: number;
 
+  priceId: string | null;
+
   /**
    * safeZodPositiveInteger
    */
   quantity: number;
 
   updatedAt: string | null;
-
-  variantId: string | null;
 }
 
 export interface InvoiceLineItemListResponse {
@@ -73,14 +73,14 @@ export namespace InvoiceLineItemListResponse {
 
     price: number;
 
+    priceId: string | null;
+
     /**
      * safeZodPositiveInteger
      */
     quantity: number;
 
     updatedAt: string | null;
-
-    variantId: string | null;
   }
 }
 

@@ -11,6 +11,18 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
     const responsePromise = client.products.create({
+      price: {
+        active: true,
+        intervalCount: 0,
+        intervalUnit: 'day',
+        isDefault: true,
+        name: 'name',
+        productId: 'productId',
+        setupFeeAmount: 0,
+        trialPeriodDays: 0,
+        type: 'subscription',
+        unitPrice: 0,
+      },
       product: {
         active: true,
         description: 'description',
@@ -19,18 +31,6 @@ describe('resource products', () => {
         name: 'name',
         pluralQuantityLabel: 'pluralQuantityLabel',
         singularQuantityLabel: 'singularQuantityLabel',
-      },
-      variant: {
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        priceType: 'subscription',
-        productId: 'productId',
-        setupFeeAmount: 0,
-        trialPeriodDays: 0,
-        unitPrice: 0,
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -45,6 +45,18 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
     const response = await client.products.create({
+      price: {
+        active: true,
+        intervalCount: 0,
+        intervalUnit: 'day',
+        isDefault: true,
+        name: 'name',
+        productId: 'productId',
+        setupFeeAmount: 0,
+        trialPeriodDays: 0,
+        type: 'subscription',
+        unitPrice: 0,
+      },
       product: {
         active: true,
         description: 'description',
@@ -53,18 +65,6 @@ describe('resource products', () => {
         name: 'name',
         pluralQuantityLabel: 'pluralQuantityLabel',
         singularQuantityLabel: 'singularQuantityLabel',
-      },
-      variant: {
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        priceType: 'subscription',
-        productId: 'productId',
-        setupFeeAmount: 0,
-        trialPeriodDays: 0,
-        unitPrice: 0,
       },
     });
   });
@@ -84,8 +84,8 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
     const responsePromise = client.products.update('id', {
+      price: { id: 'id', type: 'subscription' },
       product: { id: 'id' },
-      variant: { id: 'id', priceType: 'subscription' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -99,22 +99,9 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
     const response = await client.products.update('id', {
-      product: {
+      price: {
         id: 'id',
-        active: true,
-        description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
-        imageURL: 'imageURL',
-        livemode: true,
-        name: 'name',
-        organizationId: 'organizationId',
-        pluralQuantityLabel: 'pluralQuantityLabel',
-        singularQuantityLabel: 'singularQuantityLabel',
-        stripeProductId: 'stripeProductId',
-      },
-      variant: {
-        id: 'id',
-        priceType: 'subscription',
+        type: 'subscription',
         active: true,
         currency: 'USD',
         intervalCount: 0,
@@ -127,6 +114,19 @@ describe('resource products', () => {
         stripePriceId: 'stripePriceId',
         trialPeriodDays: 0,
         unitPrice: 0,
+      },
+      product: {
+        id: 'id',
+        active: true,
+        description: 'description',
+        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
+        imageURL: 'imageURL',
+        livemode: true,
+        name: 'name',
+        organizationId: 'organizationId',
+        pluralQuantityLabel: 'pluralQuantityLabel',
+        singularQuantityLabel: 'singularQuantityLabel',
+        stripeProductId: 'stripeProductId',
       },
     });
   });
