@@ -1,10 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
-import { RequestOptions } from '../internal/request-options';
-import { path } from '../internal/utils/path';
 
+<<<<<<< HEAD
 export class PurchaseSessions extends APIResource {
   /**
    * Create purchaseSession
@@ -784,3 +782,6 @@ export declare namespace PurchaseSessions {
     type PurchaseSessionListParams as PurchaseSessionListParams,
   };
 }
+=======
+export class PurchaseSessions extends APIResource {}
+>>>>>>> origin/generated--merge-conflict

@@ -1,10 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
-import { RequestOptions } from '../internal/request-options';
-import { path } from '../internal/utils/path';
 
+<<<<<<< HEAD
 export class Variants extends APIResource {
   /**
    * Create Variant
@@ -32,11 +30,11 @@ export class Variants extends APIResource {
 }
 
 export interface VariantCreateResponse {
-  variant: VariantCreateResponse.SubscriptionVariant | VariantCreateResponse.SinglePaymentVariant;
+  variant: VariantCreateResponse.SubscriptionPrice | VariantCreateResponse.SinglePaymentPrice;
 }
 
 export namespace VariantCreateResponse {
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -214,7 +212,7 @@ export namespace VariantCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -397,11 +395,11 @@ export namespace VariantCreateResponse {
 }
 
 export interface VariantUpdateResponse {
-  variant: VariantUpdateResponse.SubscriptionVariant | VariantUpdateResponse.SinglePaymentVariant;
+  variant: VariantUpdateResponse.SubscriptionPrice | VariantUpdateResponse.SinglePaymentPrice;
 }
 
 export namespace VariantUpdateResponse {
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -579,7 +577,7 @@ export namespace VariantUpdateResponse {
     updatedAt: string | null;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -762,7 +760,7 @@ export namespace VariantUpdateResponse {
 }
 
 export interface VariantListResponse {
-  data: Array<VariantListResponse.SubscriptionVariant | VariantListResponse.SinglePaymentVariant>;
+  data: Array<VariantListResponse.SubscriptionPrice | VariantListResponse.SinglePaymentPrice>;
 
   hasMore: boolean;
 
@@ -774,7 +772,7 @@ export interface VariantListResponse {
 }
 
 export namespace VariantListResponse {
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -952,7 +950,7 @@ export namespace VariantListResponse {
     updatedAt: string | null;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -1135,11 +1133,11 @@ export namespace VariantListResponse {
 }
 
 export interface VariantCreateParams {
-  variant: VariantCreateParams.SubscriptionVariant | VariantCreateParams.SinglePaymentVariant;
+  variant: VariantCreateParams.SubscriptionPrice | VariantCreateParams.SinglePaymentPrice;
 }
 
 export namespace VariantCreateParams {
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     active: boolean;
 
     currency:
@@ -1313,7 +1311,7 @@ export namespace VariantCreateParams {
     stripePriceId?: string | null;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     active: boolean;
 
     currency:
@@ -1492,11 +1490,11 @@ export namespace VariantCreateParams {
 }
 
 export interface VariantUpdateParams {
-  variant: VariantUpdateParams.SubscriptionVariant | VariantUpdateParams.SinglePaymentVariant;
+  variant: VariantUpdateParams.SubscriptionPrice | VariantUpdateParams.SinglePaymentPrice;
 }
 
 export namespace VariantUpdateParams {
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     id: string;
 
     priceType: 'subscription';
@@ -1672,7 +1670,7 @@ export namespace VariantUpdateParams {
     unitPrice?: number;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     id: string;
 
     priceType: 'single_payment';
@@ -1868,3 +1866,6 @@ export declare namespace Variants {
     type VariantListParams as VariantListParams,
   };
 }
+=======
+export class Variants extends APIResource {}
+>>>>>>> origin/generated--merge-conflict

@@ -1427,14 +1427,14 @@ export namespace InvoiceRetrieveResponse {
 
     price: number;
 
+    priceId: string | null;
+
     /**
      * safeZodPositiveInteger
      */
     quantity: number;
 
     updatedAt: string | null;
-
-    variantId: string | null;
   }
 }
 
