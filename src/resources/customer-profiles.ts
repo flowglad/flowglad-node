@@ -2381,6 +2381,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       name: string | null;
 
+      price: SubscriptionItem.Price;
+
       priceId: string;
 
       /**
@@ -2396,12 +2398,10 @@ export namespace CustomerProfileRetrieveBillingResponse {
       unitPrice: number | 0;
 
       updatedAt: string | null;
-
-      variant: SubscriptionItem.Variant;
     }
 
     export namespace SubscriptionItem {
-      export interface Variant {
+      export interface Price {
         id: string;
 
         active: boolean;
@@ -2651,6 +2651,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       name: string | null;
 
+      price: SubscriptionItem.Price;
+
       priceId: string;
 
       /**
@@ -2666,12 +2668,10 @@ export namespace CustomerProfileRetrieveBillingResponse {
       unitPrice: number | 0;
 
       updatedAt: string | null;
-
-      variant: SubscriptionItem.Variant;
     }
 
     export namespace SubscriptionItem {
-      export interface Variant {
+      export interface Price {
         id: string;
 
         active: boolean;
