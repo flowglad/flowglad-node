@@ -24,18 +24,6 @@ Methods:
 
 # PurchaseSessions
 
-Types:
-
-- <code><a href="./src/resources/purchase-sessions.ts">PurchaseSessionCreateResponse</a></code>
-- <code><a href="./src/resources/purchase-sessions.ts">PurchaseSessionRetrieveResponse</a></code>
-- <code><a href="./src/resources/purchase-sessions.ts">PurchaseSessionListResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v1/purchase-sessions">client.purchaseSessions.<a href="./src/resources/purchase-sessions.ts">create</a>({ ...params }) -> PurchaseSessionCreateResponse</code>
-- <code title="get /api/v1/purchase-sessions/{id}">client.purchaseSessions.<a href="./src/resources/purchase-sessions.ts">retrieve</a>(id) -> PurchaseSessionRetrieveResponse</code>
-- <code title="get /api/v1/purchase-sessions">client.purchaseSessions.<a href="./src/resources/purchase-sessions.ts">list</a>({ ...params }) -> PurchaseSessionListResponse</code>
-
 # Products
 
 Types:
@@ -53,18 +41,6 @@ Methods:
 - <code title="get /api/v1/products">client.products.<a href="./src/resources/products.ts">list</a>({ ...params }) -> ProductListResponse</code>
 
 # Variants
-
-Types:
-
-- <code><a href="./src/resources/variants.ts">VariantCreateResponse</a></code>
-- <code><a href="./src/resources/variants.ts">VariantUpdateResponse</a></code>
-- <code><a href="./src/resources/variants.ts">VariantListResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v1/variants">client.variants.<a href="./src/resources/variants.ts">create</a>({ ...params }) -> VariantCreateResponse</code>
-- <code title="put /api/v1/variants/{id}">client.variants.<a href="./src/resources/variants.ts">update</a>(id, { ...params }) -> VariantUpdateResponse</code>
-- <code title="get /api/v1/variants">client.variants.<a href="./src/resources/variants.ts">list</a>({ ...params }) -> VariantListResponse</code>
 
 # Discounts
 

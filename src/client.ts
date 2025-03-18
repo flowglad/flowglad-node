@@ -73,14 +73,7 @@ import {
   ProductUpdateResponse,
   Products,
 } from './resources/products';
-import {
-  PurchaseSessionCreateParams,
-  PurchaseSessionCreateResponse,
-  PurchaseSessionListParams,
-  PurchaseSessionListResponse,
-  PurchaseSessionRetrieveResponse,
-  PurchaseSessions,
-} from './resources/purchase-sessions';
+import { PurchaseSessions } from './resources/purchase-sessions';
 import {
   SubscriptionAdjustParams,
   SubscriptionAdjustResponse,
@@ -91,15 +84,7 @@ import {
   SubscriptionRetrieveResponse,
   Subscriptions,
 } from './resources/subscriptions';
-import {
-  VariantCreateParams,
-  VariantCreateResponse,
-  VariantListParams,
-  VariantListResponse,
-  VariantUpdateParams,
-  VariantUpdateResponse,
-  Variants,
-} from './resources/variants';
+import { Variants } from './resources/variants';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
@@ -835,14 +820,7 @@ export declare namespace Flowglad {
     type InvoiceLineItemListParams as InvoiceLineItemListParams,
   };
 
-  export {
-    PurchaseSessions as PurchaseSessions,
-    type PurchaseSessionCreateResponse as PurchaseSessionCreateResponse,
-    type PurchaseSessionRetrieveResponse as PurchaseSessionRetrieveResponse,
-    type PurchaseSessionListResponse as PurchaseSessionListResponse,
-    type PurchaseSessionCreateParams as PurchaseSessionCreateParams,
-    type PurchaseSessionListParams as PurchaseSessionListParams,
-  };
+  export { PurchaseSessions as PurchaseSessions };
 
   export {
     Products as Products,
@@ -855,15 +833,7 @@ export declare namespace Flowglad {
     type ProductListParams as ProductListParams,
   };
 
-  export {
-    Variants as Variants,
-    type VariantCreateResponse as VariantCreateResponse,
-    type VariantUpdateResponse as VariantUpdateResponse,
-    type VariantListResponse as VariantListResponse,
-    type VariantCreateParams as VariantCreateParams,
-    type VariantUpdateParams as VariantUpdateParams,
-    type VariantListParams as VariantListParams,
-  };
+  export { Variants as Variants };
 
   export {
     Discounts as Discounts,

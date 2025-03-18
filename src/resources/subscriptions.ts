@@ -87,6 +87,8 @@ export namespace SubscriptionRetrieveResponse {
 
     planName: string | null;
 
+    priceId: string;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -101,8 +103,6 @@ export namespace SubscriptionRetrieveResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 }
 
@@ -155,6 +155,8 @@ export namespace SubscriptionListResponse {
 
     planName: string | null;
 
+    priceId: string;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -169,8 +171,6 @@ export namespace SubscriptionListResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 }
 
@@ -217,6 +217,8 @@ export namespace SubscriptionAdjustResponse {
 
     planName: string | null;
 
+    priceId: string;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -231,8 +233,6 @@ export namespace SubscriptionAdjustResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 
   export interface SubscriptionItem {
@@ -248,6 +248,8 @@ export namespace SubscriptionAdjustResponse {
 
     name: string | null;
 
+    priceId: string;
+
     /**
      * safeZodPositiveInteger
      */
@@ -261,8 +263,6 @@ export namespace SubscriptionAdjustResponse {
     unitPrice: number | 0;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 }
 
@@ -307,6 +307,8 @@ export namespace SubscriptionCancelResponse {
 
     planName: string | null;
 
+    priceId: string;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -321,8 +323,6 @@ export namespace SubscriptionCancelResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 }
 
@@ -355,6 +355,8 @@ export namespace SubscriptionAdjustParams {
 
       name: string | null;
 
+      priceId: string;
+
       /**
        * safeZodPositiveInteger
        */
@@ -366,8 +368,6 @@ export namespace SubscriptionAdjustParams {
        * safeZodPositiveInteger
        */
       unitPrice: number | 0;
-
-      variantId: string;
     }
 
     export interface UnionMember1 {
@@ -383,6 +383,8 @@ export namespace SubscriptionAdjustParams {
 
       name: string | null;
 
+      priceId: string;
+
       /**
        * safeZodPositiveInteger
        */
@@ -396,8 +398,6 @@ export namespace SubscriptionAdjustParams {
       unitPrice: number | 0;
 
       updatedAt: string | null;
-
-      variantId: string;
     }
   }
 
@@ -417,6 +417,8 @@ export namespace SubscriptionAdjustParams {
 
       name: string | null;
 
+      priceId: string;
+
       /**
        * safeZodPositiveInteger
        */
@@ -428,8 +430,6 @@ export namespace SubscriptionAdjustParams {
        * safeZodPositiveInteger
        */
       unitPrice: number | 0;
-
-      variantId: string;
     }
 
     export interface UnionMember1 {
@@ -445,6 +445,8 @@ export namespace SubscriptionAdjustParams {
 
       name: string | null;
 
+      priceId: string;
+
       /**
        * safeZodPositiveInteger
        */
@@ -458,8 +460,6 @@ export namespace SubscriptionAdjustParams {
       unitPrice: number | 0;
 
       updatedAt: string | null;
-
-      variantId: string;
     }
   }
 }
