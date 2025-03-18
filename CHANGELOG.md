@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.8.0 (2025-03-18)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/flowglad/flowglad-node/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** fix final price ([#82](https://github.com/flowglad/flowglad-node/issues/82)) ([3e281ab](https://github.com/flowglad/flowglad-node/commit/3e281abe1dc5a383719cbbeafa7b589d26576597))
+* **api:** purchase session to checkout session, variant to price ([#78](https://github.com/flowglad/flowglad-node/issues/78)) ([b50474f](https://github.com/flowglad/flowglad-node/commit/b50474f32a6330b515348843298eff3dea2cc4a2))
+* **api:** purchase session to checkout session, variant to price ([#81](https://github.com/flowglad/flowglad-node/issues/81)) ([cbc6b02](https://github.com/flowglad/flowglad-node/commit/cbc6b0286cf9aeac5d08b5b8b8f16d69502a4d58))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#51](https://github.com/flowglad/flowglad-node/issues/51)) ([b8483ef](https://github.com/flowglad/flowglad-node/commit/b8483efdef4373368f913ffdae8813040c717bfe))
+
 ## 0.7.0 (2025-03-17)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/flowglad/flowglad-node/compare/v0.6.0...v0.7.0)
