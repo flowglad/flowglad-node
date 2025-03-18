@@ -373,55 +373,13 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
   export namespace Catalog {
     export interface Product {
-      product: Product.Product;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
-      variants: Array<Product.SubscriptionVariant | Product.SinglePaymentVariant>;
+      product: Product.Product;
     }
 
     export namespace Product {
-      export interface Product {
-        id: string;
-
-        active: boolean;
-
-        /**
-         * safeZodDate
-         */
-        createdAt: (string & {}) | string;
-
-        description: string | null;
-
-        displayFeatures: Array<Product.DisplayFeature> | null;
-
-        imageURL: string | null;
-
-        livemode: boolean;
-
-        name: string;
-
-        organizationId: string;
-
-        pluralQuantityLabel: string | null;
-
-        singularQuantityLabel: string | null;
-
-        /**
-         * safeZodDate
-         */
-        updatedAt: (string & {}) | string;
-      }
-
-      export namespace Product {
-        export interface DisplayFeature {
-          enabled: boolean;
-
-          label: string;
-
-          details?: string | null;
-        }
-      }
-
-      export interface SubscriptionVariant {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -577,8 +535,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
         name: string | null;
 
-        priceType: 'subscription';
-
         productId: string;
 
         /**
@@ -591,6 +547,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
          */
         trialPeriodDays: number | 0 | null;
 
+        type: 'subscription';
+
         /**
          * safeZodPositiveInteger
          */
@@ -599,7 +557,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
-      export interface SinglePaymentVariant {
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -748,9 +706,9 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
         name: string | null;
 
-        priceType: 'single_payment';
-
         productId: string;
+
+        type: 'single_payment';
 
         /**
          * safeZodPositiveInteger
@@ -778,6 +736,48 @@ export namespace CustomerProfileRetrieveBillingResponse {
          * safeZodNullOrUndefined
          */
         trialPeriodDays?: unknown | unknown | null;
+      }
+
+      export interface Product {
+        id: string;
+
+        active: boolean;
+
+        /**
+         * safeZodDate
+         */
+        createdAt: (string & {}) | string;
+
+        description: string | null;
+
+        displayFeatures: Array<Product.DisplayFeature> | null;
+
+        imageURL: string | null;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        pluralQuantityLabel: string | null;
+
+        singularQuantityLabel: string | null;
+
+        /**
+         * safeZodDate
+         */
+        updatedAt: (string & {}) | string;
+      }
+
+      export namespace Product {
+        export interface DisplayFeature {
+          enabled: boolean;
+
+          label: string;
+
+          details?: string | null;
+        }
       }
     }
   }
@@ -2244,14 +2244,14 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       price: number;
 
+      priceId: string | null;
+
       /**
        * safeZodPositiveInteger
        */
       quantity: number;
 
       updatedAt: string | null;
-
-      variantId: string | null;
     }
   }
 
@@ -2347,6 +2347,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     planName: string | null;
 
+    priceId: string;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -2363,8 +2365,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 
   export namespace Subscription {
@@ -2381,6 +2381,10 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       name: string | null;
 
+      price: SubscriptionItem.Price;
+
+      priceId: string;
+
       /**
        * safeZodPositiveInteger
        */
@@ -2394,14 +2398,10 @@ export namespace CustomerProfileRetrieveBillingResponse {
       unitPrice: number | 0;
 
       updatedAt: string | null;
-
-      variant: SubscriptionItem.Variant;
-
-      variantId: string;
     }
 
     export namespace SubscriptionItem {
-      export interface Variant {
+      export interface Price {
         id: string;
 
         active: boolean;
@@ -2557,8 +2557,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
         name: string | null;
 
-        priceType: 'subscription';
-
         productId: string;
 
         /**
@@ -2570,6 +2568,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
          * safeZodPositiveInteger
          */
         trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
 
         /**
          * safeZodPositiveInteger
@@ -2617,6 +2617,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     planName: string | null;
 
+    priceId: string;
+
     status:
       | 'incomplete'
       | 'incomplete_expired'
@@ -2633,8 +2635,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
-
-    variantId: string;
   }
 
   export namespace CurrentSubscription {
@@ -2651,6 +2651,10 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       name: string | null;
 
+      price: SubscriptionItem.Price;
+
+      priceId: string;
+
       /**
        * safeZodPositiveInteger
        */
@@ -2664,14 +2668,10 @@ export namespace CustomerProfileRetrieveBillingResponse {
       unitPrice: number | 0;
 
       updatedAt: string | null;
-
-      variant: SubscriptionItem.Variant;
-
-      variantId: string;
     }
 
     export namespace SubscriptionItem {
-      export interface Variant {
+      export interface Price {
         id: string;
 
         active: boolean;
@@ -2827,8 +2827,6 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
         name: string | null;
 
-        priceType: 'subscription';
-
         productId: string;
 
         /**
@@ -2840,6 +2838,8 @@ export namespace CustomerProfileRetrieveBillingResponse {
          * safeZodPositiveInteger
          */
         trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
 
         /**
          * safeZodPositiveInteger

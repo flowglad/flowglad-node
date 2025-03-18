@@ -7,11 +7,11 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource variants', () => {
+describe('resource prices', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.variants.create({
-      variant: {
+    const responsePromise = client.prices.create({
+      price: {
         active: true,
         currency: 'USD',
         intervalCount: 0,
@@ -19,10 +19,10 @@ describe('resource variants', () => {
         isDefault: true,
         livemode: true,
         name: 'name',
-        priceType: 'subscription',
         productId: 'productId',
         setupFeeAmount: 0,
         trialPeriodDays: 0,
+        type: 'subscription',
         unitPrice: 0,
       },
     });
@@ -37,8 +37,8 @@ describe('resource variants', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.variants.create({
-      variant: {
+    const response = await client.prices.create({
+      price: {
         active: true,
         currency: 'USD',
         intervalCount: 0,
@@ -46,10 +46,10 @@ describe('resource variants', () => {
         isDefault: true,
         livemode: true,
         name: 'name',
-        priceType: 'subscription',
         productId: 'productId',
         setupFeeAmount: 0,
         trialPeriodDays: 0,
+        type: 'subscription',
         unitPrice: 0,
         stripePriceId: 'stripePriceId',
       },
@@ -58,9 +58,7 @@ describe('resource variants', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
-    const responsePromise = client.variants.update('id', {
-      variant: { id: 'id', priceType: 'subscription' },
-    });
+    const responsePromise = client.prices.update('id', { price: { id: 'id', type: 'subscription' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -72,10 +70,10 @@ describe('resource variants', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
-    const response = await client.variants.update('id', {
-      variant: {
+    const response = await client.prices.update('id', {
+      price: {
         id: 'id',
-        priceType: 'subscription',
+        type: 'subscription',
         active: true,
         currency: 'USD',
         intervalCount: 0,
@@ -94,7 +92,7 @@ describe('resource variants', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.variants.list();
+    const responsePromise = client.prices.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -108,7 +106,7 @@ describe('resource variants', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.variants.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.prices.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

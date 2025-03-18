@@ -1,14 +1,14 @@
-# Invoice
+# Invoices
 
 Types:
 
-- <code><a href="./src/resources/invoice.ts">InvoiceRetrieveResponse</a></code>
-- <code><a href="./src/resources/invoice.ts">InvoiceListResponse</a></code>
+- <code><a href="./src/resources/invoices.ts">InvoiceRetrieveResponse</a></code>
+- <code><a href="./src/resources/invoices.ts">InvoiceListResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v1/invoices/{id}">client.invoice.<a href="./src/resources/invoice.ts">retrieve</a>(id) -> InvoiceRetrieveResponse</code>
-- <code title="get /api/v1/invoices">client.invoice.<a href="./src/resources/invoice.ts">list</a>({ ...params }) -> InvoiceListResponse</code>
+- <code title="get /api/v1/invoices/{id}">client.invoices.<a href="./src/resources/invoices.ts">retrieve</a>(id) -> InvoiceRetrieveResponse</code>
+- <code title="get /api/v1/invoices">client.invoices.<a href="./src/resources/invoices.ts">list</a>({ ...params }) -> InvoiceListResponse</code>
 
 # InvoiceLineItems
 
@@ -22,19 +22,19 @@ Methods:
 - <code title="get /api/v1/invoice-line-items/{id}">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">retrieve</a>(id) -> InvoiceLineItemRetrieveResponse</code>
 - <code title="get /api/v1/invoice-line-items">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">list</a>({ ...params }) -> InvoiceLineItemListResponse</code>
 
-# PurchaseSessions
+# CheckoutSessions
 
 Types:
 
-- <code><a href="./src/resources/purchase-sessions.ts">PurchaseSessionCreateResponse</a></code>
-- <code><a href="./src/resources/purchase-sessions.ts">PurchaseSessionRetrieveResponse</a></code>
-- <code><a href="./src/resources/purchase-sessions.ts">PurchaseSessionListResponse</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionCreateResponse</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionRetrieveResponse</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionListResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/purchase-sessions">client.purchaseSessions.<a href="./src/resources/purchase-sessions.ts">create</a>({ ...params }) -> PurchaseSessionCreateResponse</code>
-- <code title="get /api/v1/purchase-sessions/{id}">client.purchaseSessions.<a href="./src/resources/purchase-sessions.ts">retrieve</a>(id) -> PurchaseSessionRetrieveResponse</code>
-- <code title="get /api/v1/purchase-sessions">client.purchaseSessions.<a href="./src/resources/purchase-sessions.ts">list</a>({ ...params }) -> PurchaseSessionListResponse</code>
+- <code title="post /api/v1/checkout-sessions">client.checkoutSessions.<a href="./src/resources/checkout-sessions.ts">create</a>({ ...params }) -> CheckoutSessionCreateResponse</code>
+- <code title="get /api/v1/checkout-sessions/{id}">client.checkoutSessions.<a href="./src/resources/checkout-sessions.ts">retrieve</a>(id) -> CheckoutSessionRetrieveResponse</code>
+- <code title="get /api/v1/checkout-sessions">client.checkoutSessions.<a href="./src/resources/checkout-sessions.ts">list</a>({ ...params }) -> CheckoutSessionListResponse</code>
 
 # Products
 
@@ -52,19 +52,19 @@ Methods:
 - <code title="put /api/v1/products/{id}">client.products.<a href="./src/resources/products.ts">update</a>(id, { ...params }) -> ProductUpdateResponse</code>
 - <code title="get /api/v1/products">client.products.<a href="./src/resources/products.ts">list</a>({ ...params }) -> ProductListResponse</code>
 
-# Variants
+# Prices
 
 Types:
 
-- <code><a href="./src/resources/variants.ts">VariantCreateResponse</a></code>
-- <code><a href="./src/resources/variants.ts">VariantUpdateResponse</a></code>
-- <code><a href="./src/resources/variants.ts">VariantListResponse</a></code>
+- <code><a href="./src/resources/prices.ts">PriceCreateResponse</a></code>
+- <code><a href="./src/resources/prices.ts">PriceUpdateResponse</a></code>
+- <code><a href="./src/resources/prices.ts">PriceListResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/variants">client.variants.<a href="./src/resources/variants.ts">create</a>({ ...params }) -> VariantCreateResponse</code>
-- <code title="put /api/v1/variants/{id}">client.variants.<a href="./src/resources/variants.ts">update</a>(id, { ...params }) -> VariantUpdateResponse</code>
-- <code title="get /api/v1/variants">client.variants.<a href="./src/resources/variants.ts">list</a>({ ...params }) -> VariantListResponse</code>
+- <code title="post /api/v1/prices">client.prices.<a href="./src/resources/prices.ts">create</a>({ ...params }) -> PriceCreateResponse</code>
+- <code title="put /api/v1/prices/{id}">client.prices.<a href="./src/resources/prices.ts">update</a>(id, { ...params }) -> PriceUpdateResponse</code>
+- <code title="get /api/v1/prices">client.prices.<a href="./src/resources/prices.ts">list</a>({ ...params }) -> PriceListResponse</code>
 
 # Discounts
 

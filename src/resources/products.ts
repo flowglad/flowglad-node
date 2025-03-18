@@ -237,7 +237,7 @@ export namespace ProductListResponse {
     }
   }
 
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -279,7 +279,7 @@ export namespace ProductListResponse {
     updatedAt: string | null;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -326,39 +326,13 @@ export namespace ProductListResponse {
 }
 
 export interface ProductCreateParams {
-  product: ProductCreateParams.Product;
+  price: ProductCreateParams.SubscriptionPrice | ProductCreateParams.SinglePaymentPrice;
 
-  variant: ProductCreateParams.SubscriptionVariant | ProductCreateParams.SinglePaymentVariant;
+  product: ProductCreateParams.Product;
 }
 
 export namespace ProductCreateParams {
-  export interface Product {
-    active: boolean;
-
-    description: string | null;
-
-    displayFeatures: Array<Product.DisplayFeature> | null;
-
-    imageURL: string | null;
-
-    name: string;
-
-    pluralQuantityLabel: string | null;
-
-    singularQuantityLabel: string | null;
-  }
-
-  export namespace Product {
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-  }
-
-  export interface SubscriptionVariant {
+  export interface SubscriptionPrice {
     active: boolean;
 
     /**
@@ -372,8 +346,6 @@ export namespace ProductCreateParams {
 
     name: string | null;
 
-    priceType: 'subscription';
-
     productId: string;
 
     /**
@@ -386,22 +358,24 @@ export namespace ProductCreateParams {
      */
     trialPeriodDays: number | 0 | null;
 
+    type: 'subscription';
+
     /**
      * safeZodPositiveInteger
      */
     unitPrice: number;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     active: boolean;
 
     isDefault: boolean;
 
     name: string | null;
 
-    priceType: 'single_payment';
-
     productId: string;
+
+    type: 'single_payment';
 
     /**
      * safeZodPositiveInteger
@@ -428,37 +402,21 @@ export namespace ProductCreateParams {
      */
     trialPeriodDays?: unknown | unknown | null;
   }
-}
 
-export interface ProductUpdateParams {
-  product: ProductUpdateParams.Product;
-
-  variant: ProductUpdateParams.SubscriptionVariant | ProductUpdateParams.SinglePaymentVariant;
-}
-
-export namespace ProductUpdateParams {
   export interface Product {
-    id: string;
+    active: boolean;
 
-    active?: boolean;
+    description: string | null;
 
-    description?: string | null;
+    displayFeatures: Array<Product.DisplayFeature> | null;
 
-    displayFeatures?: Array<Product.DisplayFeature> | null;
+    imageURL: string | null;
 
-    imageURL?: string | null;
+    name: string;
 
-    livemode?: boolean;
+    pluralQuantityLabel: string | null;
 
-    name?: string;
-
-    organizationId?: string;
-
-    pluralQuantityLabel?: string | null;
-
-    singularQuantityLabel?: string | null;
-
-    stripeProductId?: string | null;
+    singularQuantityLabel: string | null;
   }
 
   export namespace Product {
@@ -470,11 +428,19 @@ export namespace ProductUpdateParams {
       details?: string | null;
     }
   }
+}
 
-  export interface SubscriptionVariant {
+export interface ProductUpdateParams {
+  price: ProductUpdateParams.SubscriptionPrice | ProductUpdateParams.SinglePaymentPrice;
+
+  product: ProductUpdateParams.Product;
+}
+
+export namespace ProductUpdateParams {
+  export interface SubscriptionPrice {
     id: string;
 
-    priceType: 'subscription';
+    type: 'subscription';
 
     active?: boolean;
 
@@ -647,10 +613,10 @@ export namespace ProductUpdateParams {
     unitPrice?: number;
   }
 
-  export interface SinglePaymentVariant {
+  export interface SinglePaymentPrice {
     id: string;
 
-    priceType: 'single_payment';
+    type: 'single_payment';
 
     active?: boolean;
 
@@ -824,6 +790,40 @@ export namespace ProductUpdateParams {
      * safeZodPositiveInteger
      */
     unitPrice?: number;
+  }
+
+  export interface Product {
+    id: string;
+
+    active?: boolean;
+
+    description?: string | null;
+
+    displayFeatures?: Array<Product.DisplayFeature> | null;
+
+    imageURL?: string | null;
+
+    livemode?: boolean;
+
+    name?: string;
+
+    organizationId?: string;
+
+    pluralQuantityLabel?: string | null;
+
+    singularQuantityLabel?: string | null;
+
+    stripeProductId?: string | null;
+  }
+
+  export namespace Product {
+    export interface DisplayFeature {
+      enabled: boolean;
+
+      label: string;
+
+      details?: string | null;
+    }
   }
 }
 
