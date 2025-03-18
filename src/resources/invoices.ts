@@ -5,7 +5,7 @@ import { APIPromise } from '../api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
-export class Invoice extends APIResource {
+export class Invoices extends APIResource {
   /**
    * Get Invoice
    */
@@ -2842,7 +2842,7 @@ export interface InvoiceListParams {
   limit?: number;
 }
 
-export declare namespace Invoice {
+export declare namespace Invoices {
   export {
     type InvoiceRetrieveResponse as InvoiceRetrieveResponse,
     type InvoiceListResponse as InvoiceListResponse,
