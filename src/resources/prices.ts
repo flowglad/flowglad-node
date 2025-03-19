@@ -377,22 +377,22 @@ export namespace PriceCreateResponse {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
   }
 }
 
@@ -742,22 +742,22 @@ export namespace PriceUpdateResponse {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
   }
 }
 
@@ -1115,22 +1115,22 @@ export namespace PriceListResponse {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
   }
 }
 
@@ -1470,24 +1470,24 @@ export namespace PriceCreateParams {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
   }
 }
 
@@ -1818,12 +1818,12 @@ export namespace PriceUpdateParams {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     isDefault?: boolean;
 
@@ -1836,14 +1836,14 @@ export namespace PriceUpdateParams {
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
 
     /**
      * safeZodPositiveInteger

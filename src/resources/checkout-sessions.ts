@@ -149,9 +149,9 @@ export namespace CheckoutSessionCreateResponse {
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    priceId: unknown;
+    priceId: 'null' | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     quantity: number;
 
@@ -215,7 +215,7 @@ export namespace CheckoutSessionCreateResponse {
 
     discountId: string | null;
 
-    invoiceId: unknown;
+    invoiceId: 'null' | null;
 
     livemode: boolean;
 
@@ -385,9 +385,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    priceId: unknown;
+    priceId: 'null' | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     quantity: number;
 
@@ -451,7 +451,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     discountId: string | null;
 
-    invoiceId: unknown;
+    invoiceId: 'null' | null;
 
     livemode: boolean;
 
@@ -625,9 +625,9 @@ export namespace CheckoutSessionListResponse {
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    priceId: unknown;
+    priceId: 'null' | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     quantity: number;
 
@@ -691,7 +691,7 @@ export namespace CheckoutSessionListResponse {
 
     discountId: string | null;
 
-    invoiceId: unknown;
+    invoiceId: 'null' | null;
 
     livemode: boolean;
 
