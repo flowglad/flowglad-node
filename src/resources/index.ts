@@ -37,8 +37,10 @@ export {
 } from './invoice-line-items';
 export {
   Invoices,
+  type InvoiceCreateResponse,
   type InvoiceRetrieveResponse,
   type InvoiceListResponse,
+  type InvoiceCreateParams,
   type InvoiceListParams,
 } from './invoices';
 export {
