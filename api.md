@@ -2,11 +2,13 @@
 
 Types:
 
+- <code><a href="./src/resources/invoices.ts">InvoiceCreateResponse</a></code>
 - <code><a href="./src/resources/invoices.ts">InvoiceRetrieveResponse</a></code>
 - <code><a href="./src/resources/invoices.ts">InvoiceListResponse</a></code>
 
 Methods:
 
+- <code title="post /api/v1/invoices">client.invoices.<a href="./src/resources/invoices.ts">create</a>({ ...params }) -> InvoiceCreateResponse</code>
 - <code title="get /api/v1/invoices/{id}">client.invoices.<a href="./src/resources/invoices.ts">retrieve</a>(id) -> InvoiceRetrieveResponse</code>
 - <code title="get /api/v1/invoices">client.invoices.<a href="./src/resources/invoices.ts">list</a>({ ...params }) -> InvoiceListResponse</code>
 
