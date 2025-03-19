@@ -1,4 +1,10 @@
 # Changelog
+## 0.9.1 (2025-03-19)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/flowglad/flowglad-node/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+* Fix the UnionMember generated type names on various types
 
 ## 0.9.0 (2025-03-19)
 
