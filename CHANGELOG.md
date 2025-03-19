@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.9.0 (2025-03-19)
+
+Full Changelog: [v0.8.1...v0.9.0](https://github.com/flowglad/flowglad-node/compare/v0.8.1...v0.9.0)
+
+### Features
+
+* **api:** rename customer profiles to customers in config ([#86](https://github.com/flowglad/flowglad-node/issues/86)) ([e4eab9d](https://github.com/flowglad/flowglad-node/commit/e4eab9d24cf01c0f0b6b7318c7525f5dda707837))
+* **api:** rename customer profiles to customers in config ([#88](https://github.com/flowglad/flowglad-node/issues/88)) ([042a09a](https://github.com/flowglad/flowglad-node/commit/042a09a7866a648209ec3fd808341191b72d39d9))
+* **api:** rename customer profiles to customers in config ([#90](https://github.com/flowglad/flowglad-node/issues/90)) ([f0433d7](https://github.com/flowglad/flowglad-node/commit/f0433d79b5ef47132858b264de531c9319c658fb))
+* **api:** rename customer profiles to customers in config ([#92](https://github.com/flowglad/flowglad-node/issues/92)) ([822cbf9](https://github.com/flowglad/flowglad-node/commit/822cbf947d4995d50f8c86359a609a1dc8e33bd2))
+
+
+### Bug Fixes
+
+* **client:** correct type to enum ([#91](https://github.com/flowglad/flowglad-node/issues/91)) ([892f6d7](https://github.com/flowglad/flowglad-node/commit/892f6d76406ac89d75c1fa9ad8448107c11d8f2b))
+
 ## 0.8.1 (2025-03-19)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/flowglad/flowglad-node/compare/v0.8.0...v0.8.1)

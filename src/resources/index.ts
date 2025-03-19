@@ -9,16 +9,16 @@ export {
   type CheckoutSessionListParams,
 } from './checkout-sessions';
 export {
-  CustomerProfiles,
-  type CustomerProfileCreateResponse,
-  type CustomerProfileRetrieveResponse,
-  type CustomerProfileUpdateResponse,
-  type CustomerProfileListResponse,
-  type CustomerProfileRetrieveBillingResponse,
-  type CustomerProfileCreateParams,
-  type CustomerProfileUpdateParams,
-  type CustomerProfileListParams,
-} from './customer-profiles';
+  Customers,
+  type CustomerCreateResponse,
+  type CustomerRetrieveResponse,
+  type CustomerUpdateResponse,
+  type CustomerListResponse,
+  type CustomerRetrieveBillingResponse,
+  type CustomerCreateParams,
+  type CustomerUpdateParams,
+  type CustomerListParams,
+} from './customers';
 export {
   Discounts,
   type DiscountCreateResponse,

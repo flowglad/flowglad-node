@@ -385,22 +385,22 @@ export namespace ProductCreateParams {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
   }
 
   export interface Product {
@@ -759,12 +759,12 @@ export namespace ProductUpdateParams {
     /**
      * safeZodNullOrUndefined
      */
-    intervalCount?: unknown | unknown | null;
+    intervalCount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
-    intervalUnit?: unknown | unknown | null;
+    intervalUnit?: 'null' | null | unknown;
 
     isDefault?: boolean;
 
@@ -777,14 +777,14 @@ export namespace ProductUpdateParams {
     /**
      * safeZodNullOrUndefined
      */
-    setupFeeAmount?: unknown | unknown | null;
+    setupFeeAmount?: 'null' | null | unknown;
 
     stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined
      */
-    trialPeriodDays?: unknown | unknown | null;
+    trialPeriodDays?: 'null' | null | unknown;
 
     /**
      * safeZodPositiveInteger

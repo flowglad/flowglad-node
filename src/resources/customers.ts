@@ -5,76 +5,68 @@ import { APIPromise } from '../api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
-export class CustomerProfiles extends APIResource {
+export class Customers extends APIResource {
   /**
-   * Create Customer Profile
+   * Create customer
    */
-  create(
-    body: CustomerProfileCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<CustomerProfileCreateResponse> {
-    return this._client.post('/api/v1/customer-profiles', { body, ...options });
+  create(body: CustomerCreateParams, options?: RequestOptions): APIPromise<CustomerCreateResponse> {
+    return this._client.post('/api/v1/customers', { body, ...options });
   }
 
   /**
-   * Get Customer Profile
+   * Get Customer
    */
-  retrieve(externalID: string, options?: RequestOptions): APIPromise<CustomerProfileRetrieveResponse> {
-    return this._client.get(path`/api/v1/customer-profiles/${externalID}`, options);
+  retrieve(externalID: string, options?: RequestOptions): APIPromise<CustomerRetrieveResponse> {
+    return this._client.get(path`/api/v1/customers/${externalID}`, options);
   }
 
   /**
-   * Update Customer Profile
+   * Update Customer
    */
   update(
     externalID: string,
-    body: CustomerProfileUpdateParams,
+    body: CustomerUpdateParams,
     options?: RequestOptions,
-  ): APIPromise<CustomerProfileUpdateResponse> {
-    return this._client.put(path`/api/v1/customer-profiles/${externalID}`, { body, ...options });
+  ): APIPromise<CustomerUpdateResponse> {
+    return this._client.put(path`/api/v1/customers/${externalID}`, { body, ...options });
   }
 
   /**
-   * List Customer Profiles
+   * List Customers
    */
   list(
-    query: CustomerProfileListParams | null | undefined = {},
+    query: CustomerListParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<CustomerProfileListResponse> {
-    return this._client.get('/api/v1/customer-profiles', { query, ...options });
+  ): APIPromise<CustomerListResponse> {
+    return this._client.get('/api/v1/customers', { query, ...options });
   }
 
   /**
    * Get Billing Details
    */
-  retrieveBilling(
-    externalID: string,
-    options?: RequestOptions,
-  ): APIPromise<CustomerProfileRetrieveBillingResponse> {
-    return this._client.get(path`/api/v1/customer-profiles/${externalID}/billing`, options);
+  retrieveBilling(externalID: string, options?: RequestOptions): APIPromise<CustomerRetrieveBillingResponse> {
+    return this._client.get(path`/api/v1/customers/${externalID}/billing`, options);
   }
 }
 
-export interface CustomerProfileCreateResponse {
-  data: CustomerProfileCreateResponse.Data;
+export interface CustomerCreateResponse {
+  data: CustomerCreateResponse.Data;
 }
 
-export namespace CustomerProfileCreateResponse {
+export namespace CustomerCreateResponse {
   export interface Data {
-    customerProfile: Data.CustomerProfile;
+    customer: Data.Customer;
   }
 
   export namespace Data {
-    export interface CustomerProfile {
+    export interface Customer {
       id: string;
 
       archived: boolean;
 
-      billingAddress: CustomerProfile.BillingAddress | null;
+      billingAddress: Customer.BillingAddress | null;
 
       createdAt: string;
-
-      customerId: string;
 
       domain: string | null;
 
@@ -90,14 +82,16 @@ export namespace CustomerProfileCreateResponse {
 
       logoURL: string | null;
 
-      name: string | null;
+      name: string;
 
       organizationId: string;
 
       updatedAt: string | null;
+
+      userId: string | null;
     }
 
-    export namespace CustomerProfile {
+    export namespace Customer {
       export interface BillingAddress {
         address: BillingAddress.Address;
 
@@ -129,21 +123,19 @@ export namespace CustomerProfileCreateResponse {
   }
 }
 
-export interface CustomerProfileRetrieveResponse {
-  customerProfile: CustomerProfileRetrieveResponse.CustomerProfile;
+export interface CustomerRetrieveResponse {
+  customer: CustomerRetrieveResponse.Customer;
 }
 
-export namespace CustomerProfileRetrieveResponse {
-  export interface CustomerProfile {
+export namespace CustomerRetrieveResponse {
+  export interface Customer {
     id: string;
 
     archived: boolean;
 
-    billingAddress: CustomerProfile.BillingAddress | null;
+    billingAddress: Customer.BillingAddress | null;
 
     createdAt: string;
-
-    customerId: string;
 
     domain: string | null;
 
@@ -159,14 +151,16 @@ export namespace CustomerProfileRetrieveResponse {
 
     logoURL: string | null;
 
-    name: string | null;
+    name: string;
 
     organizationId: string;
 
     updatedAt: string | null;
+
+    userId: string | null;
   }
 
-  export namespace CustomerProfile {
+  export namespace Customer {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -197,21 +191,19 @@ export namespace CustomerProfileRetrieveResponse {
   }
 }
 
-export interface CustomerProfileUpdateResponse {
-  customerProfile: CustomerProfileUpdateResponse.CustomerProfile;
+export interface CustomerUpdateResponse {
+  customer: CustomerUpdateResponse.Customer;
 }
 
-export namespace CustomerProfileUpdateResponse {
-  export interface CustomerProfile {
+export namespace CustomerUpdateResponse {
+  export interface Customer {
     id: string;
 
     archived: boolean;
 
-    billingAddress: CustomerProfile.BillingAddress | null;
+    billingAddress: Customer.BillingAddress | null;
 
     createdAt: string;
-
-    customerId: string;
 
     domain: string | null;
 
@@ -227,14 +219,16 @@ export namespace CustomerProfileUpdateResponse {
 
     logoURL: string | null;
 
-    name: string | null;
+    name: string;
 
     organizationId: string;
 
     updatedAt: string | null;
+
+    userId: string | null;
   }
 
-  export namespace CustomerProfile {
+  export namespace Customer {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -265,8 +259,8 @@ export namespace CustomerProfileUpdateResponse {
   }
 }
 
-export interface CustomerProfileListResponse {
-  data: Array<CustomerProfileListResponse.Data>;
+export interface CustomerListResponse {
+  data: Array<CustomerListResponse.Data>;
 
   hasMore: boolean;
 
@@ -277,7 +271,7 @@ export interface CustomerProfileListResponse {
   nextCursor?: string;
 }
 
-export namespace CustomerProfileListResponse {
+export namespace CustomerListResponse {
   export interface Data {
     id: string;
 
@@ -286,8 +280,6 @@ export namespace CustomerProfileListResponse {
     billingAddress: Data.BillingAddress | null;
 
     createdAt: string;
-
-    customerId: string;
 
     customerTaxId: string | null;
 
@@ -305,7 +297,7 @@ export namespace CustomerProfileListResponse {
 
     logoURL: string | null;
 
-    name: string | null;
+    name: string;
 
     organizationId: string;
 
@@ -314,6 +306,8 @@ export namespace CustomerProfileListResponse {
     stripeCustomerId: string | null;
 
     updatedAt: string | null;
+
+    userId: string | null;
   }
 
   export namespace Data {
@@ -347,39 +341,39 @@ export namespace CustomerProfileListResponse {
   }
 }
 
-export interface CustomerProfileRetrieveBillingResponse {
-  catalog: CustomerProfileRetrieveBillingResponse.Catalog;
+export interface CustomerRetrieveBillingResponse {
+  catalog: CustomerRetrieveBillingResponse.Catalog;
 
-  customerProfile: CustomerProfileRetrieveBillingResponse.CustomerProfile;
+  customer: CustomerRetrieveBillingResponse.Customer;
 
-  invoices: Array<CustomerProfileRetrieveBillingResponse.InvoiceWithLineItems>;
+  invoices: Array<CustomerRetrieveBillingResponse.Invoice>;
 
-  paymentMethods: Array<CustomerProfileRetrieveBillingResponse.PaymentMethod>;
+  paymentMethods: Array<CustomerRetrieveBillingResponse.PaymentMethod>;
 
-  subscriptions: Array<CustomerProfileRetrieveBillingResponse.Subscription>;
+  subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
 
   /**
    * The current subscriptions for the customer. By default, customers can only have
    * one active subscription at a time. This will only return multiple subscriptions
    * if you have enabled multiple subscriptions per customer.
    */
-  currentSubscriptions?: Array<CustomerProfileRetrieveBillingResponse.CurrentSubscription>;
+  currentSubscriptions?: Array<CustomerRetrieveBillingResponse.CurrentSubscription>;
 }
 
-export namespace CustomerProfileRetrieveBillingResponse {
+export namespace CustomerRetrieveBillingResponse {
   export interface Catalog {
     products: Array<Catalog.Product>;
   }
 
   export namespace Catalog {
     export interface Product {
-      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
+      prices: Array<Product.UnionMember0 | Product.UnionMember1>;
 
       product: Product.Product;
     }
 
     export namespace Product {
-      export interface SubscriptionPrice {
+      export interface UnionMember0 {
         id: string;
 
         active: boolean;
@@ -557,7 +551,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
-      export interface SinglePaymentPrice {
+      export interface UnionMember1 {
         id: string;
 
         active: boolean;
@@ -720,22 +714,22 @@ export namespace CustomerProfileRetrieveBillingResponse {
         /**
          * safeZodNullOrUndefined
          */
-        intervalCount?: unknown | unknown | null;
+        intervalCount?: 'null' | null | unknown;
 
         /**
          * safeZodNullOrUndefined
          */
-        intervalUnit?: unknown | unknown | null;
+        intervalUnit?: 'null' | null | unknown;
 
         /**
          * safeZodNullOrUndefined
          */
-        setupFeeAmount?: unknown | unknown | null;
+        setupFeeAmount?: 'null' | null | unknown;
 
         /**
          * safeZodNullOrUndefined
          */
-        trialPeriodDays?: unknown | unknown | null;
+        trialPeriodDays?: 'null' | null | unknown;
       }
 
       export interface Product {
@@ -782,16 +776,14 @@ export namespace CustomerProfileRetrieveBillingResponse {
     }
   }
 
-  export interface CustomerProfile {
+  export interface Customer {
     id: string;
 
     archived: boolean;
 
-    billingAddress: CustomerProfile.BillingAddress | null;
+    billingAddress: Customer.BillingAddress | null;
 
     createdAt: string;
-
-    customerId: string;
 
     domain: string | null;
 
@@ -807,14 +799,16 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     logoURL: string | null;
 
-    name: string | null;
+    name: string;
 
     organizationId: string;
 
     updatedAt: string | null;
+
+    userId: string | null;
   }
 
-  export namespace CustomerProfile {
+  export namespace Customer {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -844,14 +838,14 @@ export namespace CustomerProfileRetrieveBillingResponse {
     }
   }
 
-  export interface InvoiceWithLineItems {
-    invoice: Invoice.PurchaseInvoice | Invoice.SubscriptionInvoice | Invoice.StandaloneInvoice;
+  export interface Invoice {
+    invoice: Invoice.UnionMember0 | Invoice.UnionMember1 | Invoice.UnionMember2;
 
     invoiceLineItems: Array<Invoice.InvoiceLineItem>;
   }
 
   export namespace Invoice {
-    export interface PurchaseInvoice {
+    export interface UnionMember0 {
       id: string;
 
       applicationFee: number | null;
@@ -866,7 +860,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       billingPeriodEndDate: string | null;
 
-      billingPeriodId: unknown;
+      billingPeriodId: 'null' | null;
 
       billingPeriodStartDate: string | null;
 
@@ -1008,7 +1002,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         | 'ZAR'
         | 'ZMW';
 
-      customerProfileId: string;
+      customerId: string;
 
       dueDate: string | null;
 
@@ -1311,7 +1305,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
       updatedAt: string | null;
     }
 
-    export interface SubscriptionInvoice {
+    export interface UnionMember1 {
       id: string;
 
       applicationFee: number | null;
@@ -1468,7 +1462,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         | 'ZAR'
         | 'ZMW';
 
-      customerProfileId: string;
+      customerId: string;
 
       dueDate: string | null;
 
@@ -1486,7 +1480,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       pdfURL: string | null;
 
-      purchaseId: unknown;
+      purchaseId: 'null' | null;
 
       receiptPdfURL: string | null;
 
@@ -1771,7 +1765,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
       updatedAt: string | null;
     }
 
-    export interface StandaloneInvoice {
+    export interface UnionMember2 {
       id: string;
 
       applicationFee: number | null;
@@ -1786,7 +1780,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       billingPeriodEndDate: string | null;
 
-      billingPeriodId: unknown;
+      billingPeriodId: 'null' | null;
 
       billingPeriodStartDate: string | null;
 
@@ -1928,7 +1922,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
         | 'ZAR'
         | 'ZMW';
 
-      customerProfileId: string;
+      customerId: string;
 
       dueDate: string | null;
 
@@ -1946,7 +1940,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
       pdfURL: string | null;
 
-      purchaseId: unknown;
+      purchaseId: 'null' | null;
 
       receiptPdfURL: string | null;
 
@@ -2262,7 +2256,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     createdAt: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     default: boolean;
 
@@ -2328,7 +2322,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     currentBillingPeriodStart: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -2598,7 +2592,7 @@ export namespace CustomerProfileRetrieveBillingResponse {
 
     currentBillingPeriodStart: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -2852,15 +2846,17 @@ export namespace CustomerProfileRetrieveBillingResponse {
   }
 }
 
-export interface CustomerProfileCreateParams {
-  customerProfile: CustomerProfileCreateParams.CustomerProfile;
+export interface CustomerCreateParams {
+  customer: CustomerCreateParams.Customer;
 }
 
-export namespace CustomerProfileCreateParams {
-  export interface CustomerProfile {
+export namespace CustomerCreateParams {
+  export interface Customer {
     email: string;
 
     externalId: string;
+
+    name: string;
 
     archived?: boolean;
 
@@ -2870,16 +2866,16 @@ export namespace CustomerProfileCreateParams {
 
     logoURL?: string | null;
 
-    name?: string | null;
+    userId?: string | null;
   }
 }
 
-export interface CustomerProfileUpdateParams {
-  customerProfile: CustomerProfileUpdateParams.CustomerProfile;
+export interface CustomerUpdateParams {
+  customer: CustomerUpdateParams.Customer;
 }
 
-export namespace CustomerProfileUpdateParams {
-  export interface CustomerProfile {
+export namespace CustomerUpdateParams {
+  export interface Customer {
     id: string;
 
     archived?: boolean;
@@ -2894,25 +2890,27 @@ export namespace CustomerProfileUpdateParams {
 
     logoURL?: string | null;
 
-    name?: string | null;
+    name?: string;
+
+    userId?: string | null;
   }
 }
 
-export interface CustomerProfileListParams {
+export interface CustomerListParams {
   cursor?: string;
 
   limit?: number;
 }
 
-export declare namespace CustomerProfiles {
+export declare namespace Customers {
   export {
-    type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
-    type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
-    type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
-    type CustomerProfileListResponse as CustomerProfileListResponse,
-    type CustomerProfileRetrieveBillingResponse as CustomerProfileRetrieveBillingResponse,
-    type CustomerProfileCreateParams as CustomerProfileCreateParams,
-    type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
-    type CustomerProfileListParams as CustomerProfileListParams,
+    type CustomerCreateResponse as CustomerCreateResponse,
+    type CustomerRetrieveResponse as CustomerRetrieveResponse,
+    type CustomerUpdateResponse as CustomerUpdateResponse,
+    type CustomerListResponse as CustomerListResponse,
+    type CustomerRetrieveBillingResponse as CustomerRetrieveBillingResponse,
+    type CustomerCreateParams as CustomerCreateParams,
+    type CustomerUpdateParams as CustomerUpdateParams,
+    type CustomerListParams as CustomerListParams,
   };
 }

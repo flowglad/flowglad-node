@@ -61,9 +61,9 @@ export namespace CheckoutSessionCreateResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -135,9 +135,9 @@ export namespace CheckoutSessionCreateResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -149,9 +149,9 @@ export namespace CheckoutSessionCreateResponse {
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    priceId: unknown;
+    priceId: 'null' | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     quantity: number;
 
@@ -209,13 +209,13 @@ export namespace CheckoutSessionCreateResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
-    invoiceId: unknown;
+    invoiceId: 'null' | null;
 
     livemode: boolean;
 
@@ -297,9 +297,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -371,9 +371,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -385,9 +385,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    priceId: unknown;
+    priceId: 'null' | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     quantity: number;
 
@@ -445,13 +445,13 @@ export namespace CheckoutSessionRetrieveResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
-    invoiceId: unknown;
+    invoiceId: 'null' | null;
 
     livemode: boolean;
 
@@ -537,9 +537,9 @@ export namespace CheckoutSessionListResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -611,9 +611,9 @@ export namespace CheckoutSessionListResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -625,9 +625,9 @@ export namespace CheckoutSessionListResponse {
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
-    priceId: unknown;
+    priceId: 'null' | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     quantity: number;
 
@@ -685,13 +685,13 @@ export namespace CheckoutSessionListResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
-    invoiceId: unknown;
+    invoiceId: 'null' | null;
 
     livemode: boolean;
 
@@ -753,10 +753,9 @@ export interface CheckoutSessionCreateParams {
   cancelUrl: string;
 
   /**
-   * The id of the CustomerProfile for this purchase session, as defined in your
-   * system
+   * The id of the Customer for this purchase session, as defined in your system
    */
-  customerProfileExternalId: string;
+  customerExternalId: string;
 
   /**
    * The ID of the price the customer shall purchase

@@ -49,7 +49,7 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodEndDate: string | null;
 
-    billingPeriodId: unknown;
+    billingPeriodId: 'null' | null;
 
     billingPeriodStartDate: string | null;
 
@@ -191,7 +191,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -651,7 +651,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -669,7 +669,7 @@ export namespace InvoiceRetrieveResponse {
 
     pdfURL: string | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     receiptPdfURL: string | null;
 
@@ -969,7 +969,7 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodEndDate: string | null;
 
-    billingPeriodId: unknown;
+    billingPeriodId: 'null' | null;
 
     billingPeriodStartDate: string | null;
 
@@ -1111,7 +1111,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -1129,7 +1129,7 @@ export namespace InvoiceRetrieveResponse {
 
     pdfURL: string | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     receiptPdfURL: string | null;
 
@@ -1470,7 +1470,7 @@ export namespace InvoiceListResponse {
 
     billingPeriodEndDate: string | null;
 
-    billingPeriodId: unknown;
+    billingPeriodId: 'null' | null;
 
     billingPeriodStartDate: string | null;
 
@@ -1612,7 +1612,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -2072,7 +2072,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -2090,7 +2090,7 @@ export namespace InvoiceListResponse {
 
     pdfURL: string | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     receiptPdfURL: string | null;
 
@@ -2390,7 +2390,7 @@ export namespace InvoiceListResponse {
 
     billingPeriodEndDate: string | null;
 
-    billingPeriodId: unknown;
+    billingPeriodId: 'null' | null;
 
     billingPeriodStartDate: string | null;
 
@@ -2532,7 +2532,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -2550,7 +2550,7 @@ export namespace InvoiceListResponse {
 
     pdfURL: string | null;
 
-    purchaseId: unknown;
+    purchaseId: 'null' | null;
 
     receiptPdfURL: string | null;
 
