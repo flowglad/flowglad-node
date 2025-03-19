@@ -33,9 +33,9 @@ export class Invoices extends APIResource {
 
 export interface InvoiceCreateResponse {
   invoice:
-    | InvoiceCreateResponse.UnionMember0
-    | InvoiceCreateResponse.UnionMember1
-    | InvoiceCreateResponse.UnionMember2;
+    | InvoiceCreateResponse.PurchaseInvoice
+    | InvoiceCreateResponse.SubscriptionInvoice
+    | InvoiceCreateResponse.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceCreateResponse.InvoiceLineItem>;
 
@@ -43,7 +43,7 @@ export interface InvoiceCreateResponse {
 }
 
 export namespace InvoiceCreateResponse {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -503,7 +503,7 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -963,7 +963,7 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -4261,9 +4261,9 @@ export namespace InvoiceListResponse {
 
 export interface InvoiceCreateParams {
   invoice:
-    | InvoiceCreateParams.UnionMember0
-    | InvoiceCreateParams.UnionMember1
-    | InvoiceCreateParams.UnionMember2;
+    | InvoiceCreateParams.PurchaseInvoice
+    | InvoiceCreateParams.SubscriptionInvoice
+    | InvoiceCreateParams.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceCreateParams.InvoiceLineItem>;
 
@@ -4271,7 +4271,7 @@ export interface InvoiceCreateParams {
 }
 
 export namespace InvoiceCreateParams {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     billingPeriodId: 'null' | null;
 
     currency:
@@ -4715,7 +4715,7 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     billingPeriodId: string;
 
     currency:
@@ -5159,7 +5159,7 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     billingPeriodId: 'null' | null;
 
     currency:
