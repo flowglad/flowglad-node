@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 (2025-03-19)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/flowglad/flowglad-node/compare/v0.8.0...v0.8.1)
+
+### Chores
+
+* **internal:** minor client file refactoring ([#85](https://github.com/flowglad/flowglad-node/issues/85)) ([da121e7](https://github.com/flowglad/flowglad-node/commit/da121e70969f107ee34c31a44daf2d4f3c6d9742))
+
 ## 0.8.0 (2025-03-18)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/flowglad/flowglad-node/compare/v0.7.0...v0.8.0)
