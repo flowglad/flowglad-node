@@ -12,7 +12,7 @@ describe('resource checkoutSessions', () => {
   test.skip('create: only required params', async () => {
     const responsePromise = client.checkoutSessions.create({
       cancelUrl: 'cancelUrl',
-      customerProfileExternalId: 'customerProfileExternalId',
+      customerExternalId: 'customerExternalId',
       priceId: 'priceId',
       successUrl: 'successUrl',
     });
@@ -29,7 +29,7 @@ describe('resource checkoutSessions', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.checkoutSessions.create({
       cancelUrl: 'cancelUrl',
-      customerProfileExternalId: 'customerProfileExternalId',
+      customerExternalId: 'customerExternalId',
       priceId: 'priceId',
       successUrl: 'successUrl',
     });
