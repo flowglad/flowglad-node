@@ -8,17 +8,7 @@ export {
   type CheckoutSessionCreateParams,
   type CheckoutSessionListParams,
 } from './checkout-sessions';
-export {
-  CustomerProfiles,
-  type CustomerProfileCreateResponse,
-  type CustomerProfileRetrieveResponse,
-  type CustomerProfileUpdateResponse,
-  type CustomerProfileListResponse,
-  type CustomerProfileRetrieveBillingResponse,
-  type CustomerProfileCreateParams,
-  type CustomerProfileUpdateParams,
-  type CustomerProfileListParams,
-} from './customer-profiles';
+export { Customers } from './customers';
 export {
   Discounts,
   type DiscountCreateResponse,
