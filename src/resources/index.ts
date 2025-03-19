@@ -14,6 +14,7 @@ export {
   type CustomerRetrieveResponse,
   type CustomerUpdateResponse,
   type CustomerListResponse,
+  type CustomerRetrieveBillingResponse,
   type CustomerCreateParams,
   type CustomerUpdateParams,
   type CustomerListParams,
