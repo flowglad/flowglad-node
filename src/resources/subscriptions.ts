@@ -68,7 +68,7 @@ export namespace SubscriptionRetrieveResponse {
 
     currentBillingPeriodStart: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -136,7 +136,7 @@ export namespace SubscriptionListResponse {
 
     currentBillingPeriodStart: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -198,7 +198,7 @@ export namespace SubscriptionAdjustResponse {
 
     currentBillingPeriodStart: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     defaultPaymentMethodId: string | null;
 
@@ -288,7 +288,7 @@ export namespace SubscriptionCancelResponse {
 
     currentBillingPeriodStart: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     defaultPaymentMethodId: string | null;
 

@@ -36,7 +36,7 @@ export namespace PaymentMethodRetrieveResponse {
 
     createdAt: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     default: boolean;
 
@@ -106,7 +106,7 @@ export namespace PaymentMethodListResponse {
 
     createdAt: string;
 
-    customerProfileId: string;
+    customerId: string;
 
     default: boolean;
 
