@@ -56,6 +56,8 @@ import {
   InvoiceLineItems,
 } from './resources/invoice-line-items';
 import {
+  InvoiceCreateParams,
+  InvoiceCreateResponse,
   InvoiceListParams,
   InvoiceListResponse,
   InvoiceRetrieveResponse,
@@ -781,8 +783,10 @@ export declare namespace Flowglad {
 
   export {
     Invoices as Invoices,
+    type InvoiceCreateResponse as InvoiceCreateResponse,
     type InvoiceRetrieveResponse as InvoiceRetrieveResponse,
     type InvoiceListResponse as InvoiceListResponse,
+    type InvoiceCreateParams as InvoiceCreateParams,
     type InvoiceListParams as InvoiceListParams,
   };
 
