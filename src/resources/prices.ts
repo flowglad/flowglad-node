@@ -32,11 +32,11 @@ export class Prices extends APIResource {
 }
 
 export interface PriceCreateResponse {
-  price: PriceCreateResponse.UnionMember0 | PriceCreateResponse.UnionMember1;
+  price: PriceCreateResponse.SinglePaymentPrice | PriceCreateResponse.SubscriptionPrice;
 }
 
 export namespace PriceCreateResponse {
-  export interface UnionMember0 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -214,7 +214,7 @@ export namespace PriceCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -397,11 +397,11 @@ export namespace PriceCreateResponse {
 }
 
 export interface PriceUpdateResponse {
-  price: PriceUpdateResponse.UnionMember0 | PriceUpdateResponse.UnionMember1;
+  price: PriceUpdateResponse.SinglePaymentPrice | PriceUpdateResponse.SubscriptionPrice;
 }
 
 export namespace PriceUpdateResponse {
-  export interface UnionMember0 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -579,7 +579,7 @@ export namespace PriceUpdateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -762,7 +762,7 @@ export namespace PriceUpdateResponse {
 }
 
 export interface PriceListResponse {
-  data: Array<PriceListResponse.UnionMember0 | PriceListResponse.UnionMember1>;
+  data: Array<PriceListResponse.SinglePaymentPrice | PriceListResponse.SubscriptionPrice>;
 
   hasMore: boolean;
 
@@ -774,7 +774,7 @@ export interface PriceListResponse {
 }
 
 export namespace PriceListResponse {
-  export interface UnionMember0 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -952,7 +952,7 @@ export namespace PriceListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -1135,11 +1135,11 @@ export namespace PriceListResponse {
 }
 
 export interface PriceCreateParams {
-  price: PriceCreateParams.UnionMember0 | PriceCreateParams.UnionMember1;
+  price: PriceCreateParams.SinglePaymentPrice | PriceCreateParams.SubscriptionPrice;
 }
 
 export namespace PriceCreateParams {
-  export interface UnionMember0 {
+  export interface SinglePaymentPrice {
     active: boolean;
 
     currency:
@@ -1313,7 +1313,7 @@ export namespace PriceCreateParams {
     stripePriceId?: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionPrice {
     active: boolean;
 
     currency:
@@ -1492,11 +1492,11 @@ export namespace PriceCreateParams {
 }
 
 export interface PriceUpdateParams {
-  price: PriceUpdateParams.UnionMember0 | PriceUpdateParams.UnionMember1;
+  price: PriceUpdateParams.SinglePaymentPrice | PriceUpdateParams.SubscriptionPrice;
 }
 
 export namespace PriceUpdateParams {
-  export interface UnionMember0 {
+  export interface SinglePaymentPrice {
     id: string;
 
     type: 'subscription';
@@ -1672,7 +1672,7 @@ export namespace PriceUpdateParams {
     unitPrice?: number;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionPrice {
     id: string;
 
     type: 'single_payment';

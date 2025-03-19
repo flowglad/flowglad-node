@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.9.0 (2025-03-19)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/flowglad/flowglad-node/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** rename customer profiles to customers in config ([#86](https://github.com/flowglad/flowglad-node/issues/86)) ([ba7ae1f](https://github.com/flowglad/flowglad-node/commit/ba7ae1fa74cc9eba18a7b30425eee97c8d3bca85))
+* **api:** rename customer profiles to customers in config ([#88](https://github.com/flowglad/flowglad-node/issues/88)) ([c5eff32](https://github.com/flowglad/flowglad-node/commit/c5eff32cffe40bacf4bdb07e810b8f465b60abef))
+* **api:** rename customer profiles to customers in config ([#90](https://github.com/flowglad/flowglad-node/issues/90)) ([f54e81a](https://github.com/flowglad/flowglad-node/commit/f54e81a14708b3ed4838042d8fe640293fc0acd2))
+
+
+### Chores
+
+* **internal:** minor client file refactoring ([#85](https://github.com/flowglad/flowglad-node/issues/85)) ([da121e7](https://github.com/flowglad/flowglad-node/commit/da121e70969f107ee34c31a44daf2d4f3c6d9742))
+
+## 0.8.1 (2025-03-19)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/flowglad/flowglad-node/compare/v0.8.0...v0.8.1)
+
+### Chores
+
+* **internal:** minor client file refactoring ([#85](https://github.com/flowglad/flowglad-node/issues/85)) ([da121e7](https://github.com/flowglad/flowglad-node/commit/da121e70969f107ee34c31a44daf2d4f3c6d9742))
+
 ## 0.8.0 (2025-03-18)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/flowglad/flowglad-node/compare/v0.7.0...v0.8.0)

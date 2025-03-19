@@ -36,9 +36,9 @@ export class CheckoutSessions extends APIResource {
 
 export interface CheckoutSessionCreateResponse {
   checkoutSession:
-    | CheckoutSessionCreateResponse.UnionMember0
-    | CheckoutSessionCreateResponse.UnionMember1
-    | CheckoutSessionCreateResponse.UnionMember2;
+    | CheckoutSessionCreateResponse.PurchaseCheckoutSession
+    | CheckoutSessionCreateResponse.InvoiceCheckoutSession
+    | CheckoutSessionCreateResponse.ProductCheckoutSession;
 
   /**
    * The URL to redirect to complete the purchase
@@ -47,10 +47,10 @@ export interface CheckoutSessionCreateResponse {
 }
 
 export namespace CheckoutSessionCreateResponse {
-  export interface UnionMember0 {
+  export interface PurchaseCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchaseCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -61,9 +61,9 @@ export namespace CheckoutSessionCreateResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -91,7 +91,7 @@ export namespace CheckoutSessionCreateResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchaseCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -121,10 +121,10 @@ export namespace CheckoutSessionCreateResponse {
     }
   }
 
-  export interface UnionMember1 {
+  export interface InvoiceCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoiceCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -135,9 +135,9 @@ export namespace CheckoutSessionCreateResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -165,7 +165,7 @@ export namespace CheckoutSessionCreateResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoiceCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -195,10 +195,10 @@ export namespace CheckoutSessionCreateResponse {
     }
   }
 
-  export interface UnionMember2 {
+  export interface ProductCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -209,9 +209,9 @@ export namespace CheckoutSessionCreateResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -239,7 +239,7 @@ export namespace CheckoutSessionCreateResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -272,9 +272,9 @@ export namespace CheckoutSessionCreateResponse {
 
 export interface CheckoutSessionRetrieveResponse {
   checkoutSession:
-    | CheckoutSessionRetrieveResponse.UnionMember0
-    | CheckoutSessionRetrieveResponse.UnionMember1
-    | CheckoutSessionRetrieveResponse.UnionMember2;
+    | CheckoutSessionRetrieveResponse.PurchaseCheckoutSession
+    | CheckoutSessionRetrieveResponse.InvoiceCheckoutSession
+    | CheckoutSessionRetrieveResponse.ProductCheckoutSession;
 
   /**
    * The URL to redirect to complete the purchase
@@ -283,10 +283,10 @@ export interface CheckoutSessionRetrieveResponse {
 }
 
 export namespace CheckoutSessionRetrieveResponse {
-  export interface UnionMember0 {
+  export interface PurchaseCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchaseCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -297,9 +297,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -327,7 +327,7 @@ export namespace CheckoutSessionRetrieveResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchaseCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -357,10 +357,10 @@ export namespace CheckoutSessionRetrieveResponse {
     }
   }
 
-  export interface UnionMember1 {
+  export interface InvoiceCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoiceCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -371,9 +371,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -401,7 +401,7 @@ export namespace CheckoutSessionRetrieveResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoiceCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -431,10 +431,10 @@ export namespace CheckoutSessionRetrieveResponse {
     }
   }
 
-  export interface UnionMember2 {
+  export interface ProductCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -445,9 +445,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -475,7 +475,7 @@ export namespace CheckoutSessionRetrieveResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -508,9 +508,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
 export interface CheckoutSessionListResponse {
   data: Array<
-    | CheckoutSessionListResponse.UnionMember0
-    | CheckoutSessionListResponse.UnionMember1
-    | CheckoutSessionListResponse.UnionMember2
+    | CheckoutSessionListResponse.PurchaseCheckoutSession
+    | CheckoutSessionListResponse.InvoiceCheckoutSession
+    | CheckoutSessionListResponse.ProductCheckoutSession
   >;
 
   hasMore: boolean;
@@ -523,10 +523,10 @@ export interface CheckoutSessionListResponse {
 }
 
 export namespace CheckoutSessionListResponse {
-  export interface UnionMember0 {
+  export interface PurchaseCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchaseCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -537,9 +537,9 @@ export namespace CheckoutSessionListResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -567,7 +567,7 @@ export namespace CheckoutSessionListResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchaseCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -597,10 +597,10 @@ export namespace CheckoutSessionListResponse {
     }
   }
 
-  export interface UnionMember1 {
+  export interface InvoiceCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoiceCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -611,9 +611,9 @@ export namespace CheckoutSessionListResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -641,7 +641,7 @@ export namespace CheckoutSessionListResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoiceCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -671,10 +671,10 @@ export namespace CheckoutSessionListResponse {
     }
   }
 
-  export interface UnionMember2 {
+  export interface ProductCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -685,9 +685,9 @@ export namespace CheckoutSessionListResponse {
 
     customerEmail: string | null;
 
-    customerName: string | null;
+    customerId: string | null;
 
-    customerProfileId: string | null;
+    customerName: string | null;
 
     discountId: string | null;
 
@@ -715,7 +715,7 @@ export namespace CheckoutSessionListResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -753,10 +753,9 @@ export interface CheckoutSessionCreateParams {
   cancelUrl: string;
 
   /**
-   * The id of the Customer for this purchase session, as defined in your
-   * system
+   * The id of the Customer for this purchase session, as defined in your system
    */
-  customerProfileExternalId: string;
+  customerExternalId: string;
 
   /**
    * The ID of the price the customer shall purchase
