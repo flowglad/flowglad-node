@@ -90,6 +90,7 @@ Types:
 - <code><a href="./src/resources/customers.ts">CustomerRetrieveResponse</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerUpdateResponse</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerListResponse</a></code>
+- <code><a href="./src/resources/customers.ts">CustomerRetrieveBillingResponse</a></code>
 
 Methods:
 
@@ -97,6 +98,7 @@ Methods:
 - <code title="get /api/v1/customers/{externalId}">client.customers.<a href="./src/resources/customers.ts">retrieve</a>(externalID) -> CustomerRetrieveResponse</code>
 - <code title="put /api/v1/customers/{externalId}">client.customers.<a href="./src/resources/customers.ts">update</a>(externalID, { ...params }) -> CustomerUpdateResponse</code>
 - <code title="get /api/v1/customers">client.customers.<a href="./src/resources/customers.ts">list</a>({ ...params }) -> CustomerListResponse</code>
+- <code title="get /api/v1/customers/{externalId}/billing">client.customers.<a href="./src/resources/customers.ts">retrieveBilling</a>(externalID) -> CustomerRetrieveBillingResponse</code>
 
 # Payments
 
