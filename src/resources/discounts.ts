@@ -72,7 +72,7 @@ export namespace DiscountCreateResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -137,7 +137,7 @@ export namespace DiscountCreateResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -177,7 +177,7 @@ export namespace DiscountRetrieveResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -242,7 +242,7 @@ export namespace DiscountRetrieveResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -282,7 +282,7 @@ export namespace DiscountUpdateResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -347,7 +347,7 @@ export namespace DiscountUpdateResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -396,7 +396,7 @@ export namespace DiscountListResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -461,7 +461,7 @@ export namespace DiscountListResponse {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     organizationId: string;
 
@@ -493,7 +493,7 @@ export namespace DiscountCreateParams {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     active?: boolean;
   }
@@ -534,7 +534,7 @@ export namespace DiscountCreateParams {
 
     name: string;
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     active?: boolean;
   }
@@ -553,7 +553,7 @@ export namespace DiscountUpdateParams {
 
     duration: 'once';
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     active?: boolean;
 
@@ -606,7 +606,7 @@ export namespace DiscountUpdateParams {
 
     duration: 'forever';
 
-    numberOfPayments: unknown;
+    numberOfPayments: 'null' | null;
 
     active?: boolean;
 

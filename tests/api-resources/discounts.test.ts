@@ -17,7 +17,7 @@ describe('resource discounts', () => {
         code: 'xxx',
         duration: 'once',
         name: 'name',
-        numberOfPayments: {},
+        numberOfPayments: 'null',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -38,7 +38,7 @@ describe('resource discounts', () => {
         code: 'xxx',
         duration: 'once',
         name: 'name',
-        numberOfPayments: {},
+        numberOfPayments: 'null',
         active: true,
       },
     });
@@ -59,7 +59,7 @@ describe('resource discounts', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
     const responsePromise = client.discounts.update('id', {
-      discount: { id: 'id', duration: 'once', numberOfPayments: {} },
+      discount: { id: 'id', duration: 'once', numberOfPayments: 'null' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -76,7 +76,7 @@ describe('resource discounts', () => {
       discount: {
         id: 'id',
         duration: 'once',
-        numberOfPayments: {},
+        numberOfPayments: 'null',
         active: true,
         amount: 0,
         amountType: 'percent',
