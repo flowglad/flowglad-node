@@ -82,23 +82,7 @@ Methods:
 - <code title="put /api/v1/discounts/{id}">client.discounts.<a href="./src/resources/discounts.ts">update</a>(id, { ...params }) -> DiscountUpdateResponse</code>
 - <code title="get /api/v1/discounts">client.discounts.<a href="./src/resources/discounts.ts">list</a>({ ...params }) -> DiscountListResponse</code>
 
-# CustomerProfiles
-
-Types:
-
-- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileCreateResponse</a></code>
-- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileRetrieveResponse</a></code>
-- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileUpdateResponse</a></code>
-- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileListResponse</a></code>
-- <code><a href="./src/resources/customer-profiles.ts">CustomerProfileRetrieveBillingResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v1/customer-profiles">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">create</a>({ ...params }) -> CustomerProfileCreateResponse</code>
-- <code title="get /api/v1/customer-profiles/{externalId}">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">retrieve</a>(externalID) -> CustomerProfileRetrieveResponse</code>
-- <code title="put /api/v1/customer-profiles/{externalId}">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">update</a>(externalID, { ...params }) -> CustomerProfileUpdateResponse</code>
-- <code title="get /api/v1/customer-profiles">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">list</a>({ ...params }) -> CustomerProfileListResponse</code>
-- <code title="get /api/v1/customer-profiles/{externalId}/billing">client.customerProfiles.<a href="./src/resources/customer-profiles.ts">retrieveBilling</a>(externalID) -> CustomerProfileRetrieveBillingResponse</code>
+# Customers
 
 # Payments
 
