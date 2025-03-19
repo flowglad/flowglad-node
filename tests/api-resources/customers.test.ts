@@ -98,4 +98,16 @@ describe('resource customers', () => {
       client.customers.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
+
+  // skipped: tests are disabled for the time being
+  test.skip('retrieveBilling', async () => {
+    const responsePromise = client.customers.retrieveBilling('externalId');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
 });
