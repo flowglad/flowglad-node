@@ -184,7 +184,7 @@ export namespace PaymentRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     description: string | null;
 
@@ -662,7 +662,7 @@ export namespace PaymentListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     description: string | null;
 

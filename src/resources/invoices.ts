@@ -191,7 +191,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -651,7 +651,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -1111,7 +1111,7 @@ export namespace InvoiceRetrieveResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -1612,7 +1612,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -2072,7 +2072,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
@@ -2532,7 +2532,7 @@ export namespace InvoiceListResponse {
       | 'ZAR'
       | 'ZMW';
 
-    customerProfileId: string;
+    customerId: string;
 
     dueDate: string | null;
 
