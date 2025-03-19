@@ -367,13 +367,13 @@ export namespace CustomerRetrieveBillingResponse {
 
   export namespace Catalog {
     export interface Product {
-      prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
       product: Product.Product;
     }
 
     export namespace Product {
-      export interface UnionMember0 {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -551,7 +551,7 @@ export namespace CustomerRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
-      export interface UnionMember1 {
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -839,13 +839,13 @@ export namespace CustomerRetrieveBillingResponse {
   }
 
   export interface Invoice {
-    invoice: Invoice.UnionMember0 | Invoice.UnionMember1 | Invoice.UnionMember2;
+    invoice: Invoice.SubscriptionInvoice | Invoice.PurchaseInvoice | Invoice.StandaloneInvoice;
 
     invoiceLineItems: Array<Invoice.InvoiceLineItem>;
   }
 
   export namespace Invoice {
-    export interface UnionMember0 {
+    export interface PurchaseInvoice {
       id: string;
 
       applicationFee: number | null;
@@ -1305,7 +1305,7 @@ export namespace CustomerRetrieveBillingResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember1 {
+    export interface SubscriptionInvoice {
       id: string;
 
       applicationFee: number | null;
@@ -1765,7 +1765,7 @@ export namespace CustomerRetrieveBillingResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember2 {
+    export interface StandaloneInvoice {
       id: string;
 
       applicationFee: number | null;
