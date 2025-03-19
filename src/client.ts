@@ -27,16 +27,16 @@ import {
   CheckoutSessions,
 } from './resources/checkout-sessions';
 import {
-  CustomerProfileCreateParams,
-  CustomerProfileCreateResponse,
-  CustomerProfileListParams,
-  CustomerProfileListResponse,
-  CustomerProfileRetrieveBillingResponse,
-  CustomerProfileRetrieveResponse,
-  CustomerProfileUpdateParams,
-  CustomerProfileUpdateResponse,
-  CustomerProfiles,
-} from './resources/customer-profiles';
+  CustomerCreateParams,
+  CustomerCreateResponse,
+  CustomerListParams,
+  CustomerListResponse,
+  CustomerRetrieveBillingResponse,
+  CustomerRetrieveResponse,
+  CustomerUpdateParams,
+  CustomerUpdateResponse,
+  Customers,
+} from './resources/customers';
 import {
   DiscountCreateParams,
   DiscountCreateResponse,
@@ -803,7 +803,7 @@ export class Flowglad {
   products: API.Products = new API.Products(this);
   prices: API.Prices = new API.Prices(this);
   discounts: API.Discounts = new API.Discounts(this);
-  customerProfiles: API.CustomerProfiles = new API.CustomerProfiles(this);
+  customerProfiles: API.Customers = new API.Customers(this);
   payments: API.Payments = new API.Payments(this);
   paymentMethods: API.PaymentMethods = new API.PaymentMethods(this);
   subscriptions: API.Subscriptions = new API.Subscriptions(this);
@@ -814,7 +814,7 @@ Flowglad.CheckoutSessions = CheckoutSessions;
 Flowglad.Products = Products;
 Flowglad.Prices = Prices;
 Flowglad.Discounts = Discounts;
-Flowglad.CustomerProfiles = CustomerProfiles;
+Flowglad.Customers = Customers;
 Flowglad.Payments = Payments;
 Flowglad.PaymentMethods = PaymentMethods;
 Flowglad.Subscriptions = Subscriptions;
@@ -877,15 +877,15 @@ export declare namespace Flowglad {
   };
 
   export {
-    CustomerProfiles as CustomerProfiles,
-    type CustomerProfileCreateResponse as CustomerProfileCreateResponse,
-    type CustomerProfileRetrieveResponse as CustomerProfileRetrieveResponse,
-    type CustomerProfileUpdateResponse as CustomerProfileUpdateResponse,
-    type CustomerProfileListResponse as CustomerProfileListResponse,
-    type CustomerProfileRetrieveBillingResponse as CustomerProfileRetrieveBillingResponse,
-    type CustomerProfileCreateParams as CustomerProfileCreateParams,
-    type CustomerProfileUpdateParams as CustomerProfileUpdateParams,
-    type CustomerProfileListParams as CustomerProfileListParams,
+    Customers as Customers,
+    type CustomerCreateResponse as CustomerCreateResponse,
+    type CustomerRetrieveResponse as CustomerRetrieveResponse,
+    type CustomerUpdateResponse as CustomerUpdateResponse,
+    type CustomerListResponse as CustomerListResponse,
+    type CustomerRetrieveBillingResponse as CustomerRetrieveBillingResponse,
+    type CustomerCreateParams as CustomerCreateParams,
+    type CustomerUpdateParams as CustomerUpdateParams,
+    type CustomerListParams as CustomerListParams,
   };
 
   export {

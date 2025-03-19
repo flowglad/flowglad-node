@@ -753,7 +753,7 @@ export interface CheckoutSessionCreateParams {
   cancelUrl: string;
 
   /**
-   * The id of the CustomerProfile for this purchase session, as defined in your
+   * The id of the Customer for this purchase session, as defined in your
    * system
    */
   customerProfileExternalId: string;
