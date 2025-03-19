@@ -8,7 +8,16 @@ export {
   type CheckoutSessionCreateParams,
   type CheckoutSessionListParams,
 } from './checkout-sessions';
-export { Customers } from './customers';
+export {
+  Customers,
+  type CustomerCreateResponse,
+  type CustomerRetrieveResponse,
+  type CustomerUpdateResponse,
+  type CustomerListResponse,
+  type CustomerCreateParams,
+  type CustomerUpdateParams,
+  type CustomerListParams,
+} from './customers';
 export {
   Discounts,
   type DiscountCreateResponse,

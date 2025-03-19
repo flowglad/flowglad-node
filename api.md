@@ -84,6 +84,20 @@ Methods:
 
 # Customers
 
+Types:
+
+- <code><a href="./src/resources/customers.ts">CustomerCreateResponse</a></code>
+- <code><a href="./src/resources/customers.ts">CustomerRetrieveResponse</a></code>
+- <code><a href="./src/resources/customers.ts">CustomerUpdateResponse</a></code>
+- <code><a href="./src/resources/customers.ts">CustomerListResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/customers">client.customers.<a href="./src/resources/customers.ts">create</a>({ ...params }) -> CustomerCreateResponse</code>
+- <code title="get /api/v1/customers/{externalId}">client.customers.<a href="./src/resources/customers.ts">retrieve</a>(externalID) -> CustomerRetrieveResponse</code>
+- <code title="put /api/v1/customers/{externalId}">client.customers.<a href="./src/resources/customers.ts">update</a>(externalID, { ...params }) -> CustomerUpdateResponse</code>
+- <code title="get /api/v1/customers">client.customers.<a href="./src/resources/customers.ts">list</a>({ ...params }) -> CustomerListResponse</code>
+
 # Payments
 
 Types:

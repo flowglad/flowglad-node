@@ -28,7 +28,16 @@ import {
   CheckoutSessionRetrieveResponse,
   CheckoutSessions,
 } from './resources/checkout-sessions';
-import { Customers } from './resources/customers';
+import {
+  CustomerCreateParams,
+  CustomerCreateResponse,
+  CustomerListParams,
+  CustomerListResponse,
+  CustomerRetrieveResponse,
+  CustomerUpdateParams,
+  CustomerUpdateResponse,
+  Customers,
+} from './resources/customers';
 import {
   DiscountCreateParams,
   DiscountCreateResponse,
@@ -824,7 +833,16 @@ export declare namespace Flowglad {
     type DiscountListParams as DiscountListParams,
   };
 
-  export { Customers as Customers };
+  export {
+    Customers as Customers,
+    type CustomerCreateResponse as CustomerCreateResponse,
+    type CustomerRetrieveResponse as CustomerRetrieveResponse,
+    type CustomerUpdateResponse as CustomerUpdateResponse,
+    type CustomerListResponse as CustomerListResponse,
+    type CustomerCreateParams as CustomerCreateParams,
+    type CustomerUpdateParams as CustomerUpdateParams,
+    type CustomerListParams as CustomerListParams,
+  };
 
   export {
     Payments as Payments,
