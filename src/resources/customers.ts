@@ -368,17 +368,75 @@ export interface CustomerRetrieveBillingResponse {
 
 export namespace CustomerRetrieveBillingResponse {
   export interface Catalog {
+    id: string;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string;
+
+    organizationId: string;
+
     products: Array<Catalog.Product>;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
   }
 
   export namespace Catalog {
     export interface Product {
+      id: string;
+
+      active: boolean;
+
+      catalogId: string;
+
+      /**
+       * safeZodDate
+       */
+      createdAt: (string & {}) | string;
+
+      description: string | null;
+
+      displayFeatures: Array<Product.DisplayFeature> | null;
+
+      imageURL: string | null;
+
+      livemode: boolean;
+
+      name: string;
+
+      organizationId: string;
+
+      pluralQuantityLabel: string | null;
+
       prices: Array<Product.UnionMember0 | Product.UnionMember1>;
 
-      product: Product.Product;
+      singularQuantityLabel: string | null;
+
+      /**
+       * safeZodDate
+       */
+      updatedAt: (string & {}) | string;
     }
 
     export namespace Product {
+      export interface DisplayFeature {
+        enabled: boolean;
+
+        label: string;
+
+        details?: string | null;
+      }
+
       export interface UnionMember0 {
         id: string;
 
@@ -736,50 +794,6 @@ export namespace CustomerRetrieveBillingResponse {
          * safeZodNullOrUndefined
          */
         trialPeriodDays?: 'null' | null | unknown;
-      }
-
-      export interface Product {
-        id: string;
-
-        active: boolean;
-
-        catalogId: string;
-
-        /**
-         * safeZodDate
-         */
-        createdAt: (string & {}) | string;
-
-        description: string | null;
-
-        displayFeatures: Array<Product.DisplayFeature> | null;
-
-        imageURL: string | null;
-
-        livemode: boolean;
-
-        name: string;
-
-        organizationId: string;
-
-        pluralQuantityLabel: string | null;
-
-        singularQuantityLabel: string | null;
-
-        /**
-         * safeZodDate
-         */
-        updatedAt: (string & {}) | string;
-      }
-
-      export namespace Product {
-        export interface DisplayFeature {
-          enabled: boolean;
-
-          label: string;
-
-          details?: string | null;
-        }
       }
     }
   }
