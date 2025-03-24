@@ -21,6 +21,17 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
+  CatalogCreateParams,
+  CatalogCreateResponse,
+  CatalogListParams,
+  CatalogListResponse,
+  CatalogRetrieveDefaultResponse,
+  CatalogRetrieveResponse,
+  CatalogUpdateParams,
+  CatalogUpdateResponse,
+  Catalogs,
+} from './resources/catalogs';
+import {
   CheckoutSessionCreateParams,
   CheckoutSessionCreateResponse,
   CheckoutSessionListParams,
@@ -759,6 +770,7 @@ export class Flowglad {
 
   invoices: API.Invoices = new API.Invoices(this);
   invoiceLineItems: API.InvoiceLineItems = new API.InvoiceLineItems(this);
+  catalogs: API.Catalogs = new API.Catalogs(this);
   checkoutSessions: API.CheckoutSessions = new API.CheckoutSessions(this);
   products: API.Products = new API.Products(this);
   prices: API.Prices = new API.Prices(this);
@@ -770,6 +782,7 @@ export class Flowglad {
 }
 Flowglad.Invoices = Invoices;
 Flowglad.InvoiceLineItems = InvoiceLineItems;
+Flowglad.Catalogs = Catalogs;
 Flowglad.CheckoutSessions = CheckoutSessions;
 Flowglad.Products = Products;
 Flowglad.Prices = Prices;
@@ -795,6 +808,18 @@ export declare namespace Flowglad {
     type InvoiceLineItemRetrieveResponse as InvoiceLineItemRetrieveResponse,
     type InvoiceLineItemListResponse as InvoiceLineItemListResponse,
     type InvoiceLineItemListParams as InvoiceLineItemListParams,
+  };
+
+  export {
+    Catalogs as Catalogs,
+    type CatalogCreateResponse as CatalogCreateResponse,
+    type CatalogRetrieveResponse as CatalogRetrieveResponse,
+    type CatalogUpdateResponse as CatalogUpdateResponse,
+    type CatalogListResponse as CatalogListResponse,
+    type CatalogRetrieveDefaultResponse as CatalogRetrieveDefaultResponse,
+    type CatalogCreateParams as CatalogCreateParams,
+    type CatalogUpdateParams as CatalogUpdateParams,
+    type CatalogListParams as CatalogListParams,
   };
 
   export {
