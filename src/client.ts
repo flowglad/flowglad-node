@@ -21,6 +21,8 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
+  CatalogCloneParams,
+  CatalogCloneResponse,
   CatalogCreateParams,
   CatalogCreateResponse,
   CatalogListParams,
@@ -816,10 +818,12 @@ export declare namespace Flowglad {
     type CatalogRetrieveResponse as CatalogRetrieveResponse,
     type CatalogUpdateResponse as CatalogUpdateResponse,
     type CatalogListResponse as CatalogListResponse,
+    type CatalogCloneResponse as CatalogCloneResponse,
     type CatalogRetrieveDefaultResponse as CatalogRetrieveDefaultResponse,
     type CatalogCreateParams as CatalogCreateParams,
     type CatalogUpdateParams as CatalogUpdateParams,
     type CatalogListParams as CatalogListParams,
+    type CatalogCloneParams as CatalogCloneParams,
   };
 
   export {
