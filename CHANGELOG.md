@@ -1,4 +1,13 @@
 # Changelog
+## 0.12.0 (2025-03-24)
+
+Full Changelog: [v0.11.1...v0.12.0](https://github.com/flowglad/flowglad-node/compare/v0.11.1...v0.12.0)
+
+### Features
+
+* **api:** clone catalog method ([#109](https://github.com/flowglad/flowglad-node/issues/109)) ([cff44ba](https://github.com/flowglad/flowglad-node/commit/cff44bae45aba4cf85661d29232e427edb740da2))
+* **api:** clone catalog method ([#111](https://github.com/flowglad/flowglad-node/issues/111)) ([279f962](https://github.com/flowglad/flowglad-node/commit/279f96280fd447d8ae24856f2ac746a995b34551))
+
 ## 0.11.1 (2025-03-24)
 
 Full Changelog: [v0.11.0...v0.11.1](https://github.com/flowglad/flowglad-node/compare/v0.11.0...v0.11.1)
