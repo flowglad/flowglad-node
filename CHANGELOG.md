@@ -1,4 +1,17 @@
 # Changelog
+## 0.11.0 (2025-03-24)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/flowglad/flowglad-node/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **api:** add catalogs ([#104](https://github.com/flowglad/flowglad-node/issues/104)) ([a9bda8d](https://github.com/flowglad/flowglad-node/commit/a9bda8d2ae6c0ec836bb50a1891f0dc919eb4932))
+
+
+### Chores
+
+* **internal:** codegen related update ([#102](https://github.com/flowglad/flowglad-node/issues/102)) ([876c3a6](https://github.com/flowglad/flowglad-node/commit/876c3a6d4bcc497fc5cb763a171ec4d1e153b87d))
+
 ## 0.10.0 (2025-03-19)
 
 Full Changelog: [v0.9.1...v0.10.0](https://github.com/flowglad/flowglad-node/compare/v0.9.1...v0.10.0)
