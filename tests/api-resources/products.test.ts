@@ -25,6 +25,7 @@ describe('resource products', () => {
       },
       product: {
         active: true,
+        catalogId: 'catalogId',
         description: 'description',
         displayFeatures: [{ enabled: true, label: 'label' }],
         imageURL: 'imageURL',
@@ -59,6 +60,7 @@ describe('resource products', () => {
       },
       product: {
         active: true,
+        catalogId: 'catalogId',
         description: 'description',
         displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
         imageURL: 'imageURL',
@@ -118,6 +120,7 @@ describe('resource products', () => {
       product: {
         id: 'id',
         active: true,
+        catalogId: 'catalogId',
         description: 'description',
         displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
         imageURL: 'imageURL',
