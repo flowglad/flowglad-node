@@ -24,6 +24,24 @@ Methods:
 - <code title="get /api/v1/invoice-line-items/{id}">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">retrieve</a>(id) -> InvoiceLineItemRetrieveResponse</code>
 - <code title="get /api/v1/invoice-line-items">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">list</a>({ ...params }) -> InvoiceLineItemListResponse</code>
 
+# Catalogs
+
+Types:
+
+- <code><a href="./src/resources/catalogs.ts">CatalogCreateResponse</a></code>
+- <code><a href="./src/resources/catalogs.ts">CatalogRetrieveResponse</a></code>
+- <code><a href="./src/resources/catalogs.ts">CatalogUpdateResponse</a></code>
+- <code><a href="./src/resources/catalogs.ts">CatalogListResponse</a></code>
+- <code><a href="./src/resources/catalogs.ts">CatalogRetrieveDefaultResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/catalogs">client.catalogs.<a href="./src/resources/catalogs.ts">create</a>({ ...params }) -> CatalogCreateResponse</code>
+- <code title="get /api/v1/catalogs/{id}">client.catalogs.<a href="./src/resources/catalogs.ts">retrieve</a>(id) -> CatalogRetrieveResponse</code>
+- <code title="put /api/v1/catalogs/{id}">client.catalogs.<a href="./src/resources/catalogs.ts">update</a>(id, { ...params }) -> CatalogUpdateResponse</code>
+- <code title="get /api/v1/catalogs">client.catalogs.<a href="./src/resources/catalogs.ts">list</a>({ ...params }) -> CatalogListResponse</code>
+- <code title="get /api/v1/catalogs/default">client.catalogs.<a href="./src/resources/catalogs.ts">retrieveDefault</a>() -> CatalogRetrieveDefaultResponse</code>
+
 # CheckoutSessions
 
 Types:

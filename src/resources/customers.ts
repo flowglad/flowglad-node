@@ -66,6 +66,8 @@ export namespace CustomerCreateResponse {
 
       billingAddress: Customer.BillingAddress | null;
 
+      catalogId: string | null;
+
       createdAt: string;
 
       domain: string | null;
@@ -135,6 +137,8 @@ export namespace CustomerRetrieveResponse {
 
     billingAddress: Customer.BillingAddress | null;
 
+    catalogId: string | null;
+
     createdAt: string;
 
     domain: string | null;
@@ -202,6 +206,8 @@ export namespace CustomerUpdateResponse {
     archived: boolean;
 
     billingAddress: Customer.BillingAddress | null;
+
+    catalogId: string | null;
 
     createdAt: string;
 
@@ -279,9 +285,9 @@ export namespace CustomerListResponse {
 
     billingAddress: Data.BillingAddress | null;
 
-    createdAt: string;
+    catalogId: string | null;
 
-    customerTaxId: string | null;
+    createdAt: string;
 
     domain: string | null;
 
@@ -301,9 +307,9 @@ export namespace CustomerListResponse {
 
     organizationId: string;
 
-    slackId: string | null;
-
     stripeCustomerId: string | null;
+
+    taxId: string | null;
 
     updatedAt: string | null;
 
@@ -737,6 +743,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         active: boolean;
 
+        catalogId: string;
+
         /**
          * safeZodDate
          */
@@ -782,6 +790,8 @@ export namespace CustomerRetrieveBillingResponse {
     archived: boolean;
 
     billingAddress: Customer.BillingAddress | null;
+
+    catalogId: string | null;
 
     createdAt: string;
 
@@ -2860,6 +2870,8 @@ export namespace CustomerCreateParams {
 
     archived?: boolean;
 
+    catalogId?: string | null;
+
     domain?: string | null;
 
     iconURL?: string | null;
@@ -2879,6 +2891,8 @@ export namespace CustomerUpdateParams {
     id: string;
 
     archived?: boolean;
+
+    catalogId?: string | null;
 
     domain?: string | null;
 

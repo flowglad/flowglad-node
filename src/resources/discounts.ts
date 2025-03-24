@@ -76,8 +76,6 @@ export namespace DiscountCreateResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -110,8 +108,6 @@ export namespace DiscountCreateResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -140,8 +136,6 @@ export namespace DiscountCreateResponse {
     numberOfPayments: 'null' | null;
 
     organizationId: string;
-
-    stripeCouponId: string | null;
 
     updatedAt: string | null;
   }
@@ -181,8 +175,6 @@ export namespace DiscountRetrieveResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -215,8 +207,6 @@ export namespace DiscountRetrieveResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -245,8 +235,6 @@ export namespace DiscountRetrieveResponse {
     numberOfPayments: 'null' | null;
 
     organizationId: string;
-
-    stripeCouponId: string | null;
 
     updatedAt: string | null;
   }
@@ -286,8 +274,6 @@ export namespace DiscountUpdateResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -320,8 +306,6 @@ export namespace DiscountUpdateResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -350,8 +334,6 @@ export namespace DiscountUpdateResponse {
     numberOfPayments: 'null' | null;
 
     organizationId: string;
-
-    stripeCouponId: string | null;
 
     updatedAt: string | null;
   }
@@ -398,8 +380,6 @@ export namespace DiscountListResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -432,8 +412,6 @@ export namespace DiscountListResponse {
 
     organizationId: string;
 
-    stripeCouponId: string | null;
-
     updatedAt: string | null;
   }
 
@@ -462,8 +440,6 @@ export namespace DiscountListResponse {
     numberOfPayments: 'null' | null;
 
     organizationId: string;
-
-    stripeCouponId: string | null;
 
     updatedAt: string | null;
   }
