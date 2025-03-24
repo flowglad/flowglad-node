@@ -1,6 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
+  Catalogs,
+  type CatalogCreateResponse,
+  type CatalogRetrieveResponse,
+  type CatalogUpdateResponse,
+  type CatalogListResponse,
+  type CatalogRetrieveDefaultResponse,
+  type CatalogCreateParams,
+  type CatalogUpdateParams,
+  type CatalogListParams,
+} from './catalogs';
+export {
   CheckoutSessions,
   type CheckoutSessionCreateResponse,
   type CheckoutSessionRetrieveResponse,

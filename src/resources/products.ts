@@ -48,6 +48,8 @@ export namespace ProductCreateResponse {
 
     active: boolean;
 
+    catalogId: string;
+
     /**
      * safeZodDate
      */
@@ -96,6 +98,8 @@ export namespace ProductRetrieveResponse {
 
     active: boolean;
 
+    catalogId: string;
+
     /**
      * safeZodDate
      */
@@ -143,6 +147,8 @@ export namespace ProductUpdateResponse {
     id: string;
 
     active: boolean;
+
+    catalogId: string;
 
     /**
      * safeZodDate
@@ -199,6 +205,8 @@ export namespace ProductListResponse {
     id: string;
 
     active: boolean;
+
+    catalogId: string;
 
     /**
      * safeZodDate
@@ -405,6 +413,8 @@ export namespace ProductCreateParams {
 
   export interface Product {
     active: boolean;
+
+    catalogId: string;
 
     description: string | null;
 
@@ -796,6 +806,8 @@ export namespace ProductUpdateParams {
     id: string;
 
     active?: boolean;
+
+    catalogId?: string;
 
     description?: string | null;
 
