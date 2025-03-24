@@ -1,4 +1,12 @@
 # Changelog
+## 0.11.1 (2025-03-24)
+
+Full Changelog: [v0.11.0...v0.11.1](https://github.com/flowglad/flowglad-node/compare/v0.11.0...v0.11.1)
+
+### Bug Fixes
+
+* **api:** improve catalog detail response in customer billing ([#105](https://github.com/flowglad/flowglad-node/issues/105)) ([b207ad2](https://github.com/flowglad/flowglad-node/commit/b207ad2f763d62c403012c8b9c75785354a5edb8))
+
 ## 0.11.0 (2025-03-24)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/flowglad/flowglad-node/compare/v0.10.0...v0.11.0)
