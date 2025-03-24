@@ -113,7 +113,6 @@ describe('resource products', () => {
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,
-        stripePriceId: 'stripePriceId',
         trialPeriodDays: 0,
         unitPrice: 0,
       },
@@ -129,7 +128,6 @@ describe('resource products', () => {
         organizationId: 'organizationId',
         pluralQuantityLabel: 'pluralQuantityLabel',
         singularQuantityLabel: 'singularQuantityLabel',
-        stripeProductId: 'stripeProductId',
       },
     });
   });
