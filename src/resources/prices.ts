@@ -1309,8 +1309,6 @@ export namespace PriceCreateParams {
      * safeZodPositiveInteger
      */
     unitPrice: number;
-
-    stripePriceId?: string | null;
   }
 
   export interface SubscriptionPrice {
@@ -1481,8 +1479,6 @@ export namespace PriceCreateParams {
      * safeZodNullOrUndefined
      */
     setupFeeAmount?: 'null' | null | unknown;
-
-    stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1658,8 +1654,6 @@ export namespace PriceUpdateParams {
      * safeZodPositiveInteger
      */
     setupFeeAmount?: number | 0 | null;
-
-    stripePriceId?: string | null;
 
     /**
      * safeZodPositiveInteger
@@ -1837,8 +1831,6 @@ export namespace PriceUpdateParams {
      * safeZodNullOrUndefined
      */
     setupFeeAmount?: 'null' | null | unknown;
-
-    stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined

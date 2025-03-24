@@ -610,8 +610,6 @@ export namespace ProductUpdateParams {
      */
     setupFeeAmount?: number | 0 | null;
 
-    stripePriceId?: string | null;
-
     /**
      * safeZodPositiveInteger
      */
@@ -789,8 +787,6 @@ export namespace ProductUpdateParams {
      */
     setupFeeAmount?: 'null' | null | unknown;
 
-    stripePriceId?: string | null;
-
     /**
      * safeZodNullOrUndefined
      */
@@ -824,8 +820,6 @@ export namespace ProductUpdateParams {
     pluralQuantityLabel?: string | null;
 
     singularQuantityLabel?: string | null;
-
-    stripeProductId?: string | null;
   }
 
   export namespace Product {

@@ -6,10 +6,12 @@ export {
   type CatalogRetrieveResponse,
   type CatalogUpdateResponse,
   type CatalogListResponse,
+  type CatalogCloneResponse,
   type CatalogRetrieveDefaultResponse,
   type CatalogCreateParams,
   type CatalogUpdateParams,
   type CatalogListParams,
+  type CatalogCloneParams,
 } from './catalogs';
 export {
   CheckoutSessions,
