@@ -51,7 +51,6 @@ describe('resource prices', () => {
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
-        stripePriceId: 'stripePriceId',
       },
     });
   });
@@ -83,7 +82,6 @@ describe('resource prices', () => {
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,
-        stripePriceId: 'stripePriceId',
         trialPeriodDays: 0,
         unitPrice: 0,
       },
