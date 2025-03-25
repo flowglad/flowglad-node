@@ -356,6 +356,10 @@ export interface CustomerRetrieveBillingResponse {
 
   paymentMethods: Array<CustomerRetrieveBillingResponse.PaymentMethod>;
 
+  purchases: Array<
+    CustomerRetrieveBillingResponse.SinglePaymentPurchase | CustomerRetrieveBillingResponse.Subscription
+  >;
+
   subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
 
   /**
@@ -2327,6 +2331,148 @@ export namespace CustomerRetrieveBillingResponse {
         }
       }
     }
+  }
+
+  export interface SubscriptionPurchase {
+    id: string;
+
+    archived: boolean | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+
+    billingCycleAnchor: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerId: string;
+
+    endDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    firstInvoiceValue: number | 0;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string;
+
+    organizationId: string;
+
+    priceId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    pricePerBillingCycle: number;
+
+    priceType: 'subscription';
+
+    proposal: string | null;
+
+    purchaseDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent' | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: number | 0;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    totalPurchaseValue?: unknown;
+  }
+
+  export interface SinglePaymentPurchase {
+    id: string;
+
+    archived: boolean | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+
+    billingCycleAnchor: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerId: string;
+
+    endDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    firstInvoiceValue: number | 0;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string;
+
+    organizationId: string;
+
+    priceId: string;
+
+    priceType: 'single_payment';
+
+    proposal: string | null;
+
+    purchaseDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent' | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    totalPurchaseValue: number | 0;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    intervalCount?: unknown;
+
+    intervalUnit?: unknown;
+
+    pricePerBillingCycle?: unknown;
+
+    stripesubscriptionId?: unknown;
+
+    trialPeriodDays?: unknown;
   }
 
   export interface Subscription {
