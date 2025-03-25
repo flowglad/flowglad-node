@@ -357,7 +357,7 @@ export interface CustomerRetrieveBillingResponse {
   paymentMethods: Array<CustomerRetrieveBillingResponse.PaymentMethod>;
 
   purchases: Array<
-    CustomerRetrieveBillingResponse.UnionMember0 | CustomerRetrieveBillingResponse.UnionMember1
+    CustomerRetrieveBillingResponse.SinglePaymentPurchase | CustomerRetrieveBillingResponse.Subscription
   >;
 
   subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
@@ -2333,7 +2333,7 @@ export namespace CustomerRetrieveBillingResponse {
     }
   }
 
-  export interface UnionMember0 {
+  export interface SubscriptionPurchase {
     id: string;
 
     archived: boolean | null;
@@ -2406,7 +2406,7 @@ export namespace CustomerRetrieveBillingResponse {
     totalPurchaseValue?: unknown;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentPurchase {
     id: string;
 
     archived: boolean | null;
