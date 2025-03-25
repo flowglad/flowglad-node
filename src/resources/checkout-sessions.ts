@@ -73,6 +73,8 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -147,6 +149,8 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -220,6 +224,8 @@ export namespace CheckoutSessionCreateResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -309,6 +315,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -383,6 +391,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -456,6 +466,8 @@ export namespace CheckoutSessionRetrieveResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -549,6 +561,8 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -623,6 +637,8 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -696,6 +712,8 @@ export namespace CheckoutSessionListResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
