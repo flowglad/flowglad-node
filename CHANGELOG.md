@@ -1,4 +1,12 @@
 # Changelog
+## 0.14.0 (2025-03-25)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/flowglad/flowglad-node/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** add checkout session outputmetadata ([#116](https://github.com/flowglad/flowglad-node/issues/116)) ([13103bb](https://github.com/flowglad/flowglad-node/commit/13103bb69a22fd6689099503d56d98fc94ad7aa9))
+
 ## 0.13.0 (2025-03-25)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/flowglad/flowglad-node/compare/v0.12.0...v0.13.0)

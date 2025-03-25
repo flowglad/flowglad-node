@@ -149,7 +149,7 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: 'null' | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -391,7 +391,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: 'null' | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -637,7 +637,7 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: 'null' | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -784,6 +784,12 @@ export interface CheckoutSessionCreateParams {
    * The URL to redirect to after the purchase is successful
    */
   successUrl: string;
+
+  /**
+   * Metadata that will get added to the purchase or subscription created when this
+   * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
+   */
+  outputMetadata?: Record<string, unknown>;
 }
 
 export interface CheckoutSessionListParams {

@@ -32,6 +32,7 @@ describe('resource checkoutSessions', () => {
       customerExternalId: 'customerExternalId',
       priceId: 'priceId',
       successUrl: 'successUrl',
+      outputMetadata: { foo: 'bar' },
     });
   });
 
