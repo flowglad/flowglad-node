@@ -83,22 +83,22 @@ export namespace SubscriptionRetrieveResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     trialEnd: string | null;
 
@@ -151,22 +151,22 @@ export namespace SubscriptionListResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     trialEnd: string | null;
 
@@ -213,22 +213,22 @@ export namespace SubscriptionAdjustResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     trialEnd: string | null;
 
@@ -303,22 +303,22 @@ export namespace SubscriptionCancelResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     trialEnd: string | null;
 

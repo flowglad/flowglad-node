@@ -33,6 +33,7 @@ describe('resource checkoutSessions', () => {
       priceId: 'priceId',
       successUrl: 'successUrl',
       outputMetadata: { foo: 'bar' },
+      outputName: 'outputName',
     });
   });
 

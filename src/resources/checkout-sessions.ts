@@ -75,6 +75,8 @@ export namespace CheckoutSessionCreateResponse {
 
     outputMetadata: Record<string, unknown> | null;
 
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -151,6 +153,8 @@ export namespace CheckoutSessionCreateResponse {
 
     outputMetadata: 'null' | null;
 
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -226,6 +230,8 @@ export namespace CheckoutSessionCreateResponse {
     organizationId: string;
 
     outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -317,6 +323,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     outputMetadata: Record<string, unknown> | null;
 
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -393,6 +401,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     outputMetadata: 'null' | null;
 
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -468,6 +478,8 @@ export namespace CheckoutSessionRetrieveResponse {
     organizationId: string;
 
     outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -563,6 +575,8 @@ export namespace CheckoutSessionListResponse {
 
     outputMetadata: Record<string, unknown> | null;
 
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -638,6 +652,8 @@ export namespace CheckoutSessionListResponse {
     organizationId: string;
 
     outputMetadata: 'null' | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -715,6 +731,8 @@ export namespace CheckoutSessionListResponse {
 
     outputMetadata: Record<string, unknown> | null;
 
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -790,6 +808,12 @@ export interface CheckoutSessionCreateParams {
    * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
    */
   outputMetadata?: Record<string, unknown>;
+
+  /**
+   * The name of the purchase or subscription created when this checkout session
+   * succeeds. Ignored if the checkout session is of type `invoice`.
+   */
+  outputName?: string;
 }
 
 export interface CheckoutSessionListParams {
