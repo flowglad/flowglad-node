@@ -232,6 +232,8 @@ export namespace InvoiceCreateResponse {
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
 
+    subscriptionId: 'null' | null;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -692,6 +694,8 @@ export namespace InvoiceCreateResponse {
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
 
+    subscriptionId: string;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -1151,6 +1155,8 @@ export namespace InvoiceCreateResponse {
       | 'refunded'
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
+
+    subscriptionId: 'null' | null;
 
     subtotal: number | null;
 
@@ -1646,6 +1652,8 @@ export namespace InvoiceRetrieveResponse {
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
 
+    subscriptionId: 'null' | null;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -2106,6 +2114,8 @@ export namespace InvoiceRetrieveResponse {
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
 
+    subscriptionId: string;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -2565,6 +2575,8 @@ export namespace InvoiceRetrieveResponse {
       | 'refunded'
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
+
+    subscriptionId: 'null' | null;
 
     subtotal: number | null;
 
@@ -3067,6 +3079,8 @@ export namespace InvoiceListResponse {
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
 
+    subscriptionId: 'null' | null;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -3527,6 +3541,8 @@ export namespace InvoiceListResponse {
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
 
+    subscriptionId: string;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -3986,6 +4002,8 @@ export namespace InvoiceListResponse {
       | 'refunded'
       | 'partially_refunded'
       | 'awaiting_payment_confirmation';
+
+    subscriptionId: 'null' | null;
 
     subtotal: number | null;
 
@@ -4416,6 +4434,8 @@ export namespace InvoiceCreateParams {
 
     purchaseId: string;
 
+    subscriptionId: 'null' | null;
+
     type: 'purchase';
 
     bankPaymentOnly?: boolean | null;
@@ -4860,6 +4880,8 @@ export namespace InvoiceCreateParams {
 
     purchaseId: 'null' | null;
 
+    subscriptionId: string;
+
     type: 'subscription';
 
     bankPaymentOnly?: boolean | null;
@@ -5303,6 +5325,8 @@ export namespace InvoiceCreateParams {
     invoiceNumber: string;
 
     purchaseId: 'null' | null;
+
+    subscriptionId: 'null' | null;
 
     type: 'standalone';
 

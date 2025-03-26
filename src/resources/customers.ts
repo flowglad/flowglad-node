@@ -1062,6 +1062,8 @@ export namespace CustomerRetrieveBillingResponse {
         | 'partially_refunded'
         | 'awaiting_payment_confirmation';
 
+      subscriptionId: 'null' | null;
+
       subtotal: number | null;
 
       taxAmount: number | null;
@@ -1522,6 +1524,8 @@ export namespace CustomerRetrieveBillingResponse {
         | 'partially_refunded'
         | 'awaiting_payment_confirmation';
 
+      subscriptionId: string;
+
       subtotal: number | null;
 
       taxAmount: number | null;
@@ -1981,6 +1985,8 @@ export namespace CustomerRetrieveBillingResponse {
         | 'refunded'
         | 'partially_refunded'
         | 'awaiting_payment_confirmation';
+
+      subscriptionId: 'null' | null;
 
       subtotal: number | null;
 
@@ -2507,22 +2513,22 @@ export namespace CustomerRetrieveBillingResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     subscriptionItems: Array<Subscription.SubscriptionItem>;
 
@@ -2777,22 +2783,22 @@ export namespace CustomerRetrieveBillingResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     subscriptionItems: Array<CurrentSubscription.SubscriptionItem>;
 
