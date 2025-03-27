@@ -1,4 +1,17 @@
 # Changelog
+## 0.16.0 (2025-03-27)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/flowglad/flowglad-node/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** add default price to product object ([#124](https://github.com/flowglad/flowglad-node/issues/124)) ([01deb5d](https://github.com/flowglad/flowglad-node/commit/01deb5d9745a3563ac189ccc8227c690f7b532d8))
+
+
+### Chores
+
+* **client:** move misc public files to new `core/` directory, deprecate old paths ([#122](https://github.com/flowglad/flowglad-node/issues/122)) ([e799b65](https://github.com/flowglad/flowglad-node/commit/e799b654b363a3b7a4238ae3f19e981ccc0480dc))
+
 ## 0.15.0 (2025-03-26)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/flowglad/flowglad-node/compare/v0.14.0...v0.15.0)
