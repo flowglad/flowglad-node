@@ -356,6 +356,11 @@ export interface CustomerRetrieveBillingResponse {
 
   paymentMethods: Array<CustomerRetrieveBillingResponse.PaymentMethod>;
 
+  /**
+   * A purchase record, which describes a transaction that can be associated with
+   * either a subscription or single payment price. Each purchase has a specific type
+   * that determines its behavior and required fields.
+   */
   purchases: Array<
     CustomerRetrieveBillingResponse.SinglePaymentPurchase | CustomerRetrieveBillingResponse.Subscription
   >;
@@ -1249,9 +1254,9 @@ export namespace CustomerRetrieveBillingResponse {
 
   export interface Invoice {
     /**
-     * An invoice created in association with a purchase. This type of invoice is only
-     * ever created for single payment prices. Purchases associated with subscriptions
-     * will have subscription invoices created instead.
+     * An invoice record, which describes a bill that can be associated with a
+     * purchase, subscription, or stand alone. Each invoice has a specific type that
+     * determines its behavior and required fields.
      */
     invoice: Invoice.PurchaseInvoice | Invoice.SubscriptionInvoice | Invoice.StandaloneInvoice;
 

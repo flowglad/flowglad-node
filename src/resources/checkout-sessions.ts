@@ -36,9 +36,9 @@ export class CheckoutSessions extends APIResource {
 
 export interface CheckoutSessionCreateResponse {
   /**
-   * A checkout session for a customized purchase, which will complete the purchase
-   * record and (if for a subscription price) a subscription upon successful
-   * completion.
+   * A checkout session record, which describes a checkout process that can be used
+   * to complete purchases, invoices, or product orders. Each session has a specific
+   * type that determines its behavior and required fields.
    */
   checkoutSession:
     | CheckoutSessionCreateResponse.PurchaseCheckoutSession
@@ -303,9 +303,9 @@ export namespace CheckoutSessionCreateResponse {
 
 export interface CheckoutSessionRetrieveResponse {
   /**
-   * A checkout session for a customized purchase, which will complete the purchase
-   * record and (if for a subscription price) a subscription upon successful
-   * completion.
+   * A checkout session record, which describes a checkout process that can be used
+   * to complete purchases, invoices, or product orders. Each session has a specific
+   * type that determines its behavior and required fields.
    */
   checkoutSession:
     | CheckoutSessionRetrieveResponse.PurchaseCheckoutSession
