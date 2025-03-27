@@ -32,6 +32,11 @@ export class Invoices extends APIResource {
 }
 
 export interface InvoiceCreateResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   invoice:
     | InvoiceCreateResponse.UnionMember0
     | InvoiceCreateResponse.UnionMember1
@@ -43,6 +48,11 @@ export interface InvoiceCreateResponse {
 }
 
 export namespace InvoiceCreateResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -505,6 +515,11 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface UnionMember1 {
     id: string;
 
@@ -967,6 +982,10 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface UnionMember2 {
     id: string;
 
@@ -1454,6 +1473,11 @@ export namespace InvoiceCreateResponse {
 }
 
 export interface InvoiceRetrieveResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   invoice:
     | InvoiceRetrieveResponse.UnionMember0
     | InvoiceRetrieveResponse.UnionMember1
@@ -1463,6 +1487,11 @@ export interface InvoiceRetrieveResponse {
 }
 
 export namespace InvoiceRetrieveResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -1925,6 +1954,11 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface UnionMember1 {
     id: string;
 
@@ -2387,6 +2421,10 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface UnionMember2 {
     id: string;
 
@@ -2888,6 +2926,11 @@ export interface InvoiceListResponse {
 }
 
 export namespace InvoiceListResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -3350,6 +3393,11 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface UnionMember1 {
     id: string;
 
@@ -3812,6 +3860,10 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface UnionMember2 {
     id: string;
 
@@ -4276,6 +4328,11 @@ export namespace InvoiceListResponse {
 }
 
 export interface InvoiceCreateParams {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   invoice:
     | InvoiceCreateParams.UnionMember0
     | InvoiceCreateParams.UnionMember1
@@ -4287,6 +4344,11 @@ export interface InvoiceCreateParams {
 }
 
 export namespace InvoiceCreateParams {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface UnionMember0 {
     billingPeriodId: 'null' | null;
 
@@ -4733,6 +4795,11 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface UnionMember1 {
     billingPeriodId: string;
 
@@ -5179,6 +5246,10 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface UnionMember2 {
     billingPeriodId: 'null' | null;
 
