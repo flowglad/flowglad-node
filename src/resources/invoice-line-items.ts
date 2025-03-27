@@ -14,7 +14,7 @@ export class InvoiceLineItems extends APIResource {
   }
 
   /**
-   * List Invoice Line Items
+   * List InvoiceLineItems
    */
   list(
     query: InvoiceLineItemListParams | null | undefined = {},
