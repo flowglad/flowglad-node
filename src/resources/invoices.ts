@@ -33,9 +33,9 @@ export class Invoices extends APIResource {
 
 export interface InvoiceCreateResponse {
   /**
-   * An invoice created in association with a purchase. This type of invoice is only
-   * ever created for single payment prices. Purchases associated with subscriptions
-   * will have subscription invoices created instead.
+   * An invoice record, which describes a bill that can be associated with a
+   * purchase, subscription, or stand alone. Each invoice has a specific type that
+   * determines its behavior and required fields.
    */
   invoice:
     | InvoiceCreateResponse.UnionMember0
@@ -1474,9 +1474,9 @@ export namespace InvoiceCreateResponse {
 
 export interface InvoiceRetrieveResponse {
   /**
-   * An invoice created in association with a purchase. This type of invoice is only
-   * ever created for single payment prices. Purchases associated with subscriptions
-   * will have subscription invoices created instead.
+   * An invoice record, which describes a bill that can be associated with a
+   * purchase, subscription, or stand alone. Each invoice has a specific type that
+   * determines its behavior and required fields.
    */
   invoice:
     | InvoiceRetrieveResponse.UnionMember0
@@ -4329,9 +4329,9 @@ export namespace InvoiceListResponse {
 
 export interface InvoiceCreateParams {
   /**
-   * An invoice created in association with a purchase. This type of invoice is only
-   * ever created for single payment prices. Purchases associated with subscriptions
-   * will have subscription invoices created instead.
+   * An invoice record, which describes a bill that can be associated with a
+   * purchase, subscription, or stand alone. Each invoice has a specific type that
+   * determines its behavior and required fields.
    */
   invoice:
     | InvoiceCreateParams.UnionMember0
