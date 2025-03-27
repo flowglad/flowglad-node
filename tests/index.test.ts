@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from '@flowglad/node/api-promise';
+import { APIPromise } from '@flowglad/node/core/api-promise';
 
 import util from 'node:util';
 import Flowglad from '@flowglad/node';
