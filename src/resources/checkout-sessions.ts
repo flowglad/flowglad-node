@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -35,6 +35,11 @@ export class CheckoutSessions extends APIResource {
 }
 
 export interface CheckoutSessionCreateResponse {
+  /**
+   * A checkout session record, which describes a checkout process that can be used
+   * to complete purchases, invoices, or product orders. Each session has a specific
+   * type that determines its behavior and required fields.
+   */
   checkoutSession:
     | CheckoutSessionCreateResponse.PurchaseCheckoutSession
     | CheckoutSessionCreateResponse.InvoiceCheckoutSession
@@ -47,6 +52,11 @@ export interface CheckoutSessionCreateResponse {
 }
 
 export namespace CheckoutSessionCreateResponse {
+  /**
+   * A checkout session for a customized purchase, which will complete the purchase
+   * record and (if for a subscription price) a subscription upon successful
+   * completion.
+   */
   export interface PurchaseCheckoutSession {
     id: string;
 
@@ -125,6 +135,11 @@ export namespace CheckoutSessionCreateResponse {
     }
   }
 
+  /**
+   * A checkout session for an invoice, which will only create a payment record
+   * associated with the invoice upon successful completion. It will not create a
+   * subscription or purchase.
+   */
   export interface InvoiceCheckoutSession {
     id: string;
 
@@ -203,6 +218,10 @@ export namespace CheckoutSessionCreateResponse {
     }
   }
 
+  /**
+   * A checkout session for a product, which will create a purchase record and (if
+   * for a subscription price) a subscription upon successful completion.
+   */
   export interface ProductCheckoutSession {
     id: string;
 
@@ -283,6 +302,11 @@ export namespace CheckoutSessionCreateResponse {
 }
 
 export interface CheckoutSessionRetrieveResponse {
+  /**
+   * A checkout session record, which describes a checkout process that can be used
+   * to complete purchases, invoices, or product orders. Each session has a specific
+   * type that determines its behavior and required fields.
+   */
   checkoutSession:
     | CheckoutSessionRetrieveResponse.PurchaseCheckoutSession
     | CheckoutSessionRetrieveResponse.InvoiceCheckoutSession
@@ -295,6 +319,11 @@ export interface CheckoutSessionRetrieveResponse {
 }
 
 export namespace CheckoutSessionRetrieveResponse {
+  /**
+   * A checkout session for a customized purchase, which will complete the purchase
+   * record and (if for a subscription price) a subscription upon successful
+   * completion.
+   */
   export interface PurchaseCheckoutSession {
     id: string;
 
@@ -373,6 +402,11 @@ export namespace CheckoutSessionRetrieveResponse {
     }
   }
 
+  /**
+   * A checkout session for an invoice, which will only create a payment record
+   * associated with the invoice upon successful completion. It will not create a
+   * subscription or purchase.
+   */
   export interface InvoiceCheckoutSession {
     id: string;
 
@@ -451,6 +485,10 @@ export namespace CheckoutSessionRetrieveResponse {
     }
   }
 
+  /**
+   * A checkout session for a product, which will create a purchase record and (if
+   * for a subscription price) a subscription upon successful completion.
+   */
   export interface ProductCheckoutSession {
     id: string;
 
@@ -547,6 +585,11 @@ export interface CheckoutSessionListResponse {
 }
 
 export namespace CheckoutSessionListResponse {
+  /**
+   * A checkout session for a customized purchase, which will complete the purchase
+   * record and (if for a subscription price) a subscription upon successful
+   * completion.
+   */
   export interface PurchaseCheckoutSession {
     id: string;
 
@@ -625,6 +668,11 @@ export namespace CheckoutSessionListResponse {
     }
   }
 
+  /**
+   * A checkout session for an invoice, which will only create a payment record
+   * associated with the invoice upon successful completion. It will not create a
+   * subscription or purchase.
+   */
   export interface InvoiceCheckoutSession {
     id: string;
 
@@ -703,6 +751,10 @@ export namespace CheckoutSessionListResponse {
     }
   }
 
+  /**
+   * A checkout session for a product, which will create a purchase record and (if
+   * for a subscription price) a subscription upon successful completion.
+   */
   export interface ProductCheckoutSession {
     id: string;
 
