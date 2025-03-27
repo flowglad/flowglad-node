@@ -32,6 +32,11 @@ export class Invoices extends APIResource {
 }
 
 export interface InvoiceCreateResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   invoice:
     | InvoiceCreateResponse.PurchaseInvoice
     | InvoiceCreateResponse.SubscriptionInvoice
@@ -43,6 +48,11 @@ export interface InvoiceCreateResponse {
 }
 
 export namespace InvoiceCreateResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface PurchaseInvoice {
     id: string;
 
@@ -505,6 +515,11 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface SubscriptionInvoice {
     id: string;
 
@@ -967,6 +982,10 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface StandaloneInvoice {
     id: string;
 
@@ -1454,6 +1473,11 @@ export namespace InvoiceCreateResponse {
 }
 
 export interface InvoiceRetrieveResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   invoice:
     | InvoiceRetrieveResponse.PurchaseInvoice
     | InvoiceRetrieveResponse.SubscriptionInvoice
@@ -1463,6 +1487,11 @@ export interface InvoiceRetrieveResponse {
 }
 
 export namespace InvoiceRetrieveResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface PurchaseInvoice {
     id: string;
 
@@ -1925,6 +1954,11 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface SubscriptionInvoice {
     id: string;
 
@@ -2387,6 +2421,10 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface StandaloneInvoice {
     id: string;
 
@@ -2890,6 +2928,11 @@ export interface InvoiceListResponse {
 }
 
 export namespace InvoiceListResponse {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface PurchaseInvoice {
     id: string;
 
@@ -3352,6 +3395,11 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface SubscriptionInvoice {
     id: string;
 
@@ -3814,6 +3862,10 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface StandaloneInvoice {
     id: string;
 
@@ -4278,6 +4330,11 @@ export namespace InvoiceListResponse {
 }
 
 export interface InvoiceCreateParams {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   invoice:
     | InvoiceCreateParams.PurchaseInvoice
     | InvoiceCreateParams.SubscriptionInvoice
@@ -4289,6 +4346,11 @@ export interface InvoiceCreateParams {
 }
 
 export namespace InvoiceCreateParams {
+  /**
+   * An invoice created in association with a purchase. This type of invoice is only
+   * ever created for single payment prices. Purchases associated with subscriptions
+   * will have subscription invoices created instead.
+   */
   export interface PurchaseInvoice {
     billingPeriodId: 'null' | null;
 
@@ -4735,6 +4797,11 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
+  /**
+   * An invoice created in association with a subscription. This type of invoice is
+   * only ever created for subscription prices. Purchases associated with single
+   * payment prices will have purchase invoices created instead.
+   */
   export interface SubscriptionInvoice {
     billingPeriodId: string;
 
@@ -5181,6 +5248,10 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
+  /**
+   * An invoice created without any associated purchase or subscription. These
+   * invoices are most often created manually.
+   */
   export interface StandaloneInvoice {
     billingPeriodId: 'null' | null;
 
