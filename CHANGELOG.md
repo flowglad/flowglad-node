@@ -1,4 +1,45 @@
 # Changelog
+## 0.15.0 (2025-03-26)
+
+Full Changelog: [v0.14.0...v0.15.0](https://github.com/flowglad/flowglad-node/compare/v0.14.0...v0.15.0)
+
+### Features
+
+* **api:** add output name to checkout session ([#119](https://github.com/flowglad/flowglad-node/issues/119)) ([e13aabb](https://github.com/flowglad/flowglad-node/commit/e13aabb1b98ddf4ac9f7185aca802e06c66308ab))
+
+## 0.14.0 (2025-03-25)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/flowglad/flowglad-node/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** add checkout session outputmetadata ([#116](https://github.com/flowglad/flowglad-node/issues/116)) ([13103bb](https://github.com/flowglad/flowglad-node/commit/13103bb69a22fd6689099503d56d98fc94ad7aa9))
+
+## 0.13.0 (2025-03-25)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/flowglad/flowglad-node/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** add outputMetadata to checkoutSessions ([#113](https://github.com/flowglad/flowglad-node/issues/113)) ([6dca5fd](https://github.com/flowglad/flowglad-node/commit/6dca5fdf0edf336efaa8f3c838dd265e773348be))
+
+## 0.12.0 (2025-03-24)
+
+Full Changelog: [v0.11.1...v0.12.0](https://github.com/flowglad/flowglad-node/compare/v0.11.1...v0.12.0)
+
+### Features
+
+* **api:** clone catalog method ([#109](https://github.com/flowglad/flowglad-node/issues/109)) ([cff44ba](https://github.com/flowglad/flowglad-node/commit/cff44bae45aba4cf85661d29232e427edb740da2))
+* **api:** clone catalog method ([#111](https://github.com/flowglad/flowglad-node/issues/111)) ([279f962](https://github.com/flowglad/flowglad-node/commit/279f96280fd447d8ae24856f2ac746a995b34551))
+
+## 0.11.1 (2025-03-24)
+
+Full Changelog: [v0.11.0...v0.11.1](https://github.com/flowglad/flowglad-node/compare/v0.11.0...v0.11.1)
+
+### Bug Fixes
+
+* **api:** improve catalog detail response in customer billing ([#105](https://github.com/flowglad/flowglad-node/issues/105)) ([b207ad2](https://github.com/flowglad/flowglad-node/commit/b207ad2f763d62c403012c8b9c75785354a5edb8))
+
 ## 0.11.0 (2025-03-24)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/flowglad/flowglad-node/compare/v0.10.0...v0.11.0)

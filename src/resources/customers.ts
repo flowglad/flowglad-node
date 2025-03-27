@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -356,6 +356,10 @@ export interface CustomerRetrieveBillingResponse {
 
   paymentMethods: Array<CustomerRetrieveBillingResponse.PaymentMethod>;
 
+  purchases: Array<
+    CustomerRetrieveBillingResponse.SinglePaymentPurchase | CustomerRetrieveBillingResponse.Subscription
+  >;
+
   subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
 
   /**
@@ -404,6 +408,8 @@ export namespace CustomerRetrieveBillingResponse {
        */
       createdAt: (string & {}) | string;
 
+      defaultPrice: Product.SubscriptionPrice | Product.UnionMember1;
+
       description: string | null;
 
       displayFeatures: Array<Product.DisplayFeature> | null;
@@ -429,6 +435,365 @@ export namespace CustomerRetrieveBillingResponse {
     }
 
     export namespace Product {
+      export interface SubscriptionPrice {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        unitPrice: number;
+
+        updatedAt: string | null;
+      }
+
+      export interface SinglePaymentPrice {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        type: 'single_payment';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        intervalCount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        intervalUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+
       export interface DisplayFeature {
         enabled: boolean;
 
@@ -1058,6 +1423,8 @@ export namespace CustomerRetrieveBillingResponse {
         | 'partially_refunded'
         | 'awaiting_payment_confirmation';
 
+      subscriptionId: 'null' | null;
+
       subtotal: number | null;
 
       taxAmount: number | null;
@@ -1517,6 +1884,8 @@ export namespace CustomerRetrieveBillingResponse {
         | 'refunded'
         | 'partially_refunded'
         | 'awaiting_payment_confirmation';
+
+      subscriptionId: string;
 
       subtotal: number | null;
 
@@ -1978,6 +2347,8 @@ export namespace CustomerRetrieveBillingResponse {
         | 'partially_refunded'
         | 'awaiting_payment_confirmation';
 
+      subscriptionId: 'null' | null;
+
       subtotal: number | null;
 
       taxAmount: number | null;
@@ -2329,6 +2700,148 @@ export namespace CustomerRetrieveBillingResponse {
     }
   }
 
+  export interface SubscriptionPurchase {
+    id: string;
+
+    archived: boolean | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+
+    billingCycleAnchor: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerId: string;
+
+    endDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    firstInvoiceValue: number | 0;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string;
+
+    organizationId: string;
+
+    priceId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    pricePerBillingCycle: number;
+
+    priceType: 'subscription';
+
+    proposal: string | null;
+
+    purchaseDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent' | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: number | 0;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    totalPurchaseValue?: unknown;
+  }
+
+  export interface SinglePaymentPurchase {
+    id: string;
+
+    archived: boolean | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+
+    billingCycleAnchor: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerId: string;
+
+    endDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    firstInvoiceValue: number | 0;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string;
+
+    organizationId: string;
+
+    priceId: string;
+
+    priceType: 'single_payment';
+
+    proposal: string | null;
+
+    purchaseDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent' | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    totalPurchaseValue: number | 0;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    intervalCount?: unknown;
+
+    intervalUnit?: unknown;
+
+    pricePerBillingCycle?: unknown;
+
+    stripesubscriptionId?: unknown;
+
+    trialPeriodDays?: unknown;
+  }
+
   export interface Subscription {
     id: string;
 
@@ -2361,22 +2874,22 @@ export namespace CustomerRetrieveBillingResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     subscriptionItems: Array<Subscription.SubscriptionItem>;
 
@@ -2631,22 +3144,22 @@ export namespace CustomerRetrieveBillingResponse {
 
     metadata: Record<string, unknown> | null;
 
-    organizationId: string;
+    name: string | null;
 
-    planName: string | null;
+    organizationId: string;
 
     priceId: string;
 
     status:
-      | 'incomplete'
-      | 'incomplete_expired'
       | 'trialing'
       | 'active'
       | 'past_due'
-      | 'canceled'
       | 'unpaid'
-      | 'paused'
-      | 'cancellation_scheduled';
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
 
     subscriptionItems: Array<CurrentSubscription.SubscriptionItem>;
 

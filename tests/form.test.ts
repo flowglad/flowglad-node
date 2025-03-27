@@ -1,5 +1,5 @@
 import { multipartFormRequestOptions, createForm } from '@flowglad/node/internal/uploads';
-import { toFile } from '@flowglad/node/uploads';
+import { toFile } from '@flowglad/node/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

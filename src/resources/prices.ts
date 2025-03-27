@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -1309,8 +1309,6 @@ export namespace PriceCreateParams {
      * safeZodPositiveInteger
      */
     unitPrice: number;
-
-    stripePriceId?: string | null;
   }
 
   export interface SubscriptionPrice {
@@ -1481,8 +1479,6 @@ export namespace PriceCreateParams {
      * safeZodNullOrUndefined
      */
     setupFeeAmount?: 'null' | null | unknown;
-
-    stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1658,8 +1654,6 @@ export namespace PriceUpdateParams {
      * safeZodPositiveInteger
      */
     setupFeeAmount?: number | 0 | null;
-
-    stripePriceId?: string | null;
 
     /**
      * safeZodPositiveInteger
@@ -1837,8 +1831,6 @@ export namespace PriceUpdateParams {
      * safeZodNullOrUndefined
      */
     setupFeeAmount?: 'null' | null | unknown;
-
-    stripePriceId?: string | null;
 
     /**
      * safeZodNullOrUndefined

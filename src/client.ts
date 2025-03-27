@@ -13,14 +13,16 @@ import { getPlatformHeaders } from './internal/detect-platform';
 import * as Shims from './internal/shims';
 import * as Opts from './internal/request-options';
 import { VERSION } from './version';
-import * as Errors from './error';
-import * as Uploads from './uploads';
+import * as Errors from './core/error';
+import * as Uploads from './core/uploads';
 import * as API from './resources/index';
-import { APIPromise } from './api-promise';
+import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import {
+  CatalogCloneParams,
+  CatalogCloneResponse,
   CatalogCreateParams,
   CatalogCreateResponse,
   CatalogListParams,
@@ -816,10 +818,12 @@ export declare namespace Flowglad {
     type CatalogRetrieveResponse as CatalogRetrieveResponse,
     type CatalogUpdateResponse as CatalogUpdateResponse,
     type CatalogListResponse as CatalogListResponse,
+    type CatalogCloneResponse as CatalogCloneResponse,
     type CatalogRetrieveDefaultResponse as CatalogRetrieveDefaultResponse,
     type CatalogCreateParams as CatalogCreateParams,
     type CatalogUpdateParams as CatalogUpdateParams,
     type CatalogListParams as CatalogListParams,
+    type CatalogCloneParams as CatalogCloneParams,
   };
 
   export {

@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
@@ -72,6 +72,10 @@ export namespace CheckoutSessionCreateResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -147,6 +151,10 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
+    outputMetadata: 'null' | null;
+
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -220,6 +228,10 @@ export namespace CheckoutSessionCreateResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -309,6 +321,10 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -383,6 +399,10 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
+    outputMetadata: 'null' | null;
+
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
@@ -456,6 +476,10 @@ export namespace CheckoutSessionRetrieveResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -549,6 +573,10 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -622,6 +650,10 @@ export namespace CheckoutSessionListResponse {
     livemode: boolean;
 
     organizationId: string;
+
+    outputMetadata: 'null' | null;
+
+    outputName: string | null;
 
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
@@ -697,6 +729,10 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
+
     paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
@@ -766,6 +802,18 @@ export interface CheckoutSessionCreateParams {
    * The URL to redirect to after the purchase is successful
    */
   successUrl: string;
+
+  /**
+   * Metadata that will get added to the purchase or subscription created when this
+   * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
+   */
+  outputMetadata?: Record<string, unknown>;
+
+  /**
+   * The name of the purchase or subscription created when this checkout session
+   * succeeds. Ignored if the checkout session is of type `invoice`.
+   */
+  outputName?: string;
 }
 
 export interface CheckoutSessionListParams {

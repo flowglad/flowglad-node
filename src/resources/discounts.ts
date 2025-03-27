@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { APIPromise } from '../api-promise';
+import { APIResource } from '../core/resource';
+import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
 export class Discounts extends APIResource {
   /**
-   * Create Discount
+   * Create discount
    */
   create(body: DiscountCreateParams, options?: RequestOptions): APIPromise<DiscountCreateResponse> {
     return this._client.post('/api/v1/discounts', { body, ...options });
