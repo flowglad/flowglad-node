@@ -8,6 +8,12 @@ Full Changelog: [v0.15.0...v0.16.0](https://github.com/flowglad/flowglad-node/co
 * **api:** add default price to product object ([#124](https://github.com/flowglad/flowglad-node/issues/124)) ([01deb5d](https://github.com/flowglad/flowglad-node/commit/01deb5d9745a3563ac189ccc8227c690f7b532d8))
 
 
+### Bug Fixes
+
+* **api:** add better docs on discriminated unions ([#127](https://github.com/flowglad/flowglad-node/issues/127)) ([6ad4e61](https://github.com/flowglad/flowglad-node/commit/6ad4e614edbf1a95aa7faefb2041ea2fafda991e))
+* **api:** add better docs on prices ([#125](https://github.com/flowglad/flowglad-node/issues/125)) ([3a10830](https://github.com/flowglad/flowglad-node/commit/3a10830e4bf254787f9da5bb9ea874a50ba9b52f))
+
+
 ### Chores
 
 * **client:** move misc public files to new `core/` directory, deprecate old paths ([#122](https://github.com/flowglad/flowglad-node/issues/122)) ([e799b65](https://github.com/flowglad/flowglad-node/commit/e799b654b363a3b7a4238ae3f19e981ccc0480dc))

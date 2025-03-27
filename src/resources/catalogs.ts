@@ -117,7 +117,11 @@ export namespace CatalogRetrieveResponse {
      */
     createdAt: (string & {}) | string;
 
-    defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+    /**
+     * The default price for the product. If no price is explicitly set as default,
+     * will return the first price created for the product..
+     */
+    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
     description: string | null;
 
@@ -144,7 +148,11 @@ export namespace CatalogRetrieveResponse {
   }
 
   export namespace Product {
-    export interface UnionMember0 {
+    /**
+     * A subscription price, which will have details on the interval, default trial
+     * period, and setup fee (if any).
+     */
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -322,7 +330,11 @@ export namespace CatalogRetrieveResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember1 {
+    /**
+     * A single payment price, which only gets paid once. Subscriptions cannot be made
+     * from single payment prices. Purchases, though, can.
+     */
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;
@@ -511,6 +523,10 @@ export namespace CatalogRetrieveResponse {
       details?: string | null;
     }
 
+    /**
+     * A subscription price, which will have details on the interval, default trial
+     * period, and setup fee (if any).
+     */
     export interface SubscriptionPrice {
       id: string;
 
@@ -689,6 +705,10 @@ export namespace CatalogRetrieveResponse {
       updatedAt: string | null;
     }
 
+    /**
+     * A single payment price, which only gets paid once. Subscriptions cannot be made
+     * from single payment prices. Purchases, though, can.
+     */
     export interface SinglePaymentPrice {
       id: string;
 
@@ -978,7 +998,11 @@ export namespace CatalogCloneResponse {
        */
       createdAt: (string & {}) | string;
 
-      defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+      /**
+       * The default price for the product. If no price is explicitly set as default,
+       * will return the first price created for the product..
+       */
+      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
       description: string | null;
 
@@ -1005,7 +1029,11 @@ export namespace CatalogCloneResponse {
     }
 
     export namespace Product {
-      export interface UnionMember0 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -1183,7 +1211,11 @@ export namespace CatalogCloneResponse {
         updatedAt: string | null;
       }
 
-      export interface UnionMember1 {
+      /**
+       * A single payment price, which only gets paid once. Subscriptions cannot be made
+       * from single payment prices. Purchases, though, can.
+       */
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -1372,6 +1404,10 @@ export namespace CatalogCloneResponse {
         details?: string | null;
       }
 
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
       export interface SubscriptionPrice {
         id: string;
 
@@ -1550,6 +1586,10 @@ export namespace CatalogCloneResponse {
         updatedAt: string | null;
       }
 
+      /**
+       * A single payment price, which only gets paid once. Subscriptions cannot be made
+       * from single payment prices. Purchases, though, can.
+       */
       export interface SinglePaymentPrice {
         id: string;
 
@@ -1771,7 +1811,11 @@ export namespace CatalogRetrieveDefaultResponse {
      */
     createdAt: (string & {}) | string;
 
-    defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+    /**
+     * The default price for the product. If no price is explicitly set as default,
+     * will return the first price created for the product..
+     */
+    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
     description: string | null;
 
@@ -1798,7 +1842,11 @@ export namespace CatalogRetrieveDefaultResponse {
   }
 
   export namespace Product {
-    export interface UnionMember0 {
+    /**
+     * A subscription price, which will have details on the interval, default trial
+     * period, and setup fee (if any).
+     */
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -1976,7 +2024,11 @@ export namespace CatalogRetrieveDefaultResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember1 {
+    /**
+     * A single payment price, which only gets paid once. Subscriptions cannot be made
+     * from single payment prices. Purchases, though, can.
+     */
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;
@@ -2165,6 +2217,10 @@ export namespace CatalogRetrieveDefaultResponse {
       details?: string | null;
     }
 
+    /**
+     * A subscription price, which will have details on the interval, default trial
+     * period, and setup fee (if any).
+     */
     export interface SubscriptionPrice {
       id: string;
 
@@ -2343,6 +2399,10 @@ export namespace CatalogRetrieveDefaultResponse {
       updatedAt: string | null;
     }
 
+    /**
+     * A single payment price, which only gets paid once. Subscriptions cannot be made
+     * from single payment prices. Purchases, though, can.
+     */
     export interface SinglePaymentPrice {
       id: string;
 
