@@ -1,6 +1,6 @@
 import fs from 'fs';
 import type { ResponseLike } from '@flowglad/node/internal/to-file';
-import { toFile } from '@flowglad/node/uploads';
+import { toFile } from '@flowglad/node/core/uploads';
 import { File } from 'node:buffer';
 
 class MyClass {
@@ -97,7 +97,7 @@ describe('missing File error message', () => {
   });
 
   test('is thrown', async () => {
-    const uploads = await import('@flowglad/node/uploads');
+    const uploads = await import('@flowglad/node/core/uploads');
     await expect(
       uploads.toFile(mockResponse({ url: 'https://example.com/my/audio.mp3' })),
     ).rejects.toMatchInlineSnapshot(
