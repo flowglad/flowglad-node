@@ -7,7 +7,7 @@ import { path } from '../internal/utils/path';
 
 export class Discounts extends APIResource {
   /**
-   * Create Discount
+   * Create discount
    */
   create(body: DiscountCreateParams, options?: RequestOptions): APIPromise<DiscountCreateResponse> {
     return this._client.post('/api/v1/discounts', { body, ...options });
