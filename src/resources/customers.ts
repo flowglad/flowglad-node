@@ -408,7 +408,11 @@ export namespace CustomerRetrieveBillingResponse {
        */
       createdAt: (string & {}) | string;
 
-      defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+      /**
+       * The default price for the product. If no price is explicitly set as default,
+       * will return the first price created for the product..
+       */
+      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
       description: string | null;
 
@@ -435,7 +439,11 @@ export namespace CustomerRetrieveBillingResponse {
     }
 
     export namespace Product {
-      export interface UnionMember0 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -613,7 +621,11 @@ export namespace CustomerRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
-      export interface UnionMember1 {
+      /**
+       * A single payment price, which only gets paid once. Subscriptions cannot be made
+       * from single payment prices. Purchases, though, can.
+       */
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -802,6 +814,10 @@ export namespace CustomerRetrieveBillingResponse {
         details?: string | null;
       }
 
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
       export interface SubscriptionPrice {
         id: string;
 
@@ -980,6 +996,10 @@ export namespace CustomerRetrieveBillingResponse {
         updatedAt: string | null;
       }
 
+      /**
+       * A single payment price, which only gets paid once. Subscriptions cannot be made
+       * from single payment prices. Purchases, though, can.
+       */
       export interface SinglePaymentPrice {
         id: string;
 
@@ -1228,12 +1248,22 @@ export namespace CustomerRetrieveBillingResponse {
   }
 
   export interface Invoice {
-    invoice: Invoice.SubscriptionInvoice | Invoice.PurchaseInvoice | Invoice.StandaloneInvoice;
+    /**
+     * An invoice created in association with a purchase. This type of invoice is only
+     * ever created for single payment prices. Purchases associated with subscriptions
+     * will have subscription invoices created instead.
+     */
+    invoice: Invoice.PurchaseInvoice | Invoice.SubscriptionInvoice | Invoice.StandaloneInvoice;
 
     invoiceLineItems: Array<Invoice.InvoiceLineItem>;
   }
 
   export namespace Invoice {
+    /**
+     * An invoice created in association with a purchase. This type of invoice is only
+     * ever created for single payment prices. Purchases associated with subscriptions
+     * will have subscription invoices created instead.
+     */
     export interface PurchaseInvoice {
       id: string;
 
@@ -1696,6 +1726,11 @@ export namespace CustomerRetrieveBillingResponse {
       updatedAt: string | null;
     }
 
+    /**
+     * An invoice created in association with a subscription. This type of invoice is
+     * only ever created for subscription prices. Purchases associated with single
+     * payment prices will have purchase invoices created instead.
+     */
     export interface SubscriptionInvoice {
       id: string;
 
@@ -2158,6 +2193,10 @@ export namespace CustomerRetrieveBillingResponse {
       updatedAt: string | null;
     }
 
+    /**
+     * An invoice created without any associated purchase or subscription. These
+     * invoices are most often created manually.
+     */
     export interface StandaloneInvoice {
       id: string;
 
@@ -2700,6 +2739,10 @@ export namespace CustomerRetrieveBillingResponse {
     }
   }
 
+  /**
+   * A purchase associated with a subscription price. This type of purchase will have
+   * recurring billing cycles and may include trial periods.
+   */
   export interface SubscriptionPurchase {
     id: string;
 
@@ -2773,6 +2816,10 @@ export namespace CustomerRetrieveBillingResponse {
     totalPurchaseValue?: unknown;
   }
 
+  /**
+   * A purchase associated with a single payment price. This type of purchase is paid
+   * once and does not have recurring billing cycles.
+   */
   export interface SinglePaymentPurchase {
     id: string;
 
@@ -2912,6 +2959,10 @@ export namespace CustomerRetrieveBillingResponse {
 
       name: string | null;
 
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
       price: SubscriptionItem.Price;
 
       priceId: string;
@@ -2932,6 +2983,10 @@ export namespace CustomerRetrieveBillingResponse {
     }
 
     export namespace SubscriptionItem {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
       export interface Price {
         id: string;
 
@@ -3182,6 +3237,10 @@ export namespace CustomerRetrieveBillingResponse {
 
       name: string | null;
 
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
       price: SubscriptionItem.Price;
 
       priceId: string;
@@ -3202,6 +3261,10 @@ export namespace CustomerRetrieveBillingResponse {
     }
 
     export namespace SubscriptionItem {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
       export interface Price {
         id: string;
 

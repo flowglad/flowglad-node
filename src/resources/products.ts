@@ -100,7 +100,11 @@ export interface ProductRetrieveResponse {
    */
   createdAt: (string & {}) | string;
 
-  defaultPrice: ProductRetrieveResponse.UnionMember0 | ProductRetrieveResponse.UnionMember1;
+  /**
+   * The default price for the product. If no price is explicitly set as default,
+   * will return the first price created for the product..
+   */
+  defaultPrice: ProductRetrieveResponse.SubscriptionPrice | ProductRetrieveResponse.SinglePaymentPrice;
 
   description: string | null;
 
@@ -116,7 +120,7 @@ export interface ProductRetrieveResponse {
 
   pluralQuantityLabel: string | null;
 
-  prices: Array<ProductRetrieveResponse.UnionMember0 | ProductRetrieveResponse.UnionMember1>;
+  prices: Array<ProductRetrieveResponse.SubscriptionPrice | ProductRetrieveResponse.SinglePaymentPrice>;
 
   singularQuantityLabel: string | null;
 
@@ -127,7 +131,11 @@ export interface ProductRetrieveResponse {
 }
 
 export namespace ProductRetrieveResponse {
-  export interface UnionMember0 {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -305,7 +313,11 @@ export namespace ProductRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -494,7 +506,11 @@ export namespace ProductRetrieveResponse {
     details?: string | null;
   }
 
-  export interface UnionMember0 {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -672,7 +688,11 @@ export namespace ProductRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -1050,12 +1070,20 @@ export namespace ProductListResponse {
 }
 
 export interface ProductCreateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   price: ProductCreateParams.SubscriptionPrice | ProductCreateParams.SinglePaymentPrice;
 
   product: ProductCreateParams.Product;
 }
 
 export namespace ProductCreateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface SubscriptionPrice {
     active: boolean;
 
@@ -1090,6 +1118,10 @@ export namespace ProductCreateParams {
     unitPrice: number;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface SinglePaymentPrice {
     active: boolean;
 
@@ -1157,12 +1189,20 @@ export namespace ProductCreateParams {
 }
 
 export interface ProductUpdateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   price: ProductUpdateParams.SubscriptionPrice | ProductUpdateParams.SinglePaymentPrice;
 
   product: ProductUpdateParams.Product;
 }
 
 export namespace ProductUpdateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface SubscriptionPrice {
     id: string;
 
@@ -1337,6 +1377,10 @@ export namespace ProductUpdateParams {
     unitPrice?: number;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface SinglePaymentPrice {
     id: string;
 
