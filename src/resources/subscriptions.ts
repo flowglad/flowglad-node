@@ -333,20 +333,24 @@ export interface SubscriptionListParams {
 }
 
 export interface SubscriptionAdjustParams {
-  adjustment: SubscriptionAdjustParams.UnionMember0 | SubscriptionAdjustParams.UnionMember1;
+  adjustment:
+    | SubscriptionAdjustParams.ImmediateAdjustment
+    | SubscriptionAdjustParams.AtEndOfCurrentBillingPeriod;
 }
 
 export namespace SubscriptionAdjustParams {
-  export interface UnionMember0 {
-    newSubscriptionItems: Array<UnionMember0.UnionMember0 | UnionMember0.UnionMember1>;
+  export interface ImmediateAdjustment {
+    newSubscriptionItems: Array<
+      ImmediateAdjustment.SubscriptionItemInsert | ImmediateAdjustment.SubscriptionItemUpdate
+    >;
 
     prorateCurrentBillingPeriod: boolean;
 
     timing: 'immediately';
   }
 
-  export namespace UnionMember0 {
-    export interface UnionMember0 {
+  export namespace ImmediateAdjustment {
+    export interface SubscriptionItemInsert {
       addedDate: string;
 
       livemode: boolean;
@@ -370,7 +374,7 @@ export namespace SubscriptionAdjustParams {
       unitPrice: number | 0;
     }
 
-    export interface UnionMember1 {
+    export interface SubscriptionItemUpdate {
       id: string;
 
       addedDate: string;
@@ -401,14 +405,16 @@ export namespace SubscriptionAdjustParams {
     }
   }
 
-  export interface UnionMember1 {
-    newSubscriptionItems: Array<UnionMember1.UnionMember0 | UnionMember1.UnionMember1>;
+  export interface AtEndOfCurrentBillingPeriod {
+    newSubscriptionItems: Array<
+      AtEndOfCurrentBillingPeriod.SubscriptionItemInsert | AtEndOfCurrentBillingPeriod.SubscriptionItemUpdate
+    >;
 
     timing: 'at_end_of_current_billing_period';
   }
 
-  export namespace UnionMember1 {
-    export interface UnionMember0 {
+  export namespace AtEndOfCurrentBillingPeriod {
+    export interface SubscriptionItemInsert {
       addedDate: string;
 
       livemode: boolean;
@@ -432,7 +438,7 @@ export namespace SubscriptionAdjustParams {
       unitPrice: number | 0;
     }
 
-    export interface UnionMember1 {
+    export interface SubscriptionItemUpdate {
       id: string;
 
       addedDate: string;
@@ -466,23 +472,23 @@ export namespace SubscriptionAdjustParams {
 
 export interface SubscriptionCancelParams {
   cancellation:
-    | SubscriptionCancelParams.Timing
-    | SubscriptionCancelParams.UnionMember1
-    | SubscriptionCancelParams.Timing;
+    | SubscriptionCancelParams.AtEndOfCurrentBillingPeriod
+    | SubscriptionCancelParams.AtFutureDate
+    | SubscriptionCancelParams.Immediately;
 }
 
 export namespace SubscriptionCancelParams {
-  export interface Timing {
+  export interface AtEndOfCurrentBillingPeriod {
     timing: 'at_end_of_current_billing_period';
   }
 
-  export interface UnionMember1 {
+  export interface AtFutureDate {
     endDate: string;
 
     timing: 'at_future_date';
   }
 
-  export interface Timing {
+  export interface Immediately {
     timing: 'immediately';
   }
 }

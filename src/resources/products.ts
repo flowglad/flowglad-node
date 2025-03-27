@@ -960,16 +960,103 @@ export namespace ProductListResponse {
       details?: string | null;
     }
   }
+
+  export interface SubscriptionPrice {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: string | number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'subscription';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+  }
+
+  export interface SinglePaymentPrice {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'single_payment';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalCount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalUnit?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: unknown | unknown | null;
+  }
 }
 
 export interface ProductCreateParams {
-  price: ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1;
+  price: ProductCreateParams.SubscriptionPrice | ProductCreateParams.SinglePaymentPrice;
 
   product: ProductCreateParams.Product;
 }
 
 export namespace ProductCreateParams {
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     active: boolean;
 
     /**
@@ -1003,7 +1090,7 @@ export namespace ProductCreateParams {
     unitPrice: number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     active: boolean;
 
     isDefault: boolean;
@@ -1070,13 +1157,13 @@ export namespace ProductCreateParams {
 }
 
 export interface ProductUpdateParams {
-  price: ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1;
+  price: ProductUpdateParams.SubscriptionPrice | ProductUpdateParams.SinglePaymentPrice;
 
   product: ProductUpdateParams.Product;
 }
 
 export namespace ProductUpdateParams {
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     type: 'subscription';
@@ -1250,7 +1337,7 @@ export namespace ProductUpdateParams {
     unitPrice?: number;
   }
 
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     type: 'single_payment';

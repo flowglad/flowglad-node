@@ -133,7 +133,7 @@ export namespace CatalogRetrieveResponse {
 
     pluralQuantityLabel: string | null;
 
-    prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
     singularQuantityLabel: string | null;
 
@@ -511,7 +511,7 @@ export namespace CatalogRetrieveResponse {
       details?: string | null;
     }
 
-    export interface UnionMember0 {
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -689,7 +689,7 @@ export namespace CatalogRetrieveResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember1 {
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;
@@ -994,7 +994,7 @@ export namespace CatalogCloneResponse {
 
       pluralQuantityLabel: string | null;
 
-      prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
       singularQuantityLabel: string | null;
 
@@ -1372,7 +1372,7 @@ export namespace CatalogCloneResponse {
         details?: string | null;
       }
 
-      export interface UnionMember0 {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -1550,7 +1550,7 @@ export namespace CatalogCloneResponse {
         updatedAt: string | null;
       }
 
-      export interface UnionMember1 {
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -1787,7 +1787,7 @@ export namespace CatalogRetrieveDefaultResponse {
 
     pluralQuantityLabel: string | null;
 
-    prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
     singularQuantityLabel: string | null;
 
@@ -2165,7 +2165,7 @@ export namespace CatalogRetrieveDefaultResponse {
       details?: string | null;
     }
 
-    export interface UnionMember0 {
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -2343,7 +2343,7 @@ export namespace CatalogRetrieveDefaultResponse {
       updatedAt: string | null;
     }
 
-    export interface UnionMember1 {
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;

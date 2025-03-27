@@ -33,9 +33,9 @@ export class Invoices extends APIResource {
 
 export interface InvoiceCreateResponse {
   invoice:
-    | InvoiceCreateResponse.UnionMember0
-    | InvoiceCreateResponse.UnionMember1
-    | InvoiceCreateResponse.UnionMember2;
+    | InvoiceCreateResponse.PurchaseInvoice
+    | InvoiceCreateResponse.SubscriptionInvoice
+    | InvoiceCreateResponse.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceCreateResponse.InvoiceLineItem>;
 
@@ -43,7 +43,7 @@ export interface InvoiceCreateResponse {
 }
 
 export namespace InvoiceCreateResponse {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -505,7 +505,7 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -967,7 +967,7 @@ export namespace InvoiceCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1455,15 +1455,15 @@ export namespace InvoiceCreateResponse {
 
 export interface InvoiceRetrieveResponse {
   invoice:
-    | InvoiceRetrieveResponse.UnionMember0
-    | InvoiceRetrieveResponse.UnionMember1
-    | InvoiceRetrieveResponse.UnionMember2;
+    | InvoiceRetrieveResponse.PurchaseInvoice
+    | InvoiceRetrieveResponse.SubscriptionInvoice
+    | InvoiceRetrieveResponse.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceRetrieveResponse.InvoiceLineItem>;
 }
 
 export namespace InvoiceRetrieveResponse {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1925,7 +1925,7 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -2387,7 +2387,7 @@ export namespace InvoiceRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -2875,7 +2875,9 @@ export namespace InvoiceRetrieveResponse {
 
 export interface InvoiceListResponse {
   data: Array<
-    InvoiceListResponse.UnionMember0 | InvoiceListResponse.UnionMember1 | InvoiceListResponse.UnionMember2
+    | InvoiceListResponse.PurchaseInvoice
+    | InvoiceListResponse.SubscriptionInvoice
+    | InvoiceListResponse.StandaloneInvoice
   >;
 
   hasMore: boolean;
@@ -2888,7 +2890,7 @@ export interface InvoiceListResponse {
 }
 
 export namespace InvoiceListResponse {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -3350,7 +3352,7 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -3812,7 +3814,7 @@ export namespace InvoiceListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -4277,9 +4279,9 @@ export namespace InvoiceListResponse {
 
 export interface InvoiceCreateParams {
   invoice:
-    | InvoiceCreateParams.UnionMember0
-    | InvoiceCreateParams.UnionMember1
-    | InvoiceCreateParams.UnionMember2;
+    | InvoiceCreateParams.PurchaseInvoice
+    | InvoiceCreateParams.SubscriptionInvoice
+    | InvoiceCreateParams.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceCreateParams.InvoiceLineItem>;
 
@@ -4287,7 +4289,7 @@ export interface InvoiceCreateParams {
 }
 
 export namespace InvoiceCreateParams {
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     billingPeriodId: 'null' | null;
 
     currency:
@@ -4733,7 +4735,7 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     billingPeriodId: string;
 
     currency:
@@ -5179,7 +5181,7 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     billingPeriodId: 'null' | null;
 
     currency:
