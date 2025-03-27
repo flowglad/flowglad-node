@@ -32,10 +32,18 @@ export class Prices extends APIResource {
 }
 
 export interface PriceCreateResponse {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   price: PriceCreateResponse.UnionMember0 | PriceCreateResponse.UnionMember1;
 }
 
 export namespace PriceCreateResponse {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -214,6 +222,10 @@ export namespace PriceCreateResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface UnionMember1 {
     id: string;
 
@@ -397,10 +409,18 @@ export namespace PriceCreateResponse {
 }
 
 export interface PriceUpdateResponse {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   price: PriceUpdateResponse.UnionMember0 | PriceUpdateResponse.UnionMember1;
 }
 
 export namespace PriceUpdateResponse {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -579,6 +599,10 @@ export namespace PriceUpdateResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface UnionMember1 {
     id: string;
 
@@ -774,6 +798,10 @@ export interface PriceListResponse {
 }
 
 export namespace PriceListResponse {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -952,6 +980,10 @@ export namespace PriceListResponse {
     updatedAt: string | null;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface UnionMember1 {
     id: string;
 
@@ -1135,10 +1167,18 @@ export namespace PriceListResponse {
 }
 
 export interface PriceCreateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   price: PriceCreateParams.UnionMember0 | PriceCreateParams.UnionMember1;
 }
 
 export namespace PriceCreateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface UnionMember0 {
     active: boolean;
 
@@ -1311,6 +1351,10 @@ export namespace PriceCreateParams {
     unitPrice: number;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface UnionMember1 {
     active: boolean;
 
@@ -1488,10 +1532,18 @@ export namespace PriceCreateParams {
 }
 
 export interface PriceUpdateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   price: PriceUpdateParams.UnionMember0 | PriceUpdateParams.UnionMember1;
 }
 
 export namespace PriceUpdateParams {
+  /**
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
+   */
   export interface UnionMember0 {
     id: string;
 
@@ -1666,6 +1718,10 @@ export namespace PriceUpdateParams {
     unitPrice?: number;
   }
 
+  /**
+   * A single payment price, which only gets paid once. Subscriptions cannot be made
+   * from single payment prices. Purchases, though, can.
+   */
   export interface UnionMember1 {
     id: string;
 
