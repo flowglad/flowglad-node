@@ -104,7 +104,7 @@ export interface ProductRetrieveResponse {
    * The default price for the product. If no price is explicitly set as default,
    * will return the first price created for the product..
    */
-  defaultPrice: ProductRetrieveResponse.UnionMember0 | ProductRetrieveResponse.UnionMember1;
+  defaultPrice: ProductRetrieveResponse.SubscriptionPrice | ProductRetrieveResponse.SinglePaymentPrice;
 
   description: string | null;
 
@@ -120,7 +120,7 @@ export interface ProductRetrieveResponse {
 
   pluralQuantityLabel: string | null;
 
-  prices: Array<ProductRetrieveResponse.UnionMember0 | ProductRetrieveResponse.UnionMember1>;
+  prices: Array<ProductRetrieveResponse.SubscriptionPrice | ProductRetrieveResponse.SinglePaymentPrice>;
 
   singularQuantityLabel: string | null;
 
@@ -135,7 +135,7 @@ export namespace ProductRetrieveResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -317,7 +317,7 @@ export namespace ProductRetrieveResponse {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -510,7 +510,7 @@ export namespace ProductRetrieveResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -692,7 +692,7 @@ export namespace ProductRetrieveResponse {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -980,6 +980,93 @@ export namespace ProductListResponse {
       details?: string | null;
     }
   }
+
+  export interface SubscriptionPrice {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: string | number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'subscription';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    trialPeriodDays: string | number | 0 | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+  }
+
+  export interface SinglePaymentPrice {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    priceType: 'single_payment';
+
+    ProductId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: string | number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalCount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    intervalUnit?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: unknown | unknown | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: unknown | unknown | null;
+  }
 }
 
 export interface ProductCreateParams {
@@ -987,7 +1074,7 @@ export interface ProductCreateParams {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  price: ProductCreateParams.UnionMember0 | ProductCreateParams.UnionMember1;
+  price: ProductCreateParams.SubscriptionPrice | ProductCreateParams.SinglePaymentPrice;
 
   product: ProductCreateParams.Product;
 }
@@ -997,7 +1084,7 @@ export namespace ProductCreateParams {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     active: boolean;
 
     /**
@@ -1035,7 +1122,7 @@ export namespace ProductCreateParams {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     active: boolean;
 
     isDefault: boolean;
@@ -1106,7 +1193,7 @@ export interface ProductUpdateParams {
    * A price record, which describes a price for a product. Products can have
    * multiple prices.
    */
-  price: ProductUpdateParams.UnionMember0 | ProductUpdateParams.UnionMember1;
+  price: ProductUpdateParams.SubscriptionPrice | ProductUpdateParams.SinglePaymentPrice;
 
   product: ProductUpdateParams.Product;
 }
@@ -1116,7 +1203,7 @@ export namespace ProductUpdateParams {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     type: 'subscription';
@@ -1294,7 +1381,7 @@ export namespace ProductUpdateParams {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     type: 'single_payment';

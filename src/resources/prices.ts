@@ -36,7 +36,7 @@ export interface PriceCreateResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  price: PriceCreateResponse.UnionMember0 | PriceCreateResponse.UnionMember1;
+  price: PriceCreateResponse.SubscriptionPrice | PriceCreateResponse.SinglePaymentPrice;
 }
 
 export namespace PriceCreateResponse {
@@ -44,7 +44,7 @@ export namespace PriceCreateResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -226,7 +226,7 @@ export namespace PriceCreateResponse {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -413,7 +413,7 @@ export interface PriceUpdateResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  price: PriceUpdateResponse.UnionMember0 | PriceUpdateResponse.UnionMember1;
+  price: PriceUpdateResponse.SubscriptionPrice | PriceUpdateResponse.SinglePaymentPrice;
 }
 
 export namespace PriceUpdateResponse {
@@ -421,7 +421,7 @@ export namespace PriceUpdateResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -603,7 +603,7 @@ export namespace PriceUpdateResponse {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -786,7 +786,7 @@ export namespace PriceUpdateResponse {
 }
 
 export interface PriceListResponse {
-  data: Array<PriceListResponse.UnionMember0 | PriceListResponse.UnionMember1>;
+  data: Array<PriceListResponse.SinglePaymentPrice | PriceListResponse.SubscriptionPrice>;
 
   hasMore: boolean;
 
@@ -802,7 +802,7 @@ export namespace PriceListResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     active: boolean;
@@ -984,7 +984,7 @@ export namespace PriceListResponse {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     active: boolean;
@@ -1171,7 +1171,7 @@ export interface PriceCreateParams {
    * A price record, which describes a price for a product. Products can have
    * multiple prices.
    */
-  price: PriceCreateParams.UnionMember0 | PriceCreateParams.UnionMember1;
+  price: PriceCreateParams.SubscriptionPrice | PriceCreateParams.SinglePaymentPrice;
 }
 
 export namespace PriceCreateParams {
@@ -1179,7 +1179,7 @@ export namespace PriceCreateParams {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     active: boolean;
 
     currency:
@@ -1355,7 +1355,7 @@ export namespace PriceCreateParams {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     active: boolean;
 
     currency:
@@ -1536,7 +1536,7 @@ export interface PriceUpdateParams {
    * A price record, which describes a price for a product. Products can have
    * multiple prices.
    */
-  price: PriceUpdateParams.UnionMember0 | PriceUpdateParams.UnionMember1;
+  price: PriceUpdateParams.SubscriptionPrice | PriceUpdateParams.SinglePaymentPrice;
 }
 
 export namespace PriceUpdateParams {
@@ -1544,7 +1544,7 @@ export namespace PriceUpdateParams {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  export interface UnionMember0 {
+  export interface SubscriptionPrice {
     id: string;
 
     type: 'subscription';
@@ -1722,7 +1722,7 @@ export namespace PriceUpdateParams {
    * A single payment price, which only gets paid once. Subscriptions cannot be made
    * from single payment prices. Purchases, though, can.
    */
-  export interface UnionMember1 {
+  export interface SinglePaymentPrice {
     id: string;
 
     type: 'single_payment';

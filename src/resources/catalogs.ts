@@ -121,7 +121,7 @@ export namespace CatalogRetrieveResponse {
      * The default price for the product. If no price is explicitly set as default,
      * will return the first price created for the product..
      */
-    defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
     description: string | null;
 
@@ -137,7 +137,7 @@ export namespace CatalogRetrieveResponse {
 
     pluralQuantityLabel: string | null;
 
-    prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
     singularQuantityLabel: string | null;
 
@@ -152,7 +152,7 @@ export namespace CatalogRetrieveResponse {
      * A subscription price, which will have details on the interval, default trial
      * period, and setup fee (if any).
      */
-    export interface UnionMember0 {
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -334,7 +334,7 @@ export namespace CatalogRetrieveResponse {
      * A single payment price, which only gets paid once. Subscriptions cannot be made
      * from single payment prices. Purchases, though, can.
      */
-    export interface UnionMember1 {
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;
@@ -527,7 +527,7 @@ export namespace CatalogRetrieveResponse {
      * A subscription price, which will have details on the interval, default trial
      * period, and setup fee (if any).
      */
-    export interface UnionMember0 {
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -709,7 +709,7 @@ export namespace CatalogRetrieveResponse {
      * A single payment price, which only gets paid once. Subscriptions cannot be made
      * from single payment prices. Purchases, though, can.
      */
-    export interface UnionMember1 {
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;
@@ -1002,7 +1002,7 @@ export namespace CatalogCloneResponse {
        * The default price for the product. If no price is explicitly set as default,
        * will return the first price created for the product..
        */
-      defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
       description: string | null;
 
@@ -1018,7 +1018,7 @@ export namespace CatalogCloneResponse {
 
       pluralQuantityLabel: string | null;
 
-      prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
       singularQuantityLabel: string | null;
 
@@ -1033,7 +1033,7 @@ export namespace CatalogCloneResponse {
        * A subscription price, which will have details on the interval, default trial
        * period, and setup fee (if any).
        */
-      export interface UnionMember0 {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -1215,7 +1215,7 @@ export namespace CatalogCloneResponse {
        * A single payment price, which only gets paid once. Subscriptions cannot be made
        * from single payment prices. Purchases, though, can.
        */
-      export interface UnionMember1 {
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -1408,7 +1408,7 @@ export namespace CatalogCloneResponse {
        * A subscription price, which will have details on the interval, default trial
        * period, and setup fee (if any).
        */
-      export interface UnionMember0 {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -1590,7 +1590,7 @@ export namespace CatalogCloneResponse {
        * A single payment price, which only gets paid once. Subscriptions cannot be made
        * from single payment prices. Purchases, though, can.
        */
-      export interface UnionMember1 {
+      export interface SinglePaymentPrice {
         id: string;
 
         active: boolean;
@@ -1815,7 +1815,7 @@ export namespace CatalogRetrieveDefaultResponse {
      * The default price for the product. If no price is explicitly set as default,
      * will return the first price created for the product..
      */
-    defaultPrice: Product.UnionMember0 | Product.UnionMember1;
+    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
 
     description: string | null;
 
@@ -1831,7 +1831,7 @@ export namespace CatalogRetrieveDefaultResponse {
 
     pluralQuantityLabel: string | null;
 
-    prices: Array<Product.UnionMember0 | Product.UnionMember1>;
+    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
 
     singularQuantityLabel: string | null;
 
@@ -1846,7 +1846,7 @@ export namespace CatalogRetrieveDefaultResponse {
      * A subscription price, which will have details on the interval, default trial
      * period, and setup fee (if any).
      */
-    export interface UnionMember0 {
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -2028,7 +2028,7 @@ export namespace CatalogRetrieveDefaultResponse {
      * A single payment price, which only gets paid once. Subscriptions cannot be made
      * from single payment prices. Purchases, though, can.
      */
-    export interface UnionMember1 {
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;
@@ -2221,7 +2221,7 @@ export namespace CatalogRetrieveDefaultResponse {
      * A subscription price, which will have details on the interval, default trial
      * period, and setup fee (if any).
      */
-    export interface UnionMember0 {
+    export interface SubscriptionPrice {
       id: string;
 
       active: boolean;
@@ -2403,7 +2403,7 @@ export namespace CatalogRetrieveDefaultResponse {
      * A single payment price, which only gets paid once. Subscriptions cannot be made
      * from single payment prices. Purchases, though, can.
      */
-    export interface UnionMember1 {
+    export interface SinglePaymentPrice {
       id: string;
 
       active: boolean;

@@ -49,13 +49,13 @@ export interface DiscountCreateResponse {
    * be applied indefinitely.
    */
   discount:
-    | DiscountCreateResponse.UnionMember0
-    | DiscountCreateResponse.UnionMember1
-    | DiscountCreateResponse.UnionMember2;
+    | DiscountCreateResponse.OnceDiscount
+    | DiscountCreateResponse.NumberOfPaymentsDiscount
+    | DiscountCreateResponse.ForeverDiscount;
 }
 
 export namespace DiscountCreateResponse {
-  export interface UnionMember0 {
+  export interface OnceDiscount {
     id: string;
 
     active: boolean;
@@ -84,7 +84,7 @@ export namespace DiscountCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface NumberOfPaymentsDiscount {
     id: string;
 
     active: boolean;
@@ -116,7 +116,7 @@ export namespace DiscountCreateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface ForeverDiscount {
     id: string;
 
     active: boolean;
@@ -153,13 +153,13 @@ export interface DiscountRetrieveResponse {
    * be applied indefinitely.
    */
   discount:
-    | DiscountRetrieveResponse.UnionMember0
-    | DiscountRetrieveResponse.UnionMember1
-    | DiscountRetrieveResponse.UnionMember2;
+    | DiscountRetrieveResponse.OnceDiscount
+    | DiscountRetrieveResponse.NumberOfPaymentsDiscount
+    | DiscountRetrieveResponse.ForeverDiscount;
 }
 
 export namespace DiscountRetrieveResponse {
-  export interface UnionMember0 {
+  export interface OnceDiscount {
     id: string;
 
     active: boolean;
@@ -188,7 +188,7 @@ export namespace DiscountRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface NumberOfPaymentsDiscount {
     id: string;
 
     active: boolean;
@@ -220,7 +220,7 @@ export namespace DiscountRetrieveResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface ForeverDiscount {
     id: string;
 
     active: boolean;
@@ -257,13 +257,13 @@ export interface DiscountUpdateResponse {
    * be applied indefinitely.
    */
   discount:
-    | DiscountUpdateResponse.UnionMember0
-    | DiscountUpdateResponse.UnionMember1
-    | DiscountUpdateResponse.UnionMember2;
+    | DiscountUpdateResponse.OnceDiscount
+    | DiscountUpdateResponse.NumberOfPaymentsDiscount
+    | DiscountUpdateResponse.ForeverDiscount;
 }
 
 export namespace DiscountUpdateResponse {
-  export interface UnionMember0 {
+  export interface OnceDiscount {
     id: string;
 
     active: boolean;
@@ -292,7 +292,7 @@ export namespace DiscountUpdateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface NumberOfPaymentsDiscount {
     id: string;
 
     active: boolean;
@@ -324,7 +324,7 @@ export namespace DiscountUpdateResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface ForeverDiscount {
     id: string;
 
     active: boolean;
@@ -356,7 +356,9 @@ export namespace DiscountUpdateResponse {
 
 export interface DiscountListResponse {
   data: Array<
-    DiscountListResponse.UnionMember0 | DiscountListResponse.UnionMember1 | DiscountListResponse.UnionMember2
+    | DiscountListResponse.OnceDiscount
+    | DiscountListResponse.NumberOfPaymentsDiscount
+    | DiscountListResponse.ForeverDiscount
   >;
 
   hasMore: boolean;
@@ -369,7 +371,7 @@ export interface DiscountListResponse {
 }
 
 export namespace DiscountListResponse {
-  export interface UnionMember0 {
+  export interface OnceDiscount {
     id: string;
 
     active: boolean;
@@ -398,7 +400,7 @@ export namespace DiscountListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface NumberOfPaymentsDiscount {
     id: string;
 
     active: boolean;
@@ -430,7 +432,7 @@ export namespace DiscountListResponse {
     updatedAt: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface ForeverDiscount {
     id: string;
 
     active: boolean;
@@ -467,13 +469,13 @@ export interface DiscountCreateParams {
    * be applied indefinitely.
    */
   discount:
-    | DiscountCreateParams.UnionMember0
-    | DiscountCreateParams.UnionMember1
-    | DiscountCreateParams.UnionMember2;
+    | DiscountCreateParams.OnceDiscount
+    | DiscountCreateParams.NumberOfPaymentsDiscount
+    | DiscountCreateParams.ForeverDiscount;
 }
 
 export namespace DiscountCreateParams {
-  export interface UnionMember0 {
+  export interface OnceDiscount {
     /**
      * safeZodPositiveInteger
      */
@@ -496,7 +498,7 @@ export namespace DiscountCreateParams {
     active?: boolean;
   }
 
-  export interface UnionMember1 {
+  export interface NumberOfPaymentsDiscount {
     /**
      * safeZodPositiveInteger
      */
@@ -522,7 +524,7 @@ export namespace DiscountCreateParams {
     active?: boolean;
   }
 
-  export interface UnionMember2 {
+  export interface ForeverDiscount {
     /**
      * safeZodPositiveInteger
      */
@@ -553,13 +555,13 @@ export interface DiscountUpdateParams {
    * be applied indefinitely.
    */
   discount:
-    | DiscountUpdateParams.UnionMember0
-    | DiscountUpdateParams.UnionMember1
-    | DiscountUpdateParams.UnionMember2;
+    | DiscountUpdateParams.OnceDiscount
+    | DiscountUpdateParams.NumberOfPaymentsDiscount
+    | DiscountUpdateParams.ForeverDiscount;
 }
 
 export namespace DiscountUpdateParams {
-  export interface UnionMember0 {
+  export interface OnceDiscount {
     id: string;
 
     duration: 'once';
@@ -588,7 +590,7 @@ export namespace DiscountUpdateParams {
     updatedAt?: string | null;
   }
 
-  export interface UnionMember1 {
+  export interface NumberOfPaymentsDiscount {
     id: string;
 
     duration: 'number_of_payments';
@@ -620,7 +622,7 @@ export namespace DiscountUpdateParams {
     updatedAt?: string | null;
   }
 
-  export interface UnionMember2 {
+  export interface ForeverDiscount {
     id: string;
 
     duration: 'forever';

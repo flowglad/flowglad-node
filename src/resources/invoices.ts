@@ -38,9 +38,9 @@ export interface InvoiceCreateResponse {
    * determines its behavior and required fields.
    */
   invoice:
-    | InvoiceCreateResponse.UnionMember0
-    | InvoiceCreateResponse.UnionMember1
-    | InvoiceCreateResponse.UnionMember2;
+    | InvoiceCreateResponse.PurchaseInvoice
+    | InvoiceCreateResponse.SubscriptionInvoice
+    | InvoiceCreateResponse.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceCreateResponse.InvoiceLineItem>;
 
@@ -53,7 +53,7 @@ export namespace InvoiceCreateResponse {
    * ever created for single payment prices. Purchases associated with subscriptions
    * will have subscription invoices created instead.
    */
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -520,7 +520,7 @@ export namespace InvoiceCreateResponse {
    * only ever created for subscription prices. Purchases associated with single
    * payment prices will have purchase invoices created instead.
    */
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -986,7 +986,7 @@ export namespace InvoiceCreateResponse {
    * An invoice created without any associated purchase or subscription. These
    * invoices are most often created manually.
    */
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1479,9 +1479,9 @@ export interface InvoiceRetrieveResponse {
    * determines its behavior and required fields.
    */
   invoice:
-    | InvoiceRetrieveResponse.UnionMember0
-    | InvoiceRetrieveResponse.UnionMember1
-    | InvoiceRetrieveResponse.UnionMember2;
+    | InvoiceRetrieveResponse.PurchaseInvoice
+    | InvoiceRetrieveResponse.SubscriptionInvoice
+    | InvoiceRetrieveResponse.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceRetrieveResponse.InvoiceLineItem>;
 }
@@ -1492,7 +1492,7 @@ export namespace InvoiceRetrieveResponse {
    * ever created for single payment prices. Purchases associated with subscriptions
    * will have subscription invoices created instead.
    */
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -1959,7 +1959,7 @@ export namespace InvoiceRetrieveResponse {
    * only ever created for subscription prices. Purchases associated with single
    * payment prices will have purchase invoices created instead.
    */
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -2425,7 +2425,7 @@ export namespace InvoiceRetrieveResponse {
    * An invoice created without any associated purchase or subscription. These
    * invoices are most often created manually.
    */
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -2913,7 +2913,9 @@ export namespace InvoiceRetrieveResponse {
 
 export interface InvoiceListResponse {
   data: Array<
-    InvoiceListResponse.UnionMember0 | InvoiceListResponse.UnionMember1 | InvoiceListResponse.UnionMember2
+    | InvoiceListResponse.PurchaseInvoice
+    | InvoiceListResponse.SubscriptionInvoice
+    | InvoiceListResponse.StandaloneInvoice
   >;
 
   hasMore: boolean;
@@ -2931,7 +2933,7 @@ export namespace InvoiceListResponse {
    * ever created for single payment prices. Purchases associated with subscriptions
    * will have subscription invoices created instead.
    */
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -3398,7 +3400,7 @@ export namespace InvoiceListResponse {
    * only ever created for subscription prices. Purchases associated with single
    * payment prices will have purchase invoices created instead.
    */
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -3864,7 +3866,7 @@ export namespace InvoiceListResponse {
    * An invoice created without any associated purchase or subscription. These
    * invoices are most often created manually.
    */
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     id: string;
 
     applicationFee: number | null;
@@ -4334,9 +4336,9 @@ export interface InvoiceCreateParams {
    * determines its behavior and required fields.
    */
   invoice:
-    | InvoiceCreateParams.UnionMember0
-    | InvoiceCreateParams.UnionMember1
-    | InvoiceCreateParams.UnionMember2;
+    | InvoiceCreateParams.PurchaseInvoice
+    | InvoiceCreateParams.SubscriptionInvoice
+    | InvoiceCreateParams.StandaloneInvoice;
 
   invoiceLineItems: Array<InvoiceCreateParams.InvoiceLineItem>;
 
@@ -4349,7 +4351,7 @@ export namespace InvoiceCreateParams {
    * ever created for single payment prices. Purchases associated with subscriptions
    * will have subscription invoices created instead.
    */
-  export interface UnionMember0 {
+  export interface PurchaseInvoice {
     billingPeriodId: 'null' | null;
 
     currency:
@@ -4800,7 +4802,7 @@ export namespace InvoiceCreateParams {
    * only ever created for subscription prices. Purchases associated with single
    * payment prices will have purchase invoices created instead.
    */
-  export interface UnionMember1 {
+  export interface SubscriptionInvoice {
     billingPeriodId: string;
 
     currency:
@@ -5250,7 +5252,7 @@ export namespace InvoiceCreateParams {
    * An invoice created without any associated purchase or subscription. These
    * invoices are most often created manually.
    */
-  export interface UnionMember2 {
+  export interface StandaloneInvoice {
     billingPeriodId: 'null' | null;
 
     currency:

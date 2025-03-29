@@ -41,9 +41,9 @@ export interface CheckoutSessionCreateResponse {
    * type that determines its behavior and required fields.
    */
   checkoutSession:
-    | CheckoutSessionCreateResponse.UnionMember0
-    | CheckoutSessionCreateResponse.UnionMember1
-    | CheckoutSessionCreateResponse.UnionMember2;
+    | CheckoutSessionCreateResponse.PurchaseCheckoutSession
+    | CheckoutSessionCreateResponse.InvoiceCheckoutSession
+    | CheckoutSessionCreateResponse.ProductCheckoutSession;
 
   /**
    * The URL to redirect to complete the purchase
@@ -57,10 +57,10 @@ export namespace CheckoutSessionCreateResponse {
    * record and (if for a subscription price) a subscription upon successful
    * completion.
    */
-  export interface UnionMember0 {
+  export interface PurchaseCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchaseCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -105,7 +105,7 @@ export namespace CheckoutSessionCreateResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchaseCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -140,10 +140,10 @@ export namespace CheckoutSessionCreateResponse {
    * associated with the invoice upon successful completion. It will not create a
    * subscription or purchase.
    */
-  export interface UnionMember1 {
+  export interface InvoiceCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoiceCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -188,7 +188,7 @@ export namespace CheckoutSessionCreateResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoiceCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -222,10 +222,10 @@ export namespace CheckoutSessionCreateResponse {
    * A checkout session for a product, which will create a purchase record and (if
    * for a subscription price) a subscription upon successful completion.
    */
-  export interface UnionMember2 {
+  export interface ProductCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -270,7 +270,7 @@ export namespace CheckoutSessionCreateResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -308,9 +308,9 @@ export interface CheckoutSessionRetrieveResponse {
    * type that determines its behavior and required fields.
    */
   checkoutSession:
-    | CheckoutSessionRetrieveResponse.UnionMember0
-    | CheckoutSessionRetrieveResponse.UnionMember1
-    | CheckoutSessionRetrieveResponse.UnionMember2;
+    | CheckoutSessionRetrieveResponse.PurchaseCheckoutSession
+    | CheckoutSessionRetrieveResponse.InvoiceCheckoutSession
+    | CheckoutSessionRetrieveResponse.ProductCheckoutSession;
 
   /**
    * The URL to redirect to complete the purchase
@@ -324,10 +324,10 @@ export namespace CheckoutSessionRetrieveResponse {
    * record and (if for a subscription price) a subscription upon successful
    * completion.
    */
-  export interface UnionMember0 {
+  export interface PurchaseCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchaseCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -372,7 +372,7 @@ export namespace CheckoutSessionRetrieveResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchaseCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -407,10 +407,10 @@ export namespace CheckoutSessionRetrieveResponse {
    * associated with the invoice upon successful completion. It will not create a
    * subscription or purchase.
    */
-  export interface UnionMember1 {
+  export interface InvoiceCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoiceCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -455,7 +455,7 @@ export namespace CheckoutSessionRetrieveResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoiceCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -489,10 +489,10 @@ export namespace CheckoutSessionRetrieveResponse {
    * A checkout session for a product, which will create a purchase record and (if
    * for a subscription price) a subscription upon successful completion.
    */
-  export interface UnionMember2 {
+  export interface ProductCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -537,7 +537,7 @@ export namespace CheckoutSessionRetrieveResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -570,9 +570,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
 export interface CheckoutSessionListResponse {
   data: Array<
-    | CheckoutSessionListResponse.UnionMember0
-    | CheckoutSessionListResponse.UnionMember1
-    | CheckoutSessionListResponse.UnionMember2
+    | CheckoutSessionListResponse.PurchaseCheckoutSession
+    | CheckoutSessionListResponse.InvoiceCheckoutSession
+    | CheckoutSessionListResponse.ProductCheckoutSession
   >;
 
   hasMore: boolean;
@@ -590,10 +590,10 @@ export namespace CheckoutSessionListResponse {
    * record and (if for a subscription price) a subscription upon successful
    * completion.
    */
-  export interface UnionMember0 {
+  export interface PurchaseCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember0.BillingAddress | null;
+    billingAddress: PurchaseCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -638,7 +638,7 @@ export namespace CheckoutSessionListResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember0 {
+  export namespace PurchaseCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -673,10 +673,10 @@ export namespace CheckoutSessionListResponse {
    * associated with the invoice upon successful completion. It will not create a
    * subscription or purchase.
    */
-  export interface UnionMember1 {
+  export interface InvoiceCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember1.BillingAddress | null;
+    billingAddress: InvoiceCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -721,7 +721,7 @@ export namespace CheckoutSessionListResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember1 {
+  export namespace InvoiceCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
@@ -755,10 +755,10 @@ export namespace CheckoutSessionListResponse {
    * A checkout session for a product, which will create a purchase record and (if
    * for a subscription price) a subscription upon successful completion.
    */
-  export interface UnionMember2 {
+  export interface ProductCheckoutSession {
     id: string;
 
-    billingAddress: UnionMember2.BillingAddress | null;
+    billingAddress: ProductCheckoutSession.BillingAddress | null;
 
     cancelUrl: string | null;
 
@@ -803,7 +803,7 @@ export namespace CheckoutSessionListResponse {
     updatedAt: (string & {}) | string | null;
   }
 
-  export namespace UnionMember2 {
+  export namespace ProductCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
