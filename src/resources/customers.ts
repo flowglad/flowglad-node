@@ -362,7 +362,9 @@ export interface CustomerRetrieveBillingResponse {
    * that determines its behavior and required fields.
    */
   purchases: Array<
-    CustomerRetrieveBillingResponse.SinglePaymentPurchase | CustomerRetrieveBillingResponse.Subscription
+    | CustomerRetrieveBillingResponse.SubscriptionPurchase
+    | CustomerRetrieveBillingResponse.SinglePaymentPurchase
+    | CustomerRetrieveBillingResponse.UsagePurchase
   >;
 
   subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
@@ -417,7 +419,7 @@ export namespace CustomerRetrieveBillingResponse {
        * The default price for the product. If no price is explicitly set as default,
        * will return the first price created for the product..
        */
-      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
+      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice;
 
       description: string | null;
 
@@ -433,7 +435,7 @@ export namespace CustomerRetrieveBillingResponse {
 
       pluralQuantityLabel: string | null;
 
-      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice>;
 
       singularQuantityLabel: string | null;
 
@@ -811,6 +813,187 @@ export namespace CustomerRetrieveBillingResponse {
         trialPeriodDays?: 'null' | null | unknown;
       }
 
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UsagePrice {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        type: 'usage';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+
       export interface DisplayFeature {
         enabled: boolean;
 
@@ -1179,6 +1362,187 @@ export namespace CustomerRetrieveBillingResponse {
          * safeZodNullOrUndefined
          */
         setupFeeAmount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UsagePrice {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        type: 'usage';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        unitPrice: number;
+
+        updatedAt: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -2894,6 +3258,79 @@ export namespace CustomerRetrieveBillingResponse {
     trialPeriodDays?: unknown;
   }
 
+  /**
+   * A purchase associated with a usage price. This type of purchase is paid once and
+   * does not have recurring billing cycles.
+   */
+  export interface UsagePurchase {
+    id: string;
+
+    archived: boolean | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+
+    billingCycleAnchor: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerId: string;
+
+    endDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    firstInvoiceValue: number | 0;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string;
+
+    organizationId: string;
+
+    priceId: string;
+
+    priceType: 'usage';
+
+    proposal: string | null;
+
+    purchaseDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent' | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    totalPurchaseValue: number | 0;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    intervalCount?: unknown;
+
+    intervalUnit?: unknown;
+
+    pricePerBillingCycle?: unknown;
+
+    stripesubscriptionId?: unknown;
+
+    trialPeriodDays?: unknown;
+  }
+
   export interface Subscription {
     id: string;
 
@@ -2906,6 +3343,12 @@ export namespace CustomerRetrieveBillingResponse {
     cancelScheduledAt: string | null;
 
     createdAt: string;
+
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
 
     currentBillingPeriodEnd: string;
 
@@ -2931,6 +3374,8 @@ export namespace CustomerRetrieveBillingResponse {
     organizationId: string;
 
     priceId: string;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'
@@ -3185,6 +3630,12 @@ export namespace CustomerRetrieveBillingResponse {
 
     createdAt: string;
 
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
+
     currentBillingPeriodEnd: string;
 
     currentBillingPeriodStart: string;
@@ -3209,6 +3660,8 @@ export namespace CustomerRetrieveBillingResponse {
     organizationId: string;
 
     priceId: string;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'

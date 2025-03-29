@@ -121,7 +121,7 @@ export namespace CatalogRetrieveResponse {
      * The default price for the product. If no price is explicitly set as default,
      * will return the first price created for the product..
      */
-    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
+    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice;
 
     description: string | null;
 
@@ -137,7 +137,7 @@ export namespace CatalogRetrieveResponse {
 
     pluralQuantityLabel: string | null;
 
-    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
+    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice>;
 
     singularQuantityLabel: string | null;
 
@@ -515,19 +515,10 @@ export namespace CatalogRetrieveResponse {
       trialPeriodDays?: 'null' | null | unknown;
     }
 
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-
     /**
-     * A subscription price, which will have details on the interval, default trial
-     * period, and setup fee (if any).
+     * A usage price, which describes the price per unit of usage of a product.
      */
-    export interface SubscriptionPrice {
+    export interface UsagePrice {
       id: string;
 
       active: boolean;
@@ -690,12 +681,7 @@ export namespace CatalogRetrieveResponse {
        */
       setupFeeAmount: number | 0 | null;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      trialPeriodDays: number | 0 | null;
-
-      type: 'subscription';
+      type: 'usage';
 
       /**
        * safeZodPositiveInteger
@@ -703,191 +689,19 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
-    }
-
-    /**
-     * A single payment price, which only gets paid once. Subscriptions cannot be made
-     * from single payment prices. Purchases, though, can.
-     */
-    export interface SinglePaymentPrice {
-      id: string;
-
-      active: boolean;
-
-      createdAt: string;
-
-      currency:
-        | 'USD'
-        | 'AED'
-        | 'AFN'
-        | 'ALL'
-        | 'AMD'
-        | 'ANG'
-        | 'AOA'
-        | 'ARS'
-        | 'AUD'
-        | 'AWG'
-        | 'AZN'
-        | 'BAM'
-        | 'BBD'
-        | 'BDT'
-        | 'BGN'
-        | 'BIF'
-        | 'BMD'
-        | 'BND'
-        | 'BOB'
-        | 'BRL'
-        | 'BSD'
-        | 'BWP'
-        | 'BYN'
-        | 'BZD'
-        | 'CAD'
-        | 'CDF'
-        | 'CHF'
-        | 'CLP'
-        | 'CNY'
-        | 'COP'
-        | 'CRC'
-        | 'CVE'
-        | 'CZK'
-        | 'DJF'
-        | 'DKK'
-        | 'DOP'
-        | 'DZD'
-        | 'EGP'
-        | 'ETB'
-        | 'EUR'
-        | 'FJD'
-        | 'FKP'
-        | 'GBP'
-        | 'GEL'
-        | 'GIP'
-        | 'GMD'
-        | 'GNF'
-        | 'GTQ'
-        | 'GYD'
-        | 'HKD'
-        | 'HNL'
-        | 'HTG'
-        | 'HUF'
-        | 'IDR'
-        | 'ILS'
-        | 'INR'
-        | 'ISK'
-        | 'JMD'
-        | 'JPY'
-        | 'KES'
-        | 'KGS'
-        | 'KHR'
-        | 'KMF'
-        | 'KRW'
-        | 'KYD'
-        | 'KZT'
-        | 'LAK'
-        | 'LBP'
-        | 'LKR'
-        | 'LRD'
-        | 'LSL'
-        | 'MAD'
-        | 'MDL'
-        | 'MGA'
-        | 'MKD'
-        | 'MMK'
-        | 'MNT'
-        | 'MOP'
-        | 'MUR'
-        | 'MVR'
-        | 'MWK'
-        | 'MXN'
-        | 'MYR'
-        | 'MZN'
-        | 'NAD'
-        | 'NGN'
-        | 'NIO'
-        | 'NOK'
-        | 'NPR'
-        | 'NZD'
-        | 'PAB'
-        | 'PEN'
-        | 'PGK'
-        | 'PHP'
-        | 'PKR'
-        | 'PLN'
-        | 'PYG'
-        | 'QAR'
-        | 'RON'
-        | 'RSD'
-        | 'RUB'
-        | 'RWF'
-        | 'SAR'
-        | 'SBD'
-        | 'SCR'
-        | 'SEK'
-        | 'SGD'
-        | 'SHP'
-        | 'SLE'
-        | 'SOS'
-        | 'SRD'
-        | 'STD'
-        | 'SZL'
-        | 'THB'
-        | 'TJS'
-        | 'TOP'
-        | 'TRY'
-        | 'TTD'
-        | 'TWD'
-        | 'TZS'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'UZS'
-        | 'VND'
-        | 'VUV'
-        | 'WST'
-        | 'XAF'
-        | 'XCD'
-        | 'XOF'
-        | 'XPF'
-        | 'YER'
-        | 'ZAR'
-        | 'ZMW';
-
-      isDefault: boolean;
-
-      livemode: boolean;
-
-      name: string | null;
-
-      productId: string;
-
-      type: 'single_payment';
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number;
-
-      updatedAt: string | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalCount?: 'null' | null | unknown;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalUnit?: 'null' | null | unknown;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      setupFeeAmount?: 'null' | null | unknown;
 
       /**
        * safeZodNullOrUndefined
        */
       trialPeriodDays?: 'null' | null | unknown;
+    }
+
+    export interface DisplayFeature {
+      enabled: boolean;
+
+      label: string;
+
+      details?: string | null;
     }
   }
 }
@@ -1002,7 +816,7 @@ export namespace CatalogCloneResponse {
        * The default price for the product. If no price is explicitly set as default,
        * will return the first price created for the product..
        */
-      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
+      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice;
 
       description: string | null;
 
@@ -1018,7 +832,7 @@ export namespace CatalogCloneResponse {
 
       pluralQuantityLabel: string | null;
 
-      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice>;
 
       singularQuantityLabel: string | null;
 
@@ -1396,19 +1210,10 @@ export namespace CatalogCloneResponse {
         trialPeriodDays?: 'null' | null | unknown;
       }
 
-      export interface DisplayFeature {
-        enabled: boolean;
-
-        label: string;
-
-        details?: string | null;
-      }
-
       /**
-       * A subscription price, which will have details on the interval, default trial
-       * period, and setup fee (if any).
+       * A usage price, which describes the price per unit of usage of a product.
        */
-      export interface SubscriptionPrice {
+      export interface UsagePrice {
         id: string;
 
         active: boolean;
@@ -1571,12 +1376,7 @@ export namespace CatalogCloneResponse {
          */
         setupFeeAmount: number | 0 | null;
 
-        /**
-         * safeZodPositiveInteger
-         */
-        trialPeriodDays: number | 0 | null;
-
-        type: 'subscription';
+        type: 'usage';
 
         /**
          * safeZodPositiveInteger
@@ -1584,191 +1384,19 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
-      }
-
-      /**
-       * A single payment price, which only gets paid once. Subscriptions cannot be made
-       * from single payment prices. Purchases, though, can.
-       */
-      export interface SinglePaymentPrice {
-        id: string;
-
-        active: boolean;
-
-        createdAt: string;
-
-        currency:
-          | 'USD'
-          | 'AED'
-          | 'AFN'
-          | 'ALL'
-          | 'AMD'
-          | 'ANG'
-          | 'AOA'
-          | 'ARS'
-          | 'AUD'
-          | 'AWG'
-          | 'AZN'
-          | 'BAM'
-          | 'BBD'
-          | 'BDT'
-          | 'BGN'
-          | 'BIF'
-          | 'BMD'
-          | 'BND'
-          | 'BOB'
-          | 'BRL'
-          | 'BSD'
-          | 'BWP'
-          | 'BYN'
-          | 'BZD'
-          | 'CAD'
-          | 'CDF'
-          | 'CHF'
-          | 'CLP'
-          | 'CNY'
-          | 'COP'
-          | 'CRC'
-          | 'CVE'
-          | 'CZK'
-          | 'DJF'
-          | 'DKK'
-          | 'DOP'
-          | 'DZD'
-          | 'EGP'
-          | 'ETB'
-          | 'EUR'
-          | 'FJD'
-          | 'FKP'
-          | 'GBP'
-          | 'GEL'
-          | 'GIP'
-          | 'GMD'
-          | 'GNF'
-          | 'GTQ'
-          | 'GYD'
-          | 'HKD'
-          | 'HNL'
-          | 'HTG'
-          | 'HUF'
-          | 'IDR'
-          | 'ILS'
-          | 'INR'
-          | 'ISK'
-          | 'JMD'
-          | 'JPY'
-          | 'KES'
-          | 'KGS'
-          | 'KHR'
-          | 'KMF'
-          | 'KRW'
-          | 'KYD'
-          | 'KZT'
-          | 'LAK'
-          | 'LBP'
-          | 'LKR'
-          | 'LRD'
-          | 'LSL'
-          | 'MAD'
-          | 'MDL'
-          | 'MGA'
-          | 'MKD'
-          | 'MMK'
-          | 'MNT'
-          | 'MOP'
-          | 'MUR'
-          | 'MVR'
-          | 'MWK'
-          | 'MXN'
-          | 'MYR'
-          | 'MZN'
-          | 'NAD'
-          | 'NGN'
-          | 'NIO'
-          | 'NOK'
-          | 'NPR'
-          | 'NZD'
-          | 'PAB'
-          | 'PEN'
-          | 'PGK'
-          | 'PHP'
-          | 'PKR'
-          | 'PLN'
-          | 'PYG'
-          | 'QAR'
-          | 'RON'
-          | 'RSD'
-          | 'RUB'
-          | 'RWF'
-          | 'SAR'
-          | 'SBD'
-          | 'SCR'
-          | 'SEK'
-          | 'SGD'
-          | 'SHP'
-          | 'SLE'
-          | 'SOS'
-          | 'SRD'
-          | 'STD'
-          | 'SZL'
-          | 'THB'
-          | 'TJS'
-          | 'TOP'
-          | 'TRY'
-          | 'TTD'
-          | 'TWD'
-          | 'TZS'
-          | 'UAH'
-          | 'UGX'
-          | 'UYU'
-          | 'UZS'
-          | 'VND'
-          | 'VUV'
-          | 'WST'
-          | 'XAF'
-          | 'XCD'
-          | 'XOF'
-          | 'XPF'
-          | 'YER'
-          | 'ZAR'
-          | 'ZMW';
-
-        isDefault: boolean;
-
-        livemode: boolean;
-
-        name: string | null;
-
-        productId: string;
-
-        type: 'single_payment';
-
-        /**
-         * safeZodPositiveInteger
-         */
-        unitPrice: number;
-
-        updatedAt: string | null;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        intervalCount?: 'null' | null | unknown;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        intervalUnit?: 'null' | null | unknown;
-
-        /**
-         * safeZodNullOrUndefined
-         */
-        setupFeeAmount?: 'null' | null | unknown;
 
         /**
          * safeZodNullOrUndefined
          */
         trialPeriodDays?: 'null' | null | unknown;
+      }
+
+      export interface DisplayFeature {
+        enabled: boolean;
+
+        label: string;
+
+        details?: string | null;
       }
     }
   }
@@ -1815,7 +1443,7 @@ export namespace CatalogRetrieveDefaultResponse {
      * The default price for the product. If no price is explicitly set as default,
      * will return the first price created for the product..
      */
-    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
+    defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice;
 
     description: string | null;
 
@@ -1831,7 +1459,7 @@ export namespace CatalogRetrieveDefaultResponse {
 
     pluralQuantityLabel: string | null;
 
-    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
+    prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice>;
 
     singularQuantityLabel: string | null;
 
@@ -2209,19 +1837,10 @@ export namespace CatalogRetrieveDefaultResponse {
       trialPeriodDays?: 'null' | null | unknown;
     }
 
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-
     /**
-     * A subscription price, which will have details on the interval, default trial
-     * period, and setup fee (if any).
+     * A usage price, which describes the price per unit of usage of a product.
      */
-    export interface SubscriptionPrice {
+    export interface UsagePrice {
       id: string;
 
       active: boolean;
@@ -2384,12 +2003,7 @@ export namespace CatalogRetrieveDefaultResponse {
        */
       setupFeeAmount: number | 0 | null;
 
-      /**
-       * safeZodPositiveInteger
-       */
-      trialPeriodDays: number | 0 | null;
-
-      type: 'subscription';
+      type: 'usage';
 
       /**
        * safeZodPositiveInteger
@@ -2397,191 +2011,19 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
-    }
-
-    /**
-     * A single payment price, which only gets paid once. Subscriptions cannot be made
-     * from single payment prices. Purchases, though, can.
-     */
-    export interface SinglePaymentPrice {
-      id: string;
-
-      active: boolean;
-
-      createdAt: string;
-
-      currency:
-        | 'USD'
-        | 'AED'
-        | 'AFN'
-        | 'ALL'
-        | 'AMD'
-        | 'ANG'
-        | 'AOA'
-        | 'ARS'
-        | 'AUD'
-        | 'AWG'
-        | 'AZN'
-        | 'BAM'
-        | 'BBD'
-        | 'BDT'
-        | 'BGN'
-        | 'BIF'
-        | 'BMD'
-        | 'BND'
-        | 'BOB'
-        | 'BRL'
-        | 'BSD'
-        | 'BWP'
-        | 'BYN'
-        | 'BZD'
-        | 'CAD'
-        | 'CDF'
-        | 'CHF'
-        | 'CLP'
-        | 'CNY'
-        | 'COP'
-        | 'CRC'
-        | 'CVE'
-        | 'CZK'
-        | 'DJF'
-        | 'DKK'
-        | 'DOP'
-        | 'DZD'
-        | 'EGP'
-        | 'ETB'
-        | 'EUR'
-        | 'FJD'
-        | 'FKP'
-        | 'GBP'
-        | 'GEL'
-        | 'GIP'
-        | 'GMD'
-        | 'GNF'
-        | 'GTQ'
-        | 'GYD'
-        | 'HKD'
-        | 'HNL'
-        | 'HTG'
-        | 'HUF'
-        | 'IDR'
-        | 'ILS'
-        | 'INR'
-        | 'ISK'
-        | 'JMD'
-        | 'JPY'
-        | 'KES'
-        | 'KGS'
-        | 'KHR'
-        | 'KMF'
-        | 'KRW'
-        | 'KYD'
-        | 'KZT'
-        | 'LAK'
-        | 'LBP'
-        | 'LKR'
-        | 'LRD'
-        | 'LSL'
-        | 'MAD'
-        | 'MDL'
-        | 'MGA'
-        | 'MKD'
-        | 'MMK'
-        | 'MNT'
-        | 'MOP'
-        | 'MUR'
-        | 'MVR'
-        | 'MWK'
-        | 'MXN'
-        | 'MYR'
-        | 'MZN'
-        | 'NAD'
-        | 'NGN'
-        | 'NIO'
-        | 'NOK'
-        | 'NPR'
-        | 'NZD'
-        | 'PAB'
-        | 'PEN'
-        | 'PGK'
-        | 'PHP'
-        | 'PKR'
-        | 'PLN'
-        | 'PYG'
-        | 'QAR'
-        | 'RON'
-        | 'RSD'
-        | 'RUB'
-        | 'RWF'
-        | 'SAR'
-        | 'SBD'
-        | 'SCR'
-        | 'SEK'
-        | 'SGD'
-        | 'SHP'
-        | 'SLE'
-        | 'SOS'
-        | 'SRD'
-        | 'STD'
-        | 'SZL'
-        | 'THB'
-        | 'TJS'
-        | 'TOP'
-        | 'TRY'
-        | 'TTD'
-        | 'TWD'
-        | 'TZS'
-        | 'UAH'
-        | 'UGX'
-        | 'UYU'
-        | 'UZS'
-        | 'VND'
-        | 'VUV'
-        | 'WST'
-        | 'XAF'
-        | 'XCD'
-        | 'XOF'
-        | 'XPF'
-        | 'YER'
-        | 'ZAR'
-        | 'ZMW';
-
-      isDefault: boolean;
-
-      livemode: boolean;
-
-      name: string | null;
-
-      productId: string;
-
-      type: 'single_payment';
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number;
-
-      updatedAt: string | null;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalCount?: 'null' | null | unknown;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      intervalUnit?: 'null' | null | unknown;
-
-      /**
-       * safeZodNullOrUndefined
-       */
-      setupFeeAmount?: 'null' | null | unknown;
 
       /**
        * safeZodNullOrUndefined
        */
       trialPeriodDays?: 'null' | null | unknown;
+    }
+
+    export interface DisplayFeature {
+      enabled: boolean;
+
+      label: string;
+
+      details?: string | null;
     }
   }
 }
