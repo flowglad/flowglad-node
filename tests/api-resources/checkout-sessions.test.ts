@@ -34,6 +34,7 @@ describe('resource checkoutSessions', () => {
       successUrl: 'successUrl',
       outputMetadata: { foo: 'bar' },
       outputName: 'outputName',
+      quantity: 0,
     });
   });
 
