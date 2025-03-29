@@ -1,4 +1,12 @@
 # Changelog
+## 0.16.1 (2025-03-29)
+
+Full Changelog: [v0.16.0...v0.16.1](https://github.com/flowglad/flowglad-node/compare/v0.16.0...v0.16.1)
+
+### Bug Fixes
+
+* **api:** add checkout quantity, subscription.current ([#129](https://github.com/flowglad/flowglad-node/issues/129)) ([ba73464](https://github.com/flowglad/flowglad-node/commit/ba73464eb7bc72cdc87808c05256571a0392c235))
+
 ## 0.16.0 (2025-03-27)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/flowglad/flowglad-node/compare/v0.15.0...v0.16.0)
