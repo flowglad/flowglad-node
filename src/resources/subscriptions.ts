@@ -64,6 +64,12 @@ export namespace SubscriptionRetrieveResponse {
 
     createdAt: string;
 
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
+
     currentBillingPeriodEnd: string;
 
     currentBillingPeriodStart: string;
@@ -88,6 +94,8 @@ export namespace SubscriptionRetrieveResponse {
     organizationId: string;
 
     priceId: string;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'
@@ -132,6 +140,12 @@ export namespace SubscriptionListResponse {
 
     createdAt: string;
 
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
+
     currentBillingPeriodEnd: string;
 
     currentBillingPeriodStart: string;
@@ -156,6 +170,8 @@ export namespace SubscriptionListResponse {
     organizationId: string;
 
     priceId: string;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'
@@ -194,6 +210,12 @@ export namespace SubscriptionAdjustResponse {
 
     createdAt: string;
 
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
+
     currentBillingPeriodEnd: string;
 
     currentBillingPeriodStart: string;
@@ -218,6 +240,8 @@ export namespace SubscriptionAdjustResponse {
     organizationId: string;
 
     priceId: string;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'
@@ -284,6 +308,12 @@ export namespace SubscriptionCancelResponse {
 
     createdAt: string;
 
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
+
     currentBillingPeriodEnd: string;
 
     currentBillingPeriodStart: string;
@@ -308,6 +338,8 @@ export namespace SubscriptionCancelResponse {
     organizationId: string;
 
     priceId: string;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'

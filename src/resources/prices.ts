@@ -36,7 +36,10 @@ export interface PriceCreateResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  price: PriceCreateResponse.UnionMember0 | PriceCreateResponse.UnionMember1;
+  price:
+    | PriceCreateResponse.UnionMember0
+    | PriceCreateResponse.UnionMember1
+    | PriceCreateResponse.UnionMember2;
 }
 
 export namespace PriceCreateResponse {
@@ -406,6 +409,187 @@ export namespace PriceCreateResponse {
      */
     trialPeriodDays?: 'null' | null | unknown;
   }
+
+  /**
+   * A usage price, which describes the price per unit of usage of a product.
+   */
+  export interface UnionMember2 {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    currency:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    productId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: number | 0 | null;
+
+    type: 'usage';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: 'null' | null | unknown;
+  }
 }
 
 export interface PriceUpdateResponse {
@@ -413,7 +597,10 @@ export interface PriceUpdateResponse {
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
    */
-  price: PriceUpdateResponse.UnionMember0 | PriceUpdateResponse.UnionMember1;
+  price:
+    | PriceUpdateResponse.UnionMember0
+    | PriceUpdateResponse.UnionMember1
+    | PriceUpdateResponse.UnionMember2;
 }
 
 export namespace PriceUpdateResponse {
@@ -783,10 +970,193 @@ export namespace PriceUpdateResponse {
      */
     trialPeriodDays?: 'null' | null | unknown;
   }
+
+  /**
+   * A usage price, which describes the price per unit of usage of a product.
+   */
+  export interface UnionMember2 {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    currency:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    productId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: number | 0 | null;
+
+    type: 'usage';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: 'null' | null | unknown;
+  }
 }
 
 export interface PriceListResponse {
-  data: Array<PriceListResponse.UnionMember0 | PriceListResponse.UnionMember1>;
+  data: Array<
+    PriceListResponse.UnionMember0 | PriceListResponse.UnionMember1 | PriceListResponse.UnionMember2
+  >;
 
   hasMore: boolean;
 
@@ -1164,6 +1534,187 @@ export namespace PriceListResponse {
      */
     trialPeriodDays?: 'null' | null | unknown;
   }
+
+  /**
+   * A usage price, which describes the price per unit of usage of a product.
+   */
+  export interface UnionMember2 {
+    id: string;
+
+    active: boolean;
+
+    createdAt: string;
+
+    currency:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    productId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: number | 0 | null;
+
+    type: 'usage';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: number;
+
+    updatedAt: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: 'null' | null | unknown;
+  }
 }
 
 export interface PriceCreateParams {
@@ -1171,7 +1722,7 @@ export interface PriceCreateParams {
    * A price record, which describes a price for a product. Products can have
    * multiple prices.
    */
-  price: PriceCreateParams.UnionMember0 | PriceCreateParams.UnionMember1;
+  price: PriceCreateParams.UnionMember0 | PriceCreateParams.UnionMember1 | PriceCreateParams.UnionMember2;
 }
 
 export namespace PriceCreateParams {
@@ -1529,6 +2080,181 @@ export namespace PriceCreateParams {
      */
     trialPeriodDays?: 'null' | null | unknown;
   }
+
+  /**
+   * A usage price, which describes the price per unit of usage of a product.
+   */
+  export interface UnionMember2 {
+    active: boolean;
+
+    currency:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+    isDefault: boolean;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    productId: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount: number | 0 | null;
+
+    type: 'usage';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice: number;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: 'null' | null | unknown;
+  }
 }
 
 export interface PriceUpdateParams {
@@ -1536,7 +2262,7 @@ export interface PriceUpdateParams {
    * A price record, which describes a price for a product. Products can have
    * multiple prices.
    */
-  price: PriceUpdateParams.UnionMember0 | PriceUpdateParams.UnionMember1;
+  price: PriceUpdateParams.UnionMember0 | PriceUpdateParams.UnionMember1 | PriceUpdateParams.UnionMember2;
 }
 
 export namespace PriceUpdateParams {
@@ -1887,6 +2613,183 @@ export namespace PriceUpdateParams {
      * safeZodNullOrUndefined
      */
     setupFeeAmount?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    unitPrice?: number;
+  }
+
+  /**
+   * A usage price, which describes the price per unit of usage of a product.
+   */
+  export interface UnionMember2 {
+    id: string;
+
+    type: 'usage';
+
+    active?: boolean;
+
+    currency?:
+      | 'USD'
+      | 'AED'
+      | 'AFN'
+      | 'ALL'
+      | 'AMD'
+      | 'ANG'
+      | 'AOA'
+      | 'ARS'
+      | 'AUD'
+      | 'AWG'
+      | 'AZN'
+      | 'BAM'
+      | 'BBD'
+      | 'BDT'
+      | 'BGN'
+      | 'BIF'
+      | 'BMD'
+      | 'BND'
+      | 'BOB'
+      | 'BRL'
+      | 'BSD'
+      | 'BWP'
+      | 'BYN'
+      | 'BZD'
+      | 'CAD'
+      | 'CDF'
+      | 'CHF'
+      | 'CLP'
+      | 'CNY'
+      | 'COP'
+      | 'CRC'
+      | 'CVE'
+      | 'CZK'
+      | 'DJF'
+      | 'DKK'
+      | 'DOP'
+      | 'DZD'
+      | 'EGP'
+      | 'ETB'
+      | 'EUR'
+      | 'FJD'
+      | 'FKP'
+      | 'GBP'
+      | 'GEL'
+      | 'GIP'
+      | 'GMD'
+      | 'GNF'
+      | 'GTQ'
+      | 'GYD'
+      | 'HKD'
+      | 'HNL'
+      | 'HTG'
+      | 'HUF'
+      | 'IDR'
+      | 'ILS'
+      | 'INR'
+      | 'ISK'
+      | 'JMD'
+      | 'JPY'
+      | 'KES'
+      | 'KGS'
+      | 'KHR'
+      | 'KMF'
+      | 'KRW'
+      | 'KYD'
+      | 'KZT'
+      | 'LAK'
+      | 'LBP'
+      | 'LKR'
+      | 'LRD'
+      | 'LSL'
+      | 'MAD'
+      | 'MDL'
+      | 'MGA'
+      | 'MKD'
+      | 'MMK'
+      | 'MNT'
+      | 'MOP'
+      | 'MUR'
+      | 'MVR'
+      | 'MWK'
+      | 'MXN'
+      | 'MYR'
+      | 'MZN'
+      | 'NAD'
+      | 'NGN'
+      | 'NIO'
+      | 'NOK'
+      | 'NPR'
+      | 'NZD'
+      | 'PAB'
+      | 'PEN'
+      | 'PGK'
+      | 'PHP'
+      | 'PKR'
+      | 'PLN'
+      | 'PYG'
+      | 'QAR'
+      | 'RON'
+      | 'RSD'
+      | 'RUB'
+      | 'RWF'
+      | 'SAR'
+      | 'SBD'
+      | 'SCR'
+      | 'SEK'
+      | 'SGD'
+      | 'SHP'
+      | 'SLE'
+      | 'SOS'
+      | 'SRD'
+      | 'STD'
+      | 'SZL'
+      | 'THB'
+      | 'TJS'
+      | 'TOP'
+      | 'TRY'
+      | 'TTD'
+      | 'TWD'
+      | 'TZS'
+      | 'UAH'
+      | 'UGX'
+      | 'UYU'
+      | 'UZS'
+      | 'VND'
+      | 'VUV'
+      | 'WST'
+      | 'XAF'
+      | 'XCD'
+      | 'XOF'
+      | 'XPF'
+      | 'YER'
+      | 'ZAR'
+      | 'ZMW';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount?: number;
+
+    intervalUnit?: 'day' | 'week' | 'month' | 'year';
+
+    isDefault?: boolean;
+
+    livemode?: boolean;
+
+    name?: string | null;
+
+    productId?: string;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    setupFeeAmount?: number | 0 | null;
 
     /**
      * safeZodNullOrUndefined
