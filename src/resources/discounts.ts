@@ -43,6 +43,11 @@ export class Discounts extends APIResource {
 }
 
 export interface DiscountCreateResponse {
+  /**
+   * A discount record, which describes a discount that can be applied to purchases
+   * or subscriptions. Discounts can be one-time, have a fixed number of payments, or
+   * be applied indefinitely.
+   */
   discount:
     | DiscountCreateResponse.OnceDiscount
     | DiscountCreateResponse.NumberOfPaymentsDiscount
@@ -142,6 +147,11 @@ export namespace DiscountCreateResponse {
 }
 
 export interface DiscountRetrieveResponse {
+  /**
+   * A discount record, which describes a discount that can be applied to purchases
+   * or subscriptions. Discounts can be one-time, have a fixed number of payments, or
+   * be applied indefinitely.
+   */
   discount:
     | DiscountRetrieveResponse.OnceDiscount
     | DiscountRetrieveResponse.NumberOfPaymentsDiscount
@@ -241,6 +251,11 @@ export namespace DiscountRetrieveResponse {
 }
 
 export interface DiscountUpdateResponse {
+  /**
+   * A discount record, which describes a discount that can be applied to purchases
+   * or subscriptions. Discounts can be one-time, have a fixed number of payments, or
+   * be applied indefinitely.
+   */
   discount:
     | DiscountUpdateResponse.OnceDiscount
     | DiscountUpdateResponse.NumberOfPaymentsDiscount
@@ -448,6 +463,11 @@ export namespace DiscountListResponse {
 }
 
 export interface DiscountCreateParams {
+  /**
+   * A discount record, which describes a discount that can be applied to purchases
+   * or subscriptions. Discounts can be one-time, have a fixed number of payments, or
+   * be applied indefinitely.
+   */
   discount:
     | DiscountCreateParams.OnceDiscount
     | DiscountCreateParams.NumberOfPaymentsDiscount
@@ -467,9 +487,13 @@ export namespace DiscountCreateParams {
 
     duration: 'once';
 
+    livemode: boolean;
+
     name: string;
 
     numberOfPayments: 'null' | null;
+
+    organizationId: string;
 
     active?: boolean;
   }
@@ -486,12 +510,16 @@ export namespace DiscountCreateParams {
 
     duration: 'number_of_payments';
 
+    livemode: boolean;
+
     name: string;
 
     /**
      * safeZodPositiveInteger
      */
     numberOfPayments: number;
+
+    organizationId: string;
 
     active?: boolean;
   }
@@ -508,15 +536,24 @@ export namespace DiscountCreateParams {
 
     duration: 'forever';
 
+    livemode: boolean;
+
     name: string;
 
     numberOfPayments: 'null' | null;
+
+    organizationId: string;
 
     active?: boolean;
   }
 }
 
 export interface DiscountUpdateParams {
+  /**
+   * A discount record, which describes a discount that can be applied to purchases
+   * or subscriptions. Discounts can be one-time, have a fixed number of payments, or
+   * be applied indefinitely.
+   */
   discount:
     | DiscountUpdateParams.OnceDiscount
     | DiscountUpdateParams.NumberOfPaymentsDiscount
@@ -544,7 +581,11 @@ export namespace DiscountUpdateParams {
 
     createdAt?: string;
 
+    livemode?: boolean;
+
     name?: string;
+
+    organizationId?: string;
 
     updatedAt?: string | null;
   }
@@ -572,7 +613,11 @@ export namespace DiscountUpdateParams {
 
     createdAt?: string;
 
+    livemode?: boolean;
+
     name?: string;
+
+    organizationId?: string;
 
     updatedAt?: string | null;
   }
@@ -597,7 +642,11 @@ export namespace DiscountUpdateParams {
 
     createdAt?: string;
 
+    livemode?: boolean;
+
     name?: string;
+
+    organizationId?: string;
 
     updatedAt?: string | null;
   }

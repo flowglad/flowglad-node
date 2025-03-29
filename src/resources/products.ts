@@ -1190,8 +1190,8 @@ export namespace ProductCreateParams {
 
 export interface ProductUpdateParams {
   /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
+   * A price record, which describes a price for a product. Products can have
+   * multiple prices.
    */
   price: ProductUpdateParams.SubscriptionPrice | ProductUpdateParams.SinglePaymentPrice;
 

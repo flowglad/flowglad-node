@@ -1168,8 +1168,8 @@ export namespace PriceListResponse {
 
 export interface PriceCreateParams {
   /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
+   * A price record, which describes a price for a product. Products can have
+   * multiple prices.
    */
   price: PriceCreateParams.SubscriptionPrice | PriceCreateParams.SinglePaymentPrice;
 }
@@ -1533,8 +1533,8 @@ export namespace PriceCreateParams {
 
 export interface PriceUpdateParams {
   /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
+   * A price record, which describes a price for a product. Products can have
+   * multiple prices.
    */
   price: PriceUpdateParams.SubscriptionPrice | PriceUpdateParams.SinglePaymentPrice;
 }
