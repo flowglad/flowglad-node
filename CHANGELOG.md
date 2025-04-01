@@ -1,4 +1,12 @@
 # Changelog
+## 0.17.0 (2025-04-01)
+
+Full Changelog: [v0.16.1...v0.17.0](https://github.com/flowglad/flowglad-node/compare/v0.16.1...v0.17.0)
+
+### Features
+
+* **api:** add usage meter aggregation types and price + usage meter associations ([#133](https://github.com/flowglad/flowglad-node/issues/133)) ([780dd04](https://github.com/flowglad/flowglad-node/commit/780dd04f61a3d5c2a2cb0cc96e75b9af46d1d08e))
+
 ## 0.16.1 (2025-03-29)
 
 Full Changelog: [v0.16.0...v0.16.1](https://github.com/flowglad/flowglad-node/compare/v0.16.0...v0.16.1)
