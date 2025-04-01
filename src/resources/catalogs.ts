@@ -328,6 +328,8 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
     }
 
     /**
@@ -493,6 +495,8 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
 
       /**
        * safeZodNullOrUndefined
@@ -689,6 +693,12 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      /**
+       * The usage meter that uses this price. All usage events on that meter must be
+       * associated with a price that is also associated with that usage meter.
+       */
+      usageMeterId: string;
 
       /**
        * safeZodNullOrUndefined
@@ -884,6 +894,8 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
     }
 
     /**
@@ -1049,6 +1061,8 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
 
       /**
        * safeZodNullOrUndefined
@@ -1245,6 +1259,12 @@ export namespace CatalogRetrieveResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      /**
+       * The usage meter that uses this price. All usage events on that meter must be
+       * associated with a price that is also associated with that usage meter.
+       */
+      usageMeterId: string;
 
       /**
        * safeZodNullOrUndefined
@@ -1571,6 +1591,8 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
 
       /**
@@ -1736,6 +1758,8 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -1932,6 +1956,12 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
 
         /**
          * safeZodNullOrUndefined
@@ -2127,6 +2157,8 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
 
       /**
@@ -2292,6 +2324,8 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -2488,6 +2522,12 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
 
         /**
          * safeZodNullOrUndefined
@@ -2746,6 +2786,8 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
     }
 
     /**
@@ -2911,6 +2953,8 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
 
       /**
        * safeZodNullOrUndefined
@@ -3107,6 +3151,12 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      /**
+       * The usage meter that uses this price. All usage events on that meter must be
+       * associated with a price that is also associated with that usage meter.
+       */
+      usageMeterId: string;
 
       /**
        * safeZodNullOrUndefined
@@ -3302,6 +3352,8 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
     }
 
     /**
@@ -3467,6 +3519,8 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      usageMeterId: string | null;
 
       /**
        * safeZodNullOrUndefined
@@ -3663,6 +3717,12 @@ export namespace CatalogRetrieveDefaultResponse {
       unitPrice: number;
 
       updatedAt: string | null;
+
+      /**
+       * The usage meter that uses this price. All usage events on that meter must be
+       * associated with a price that is also associated with that usage meter.
+       */
+      usageMeterId: string;
 
       /**
        * safeZodNullOrUndefined
