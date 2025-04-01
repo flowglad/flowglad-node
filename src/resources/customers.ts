@@ -7,7 +7,7 @@ import { path } from '../internal/utils/path';
 
 export class Customers extends APIResource {
   /**
-   * Create customer
+   * Create Customer
    */
   create(body: CustomerCreateParams, options?: RequestOptions): APIPromise<CustomerCreateResponse> {
     return this._client.post('/api/v1/customers', { body, ...options });
@@ -400,6 +400,8 @@ export namespace CustomerRetrieveBillingResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    usageMeters: Array<Catalog.UsageMeter>;
   }
 
   export namespace Catalog {
@@ -1569,6 +1571,28 @@ export namespace CustomerRetrieveBillingResponse {
          */
         trialPeriodDays?: 'null' | null | unknown;
       }
+    }
+
+    export interface UsageMeter {
+      id: string;
+
+      /**
+       * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+       * aggregates all the usage event amounts for the billing period.
+       * "count_distinct_properties" counts the number of distinct properties in the
+       * billing period for a given meter.
+       */
+      aggregationType: 'sum' | 'count_distinct_properties';
+
+      catalogId: string;
+
+      createdAt: string;
+
+      name: string;
+
+      productId: string;
+
+      updatedAt: string | null;
     }
   }
 
