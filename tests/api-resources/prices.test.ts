@@ -14,6 +14,7 @@ describe('resource prices', () => {
       price: {
         active: true,
         currency: 'USD',
+        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
@@ -24,6 +25,7 @@ describe('resource prices', () => {
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
+        usageMeterId: 'usageMeterId',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -41,6 +43,7 @@ describe('resource prices', () => {
       price: {
         active: true,
         currency: 'USD',
+        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
@@ -51,6 +54,7 @@ describe('resource prices', () => {
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
+        usageMeterId: 'usageMeterId',
       },
     });
   });
@@ -75,6 +79,7 @@ describe('resource prices', () => {
         type: 'subscription',
         active: true,
         currency: 'USD',
+        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
@@ -84,6 +89,7 @@ describe('resource prices', () => {
         setupFeeAmount: 0,
         trialPeriodDays: 0,
         unitPrice: 0,
+        usageMeterId: 'usageMeterId',
       },
     });
   });

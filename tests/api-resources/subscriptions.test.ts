@@ -47,6 +47,7 @@ describe('resource subscriptions', () => {
         newSubscriptionItems: [
           {
             addedDate: '2019-12-27T18:11:19.117Z',
+            externalId: 'externalId',
             livemode: true,
             metadata: { foo: 'bar' },
             name: 'name',
@@ -76,6 +77,7 @@ describe('resource subscriptions', () => {
         newSubscriptionItems: [
           {
             addedDate: '2019-12-27T18:11:19.117Z',
+            externalId: 'externalId',
             livemode: true,
             metadata: { foo: 'bar' },
             name: 'name',
