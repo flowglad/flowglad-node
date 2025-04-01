@@ -1,4 +1,12 @@
 # Changelog
+## 0.18.0 (2025-04-01)
+
+Full Changelog: [v0.17.0...v0.18.0](https://github.com/flowglad/flowglad-node/compare/v0.17.0...v0.18.0)
+
+### Features
+
+* **api:** add usage meters to catalog type, add cru operations for usage events and usage meters ([#137](https://github.com/flowglad/flowglad-node/issues/137)) ([e72e0f2](https://github.com/flowglad/flowglad-node/commit/e72e0f2595979b17c211a38c8d8a0c94a5033ee2))
+
 ## 0.17.0 (2025-04-01)
 
 Full Changelog: [v0.16.1...v0.17.0](https://github.com/flowglad/flowglad-node/compare/v0.16.1...v0.17.0)

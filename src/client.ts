@@ -117,6 +117,24 @@ import {
   SubscriptionRetrieveResponse,
   Subscriptions,
 } from './resources/subscriptions';
+import {
+  UsageEventCreateParams,
+  UsageEventCreateResponse,
+  UsageEventRetrieveResponse,
+  UsageEventUpdateParams,
+  UsageEventUpdateResponse,
+  UsageEvents,
+} from './resources/usage-events';
+import {
+  UsageMeterCreateParams,
+  UsageMeterCreateResponse,
+  UsageMeterListParams,
+  UsageMeterListResponse,
+  UsageMeterRetrieveResponse,
+  UsageMeterUpdateParams,
+  UsageMeterUpdateResponse,
+  UsageMeters,
+} from './resources/usage-meters';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
@@ -781,6 +799,8 @@ export class Flowglad {
   payments: API.Payments = new API.Payments(this);
   paymentMethods: API.PaymentMethods = new API.PaymentMethods(this);
   subscriptions: API.Subscriptions = new API.Subscriptions(this);
+  usageEvents: API.UsageEvents = new API.UsageEvents(this);
+  usageMeters: API.UsageMeters = new API.UsageMeters(this);
 }
 Flowglad.Invoices = Invoices;
 Flowglad.InvoiceLineItems = InvoiceLineItems;
@@ -793,6 +813,8 @@ Flowglad.Customers = Customers;
 Flowglad.Payments = Payments;
 Flowglad.PaymentMethods = PaymentMethods;
 Flowglad.Subscriptions = Subscriptions;
+Flowglad.UsageEvents = UsageEvents;
+Flowglad.UsageMeters = UsageMeters;
 export declare namespace Flowglad {
   export type RequestOptions = Opts.RequestOptions;
 
@@ -902,5 +924,25 @@ export declare namespace Flowglad {
     type SubscriptionListParams as SubscriptionListParams,
     type SubscriptionAdjustParams as SubscriptionAdjustParams,
     type SubscriptionCancelParams as SubscriptionCancelParams,
+  };
+
+  export {
+    UsageEvents as UsageEvents,
+    type UsageEventCreateResponse as UsageEventCreateResponse,
+    type UsageEventRetrieveResponse as UsageEventRetrieveResponse,
+    type UsageEventUpdateResponse as UsageEventUpdateResponse,
+    type UsageEventCreateParams as UsageEventCreateParams,
+    type UsageEventUpdateParams as UsageEventUpdateParams,
+  };
+
+  export {
+    UsageMeters as UsageMeters,
+    type UsageMeterCreateResponse as UsageMeterCreateResponse,
+    type UsageMeterRetrieveResponse as UsageMeterRetrieveResponse,
+    type UsageMeterUpdateResponse as UsageMeterUpdateResponse,
+    type UsageMeterListResponse as UsageMeterListResponse,
+    type UsageMeterCreateParams as UsageMeterCreateParams,
+    type UsageMeterUpdateParams as UsageMeterUpdateParams,
+    type UsageMeterListParams as UsageMeterListParams,
   };
 }
