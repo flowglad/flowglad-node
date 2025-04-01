@@ -626,6 +626,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
 
       /**
@@ -791,6 +793,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -987,6 +991,12 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
 
         /**
          * safeZodNullOrUndefined
@@ -1182,6 +1192,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
 
       /**
@@ -1347,6 +1359,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -1543,6 +1557,12 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
 
         /**
          * safeZodNullOrUndefined
@@ -3373,7 +3393,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
 
@@ -3402,6 +3422,8 @@ export namespace CustomerRetrieveBillingResponse {
       addedDate: string;
 
       createdAt: string;
+
+      externalId: string | null;
 
       livemode: boolean;
 
@@ -3613,6 +3635,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
     }
   }
@@ -3659,7 +3683,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
 
@@ -3688,6 +3712,8 @@ export namespace CustomerRetrieveBillingResponse {
       addedDate: string;
 
       createdAt: string;
+
+      externalId: string | null;
 
       livemode: boolean;
 
@@ -3899,6 +3925,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
     }
   }

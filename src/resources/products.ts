@@ -318,6 +318,8 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    usageMeterId: string | null;
   }
 
   /**
@@ -483,6 +485,8 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -679,6 +683,12 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    /**
+     * The usage meter that uses this price. All usage events on that meter must be
+     * associated with a price that is also associated with that usage meter.
+     */
+    usageMeterId: string;
 
     /**
      * safeZodNullOrUndefined
@@ -874,6 +884,8 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    usageMeterId: string | null;
   }
 
   /**
@@ -1039,6 +1051,8 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1235,6 +1249,12 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    /**
+     * The usage meter that uses this price. All usage events on that meter must be
+     * associated with a price that is also associated with that usage meter.
+     */
+    usageMeterId: string;
 
     /**
      * safeZodNullOrUndefined
@@ -1401,6 +1421,8 @@ export namespace ProductCreateParams {
      * safeZodPositiveInteger
      */
     unitPrice: number;
+
+    usageMeterId: string | null;
   }
 
   /**
@@ -1422,6 +1444,8 @@ export namespace ProductCreateParams {
      * safeZodPositiveInteger
      */
     unitPrice: number;
+
+    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1474,6 +1498,12 @@ export namespace ProductCreateParams {
      * safeZodPositiveInteger
      */
     unitPrice: number;
+
+    /**
+     * The usage meter that uses this price. All usage events on that meter must be
+     * associated with a price that is also associated with that usage meter.
+     */
+    usageMeterId: string;
 
     /**
      * safeZodNullOrUndefined
@@ -1671,6 +1701,8 @@ export namespace ProductUpdateParams {
       | 'ZAR'
       | 'ZMW';
 
+    externalId?: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -1700,6 +1732,8 @@ export namespace ProductUpdateParams {
      * safeZodPositiveInteger
      */
     unitPrice?: number;
+
+    usageMeterId?: string | null;
   }
 
   /**
@@ -1849,6 +1883,8 @@ export namespace ProductUpdateParams {
       | 'ZAR'
       | 'ZMW';
 
+    externalId?: string | null;
+
     /**
      * safeZodNullOrUndefined
      */
@@ -1881,6 +1917,8 @@ export namespace ProductUpdateParams {
      * safeZodPositiveInteger
      */
     unitPrice?: number;
+
+    usageMeterId?: string | null;
   }
 
   /**
@@ -2029,6 +2067,8 @@ export namespace ProductUpdateParams {
       | 'ZAR'
       | 'ZMW';
 
+    externalId?: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -2058,6 +2098,12 @@ export namespace ProductUpdateParams {
      * safeZodPositiveInteger
      */
     unitPrice?: number;
+
+    /**
+     * The usage meter that uses this price. All usage events on that meter must be
+     * associated with a price that is also associated with that usage meter.
+     */
+    usageMeterId?: string;
   }
 
   export interface Product {
@@ -2070,6 +2116,8 @@ export namespace ProductUpdateParams {
     description?: string | null;
 
     displayFeatures?: Array<Product.DisplayFeature> | null;
+
+    externalId?: string | null;
 
     imageURL?: string | null;
 
