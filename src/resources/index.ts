@@ -97,3 +97,21 @@ export {
   type SubscriptionAdjustParams,
   type SubscriptionCancelParams,
 } from './subscriptions';
+export {
+  UsageEvents,
+  type UsageEventCreateResponse,
+  type UsageEventRetrieveResponse,
+  type UsageEventUpdateResponse,
+  type UsageEventCreateParams,
+  type UsageEventUpdateParams,
+} from './usage-events';
+export {
+  UsageMeters,
+  type UsageMeterCreateResponse,
+  type UsageMeterRetrieveResponse,
+  type UsageMeterUpdateResponse,
+  type UsageMeterListResponse,
+  type UsageMeterCreateParams,
+  type UsageMeterUpdateParams,
+  type UsageMeterListParams,
+} from './usage-meters';

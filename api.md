@@ -161,3 +161,33 @@ Methods:
 - <code title="get /api/v1/subscriptions">client.subscriptions.<a href="./src/resources/subscriptions.ts">list</a>({ ...params }) -> SubscriptionListResponse</code>
 - <code title="post /api/v1/subscriptions/{id}/adjust">client.subscriptions.<a href="./src/resources/subscriptions.ts">adjust</a>(id, { ...params }) -> SubscriptionAdjustResponse</code>
 - <code title="post /api/v1/subscriptions/{id}/cancel">client.subscriptions.<a href="./src/resources/subscriptions.ts">cancel</a>(id, { ...params }) -> SubscriptionCancelResponse</code>
+
+# UsageEvents
+
+Types:
+
+- <code><a href="./src/resources/usage-events.ts">UsageEventCreateResponse</a></code>
+- <code><a href="./src/resources/usage-events.ts">UsageEventRetrieveResponse</a></code>
+- <code><a href="./src/resources/usage-events.ts">UsageEventUpdateResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/usage-events">client.usageEvents.<a href="./src/resources/usage-events.ts">create</a>({ ...params }) -> UsageEventCreateResponse</code>
+- <code title="get /api/v1/usage-events/{id}">client.usageEvents.<a href="./src/resources/usage-events.ts">retrieve</a>(id) -> UsageEventRetrieveResponse</code>
+- <code title="put /api/v1/usage-events/{id}">client.usageEvents.<a href="./src/resources/usage-events.ts">update</a>(id, { ...params }) -> UsageEventUpdateResponse</code>
+
+# UsageMeters
+
+Types:
+
+- <code><a href="./src/resources/usage-meters.ts">UsageMeterCreateResponse</a></code>
+- <code><a href="./src/resources/usage-meters.ts">UsageMeterRetrieveResponse</a></code>
+- <code><a href="./src/resources/usage-meters.ts">UsageMeterUpdateResponse</a></code>
+- <code><a href="./src/resources/usage-meters.ts">UsageMeterListResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/usage-meters">client.usageMeters.<a href="./src/resources/usage-meters.ts">create</a>({ ...params }) -> UsageMeterCreateResponse</code>
+- <code title="get /api/v1/usage-meters/{id}">client.usageMeters.<a href="./src/resources/usage-meters.ts">retrieve</a>(id) -> UsageMeterRetrieveResponse</code>
+- <code title="put /api/v1/usage-meters/{id}">client.usageMeters.<a href="./src/resources/usage-meters.ts">update</a>(id, { ...params }) -> UsageMeterUpdateResponse</code>
+- <code title="get /api/v1/usage-meters">client.usageMeters.<a href="./src/resources/usage-meters.ts">list</a>({ ...params }) -> UsageMeterListResponse</code>
