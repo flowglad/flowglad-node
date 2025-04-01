@@ -93,7 +93,7 @@ export namespace SubscriptionRetrieveResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
 
@@ -169,7 +169,7 @@ export namespace SubscriptionListResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
 
@@ -239,7 +239,7 @@ export namespace SubscriptionAdjustResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
 
@@ -265,6 +265,8 @@ export namespace SubscriptionAdjustResponse {
     addedDate: string;
 
     createdAt: string;
+
+    externalId: string | null;
 
     livemode: boolean;
 
@@ -337,7 +339,7 @@ export namespace SubscriptionCancelResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
 
@@ -385,6 +387,8 @@ export namespace SubscriptionAdjustParams {
     export interface SubscriptionItemInsert {
       addedDate: string;
 
+      externalId: string | null;
+
       livemode: boolean;
 
       metadata: Record<string, unknown> | null;
@@ -412,6 +416,8 @@ export namespace SubscriptionAdjustParams {
       addedDate: string;
 
       createdAt: string;
+
+      externalId: string | null;
 
       livemode: boolean;
 
@@ -449,6 +455,8 @@ export namespace SubscriptionAdjustParams {
     export interface SubscriptionItemInsert {
       addedDate: string;
 
+      externalId: string | null;
+
       livemode: boolean;
 
       metadata: Record<string, unknown> | null;
@@ -476,6 +484,8 @@ export namespace SubscriptionAdjustParams {
       addedDate: string;
 
       createdAt: string;
+
+      externalId: string | null;
 
       livemode: boolean;
 

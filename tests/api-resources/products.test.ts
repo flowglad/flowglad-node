@@ -22,6 +22,7 @@ describe('resource products', () => {
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
+        usageMeterId: 'usageMeterId',
       },
       product: {
         active: true,
@@ -57,6 +58,7 @@ describe('resource products', () => {
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
+        usageMeterId: 'usageMeterId',
       },
       product: {
         active: true,
@@ -106,6 +108,7 @@ describe('resource products', () => {
         type: 'subscription',
         active: true,
         currency: 'USD',
+        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
@@ -115,6 +118,7 @@ describe('resource products', () => {
         setupFeeAmount: 0,
         trialPeriodDays: 0,
         unitPrice: 0,
+        usageMeterId: 'usageMeterId',
       },
       product: {
         id: 'id',
@@ -122,6 +126,7 @@ describe('resource products', () => {
         catalogId: 'catalogId',
         description: 'description',
         displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
+        externalId: 'externalId',
         imageURL: 'imageURL',
         livemode: true,
         name: 'name',
