@@ -25,9 +25,9 @@ import Flowglad from '@flowglad/node';
 const client = new Flowglad();
 
 async function main() {
-  const payment = await client.payments.list();
+  const payments = await client.payments.list();
 
-  console.log(payment.data);
+  console.log(payments.data);
 }
 
 main();
@@ -44,7 +44,7 @@ import Flowglad from '@flowglad/node';
 const client = new Flowglad();
 
 async function main() {
-  const payment: Flowglad.PaymentListResponse = await client.payments.list();
+  const payments: Flowglad.PaymentListResponse = await client.payments.list();
 }
 
 main();
@@ -61,7 +61,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const payment = await client.payments.list().catch(async (err) => {
+  const payments = await client.payments.list().catch(async (err) => {
     if (err instanceof Flowglad.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -148,9 +148,9 @@ const response = await client.payments.list().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: payment, response: raw } = await client.payments.list().withResponse();
+const { data: payments, response: raw } = await client.payments.list().withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(payment.data);
+console.log(payments.data);
 ```
 
 ### Logging
