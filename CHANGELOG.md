@@ -1,4 +1,19 @@
 # Changelog
+## 0.18.1 (2025-04-04)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/flowglad/flowglad-node/compare/v0.18.0...v0.18.1)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#145](https://github.com/flowglad/flowglad-node/issues/145)) ([cd14ac4](https://github.com/flowglad/flowglad-node/commit/cd14ac41c41249fd96d485764b5e233dd1424004))
+* **client:** send `X-Stainless-Timeout` in seconds ([#143](https://github.com/flowglad/flowglad-node/issues/143)) ([3b3077d](https://github.com/flowglad/flowglad-node/commit/3b3077ddf8e8a2c021aa4038ab07903bb180563b))
+* pluralize `list` response variables ([#141](https://github.com/flowglad/flowglad-node/issues/141)) ([99ed092](https://github.com/flowglad/flowglad-node/commit/99ed092ff9e59bb20c9bc2d92275486d48c95541))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#144](https://github.com/flowglad/flowglad-node/issues/144)) ([8f6f3c7](https://github.com/flowglad/flowglad-node/commit/8f6f3c7ad97e62b602c7ce93fb79f1b03ab16e93))
+
 ## 0.18.0 (2025-04-01)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/flowglad/flowglad-node/compare/v0.17.0...v0.18.0)
