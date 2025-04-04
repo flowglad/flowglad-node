@@ -867,6 +867,12 @@ export interface CheckoutSessionCreateParams {
      * succeeds. Ignored if the checkout session is of type `invoice`.
      */
     outputName?: string;
+
+    /**
+     * The quantity of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    quantity?: number;
   };
 }
 
