@@ -329,9 +329,6 @@ export namespace CatalogRetrieveResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -496,9 +493,6 @@ export namespace CatalogRetrieveResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -694,9 +688,6 @@ export namespace CatalogRetrieveResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -895,9 +886,6 @@ export namespace CatalogRetrieveResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1062,9 +1050,6 @@ export namespace CatalogRetrieveResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1260,9 +1245,6 @@ export namespace CatalogRetrieveResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1617,9 +1599,6 @@ export namespace CatalogCloneResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1784,9 +1763,6 @@ export namespace CatalogCloneResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1982,9 +1958,6 @@ export namespace CatalogCloneResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -2183,9 +2156,6 @@ export namespace CatalogCloneResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -2350,9 +2320,6 @@ export namespace CatalogCloneResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -2548,9 +2515,6 @@ export namespace CatalogCloneResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -2841,9 +2805,6 @@ export namespace CatalogRetrieveDefaultResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -3008,9 +2969,6 @@ export namespace CatalogRetrieveDefaultResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -3206,9 +3164,6 @@ export namespace CatalogRetrieveDefaultResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -3407,9 +3362,6 @@ export namespace CatalogRetrieveDefaultResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -3574,9 +3526,6 @@ export namespace CatalogRetrieveDefaultResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -3772,9 +3721,6 @@ export namespace CatalogRetrieveDefaultResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;

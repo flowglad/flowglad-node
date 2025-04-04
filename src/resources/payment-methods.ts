@@ -46,7 +46,7 @@ export namespace PaymentMethodRetrieveResponse {
 
     paymentMethodData: Record<string, unknown>;
 
-    type: 'card' | 'us_bank_account' | 'sepa_debit';
+    type: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
     updatedAt: string | null;
   }
@@ -62,9 +62,9 @@ export namespace PaymentMethodRetrieveResponse {
 
     export namespace BillingDetails {
       export interface Address {
-        address: Address.Address | null;
+        address?: Address.Address | null;
 
-        name: string | null;
+        name?: string | null;
       }
 
       export namespace Address {
@@ -116,7 +116,7 @@ export namespace PaymentMethodListResponse {
 
     paymentMethodData: Record<string, unknown>;
 
-    type: 'card' | 'us_bank_account' | 'sepa_debit';
+    type: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
     updatedAt: string | null;
   }
@@ -132,9 +132,9 @@ export namespace PaymentMethodListResponse {
 
     export namespace BillingDetails {
       export interface Address {
-        address: Address.Address | null;
+        address?: Address.Address | null;
 
-        name: string | null;
+        name?: string | null;
       }
 
       export namespace Address {

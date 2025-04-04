@@ -16,6 +16,7 @@ describe('resource usageEvents', () => {
         customerId: 'customerId',
         priceId: 'priceId',
         subscriptionId: 'subscriptionId',
+        transactionId: 'transactionId',
         usageMeterId: 'usageMeterId',
       },
     });
@@ -36,9 +37,9 @@ describe('resource usageEvents', () => {
         customerId: 'customerId',
         priceId: 'priceId',
         subscriptionId: 'subscriptionId',
+        transactionId: 'transactionId',
         usageMeterId: 'usageMeterId',
         properties: { foo: 'bar' },
-        transactionId: 'transactionId',
         usageDate: '2019-12-27T18:11:19.117Z',
       },
     });

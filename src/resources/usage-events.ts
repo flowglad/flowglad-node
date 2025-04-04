@@ -175,6 +175,12 @@ export namespace UsageEventCreateParams {
 
     subscriptionId: string;
 
+    /**
+     * A unique identifier for the transaction. This is used to prevent duplicate usage
+     * events from being created.
+     */
+    transactionId: string;
+
     usageMeterId: string;
 
     /**
@@ -182,12 +188,6 @@ export namespace UsageEventCreateParams {
      * "count_distinct_properties" aggregation type.
      */
     properties?: Record<string, unknown> | null;
-
-    /**
-     * A unique identifier for the transaction. This is used to prevent duplicate usage
-     * events from being created.
-     */
-    transactionId?: string | null;
 
     /**
      * The date the usage occurred. Currently should always the current date. If the
@@ -220,7 +220,7 @@ export namespace UsageEventUpdateParams {
      * A unique identifier for the transaction. This is used to prevent duplicate usage
      * events from being created.
      */
-    transactionId?: string | null;
+    transactionId?: string;
 
     /**
      * The date the usage occurred. Currently should always the current date. If the

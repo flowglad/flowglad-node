@@ -217,9 +217,6 @@ export namespace PriceCreateResponse {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -384,9 +381,6 @@ export namespace PriceCreateResponse {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -582,9 +576,6 @@ export namespace PriceCreateResponse {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -788,9 +779,6 @@ export namespace PriceUpdateResponse {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -955,9 +943,6 @@ export namespace PriceUpdateResponse {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1153,9 +1138,6 @@ export namespace PriceUpdateResponse {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1362,9 +1344,6 @@ export namespace PriceListResponse {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1529,9 +1508,6 @@ export namespace PriceListResponse {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1727,9 +1703,6 @@ export namespace PriceListResponse {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1928,9 +1901,6 @@ export namespace PriceCreateParams {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     usageMeterId: string | null;
@@ -2091,9 +2061,6 @@ export namespace PriceCreateParams {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     usageMeterId: string | null;
@@ -2285,9 +2252,6 @@ export namespace PriceCreateParams {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     /**
@@ -2486,9 +2450,6 @@ export namespace PriceUpdateParams {
      */
     trialPeriodDays?: number | 0 | null;
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice?: number;
 
     usageMeterId?: string | null;
@@ -2671,9 +2632,6 @@ export namespace PriceUpdateParams {
      */
     trialPeriodDays?: 'null' | null | unknown;
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice?: number;
 
     usageMeterId?: string | null;
@@ -2852,9 +2810,6 @@ export namespace PriceUpdateParams {
      */
     trialPeriodDays?: 'null' | null | unknown;
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice?: number;
 
     /**
