@@ -846,7 +846,7 @@ export namespace CheckoutSessionCreateParams {
     cancelUrl: string;
 
     /**
-     * The id of the Customer for this purchase session, as defined in your system
+     * The id of the Customer for this purchase session, as defined in your system.
      */
     customerExternalId: string;
 
