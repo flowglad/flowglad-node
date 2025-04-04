@@ -1,4 +1,12 @@
 # Changelog
+## 0.18.2 (2025-04-04)
+
+Full Changelog: [v0.18.1...v0.18.2](https://github.com/flowglad/flowglad-node/compare/v0.18.1...v0.18.2)
+
+### Bug Fixes
+
+* **api:** checkout session type ([#149](https://github.com/flowglad/flowglad-node/issues/149)) ([cf6ceb6](https://github.com/flowglad/flowglad-node/commit/cf6ceb6c4b2b4099550ffd630b0eebe827e1e7c7))
+
 ## 0.18.1 (2025-04-04)
 
 Full Changelog: [v0.18.0...v0.18.1](https://github.com/flowglad/flowglad-node/compare/v0.18.0...v0.18.1)
