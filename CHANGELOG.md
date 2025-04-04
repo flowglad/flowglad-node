@@ -1,4 +1,51 @@
 # Changelog
+## 0.18.2 (2025-04-04)
+
+Full Changelog: [v0.18.1...v0.18.2](https://github.com/flowglad/flowglad-node/compare/v0.18.1...v0.18.2)
+
+### Bug Fixes
+
+* **api:** checkout session type ([#149](https://github.com/flowglad/flowglad-node/issues/149)) ([cf6ceb6](https://github.com/flowglad/flowglad-node/commit/cf6ceb6c4b2b4099550ffd630b0eebe827e1e7c7))
+
+## 0.18.1 (2025-04-04)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/flowglad/flowglad-node/compare/v0.18.0...v0.18.1)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#145](https://github.com/flowglad/flowglad-node/issues/145)) ([cd14ac4](https://github.com/flowglad/flowglad-node/commit/cd14ac41c41249fd96d485764b5e233dd1424004))
+* **client:** send `X-Stainless-Timeout` in seconds ([#143](https://github.com/flowglad/flowglad-node/issues/143)) ([3b3077d](https://github.com/flowglad/flowglad-node/commit/3b3077ddf8e8a2c021aa4038ab07903bb180563b))
+* pluralize `list` response variables ([#141](https://github.com/flowglad/flowglad-node/issues/141)) ([99ed092](https://github.com/flowglad/flowglad-node/commit/99ed092ff9e59bb20c9bc2d92275486d48c95541))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#144](https://github.com/flowglad/flowglad-node/issues/144)) ([8f6f3c7](https://github.com/flowglad/flowglad-node/commit/8f6f3c7ad97e62b602c7ce93fb79f1b03ab16e93))
+
+## 0.18.0 (2025-04-01)
+
+Full Changelog: [v0.17.0...v0.18.0](https://github.com/flowglad/flowglad-node/compare/v0.17.0...v0.18.0)
+
+### Features
+
+* **api:** add usage meters to catalog type, add cru operations for usage events and usage meters ([#137](https://github.com/flowglad/flowglad-node/issues/137)) ([e72e0f2](https://github.com/flowglad/flowglad-node/commit/e72e0f2595979b17c211a38c8d8a0c94a5033ee2))
+
+## 0.17.0 (2025-04-01)
+
+Full Changelog: [v0.16.1...v0.17.0](https://github.com/flowglad/flowglad-node/compare/v0.16.1...v0.17.0)
+
+### Features
+
+* **api:** add usage meter aggregation types and price + usage meter associations ([#133](https://github.com/flowglad/flowglad-node/issues/133)) ([780dd04](https://github.com/flowglad/flowglad-node/commit/780dd04f61a3d5c2a2cb0cc96e75b9af46d1d08e))
+
+## 0.16.1 (2025-03-29)
+
+Full Changelog: [v0.16.0...v0.16.1](https://github.com/flowglad/flowglad-node/compare/v0.16.0...v0.16.1)
+
+### Bug Fixes
+
+* **api:** add checkout quantity, subscription.current ([#129](https://github.com/flowglad/flowglad-node/issues/129)) ([ba73464](https://github.com/flowglad/flowglad-node/commit/ba73464eb7bc72cdc87808c05256571a0392c235))
+
 ## 0.16.0 (2025-03-27)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/flowglad/flowglad-node/compare/v0.15.0...v0.16.0)

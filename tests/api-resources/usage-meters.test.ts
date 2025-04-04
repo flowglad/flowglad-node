@@ -7,33 +7,11 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource products', () => {
+describe('resource usageMeters', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.products.create({
-      price: {
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        productId: 'productId',
-        setupFeeAmount: 0,
-        trialPeriodDays: 0,
-        type: 'subscription',
-        unitPrice: 0,
-        usageMeterId: 'usageMeterId',
-      },
-      product: {
-        active: true,
-        catalogId: 'catalogId',
-        description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label' }],
-        imageURL: 'imageURL',
-        name: 'name',
-        pluralQuantityLabel: 'pluralQuantityLabel',
-        singularQuantityLabel: 'singularQuantityLabel',
-      },
+    const responsePromise = client.usageMeters.create({
+      usageMeter: { catalogId: 'catalogId', name: 'name', productId: 'productId' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -46,36 +24,14 @@ describe('resource products', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.products.create({
-      price: {
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        productId: 'productId',
-        setupFeeAmount: 0,
-        trialPeriodDays: 0,
-        type: 'subscription',
-        unitPrice: 0,
-        usageMeterId: 'usageMeterId',
-      },
-      product: {
-        active: true,
-        catalogId: 'catalogId',
-        description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
-        imageURL: 'imageURL',
-        name: 'name',
-        pluralQuantityLabel: 'pluralQuantityLabel',
-        singularQuantityLabel: 'singularQuantityLabel',
-      },
+    const response = await client.usageMeters.create({
+      usageMeter: { catalogId: 'catalogId', name: 'name', productId: 'productId', aggregationType: 'sum' },
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
-    const responsePromise = client.products.retrieve('id');
+    const responsePromise = client.usageMeters.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -87,10 +43,7 @@ describe('resource products', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
-    const responsePromise = client.products.update('id', {
-      price: { id: 'id', type: 'subscription' },
-      product: { id: 'id' },
-    });
+    const responsePromise = client.usageMeters.update('id', { usageMeter: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -102,44 +55,21 @@ describe('resource products', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
-    const response = await client.products.update('id', {
-      price: {
+    const response = await client.usageMeters.update('id', {
+      usageMeter: {
         id: 'id',
-        type: 'subscription',
-        active: true,
-        currency: 'USD',
-        externalId: 'externalId',
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        livemode: true,
+        aggregationType: 'sum',
+        createdAt: '2019-12-27T18:11:19.117Z',
         name: 'name',
         productId: 'productId',
-        setupFeeAmount: 0,
-        trialPeriodDays: 0,
-        unitPrice: 0,
-        usageMeterId: 'usageMeterId',
-      },
-      product: {
-        id: 'id',
-        active: true,
-        catalogId: 'catalogId',
-        description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
-        externalId: 'externalId',
-        imageURL: 'imageURL',
-        livemode: true,
-        name: 'name',
-        organizationId: 'organizationId',
-        pluralQuantityLabel: 'pluralQuantityLabel',
-        singularQuantityLabel: 'singularQuantityLabel',
+        updatedAt: '2019-12-27T18:11:19.117Z',
       },
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('list', async () => {
-    const responsePromise = client.products.list();
+    const responsePromise = client.usageMeters.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -153,7 +83,7 @@ describe('resource products', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.products.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.usageMeters.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

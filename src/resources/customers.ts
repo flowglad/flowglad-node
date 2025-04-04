@@ -7,7 +7,7 @@ import { path } from '../internal/utils/path';
 
 export class Customers extends APIResource {
   /**
-   * Create customer
+   * Create Customer
    */
   create(body: CustomerCreateParams, options?: RequestOptions): APIPromise<CustomerCreateResponse> {
     return this._client.post('/api/v1/customers', { body, ...options });
@@ -362,7 +362,9 @@ export interface CustomerRetrieveBillingResponse {
    * that determines its behavior and required fields.
    */
   purchases: Array<
-    CustomerRetrieveBillingResponse.SinglePaymentPurchase | CustomerRetrieveBillingResponse.Subscription
+    | CustomerRetrieveBillingResponse.SubscriptionPurchase
+    | CustomerRetrieveBillingResponse.SinglePaymentPurchase
+    | CustomerRetrieveBillingResponse.UsagePurchase
   >;
 
   subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
@@ -398,6 +400,8 @@ export namespace CustomerRetrieveBillingResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    usageMeters: Array<Catalog.UsageMeter>;
   }
 
   export namespace Catalog {
@@ -417,7 +421,7 @@ export namespace CustomerRetrieveBillingResponse {
        * The default price for the product. If no price is explicitly set as default,
        * will return the first price created for the product..
        */
-      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice;
+      defaultPrice: Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice;
 
       description: string | null;
 
@@ -433,7 +437,7 @@ export namespace CustomerRetrieveBillingResponse {
 
       pluralQuantityLabel: string | null;
 
-      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice>;
+      prices: Array<Product.SubscriptionPrice | Product.SinglePaymentPrice | Product.UsagePrice>;
 
       singularQuantityLabel: string | null;
 
@@ -624,6 +628,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
 
       /**
@@ -790,6 +796,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        usageMeterId: string | null;
+
         /**
          * safeZodNullOrUndefined
          */
@@ -804,6 +812,193 @@ export namespace CustomerRetrieveBillingResponse {
          * safeZodNullOrUndefined
          */
         setupFeeAmount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UsagePrice {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        type: 'usage';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
 
         /**
          * safeZodNullOrUndefined
@@ -999,6 +1194,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
 
       /**
@@ -1165,6 +1362,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        usageMeterId: string | null;
+
         /**
          * safeZodNullOrUndefined
          */
@@ -1185,6 +1384,215 @@ export namespace CustomerRetrieveBillingResponse {
          */
         trialPeriodDays?: 'null' | null | unknown;
       }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UsagePrice {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        type: 'usage';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    export interface UsageMeter {
+      id: string;
+
+      /**
+       * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+       * aggregates all the usage event amounts for the billing period.
+       * "count_distinct_properties" counts the number of distinct properties in the
+       * billing period for a given meter.
+       */
+      aggregationType: 'sum' | 'count_distinct_properties';
+
+      catalogId: string;
+
+      createdAt: string;
+
+      name: string;
+
+      productId: string;
+
+      updatedAt: string | null;
     }
   }
 
@@ -2894,6 +3302,79 @@ export namespace CustomerRetrieveBillingResponse {
     trialPeriodDays?: unknown;
   }
 
+  /**
+   * A purchase associated with a usage price. This type of purchase is paid once and
+   * does not have recurring billing cycles.
+   */
+  export interface UsagePurchase {
+    id: string;
+
+    archived: boolean | null;
+
+    bankPaymentOnly: boolean | null;
+
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+
+    billingCycleAnchor: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerId: string;
+
+    endDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    firstInvoiceValue: number | 0;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string;
+
+    organizationId: string;
+
+    priceId: string;
+
+    priceType: 'usage';
+
+    proposal: string | null;
+
+    purchaseDate: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent' | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    totalPurchaseValue: number | 0;
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+
+    intervalCount?: unknown;
+
+    intervalUnit?: unknown;
+
+    pricePerBillingCycle?: unknown;
+
+    stripesubscriptionId?: unknown;
+
+    trialPeriodDays?: unknown;
+  }
+
   export interface Subscription {
     id: string;
 
@@ -2906,6 +3387,12 @@ export namespace CustomerRetrieveBillingResponse {
     cancelScheduledAt: string | null;
 
     createdAt: string;
+
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
 
     currentBillingPeriodEnd: string;
 
@@ -2930,7 +3417,9 @@ export namespace CustomerRetrieveBillingResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'
@@ -2958,6 +3447,8 @@ export namespace CustomerRetrieveBillingResponse {
 
       createdAt: string;
 
+      externalId: string | null;
+
       livemode: boolean;
 
       metadata: Record<string, unknown> | null;
@@ -3168,6 +3659,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
     }
   }
@@ -3184,6 +3677,12 @@ export namespace CustomerRetrieveBillingResponse {
     cancelScheduledAt: string | null;
 
     createdAt: string;
+
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
 
     currentBillingPeriodEnd: string;
 
@@ -3208,7 +3707,9 @@ export namespace CustomerRetrieveBillingResponse {
 
     organizationId: string;
 
-    priceId: string;
+    priceId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
 
     status:
       | 'trialing'
@@ -3236,6 +3737,8 @@ export namespace CustomerRetrieveBillingResponse {
 
       createdAt: string;
 
+      externalId: string | null;
+
       livemode: boolean;
 
       metadata: Record<string, unknown> | null;
@@ -3446,6 +3949,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        usageMeterId: string | null;
       }
     }
   }

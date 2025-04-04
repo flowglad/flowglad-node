@@ -7,14 +7,17 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource checkoutSessions', () => {
+describe('resource usageEvents', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
-    const responsePromise = client.checkoutSessions.create({
-      cancelUrl: 'cancelUrl',
-      customerExternalId: 'customerExternalId',
-      priceId: 'priceId',
-      successUrl: 'successUrl',
+    const responsePromise = client.usageEvents.create({
+      usageEvent: {
+        amount: 1,
+        customerId: 'customerId',
+        priceId: 'priceId',
+        subscriptionId: 'subscriptionId',
+        usageMeterId: 'usageMeterId',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -27,20 +30,23 @@ describe('resource checkoutSessions', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
-    const response = await client.checkoutSessions.create({
-      cancelUrl: 'cancelUrl',
-      customerExternalId: 'customerExternalId',
-      priceId: 'priceId',
-      successUrl: 'successUrl',
-      outputMetadata: { foo: 'bar' },
-      outputName: 'outputName',
-      quantity: 0,
+    const response = await client.usageEvents.create({
+      usageEvent: {
+        amount: 1,
+        customerId: 'customerId',
+        priceId: 'priceId',
+        subscriptionId: 'subscriptionId',
+        usageMeterId: 'usageMeterId',
+        properties: { foo: 'bar' },
+        transactionId: 'transactionId',
+        usageDate: '2019-12-27T18:11:19.117Z',
+      },
     });
   });
 
   // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
-    const responsePromise = client.checkoutSessions.retrieve('id');
+    const responsePromise = client.usageEvents.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -51,8 +57,8 @@ describe('resource checkoutSessions', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
-    const responsePromise = client.checkoutSessions.list();
+  test.skip('update: only required params', async () => {
+    const responsePromise = client.usageEvents.update('id', { usageEvent: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -63,10 +69,16 @@ describe('resource checkoutSessions', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.checkoutSessions.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Flowglad.NotFoundError);
+  test.skip('update: required and optional params', async () => {
+    const response = await client.usageEvents.update('id', {
+      usageEvent: {
+        id: 'id',
+        amount: 1,
+        priceId: 'priceId',
+        properties: { foo: 'bar' },
+        transactionId: 'transactionId',
+        usageDate: '2019-12-27T18:11:19.117Z',
+      },
+    });
   });
 });

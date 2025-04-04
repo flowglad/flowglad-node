@@ -7,7 +7,7 @@ import { path } from '../internal/utils/path';
 
 export class CheckoutSessions extends APIResource {
   /**
-   * Create checkoutSession
+   * Create CheckoutSession
    */
   create(
     body: CheckoutSessionCreateParams,
