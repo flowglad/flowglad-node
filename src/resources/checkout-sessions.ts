@@ -835,37 +835,39 @@ export namespace CheckoutSessionListResponse {
 }
 
 export interface CheckoutSessionCreateParams {
-  /**
-   * The URL to redirect to after the purchase is cancelled or fails
-   */
-  cancelUrl: string;
+  checkoutSession: {
+    /**
+     * The URL to redirect to after the purchase is cancelled or fails
+     */
+    cancelUrl: string;
 
-  /**
-   * The id of the Customer for this purchase session, as defined in your system
-   */
-  customerExternalId: string;
+    /**
+     * The id of the Customer for this purchase session, as defined in your system
+     */
+    customerExternalId: string;
 
-  /**
-   * The ID of the price the customer shall purchase
-   */
-  priceId: string;
+    /**
+     * The ID of the price the customer shall purchase
+     */
+    priceId: string;
 
-  /**
-   * The URL to redirect to after the purchase is successful
-   */
-  successUrl: string;
+    /**
+     * The URL to redirect to after the purchase is successful
+     */
+    successUrl: string;
 
-  /**
-   * Metadata that will get added to the purchase or subscription created when this
-   * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
-   */
-  outputMetadata?: Record<string, unknown>;
+    /**
+     * Metadata that will get added to the purchase or subscription created when this
+     * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputMetadata?: Record<string, unknown>;
 
-  /**
-   * The name of the purchase or subscription created when this checkout session
-   * succeeds. Ignored if the checkout session is of type `invoice`.
-   */
-  outputName?: string;
+    /**
+     * The name of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputName?: string;
+  };
 }
 
 export interface CheckoutSessionListParams {
