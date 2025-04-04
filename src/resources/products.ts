@@ -312,9 +312,6 @@ export namespace ProductRetrieveResponse {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -479,9 +476,6 @@ export namespace ProductRetrieveResponse {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -677,9 +671,6 @@ export namespace ProductRetrieveResponse {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -878,9 +869,6 @@ export namespace ProductRetrieveResponse {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1045,9 +1033,6 @@ export namespace ProductRetrieveResponse {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1243,9 +1228,6 @@ export namespace ProductRetrieveResponse {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     updatedAt: string | null;
@@ -1417,9 +1399,6 @@ export namespace ProductCreateParams {
 
     type: 'subscription';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     usageMeterId: string | null;
@@ -1440,9 +1419,6 @@ export namespace ProductCreateParams {
 
     type: 'single_payment';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     usageMeterId: string | null;
@@ -1494,9 +1470,6 @@ export namespace ProductCreateParams {
 
     type: 'usage';
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice: number;
 
     /**
@@ -1728,9 +1701,6 @@ export namespace ProductUpdateParams {
      */
     trialPeriodDays?: number | 0 | null;
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice?: number;
 
     usageMeterId?: string | null;
@@ -1913,9 +1883,6 @@ export namespace ProductUpdateParams {
      */
     trialPeriodDays?: 'null' | null | unknown;
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice?: number;
 
     usageMeterId?: string | null;
@@ -2094,9 +2061,6 @@ export namespace ProductUpdateParams {
      */
     trialPeriodDays?: 'null' | null | unknown;
 
-    /**
-     * safeZodPositiveInteger
-     */
     unitPrice?: number;
 
     /**

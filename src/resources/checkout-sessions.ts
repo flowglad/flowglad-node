@@ -87,7 +87,7 @@ export namespace CheckoutSessionCreateResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
 
@@ -109,28 +109,28 @@ export namespace CheckoutSessionCreateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -170,7 +170,7 @@ export namespace CheckoutSessionCreateResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
 
@@ -192,28 +192,28 @@ export namespace CheckoutSessionCreateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -252,7 +252,7 @@ export namespace CheckoutSessionCreateResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
 
@@ -274,28 +274,28 @@ export namespace CheckoutSessionCreateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -354,7 +354,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
 
@@ -376,28 +376,28 @@ export namespace CheckoutSessionRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -437,7 +437,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
 
@@ -459,28 +459,28 @@ export namespace CheckoutSessionRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -519,7 +519,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
 
@@ -541,28 +541,28 @@ export namespace CheckoutSessionRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -620,7 +620,7 @@ export namespace CheckoutSessionListResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
 
@@ -642,28 +642,28 @@ export namespace CheckoutSessionListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -703,7 +703,7 @@ export namespace CheckoutSessionListResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: 'null' | null;
 
@@ -725,28 +725,28 @@ export namespace CheckoutSessionListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -785,7 +785,7 @@ export namespace CheckoutSessionListResponse {
 
     outputName: string | null;
 
-    paymentMethodType: 'card' | 'us_bank_account' | 'sepa_debit' | null;
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
     priceId: string;
 
@@ -807,71 +807,77 @@ export namespace CheckoutSessionListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
 }
 
 export interface CheckoutSessionCreateParams {
-  /**
-   * The URL to redirect to after the purchase is cancelled or fails
-   */
-  cancelUrl: string;
+  checkoutSession: CheckoutSessionCreateParams.CheckoutSession;
+}
 
-  /**
-   * The id of the Customer for this purchase session, as defined in your system
-   */
-  customerExternalId: string;
+export namespace CheckoutSessionCreateParams {
+  export interface CheckoutSession {
+    /**
+     * The URL to redirect to after the purchase is cancelled or fails
+     */
+    cancelUrl: string;
 
-  /**
-   * The ID of the price the customer shall purchase
-   */
-  priceId: string;
+    /**
+     * The id of the Customer for this purchase session, as defined in your system
+     */
+    customerExternalId: string;
 
-  /**
-   * The URL to redirect to after the purchase is successful
-   */
-  successUrl: string;
+    /**
+     * The ID of the price the customer shall purchase
+     */
+    priceId: string;
 
-  /**
-   * Metadata that will get added to the purchase or subscription created when this
-   * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
-   */
-  outputMetadata?: Record<string, unknown>;
+    /**
+     * The URL to redirect to after the purchase is successful
+     */
+    successUrl: string;
 
-  /**
-   * The name of the purchase or subscription created when this checkout session
-   * succeeds. Ignored if the checkout session is of type `invoice`.
-   */
-  outputName?: string;
+    /**
+     * Metadata that will get added to the purchase or subscription created when this
+     * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputMetadata?: Record<string, unknown>;
 
-  /**
-   * The quantity of the purchase or subscription created when this checkout session
-   * succeeds. Ignored if the checkout session is of type `invoice`.
-   */
-  quantity?: number;
+    /**
+     * The name of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputName?: string;
+
+    /**
+     * The quantity of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    quantity?: number;
+  }
 }
 
 export interface CheckoutSessionListParams {

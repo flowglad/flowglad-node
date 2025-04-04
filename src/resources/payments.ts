@@ -190,7 +190,7 @@ export namespace PaymentRetrieveResponse {
 
     invoiceId: string;
 
-    paymentMethod: 'card' | 'us_bank_account' | 'sepa_debit';
+    paymentMethod: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
     paymentMethodId: string | null;
 
@@ -668,7 +668,7 @@ export namespace PaymentListResponse {
 
     invoiceId: string;
 
-    paymentMethod: 'card' | 'us_bank_account' | 'sepa_debit';
+    paymentMethod: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
     paymentMethodId: string | null;
 

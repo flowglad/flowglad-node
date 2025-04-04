@@ -97,28 +97,28 @@ export namespace CustomerCreateResponse {
       export interface BillingAddress {
         address: BillingAddress.Address;
 
-        name: string;
-
         firstName?: string;
 
         lastName?: string;
+
+        name?: string;
 
         phone?: string;
       }
 
       export namespace BillingAddress {
         export interface Address {
-          city: string;
+          city: string | null;
 
           country: string;
 
-          line1: string;
+          line1: string | null;
 
           line2: string | null;
 
-          postal_code: string;
+          postal_code: string | null;
 
-          state: string;
+          state: string | null;
         }
       }
     }
@@ -168,28 +168,28 @@ export namespace CustomerRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -238,28 +238,28 @@ export namespace CustomerUpdateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -320,28 +320,28 @@ export namespace CustomerListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -622,9 +622,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -789,9 +786,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -987,9 +981,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1188,9 +1179,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1355,9 +1343,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'single_payment';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1553,9 +1538,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'usage';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -1634,28 +1616,28 @@ export namespace CustomerRetrieveBillingResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
-
       firstName?: string;
 
       lastName?: string;
+
+      name?: string;
 
       phone?: string;
     }
 
     export namespace BillingAddress {
       export interface Address {
-        city: string;
+        city: string | null;
 
         country: string;
 
-        line1: string;
+        line1: string | null;
 
         line2: string | null;
 
-        postal_code: string;
+        postal_code: string | null;
 
-        state: string;
+        state: string | null;
       }
     }
   }
@@ -3113,7 +3095,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     paymentMethodData: Record<string, unknown>;
 
-    type: 'card' | 'us_bank_account' | 'sepa_debit';
+    type: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
     updatedAt: string | null;
   }
@@ -3129,9 +3111,9 @@ export namespace CustomerRetrieveBillingResponse {
 
     export namespace BillingDetails {
       export interface Address {
-        address: Address.Address | null;
+        address?: Address.Address | null;
 
-        name: string | null;
+        name?: string | null;
       }
 
       export namespace Address {
@@ -3653,9 +3635,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
@@ -3943,9 +3922,6 @@ export namespace CustomerRetrieveBillingResponse {
 
         type: 'subscription';
 
-        /**
-         * safeZodPositiveInteger
-         */
         unitPrice: number;
 
         updatedAt: string | null;
