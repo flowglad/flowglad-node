@@ -842,14 +842,9 @@ export interface CheckoutSessionCreateParams {
     cancelUrl: string;
 
     /**
-     * The id of the Customer for this purchase session, as defined in your system
+     * The id of the Customer for this purchase session, as defined by your system
      */
     customerExternalId: string;
-
-    /**
-     * The ID of the price the customer shall purchase
-     */
-    priceId: string;
 
     /**
      * The URL to redirect to after the purchase is successful

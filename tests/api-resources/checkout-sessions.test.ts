@@ -11,12 +11,10 @@ describe('resource checkoutSessions', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
     const responsePromise = client.checkoutSessions.create({
-      checkoutSession: {
-        cancelUrl: 'cancelUrl',
-        customerExternalId: 'customerExternalId',
-        priceId: 'priceId',
-        successUrl: 'successUrl',
-      },
+      cancelUrl: 'cancelUrl',
+      customerExternalId: 'customerExternalId',
+      priceId: 'priceId',
+      successUrl: 'successUrl',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -30,15 +28,13 @@ describe('resource checkoutSessions', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
     const response = await client.checkoutSessions.create({
-      checkoutSession: {
-        cancelUrl: 'cancelUrl',
-        customerExternalId: 'customerExternalId',
-        priceId: 'priceId',
-        successUrl: 'successUrl',
-        outputMetadata: { foo: 'bar' },
-        outputName: 'outputName',
-        quantity: 0,
-      },
+      cancelUrl: 'cancelUrl',
+      customerExternalId: 'customerExternalId',
+      priceId: 'priceId',
+      successUrl: 'successUrl',
+      outputMetadata: { foo: 'bar' },
+      outputName: 'outputName',
+      quantity: 0,
     });
   });
 
