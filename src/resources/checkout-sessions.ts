@@ -841,7 +841,7 @@ export interface CheckoutSessionCreateParams {
 export namespace CheckoutSessionCreateParams {
   export interface CheckoutSession {
     /**
-     * The URL to redirect to after the purchase is cancelled or fails
+     * The URL to redirect to if the purchase is cancelled or fails
      */
     cancelUrl: string;
 
