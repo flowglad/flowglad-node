@@ -837,19 +837,14 @@ export namespace CheckoutSessionListResponse {
 export interface CheckoutSessionCreateParams {
   checkoutSession: {
     /**
-     * The URL to redirect to after the purchase is cancelled or fails
+     * The URL to redirect to if the purchase is cancelled or fails
      */
     cancelUrl: string;
 
     /**
-     * The id of the Customer for this purchase session, as defined in your system
+     * The id of the Customer for this purchase session, as defined by your system
      */
     customerExternalId: string;
-
-    /**
-     * The ID of the price the customer shall purchase
-     */
-    priceId: string;
 
     /**
      * The URL to redirect to after the purchase is successful
@@ -873,6 +868,11 @@ export interface CheckoutSessionCreateParams {
      * succeeds. Ignored if the checkout session is of type `invoice`.
      */
     quantity?: number;
+
+    /**
+     * The ID of the price the customer shall purchase
+     */
+    priceId: string;
   };
 }
 
