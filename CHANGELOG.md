@@ -1,4 +1,12 @@
 # Changelog
+## 0.18.4 (2025-04-05)
+
+Full Changelog: [v0.18.3...v0.18.4](https://github.com/flowglad/flowglad-node/compare/v0.18.3...v0.18.4)
+
+### Bug Fixes
+
+* **mcp:** remove unused tools.ts ([#159](https://github.com/flowglad/flowglad-node/issues/159)) ([6d71ce3](https://github.com/flowglad/flowglad-node/commit/6d71ce3b5d5a2fb97a13cb28f92af4132645dfd5))
+
 ## 0.18.3 (2025-04-05)
 
 Full Changelog: [v0.18.2...v0.18.3](https://github.com/flowglad/flowglad-node/compare/v0.18.2...v0.18.3)
