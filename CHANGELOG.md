@@ -5,6 +5,7 @@ Full Changelog: [v0.18.2...v0.18.3](https://github.com/flowglad/flowglad-node/co
 
 ### Bug Fixes
 
+* **api:** manual updates on checkout session ([#156](https://github.com/flowglad/flowglad-node/issues/156)) ([c1fdb86](https://github.com/flowglad/flowglad-node/commit/c1fdb867c271d265b70bb6d191a1ca5c9a723ef6))
 * **api:** manual updates to checkout sessions create params ([#153](https://github.com/flowglad/flowglad-node/issues/153)) ([555cda9](https://github.com/flowglad/flowglad-node/commit/555cda923bbc72369a2688c3077196ca37762a94))
 
 ## 0.18.2 (2025-04-04)
