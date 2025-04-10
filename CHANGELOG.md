@@ -1,4 +1,13 @@
 # Changelog
+## 0.19.1 (2025-04-10)
+
+Full Changelog: [v0.19.0...v0.19.1](https://github.com/flowglad/flowglad-node/compare/v0.19.0...v0.19.1)
+
+### Bug Fixes
+
+* **api:** fix missing priceId on CheckoutSessionCreateParams ([e48ce4e](https://github.com/flowglad/flowglad-node/commit/e48ce4e167d67d621b3f517c297ee25f874632c1))
+* **api:** fix refund payment, better types on checkout session creation ([862204c](https://github.com/flowglad/flowglad-node/commit/862204c4cab30f85a91bf9885cddc968ce2c6a24))
+
 ## 0.19.0 (2025-04-10)
 
 Full Changelog: [v0.18.3...v0.19.0](https://github.com/flowglad/flowglad-node/compare/v0.18.3...v0.19.0)

@@ -39,4 +39,16 @@ describe('resource payments', () => {
       client.payments.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
+
+  // skipped: tests are disabled for the time being
+  test.skip('refund', async () => {
+    const responsePromise = client.payments.refund('id', {});
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
 });

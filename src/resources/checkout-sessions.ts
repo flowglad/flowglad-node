@@ -1136,7 +1136,55 @@ export namespace CheckoutSessionListResponse {
 }
 
 export interface CheckoutSessionCreateParams {
-  checkoutSession: {
+  checkoutSession:
+    | CheckoutSessionCreateParams.ProductCheckoutSession
+    | CheckoutSessionCreateParams.AddPaymentMethodCheckoutSession;
+}
+
+export namespace CheckoutSessionCreateParams {
+  export interface ProductCheckoutSession {
+    /**
+     * The URL to redirect to after the purchase is cancelled or fails
+     */
+    cancelUrl: string;
+
+    /**
+     * The id of the Customer for this purchase session, as defined in your system
+     */
+    customerExternalId: string;
+
+    /**
+     * The URL to redirect to after the purchase is successful
+     */
+    successUrl: string;
+
+    type: 'product';
+
+    /**
+     * Metadata that will get added to the purchase or subscription created when this
+     * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputMetadata?: Record<string, unknown>;
+
+    /**
+     * The name of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputName?: string;
+
+    /**
+     * The quantity of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`. If not provided, defaults to 1.
+     */
+    quantity?: number;
+
+    /**
+     * The ID of the price the customer shall purchase.
+     */
+    priceId: string;
+  }
+
+  export interface AddPaymentMethodCheckoutSession {
     /**
      * The URL to redirect to after the purchase is cancelled or fails
      */
@@ -1153,10 +1201,12 @@ export interface CheckoutSessionCreateParams {
     successUrl: string;
 
     /**
-     * The type of checkout session to create. Currently only `product` and
-     * `add_payment_method` are supported. All other types will throw an error.
+     * The id of the subscription that the payment method will be added to as the
+     * default payment method.
      */
-    type: 'product' | 'purchase' | 'invoice' | 'add_payment_method';
+    targetSubscriptionId: string;
+
+    type: 'add_payment_method';
 
     /**
      * Metadata that will get added to the purchase or subscription created when this
@@ -1169,26 +1219,7 @@ export interface CheckoutSessionCreateParams {
      * succeeds. Ignored if the checkout session is of type `invoice`.
      */
     outputName?: string;
-
-    /**
-     * The quantity of the purchase or subscription created when this checkout session
-     * succeeds. Ignored if the checkout session is of type `invoice`.
-     */
-    quantity?: number;
-
-    /**
-     * The id of the subscription that the payment method will be added to as the
-     * default payment method.
-     */
-    targetSubscriptionId?: string;
-
-    /**
-     * The id of the price to purchase. Required if the checkout session is of type
-     * `product`. Ignored if the checkout session is of type `purchase`, `invoice`, or
-     * `add_payment_method`.
-     */
-    priceId?: string;
-  };
+  }
 }
 
 export interface CheckoutSessionListParams {

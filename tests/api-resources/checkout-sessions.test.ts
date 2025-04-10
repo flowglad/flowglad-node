@@ -40,7 +40,6 @@ describe('resource checkoutSessions', () => {
         outputName: 'outputName',
         priceId: 'priceId',
         quantity: 0,
-        targetSubscriptionId: 'targetSubscriptionId',
       },
     });
   });
