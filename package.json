@@ -1,6 +1,6 @@
 {
   "name": "@flowglad/node",
-  "version": "0.18.3",
+  "version": "0.19.0",
   "description": "The official TypeScript library for the Flowglad API",
   "author": "Flowglad <dev-feedback@flowglad.com>",
   "types": "dist/index.d.ts",
@@ -48,6 +48,10 @@
   },
   "resolutions": {
     "synckit": "0.8.8"
+  },
+  "browser": {
+    "./internal/shims/getBuiltinModule.mjs": "./internal/shims/nullGetBuiltinModule.mjs",
+    "./internal/shims/getBuiltinModule.js": "./internal/shims/nullGetBuiltinModule.js"
   },
   "imports": {
     "@flowglad/node": ".",
