@@ -3469,7 +3469,7 @@ export namespace CustomerRetrieveBillingResponse {
        * A subscribable price, which can be used to create a subscription based on
        * standard recurring subscription prices or usage-based subscriptions.
        */
-      price: SubscriptionItem.UnionMember0 | SubscriptionItem.UnionMember1;
+      price: SubscriptionItem.SubscriptionPrice | SubscriptionItem.UsagePrice;
 
       priceId: string;
 
@@ -3493,7 +3493,7 @@ export namespace CustomerRetrieveBillingResponse {
        * A subscription price, which will have details on the interval, default trial
        * period, and setup fee (if any).
        */
-      export interface UnionMember0 {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -3676,7 +3676,7 @@ export namespace CustomerRetrieveBillingResponse {
       /**
        * A usage price, which describes the price per unit of usage of a product.
        */
-      export interface UnionMember1 {
+      export interface UsagePrice {
         id: string;
 
         active: boolean;
@@ -3945,7 +3945,7 @@ export namespace CustomerRetrieveBillingResponse {
        * A subscribable price, which can be used to create a subscription based on
        * standard recurring subscription prices or usage-based subscriptions.
        */
-      price: SubscriptionItem.UnionMember0 | SubscriptionItem.UnionMember1;
+      price: SubscriptionItem.SubscriptionPrice | SubscriptionItem.UsagePrice;
 
       priceId: string;
 
@@ -3969,7 +3969,7 @@ export namespace CustomerRetrieveBillingResponse {
        * A subscription price, which will have details on the interval, default trial
        * period, and setup fee (if any).
        */
-      export interface UnionMember0 {
+      export interface SubscriptionPrice {
         id: string;
 
         active: boolean;
@@ -4152,7 +4152,7 @@ export namespace CustomerRetrieveBillingResponse {
       /**
        * A usage price, which describes the price per unit of usage of a product.
        */
-      export interface UnionMember1 {
+      export interface UsagePrice {
         id: string;
 
         active: boolean;
