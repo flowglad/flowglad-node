@@ -7,6 +7,13 @@ import { path } from '../internal/utils/path';
 
 export class Subscriptions extends APIResource {
   /**
+   * Create Subscription
+   */
+  create(body: SubscriptionCreateParams, options?: RequestOptions): APIPromise<SubscriptionCreateResponse> {
+    return this._client.post('/api/v1/subscriptions', { body, ...options });
+  }
+
+  /**
    * Get Subscription
    */
   retrieve(id: string, options?: RequestOptions): APIPromise<SubscriptionRetrieveResponse> {
@@ -43,6 +50,76 @@ export class Subscriptions extends APIResource {
     options?: RequestOptions,
   ): APIPromise<SubscriptionCancelResponse> {
     return this._client.post(path`/api/v1/subscriptions/${id}/cancel`, { body, ...options });
+  }
+}
+
+export interface SubscriptionCreateResponse {
+  subscription: SubscriptionCreateResponse.Subscription;
+}
+
+export namespace SubscriptionCreateResponse {
+  export interface Subscription {
+    id: string;
+
+    backupPaymentMethodId: string | null;
+
+    billingCycleAnchorDate: string;
+
+    canceledAt: string | null;
+
+    cancelScheduledAt: string | null;
+
+    createdAt: string;
+
+    /**
+     * Whether the subscription is current (statuses "active", "trialing", "past_due",
+     * or "cancellation_scheduled")
+     */
+    current: boolean;
+
+    currentBillingPeriodEnd: string;
+
+    currentBillingPeriodStart: string;
+
+    customerId: string;
+
+    defaultPaymentMethodId: string | null;
+
+    interval: 'day' | 'week' | 'month' | 'year';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    livemode: boolean;
+
+    metadata: Record<string, unknown> | null;
+
+    name: string | null;
+
+    organizationId: string;
+
+    priceId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
+
+    startDate: string;
+
+    status:
+      | 'trialing'
+      | 'active'
+      | 'past_due'
+      | 'unpaid'
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
+
+    trialEnd: string | null;
+
+    updatedAt: string | null;
   }
 }
 
@@ -96,6 +173,8 @@ export namespace SubscriptionRetrieveResponse {
     priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
+
+    startDate: string;
 
     status:
       | 'trialing'
@@ -173,6 +252,8 @@ export namespace SubscriptionListResponse {
 
     runBillingAtPeriodStart: boolean | null;
 
+    startDate: string;
+
     status:
       | 'trialing'
       | 'active'
@@ -242,6 +323,8 @@ export namespace SubscriptionAdjustResponse {
     priceId: string | null;
 
     runBillingAtPeriodStart: boolean | null;
+
+    startDate: string;
 
     status:
       | 'trialing'
@@ -343,6 +426,8 @@ export namespace SubscriptionCancelResponse {
 
     runBillingAtPeriodStart: boolean | null;
 
+    startDate: string;
+
     status:
       | 'trialing'
       | 'active'
@@ -358,6 +443,73 @@ export namespace SubscriptionCancelResponse {
 
     updatedAt: string | null;
   }
+}
+
+export interface SubscriptionCreateParams {
+  /**
+   * The customer for the subscription.
+   */
+  customerId: string;
+
+  /**
+   * The price to subscribe to. Used to determine whether the subscription is
+   * usage-based or not, and set other defaults such as trial period and billing
+   * intervals.
+   */
+  priceId: string;
+
+  /**
+   * The payment method to try if charges for the subscription fail with the default
+   * payment method.
+   */
+  backupPaymentMethodId?: string;
+
+  /**
+   * The default payment method to use when attempting to run charges for the
+   * subscription.If not provided, the customer's default payment method will be
+   * used. If no default payment method is present, charges will not run. If no
+   * default payment method is provided and there is a trial period for the
+   * subscription, the subscription will enter 'trial_ended' status at the end of the
+   * trial period.
+   */
+  defaultPaymentMethodId?: string;
+
+  /**
+   * The interval of the subscription. If not provided, defaults to the interval of
+   * the price provided by `priceId`.
+   */
+  interval?: 'day' | 'week' | 'month' | 'year';
+
+  /**
+   * The number of intervals that each billing period will last. If not provided,
+   * defaults to 1
+   */
+  intervalCount?: number;
+
+  metadata?: Record<string, unknown>;
+
+  /**
+   * The name of the subscription. If not provided, defaults to the name of the
+   * product associated with the price provided by 'priceId'.
+   */
+  name?: string;
+
+  /**
+   * The quantity of the price purchased. If not provided, defaults to 1.
+   */
+  quantity?: number;
+
+  /**
+   * The time when the subscription starts. If not provided, defaults to current
+   * time.
+   */
+  startDate?: string;
+
+  /**
+   * The time when the trial ends. If not provided, defaults to startDate + the
+   * associated price's trialPeriodDays
+   */
+  trialEnd?: string;
 }
 
 export interface SubscriptionListParams {
@@ -531,10 +683,12 @@ export namespace SubscriptionCancelParams {
 
 export declare namespace Subscriptions {
   export {
+    type SubscriptionCreateResponse as SubscriptionCreateResponse,
     type SubscriptionRetrieveResponse as SubscriptionRetrieveResponse,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
     type SubscriptionCancelResponse as SubscriptionCancelResponse,
+    type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionListParams as SubscriptionListParams,
     type SubscriptionAdjustParams as SubscriptionAdjustParams,
     type SubscriptionCancelParams as SubscriptionCancelParams,

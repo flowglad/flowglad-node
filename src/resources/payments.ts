@@ -225,6 +225,8 @@ export namespace PaymentRetrieveResponse {
 
     stripeChargeId: string | null;
 
+    subscriptionId: string | null;
+
     subtotal: number | null;
 
     taxAmount: number | null;
@@ -702,6 +704,8 @@ export namespace PaymentListResponse {
       | 'requires_action';
 
     stripeChargeId: string | null;
+
+    subscriptionId: string | null;
 
     subtotal: number | null;
 

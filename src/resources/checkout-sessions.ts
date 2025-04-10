@@ -36,14 +36,14 @@ export class CheckoutSessions extends APIResource {
 
 export interface CheckoutSessionCreateResponse {
   /**
-   * A checkout session record, which describes a checkout process that can be used
-   * to complete purchases, invoices, or product orders. Each session has a specific
-   * type that determines its behavior and required fields.
+   * A time-limited checkout session, which captures the payment details needed to
+   * create a subscription, or purchase, or pay a standalone invoice.
    */
   checkoutSession:
     | CheckoutSessionCreateResponse.UnionMember0
     | CheckoutSessionCreateResponse.UnionMember1
-    | CheckoutSessionCreateResponse.UnionMember2;
+    | CheckoutSessionCreateResponse.UnionMember2
+    | CheckoutSessionCreateResponse.UnionMember3;
 
   /**
    * The URL to redirect to complete the purchase
@@ -97,6 +97,8 @@ export namespace CheckoutSessionCreateResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'purchase';
 
     /**
@@ -180,6 +182,8 @@ export namespace CheckoutSessionCreateResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'invoice';
 
     /**
@@ -262,6 +266,8 @@ export namespace CheckoutSessionCreateResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'product';
 
     /**
@@ -299,18 +305,112 @@ export namespace CheckoutSessionCreateResponse {
       }
     }
   }
+
+  /**
+   * A checkout session for a payment method creation, which will create a payment
+   * method record upon successful completion. If targetSubscriptionId is provided,
+   * the payment method will be added to the subscription as the default payment
+   * method.
+   */
+  export interface UnionMember3 {
+    id: string;
+
+    billingAddress: UnionMember3.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    /**
+     * The customer that the payment method will be added to as the default payment
+     * method.
+     */
+    customerId: string;
+
+    customerName: string | null;
+
+    discountId: string | null;
+
+    invoiceId: string | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
+
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
+
+    priceId: string | null;
+
+    purchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    /**
+     * The subscription that the payment method will be added to as the default payment
+     * method.
+     */
+    targetSubscriptionId: string | null;
+
+    type: 'add_payment_method';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+  }
+
+  export namespace UnionMember3 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      name?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string | null;
+
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+      }
+    }
+  }
 }
 
 export interface CheckoutSessionRetrieveResponse {
   /**
-   * A checkout session record, which describes a checkout process that can be used
-   * to complete purchases, invoices, or product orders. Each session has a specific
-   * type that determines its behavior and required fields.
+   * A time-limited checkout session, which captures the payment details needed to
+   * create a subscription, or purchase, or pay a standalone invoice.
    */
   checkoutSession:
     | CheckoutSessionRetrieveResponse.UnionMember0
     | CheckoutSessionRetrieveResponse.UnionMember1
-    | CheckoutSessionRetrieveResponse.UnionMember2;
+    | CheckoutSessionRetrieveResponse.UnionMember2
+    | CheckoutSessionRetrieveResponse.UnionMember3;
 
   /**
    * The URL to redirect to complete the purchase
@@ -364,6 +464,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'purchase';
 
     /**
@@ -447,6 +549,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'invoice';
 
     /**
@@ -529,6 +633,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'product';
 
     /**
@@ -566,6 +672,100 @@ export namespace CheckoutSessionRetrieveResponse {
       }
     }
   }
+
+  /**
+   * A checkout session for a payment method creation, which will create a payment
+   * method record upon successful completion. If targetSubscriptionId is provided,
+   * the payment method will be added to the subscription as the default payment
+   * method.
+   */
+  export interface UnionMember3 {
+    id: string;
+
+    billingAddress: UnionMember3.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    /**
+     * The customer that the payment method will be added to as the default payment
+     * method.
+     */
+    customerId: string;
+
+    customerName: string | null;
+
+    discountId: string | null;
+
+    invoiceId: string | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
+
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
+
+    priceId: string | null;
+
+    purchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    /**
+     * The subscription that the payment method will be added to as the default payment
+     * method.
+     */
+    targetSubscriptionId: string | null;
+
+    type: 'add_payment_method';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+  }
+
+  export namespace UnionMember3 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      name?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string | null;
+
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+      }
+    }
+  }
 }
 
 export interface CheckoutSessionListResponse {
@@ -573,6 +773,7 @@ export interface CheckoutSessionListResponse {
     | CheckoutSessionListResponse.UnionMember0
     | CheckoutSessionListResponse.UnionMember1
     | CheckoutSessionListResponse.UnionMember2
+    | CheckoutSessionListResponse.UnionMember3
   >;
 
   hasMore: boolean;
@@ -630,6 +831,8 @@ export namespace CheckoutSessionListResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'purchase';
 
     /**
@@ -713,6 +916,8 @@ export namespace CheckoutSessionListResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'invoice';
 
     /**
@@ -795,6 +1000,8 @@ export namespace CheckoutSessionListResponse {
 
     successUrl: string | null;
 
+    targetSubscriptionId: 'null' | null;
+
     type: 'product';
 
     /**
@@ -832,6 +1039,100 @@ export namespace CheckoutSessionListResponse {
       }
     }
   }
+
+  /**
+   * A checkout session for a payment method creation, which will create a payment
+   * method record upon successful completion. If targetSubscriptionId is provided,
+   * the payment method will be added to the subscription as the default payment
+   * method.
+   */
+  export interface UnionMember3 {
+    id: string;
+
+    billingAddress: UnionMember3.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    /**
+     * The customer that the payment method will be added to as the default payment
+     * method.
+     */
+    customerId: string;
+
+    customerName: string | null;
+
+    discountId: string | null;
+
+    invoiceId: string | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    outputMetadata: Record<string, unknown> | null;
+
+    outputName: string | null;
+
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
+
+    priceId: string | null;
+
+    purchaseId: string | null;
+
+    quantity: number;
+
+    successUrl: string | null;
+
+    /**
+     * The subscription that the payment method will be added to as the default payment
+     * method.
+     */
+    targetSubscriptionId: string | null;
+
+    type: 'add_payment_method';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+  }
+
+  export namespace UnionMember3 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      name?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string | null;
+
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+      }
+    }
+  }
 }
 
 export interface CheckoutSessionCreateParams {
@@ -841,12 +1142,12 @@ export interface CheckoutSessionCreateParams {
 export namespace CheckoutSessionCreateParams {
   export interface CheckoutSession {
     /**
-     * The URL to redirect to if the purchase is cancelled or fails
+     * The URL to redirect to after the purchase is cancelled or fails
      */
     cancelUrl: string;
 
     /**
-     * The id of the Customer for this purchase session, as defined by your system
+     * The id of the Customer for this purchase session, as defined in your system
      */
     customerExternalId: string;
 
@@ -859,6 +1160,12 @@ export namespace CheckoutSessionCreateParams {
      * The URL to redirect to after the purchase is successful
      */
     successUrl: string;
+
+    /**
+     * The type of checkout session to create. Currently only `product` and
+     * `add_payment_method` are supported. All other types will throw an error.
+     */
+    type: 'product' | 'purchase' | 'invoice' | 'add_payment_method';
 
     /**
      * Metadata that will get added to the purchase or subscription created when this
@@ -877,6 +1184,12 @@ export namespace CheckoutSessionCreateParams {
      * succeeds. Ignored if the checkout session is of type `invoice`.
      */
     quantity?: number;
+
+    /**
+     * The id of the subscription that the payment method will be added to as the
+     * default payment method.
+     */
+    targetSubscriptionId?: string;
   }
 }
 

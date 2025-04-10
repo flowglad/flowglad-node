@@ -1279,8 +1279,6 @@ export namespace CatalogRetrieveResponse {
 
       name: string;
 
-      productId: string;
-
       updatedAt: string | null;
     }
   }
@@ -2549,8 +2547,6 @@ export namespace CatalogCloneResponse {
 
       name: string;
 
-      productId: string;
-
       updatedAt: string | null;
     }
   }
@@ -3754,8 +3750,6 @@ export namespace CatalogRetrieveDefaultResponse {
       createdAt: string;
 
       name: string;
-
-      productId: string;
 
       updatedAt: string | null;
     }

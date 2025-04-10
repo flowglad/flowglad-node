@@ -9,6 +9,35 @@ const client = new Flowglad({
 
 describe('resource subscriptions', () => {
   // skipped: tests are disabled for the time being
+  test.skip('create: only required params', async () => {
+    const responsePromise = client.subscriptions.create({ customerId: 'customerId', priceId: 'priceId' });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // skipped: tests are disabled for the time being
+  test.skip('create: required and optional params', async () => {
+    const response = await client.subscriptions.create({
+      customerId: 'customerId',
+      priceId: 'priceId',
+      backupPaymentMethodId: 'backupPaymentMethodId',
+      defaultPaymentMethodId: 'defaultPaymentMethodId',
+      interval: 'day',
+      intervalCount: 0,
+      metadata: { foo: 'bar' },
+      name: 'name',
+      quantity: 0,
+      startDate: '2019-12-27T18:11:19.117Z',
+      trialEnd: '2019-12-27T18:11:19.117Z',
+    });
+  });
+
+  // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
     const responsePromise = client.subscriptions.retrieve('id');
     const rawResponse = await responsePromise.asResponse();

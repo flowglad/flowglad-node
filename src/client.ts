@@ -112,6 +112,8 @@ import {
   SubscriptionAdjustResponse,
   SubscriptionCancelParams,
   SubscriptionCancelResponse,
+  SubscriptionCreateParams,
+  SubscriptionCreateResponse,
   SubscriptionListParams,
   SubscriptionListResponse,
   SubscriptionRetrieveResponse,
@@ -917,10 +919,12 @@ export declare namespace Flowglad {
 
   export {
     Subscriptions as Subscriptions,
+    type SubscriptionCreateResponse as SubscriptionCreateResponse,
     type SubscriptionRetrieveResponse as SubscriptionRetrieveResponse,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
     type SubscriptionCancelResponse as SubscriptionCancelResponse,
+    type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionListParams as SubscriptionListParams,
     type SubscriptionAdjustParams as SubscriptionAdjustParams,
     type SubscriptionCancelParams as SubscriptionCancelParams,

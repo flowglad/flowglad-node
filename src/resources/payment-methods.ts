@@ -62,16 +62,26 @@ export namespace PaymentMethodRetrieveResponse {
 
     export namespace BillingDetails {
       export interface Address {
-        address?: Address.Address | null;
+        city: string | null;
 
-        name?: string | null;
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+
+        address?: Address.Address | null;
       }
 
       export namespace Address {
         export interface Address {
           city: string | null;
 
-          country: string | null;
+          country: string;
 
           line1: string | null;
 
@@ -132,16 +142,26 @@ export namespace PaymentMethodListResponse {
 
     export namespace BillingDetails {
       export interface Address {
-        address?: Address.Address | null;
+        city: string | null;
 
-        name?: string | null;
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+
+        address?: Address.Address | null;
       }
 
       export namespace Address {
         export interface Address {
           city: string | null;
 
-          country: string | null;
+          country: string;
 
           line1: string | null;
 
