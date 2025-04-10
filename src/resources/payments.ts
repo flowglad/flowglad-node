@@ -1463,8 +1463,8 @@ export interface PaymentListParams {
 
 export interface PaymentRefundParams {
   /**
-   * The amount to refund. If not provided, the entire payment amount will be
-   * refunded. Cannot exceed the amount of the associated payment.
+   * The amount to refund. If not provided, the entire amount will be refunded.
+   * Cannot exceed the amount of the associated payment.
    */
   partialAmount?: number;
 }

@@ -33,7 +33,7 @@ describe('resource subscriptions', () => {
       name: 'name',
       quantity: 0,
       startDate: '2019-12-27T18:11:19.117Z',
-      trialEnd: '2019-12-27T18:11:19.117Z',
+      trialEnd: 0,
     });
   });
 

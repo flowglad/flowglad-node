@@ -506,10 +506,10 @@ export interface SubscriptionCreateParams {
   startDate?: string;
 
   /**
-   * The time when the trial ends. If not provided, defaults to startDate + the
-   * associated price's trialPeriodDays
+   * Epoch time in milliseconds of when the trial ends. If not provided, defaults to
+   * startDate + the associated price's trialPeriodDays
    */
-  trialEnd?: string;
+  trialEnd?: number;
 }
 
 export interface SubscriptionListParams {
