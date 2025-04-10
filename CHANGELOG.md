@@ -1,4 +1,12 @@
 # Changelog
+## 0.19.2 (2025-04-10)
+
+Full Changelog: [v0.19.1...v0.19.2](https://github.com/flowglad/flowglad-node/compare/v0.19.1...v0.19.2)
+
+### Bug Fixes
+
+* **api:** fix trialEnd timestamp issue ([9f75ccf](https://github.com/flowglad/flowglad-node/commit/9f75ccfdcfe1686c1e5d8835a35891fb87cd4151))
+
 ## 0.19.1 (2025-04-10)
 
 Full Changelog: [v0.19.0...v0.19.1](https://github.com/flowglad/flowglad-node/compare/v0.19.0...v0.19.1)
