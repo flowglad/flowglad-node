@@ -128,11 +128,13 @@ Types:
 
 - <code><a href="./src/resources/payments.ts">PaymentRetrieveResponse</a></code>
 - <code><a href="./src/resources/payments.ts">PaymentListResponse</a></code>
+- <code><a href="./src/resources/payments.ts">PaymentRefundResponse</a></code>
 
 Methods:
 
 - <code title="get /api/v1/payments/{id}">client.payments.<a href="./src/resources/payments.ts">retrieve</a>(id) -> PaymentRetrieveResponse</code>
 - <code title="get /api/v1/payments">client.payments.<a href="./src/resources/payments.ts">list</a>({ ...params }) -> PaymentListResponse</code>
+- <code title="post /api/v1/payments/{id}/refund">client.payments.<a href="./src/resources/payments.ts">refund</a>(id, { ...params }) -> PaymentRefundResponse</code>
 
 # PaymentMethods
 

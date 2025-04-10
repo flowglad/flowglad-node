@@ -66,7 +66,9 @@ export {
   Payments,
   type PaymentRetrieveResponse,
   type PaymentListResponse,
+  type PaymentRefundResponse,
   type PaymentListParams,
+  type PaymentRefundParams,
 } from './payments';
 export {
   Prices,

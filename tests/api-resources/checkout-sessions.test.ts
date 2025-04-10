@@ -40,7 +40,6 @@ describe('resource checkoutSessions', () => {
         outputMetadata: { foo: 'bar' },
         outputName: 'outputName',
         quantity: 0,
-        targetSubscriptionId: 'targetSubscriptionId',
       },
     });
   });
