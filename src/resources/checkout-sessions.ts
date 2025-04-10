@@ -1179,9 +1179,7 @@ export namespace CheckoutSessionCreateParams {
     quantity?: number;
 
     /**
-     * The id of the price to purchase. Required if the checkout session is of type
-     * `product`. Ignored if the checkout session is of type `purchase`, `invoice`, or
-     * `add_payment_method`.
+     * The ID of the price the customer shall purchase.
      */
     priceId: string;
   }
