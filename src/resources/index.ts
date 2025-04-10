@@ -89,10 +89,12 @@ export {
 } from './products';
 export {
   Subscriptions,
+  type SubscriptionCreateResponse,
   type SubscriptionRetrieveResponse,
   type SubscriptionListResponse,
   type SubscriptionAdjustResponse,
   type SubscriptionCancelResponse,
+  type SubscriptionCreateParams,
   type SubscriptionListParams,
   type SubscriptionAdjustParams,
   type SubscriptionCancelParams,
