@@ -85,6 +85,8 @@ import {
 import {
   PaymentListParams,
   PaymentListResponse,
+  PaymentRefundParams,
+  PaymentRefundResponse,
   PaymentRetrieveResponse,
   Payments,
 } from './resources/payments';
@@ -907,7 +909,9 @@ export declare namespace Flowglad {
     Payments as Payments,
     type PaymentRetrieveResponse as PaymentRetrieveResponse,
     type PaymentListResponse as PaymentListResponse,
+    type PaymentRefundResponse as PaymentRefundResponse,
     type PaymentListParams as PaymentListParams,
+    type PaymentRefundParams as PaymentRefundParams,
   };
 
   export {
