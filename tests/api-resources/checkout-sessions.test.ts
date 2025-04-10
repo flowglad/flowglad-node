@@ -33,10 +33,10 @@ describe('resource checkoutSessions', () => {
       checkoutSession: {
         cancelUrl: 'cancelUrl',
         customerExternalId: 'customerExternalId',
-        priceId: 'priceId',
         successUrl: 'successUrl',
         outputMetadata: { foo: 'bar' },
         outputName: 'outputName',
+        priceId: 'priceId',
         quantity: 0,
       },
     });

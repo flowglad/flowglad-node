@@ -872,7 +872,14 @@ export interface CheckoutSessionCreateParams {
     /**
      * The ID of the price the customer shall purchase
      */
-    priceId: string;
+    targetSubscriptionId?: string;
+
+    /**
+     * The id of the price to purchase. Required if the checkout session is of type
+     * `product`. Ignored if the checkout session is of type `purchase`, `invoice`, or
+     * `add_payment_method`.
+     */
+    priceId?: string;
   };
 }
 
