@@ -932,8 +932,6 @@ export namespace ProductCreateParams {
 
     name: string | null;
 
-    productId: string;
-
     /**
      * safeZodPositiveInteger
      */
@@ -964,8 +962,6 @@ export namespace ProductCreateParams {
     isDefault: boolean;
 
     name: string | null;
-
-    productId: string;
 
     type: 'single_payment';
 
@@ -1013,8 +1009,6 @@ export namespace ProductCreateParams {
     isDefault: boolean;
 
     name: string | null;
-
-    productId: string;
 
     /**
      * safeZodPositiveInteger

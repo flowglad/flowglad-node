@@ -64,8 +64,6 @@ export namespace UsageMeterCreateResponse {
 
     name: string;
 
-    productId: string;
-
     updatedAt: string | null;
   }
 }
@@ -92,8 +90,6 @@ export namespace UsageMeterRetrieveResponse {
 
     name: string;
 
-    productId: string;
-
     updatedAt: string | null;
   }
 }
@@ -119,8 +115,6 @@ export namespace UsageMeterUpdateResponse {
     createdAt: string;
 
     name: string;
-
-    productId: string;
 
     updatedAt: string | null;
   }
@@ -156,8 +150,6 @@ export namespace UsageMeterListResponse {
 
     name: string;
 
-    productId: string;
-
     updatedAt: string | null;
   }
 }
@@ -171,8 +163,6 @@ export namespace UsageMeterCreateParams {
     catalogId: string;
 
     name: string;
-
-    productId: string;
 
     /**
      * The type of aggregation to perform on the usage meter. Defaults to "sum", which
@@ -203,8 +193,6 @@ export namespace UsageMeterUpdateParams {
     createdAt?: string;
 
     name?: string;
-
-    productId?: string;
 
     updatedAt?: string | null;
   }

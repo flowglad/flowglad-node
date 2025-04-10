@@ -16,6 +16,7 @@ describe('resource checkoutSessions', () => {
         customerExternalId: 'customerExternalId',
         priceId: 'priceId',
         successUrl: 'successUrl',
+        type: 'product',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -34,10 +35,12 @@ describe('resource checkoutSessions', () => {
         cancelUrl: 'cancelUrl',
         customerExternalId: 'customerExternalId',
         successUrl: 'successUrl',
+        type: 'product',
         outputMetadata: { foo: 'bar' },
         outputName: 'outputName',
         priceId: 'priceId',
         quantity: 0,
+        targetSubscriptionId: 'targetSubscriptionId',
       },
     });
   });

@@ -11,7 +11,7 @@ describe('resource usageMeters', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', productId: 'productId' },
+      usageMeter: { catalogId: 'catalogId', name: 'name' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,7 +25,7 @@ describe('resource usageMeters', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
     const response = await client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', productId: 'productId', aggregationType: 'sum' },
+      usageMeter: { catalogId: 'catalogId', name: 'name', aggregationType: 'sum' },
     });
   });
 
@@ -61,7 +61,6 @@ describe('resource usageMeters', () => {
         aggregationType: 'sum',
         createdAt: '2019-12-27T18:11:19.117Z',
         name: 'name',
-        productId: 'productId',
         updatedAt: '2019-12-27T18:11:19.117Z',
       },
     });

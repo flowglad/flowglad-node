@@ -150,6 +150,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/subscriptions.ts">SubscriptionCreateResponse</a></code>
 - <code><a href="./src/resources/subscriptions.ts">SubscriptionRetrieveResponse</a></code>
 - <code><a href="./src/resources/subscriptions.ts">SubscriptionListResponse</a></code>
 - <code><a href="./src/resources/subscriptions.ts">SubscriptionAdjustResponse</a></code>
@@ -157,6 +158,7 @@ Types:
 
 Methods:
 
+- <code title="post /api/v1/subscriptions">client.subscriptions.<a href="./src/resources/subscriptions.ts">create</a>({ ...params }) -> SubscriptionCreateResponse</code>
 - <code title="get /api/v1/subscriptions/{id}">client.subscriptions.<a href="./src/resources/subscriptions.ts">retrieve</a>(id) -> SubscriptionRetrieveResponse</code>
 - <code title="get /api/v1/subscriptions">client.subscriptions.<a href="./src/resources/subscriptions.ts">list</a>({ ...params }) -> SubscriptionListResponse</code>
 - <code title="post /api/v1/subscriptions/{id}/adjust">client.subscriptions.<a href="./src/resources/subscriptions.ts">adjust</a>(id, { ...params }) -> SubscriptionAdjustResponse</code>

@@ -1,4 +1,25 @@
 # Changelog
+## 0.19.0 (2025-04-10)
+
+Full Changelog: [v0.18.3...v0.19.0](https://github.com/flowglad/flowglad-node/compare/v0.18.3...v0.19.0)
+
+### Features
+
+* **api:** create subscription ([a7966f4](https://github.com/flowglad/flowglad-node/commit/a7966f49eb35a9d7ab3fbe71da61c7aa85b8ca8e))
+
+
+### Bug Fixes
+
+* **client:** send all configured auth headers ([#161](https://github.com/flowglad/flowglad-node/issues/161)) ([b3d6785](https://github.com/flowglad/flowglad-node/commit/b3d6785ee24ed8ed9e68b098cb98409147ab6bfb))
+* **mcp:** remove unused tools.ts ([#159](https://github.com/flowglad/flowglad-node/issues/159)) ([6d71ce3](https://github.com/flowglad/flowglad-node/commit/6d71ce3b5d5a2fb97a13cb28f92af4132645dfd5))
+
+
+### Chores
+
+* **internal:** improve node 18 shims ([ea417c1](https://github.com/flowglad/flowglad-node/commit/ea417c1b26ae924d6de90d1679d38478f4a4190a))
+* **internal:** reduce CI branch coverage ([cdf1059](https://github.com/flowglad/flowglad-node/commit/cdf1059418db42cc2246c9c8ffb1d9442653438e))
+* **internal:** upload builds and expand CI branch coverage ([28e6aaf](https://github.com/flowglad/flowglad-node/commit/28e6aaff6edf957144169feba4c3041f4afef6cd))
+
 ## 0.18.3 (2025-04-05)
 
 Full Changelog: [v0.18.2...v0.18.3](https://github.com/flowglad/flowglad-node/compare/v0.18.2...v0.18.3)
