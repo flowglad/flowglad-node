@@ -1174,9 +1174,16 @@ export namespace CheckoutSessionCreateParams {
 
     /**
      * The quantity of the purchase or subscription created when this checkout session
-     * succeeds. Ignored if the checkout session is of type `invoice`.
+     * succeeds. Ignored if the checkout session is of type `invoice`. If not provided, defaults to 1.
      */
     quantity?: number;
+
+    /**
+     * The id of the price to purchase. Required if the checkout session is of type
+     * `product`. Ignored if the checkout session is of type `purchase`, `invoice`, or
+     * `add_payment_method`.
+     */
+    priceId: string;
   }
 
   export interface AddPaymentMethodCheckoutSession {
