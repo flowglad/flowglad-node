@@ -1,4 +1,17 @@
 # Changelog
+## 0.19.3 (2025-04-15)
+
+Full Changelog: [v0.19.2...v0.19.3](https://github.com/flowglad/flowglad-node/compare/v0.19.2...v0.19.3)
+
+### Bug Fixes
+
+* **internal:** fix file uploads in node 18 jest ([12f59fa](https://github.com/flowglad/flowglad-node/commit/12f59fa1b535d03a25e3f80b8dfbdf1056939156))
+
+
+### Chores
+
+* **client:** minor internal fixes ([5d814c8](https://github.com/flowglad/flowglad-node/commit/5d814c82736e924d8fdbb1fb06319566b822e2b6))
+
 ## 0.19.2 (2025-04-10)
 
 Full Changelog: [v0.19.1...v0.19.2](https://github.com/flowglad/flowglad-node/compare/v0.19.1...v0.19.2)
