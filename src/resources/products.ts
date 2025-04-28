@@ -55,6 +55,8 @@ export namespace ProductCreateResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     description: string | null;
 
     displayFeatures: Array<Product.DisplayFeature> | null;
@@ -75,6 +77,8 @@ export namespace ProductCreateResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+
+    updatedByCommit: string | null;
   }
 
   export namespace Product {
@@ -99,6 +103,8 @@ export interface ProductRetrieveResponse {
    * safeZodDate
    */
   createdAt: (string & {}) | string;
+
+  createdByCommit: string | null;
 
   /**
    * The default price for the product. If no price is explicitly set as default,
@@ -135,6 +141,8 @@ export interface ProductRetrieveResponse {
    * safeZodDate
    */
   updatedAt: (string & {}) | string;
+
+  updatedByCommit: string | null;
 }
 
 export namespace ProductRetrieveResponse {
@@ -148,6 +156,8 @@ export namespace ProductRetrieveResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -316,6 +326,8 @@ export namespace ProductRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
   }
 
@@ -329,6 +341,8 @@ export namespace ProductRetrieveResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -480,6 +494,8 @@ export namespace ProductRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
 
     /**
@@ -512,6 +528,8 @@ export namespace ProductRetrieveResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -674,6 +692,8 @@ export namespace ProductRetrieveResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
@@ -706,6 +726,8 @@ export namespace ProductRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     currency:
       | 'USD'
       | 'AED'
@@ -873,6 +895,8 @@ export namespace ProductRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
   }
 
@@ -886,6 +910,8 @@ export namespace ProductRetrieveResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1037,6 +1063,8 @@ export namespace ProductRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
 
     /**
@@ -1069,6 +1097,8 @@ export namespace ProductRetrieveResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1232,6 +1262,8 @@ export namespace ProductRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
@@ -1262,6 +1294,8 @@ export namespace ProductUpdateResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     description: string | null;
 
     displayFeatures: Array<Product.DisplayFeature> | null;
@@ -1282,6 +1316,8 @@ export namespace ProductUpdateResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+
+    updatedByCommit: string | null;
   }
 
   export namespace Product {
@@ -1320,6 +1356,8 @@ export namespace ProductListResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     description: string | null;
 
     displayFeatures: Array<Data.DisplayFeature> | null;
@@ -1340,6 +1378,8 @@ export namespace ProductListResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string;
+
+    updatedByCommit: string | null;
   }
 
   export namespace Data {
@@ -1446,6 +1486,8 @@ export namespace ProductCreateParams {
   export interface UnionMember2 {
     active: boolean;
 
+    createdByCommit: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -1465,6 +1507,8 @@ export namespace ProductCreateParams {
     type: 'usage';
 
     unitPrice: number;
+
+    updatedByCommit: string | null;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
@@ -1508,19 +1552,55 @@ export namespace ProductCreateParams {
 }
 
 export interface ProductUpdateParams {
+  product: ProductUpdateParams.Product;
+
   /**
    * A price record, which describes a price for a product. Products can have
    * multiple prices.
    */
-  price:
+  price?:
     | ProductUpdateParams.UnionMember0
     | ProductUpdateParams.UnionMember1
     | ProductUpdateParams.UnionMember2;
-
-  product: ProductUpdateParams.Product;
 }
 
 export namespace ProductUpdateParams {
+  export interface Product {
+    id: string;
+
+    active?: boolean;
+
+    catalogId?: string;
+
+    description?: string | null;
+
+    displayFeatures?: Array<Product.DisplayFeature> | null;
+
+    externalId?: string | null;
+
+    imageURL?: string | null;
+
+    livemode?: boolean;
+
+    name?: string;
+
+    organizationId?: string;
+
+    pluralQuantityLabel?: string | null;
+
+    singularQuantityLabel?: string | null;
+  }
+
+  export namespace Product {
+    export interface DisplayFeature {
+      enabled: boolean;
+
+      label: string;
+
+      details?: string | null;
+    }
+  }
+
   /**
    * A subscription price, which will have details on the interval, default trial
    * period, and setup fee (if any).
@@ -1892,6 +1972,8 @@ export namespace ProductUpdateParams {
 
     active?: boolean;
 
+    createdByCommit?: string | null;
+
     currency?:
       | 'USD'
       | 'AED'
@@ -2057,47 +2139,13 @@ export namespace ProductUpdateParams {
 
     unitPrice?: number;
 
+    updatedByCommit?: string | null;
+
     /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId?: string;
-  }
-
-  export interface Product {
-    id: string;
-
-    active?: boolean;
-
-    catalogId?: string;
-
-    description?: string | null;
-
-    displayFeatures?: Array<Product.DisplayFeature> | null;
-
-    externalId?: string | null;
-
-    imageURL?: string | null;
-
-    livemode?: boolean;
-
-    name?: string;
-
-    organizationId?: string;
-
-    pluralQuantityLabel?: string | null;
-
-    singularQuantityLabel?: string | null;
-  }
-
-  export namespace Product {
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
   }
 }
 

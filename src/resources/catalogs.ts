@@ -65,6 +65,8 @@ export namespace CatalogCreateResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -77,6 +79,8 @@ export namespace CatalogCreateResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -93,6 +97,8 @@ export namespace CatalogRetrieveResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -107,6 +113,8 @@ export namespace CatalogRetrieveResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
 
     usageMeters: Array<Catalog.UsageMeter>;
   }
@@ -123,6 +131,8 @@ export namespace CatalogRetrieveResponse {
        * safeZodDate
        */
       createdAt: (string & {}) | string;
+
+      createdByCommit: string | null;
 
       /**
        * The default price for the product. If no price is explicitly set as default,
@@ -152,6 +162,8 @@ export namespace CatalogRetrieveResponse {
        * safeZodDate
        */
       updatedAt: (string & {}) | string;
+
+      updatedByCommit: string | null;
     }
 
     export namespace Product {
@@ -165,6 +177,8 @@ export namespace CatalogRetrieveResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -333,6 +347,8 @@ export namespace CatalogRetrieveResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -346,6 +362,8 @@ export namespace CatalogRetrieveResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -497,6 +515,8 @@ export namespace CatalogRetrieveResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -529,6 +549,8 @@ export namespace CatalogRetrieveResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -691,6 +713,8 @@ export namespace CatalogRetrieveResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        updatedByCommit: string | null;
 
         /**
          * The usage meter that uses this price. All usage events on that meter must be
@@ -723,6 +747,8 @@ export namespace CatalogRetrieveResponse {
 
         createdAt: string;
 
+        createdByCommit: string | null;
+
         currency:
           | 'USD'
           | 'AED'
@@ -890,6 +916,8 @@ export namespace CatalogRetrieveResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -903,6 +931,8 @@ export namespace CatalogRetrieveResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1054,6 +1084,8 @@ export namespace CatalogRetrieveResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -1086,6 +1118,8 @@ export namespace CatalogRetrieveResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1249,6 +1283,8 @@ export namespace CatalogRetrieveResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
@@ -1277,9 +1313,13 @@ export namespace CatalogRetrieveResponse {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       name: string;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 }
@@ -1297,6 +1337,8 @@ export namespace CatalogUpdateResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -1309,6 +1351,8 @@ export namespace CatalogUpdateResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -1333,6 +1377,8 @@ export namespace CatalogListResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -1345,6 +1391,8 @@ export namespace CatalogListResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -1361,6 +1409,8 @@ export namespace CatalogCloneResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -1375,6 +1425,8 @@ export namespace CatalogCloneResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
 
     usageMeters: Array<Catalog.UsageMeter>;
   }
@@ -1391,6 +1443,8 @@ export namespace CatalogCloneResponse {
        * safeZodDate
        */
       createdAt: (string & {}) | string;
+
+      createdByCommit: string | null;
 
       /**
        * The default price for the product. If no price is explicitly set as default,
@@ -1420,6 +1474,8 @@ export namespace CatalogCloneResponse {
        * safeZodDate
        */
       updatedAt: (string & {}) | string;
+
+      updatedByCommit: string | null;
     }
 
     export namespace Product {
@@ -1433,6 +1489,8 @@ export namespace CatalogCloneResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1601,6 +1659,8 @@ export namespace CatalogCloneResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -1614,6 +1674,8 @@ export namespace CatalogCloneResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1765,6 +1827,8 @@ export namespace CatalogCloneResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -1797,6 +1861,8 @@ export namespace CatalogCloneResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1959,6 +2025,8 @@ export namespace CatalogCloneResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        updatedByCommit: string | null;
 
         /**
          * The usage meter that uses this price. All usage events on that meter must be
@@ -1991,6 +2059,8 @@ export namespace CatalogCloneResponse {
 
         createdAt: string;
 
+        createdByCommit: string | null;
+
         currency:
           | 'USD'
           | 'AED'
@@ -2158,6 +2228,8 @@ export namespace CatalogCloneResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -2171,6 +2243,8 @@ export namespace CatalogCloneResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -2322,6 +2396,8 @@ export namespace CatalogCloneResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -2354,6 +2430,8 @@ export namespace CatalogCloneResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -2517,6 +2595,8 @@ export namespace CatalogCloneResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
@@ -2545,9 +2625,13 @@ export namespace CatalogCloneResponse {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       name: string;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 }
@@ -2565,6 +2649,8 @@ export namespace CatalogRetrieveDefaultResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -2579,6 +2665,8 @@ export namespace CatalogRetrieveDefaultResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
 
     usageMeters: Array<Catalog.UsageMeter>;
   }
@@ -2595,6 +2683,8 @@ export namespace CatalogRetrieveDefaultResponse {
        * safeZodDate
        */
       createdAt: (string & {}) | string;
+
+      createdByCommit: string | null;
 
       /**
        * The default price for the product. If no price is explicitly set as default,
@@ -2624,6 +2714,8 @@ export namespace CatalogRetrieveDefaultResponse {
        * safeZodDate
        */
       updatedAt: (string & {}) | string;
+
+      updatedByCommit: string | null;
     }
 
     export namespace Product {
@@ -2637,6 +2729,8 @@ export namespace CatalogRetrieveDefaultResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -2805,6 +2899,8 @@ export namespace CatalogRetrieveDefaultResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -2818,6 +2914,8 @@ export namespace CatalogRetrieveDefaultResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -2969,6 +3067,8 @@ export namespace CatalogRetrieveDefaultResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -3001,6 +3101,8 @@ export namespace CatalogRetrieveDefaultResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -3163,6 +3265,8 @@ export namespace CatalogRetrieveDefaultResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        updatedByCommit: string | null;
 
         /**
          * The usage meter that uses this price. All usage events on that meter must be
@@ -3195,6 +3299,8 @@ export namespace CatalogRetrieveDefaultResponse {
 
         createdAt: string;
 
+        createdByCommit: string | null;
+
         currency:
           | 'USD'
           | 'AED'
@@ -3362,6 +3468,8 @@ export namespace CatalogRetrieveDefaultResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -3375,6 +3483,8 @@ export namespace CatalogRetrieveDefaultResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -3526,6 +3636,8 @@ export namespace CatalogRetrieveDefaultResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -3558,6 +3670,8 @@ export namespace CatalogRetrieveDefaultResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -3721,6 +3835,8 @@ export namespace CatalogRetrieveDefaultResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
@@ -3749,9 +3865,13 @@ export namespace CatalogRetrieveDefaultResponse {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       name: string;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 }

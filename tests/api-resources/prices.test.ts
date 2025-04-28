@@ -13,12 +13,9 @@ describe('resource prices', () => {
     const responsePromise = client.prices.create({
       price: {
         active: true,
-        currency: 'USD',
-        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
-        livemode: true,
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,
@@ -42,12 +39,9 @@ describe('resource prices', () => {
     const response = await client.prices.create({
       price: {
         active: true,
-        currency: 'USD',
-        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
-        livemode: true,
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,
@@ -78,12 +72,9 @@ describe('resource prices', () => {
         id: 'id',
         type: 'subscription',
         active: true,
-        currency: 'USD',
-        externalId: 'externalId',
         intervalCount: 0,
         intervalUnit: 'day',
         isDefault: true,
-        livemode: true,
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,

@@ -71,6 +71,8 @@ export namespace DiscountCreateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'once';
 
     livemode: boolean;
@@ -82,6 +84,8 @@ export namespace DiscountCreateResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember1 {
@@ -100,6 +104,8 @@ export namespace DiscountCreateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'number_of_payments';
 
     livemode: boolean;
@@ -114,6 +120,8 @@ export namespace DiscountCreateResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember2 {
@@ -132,6 +140,8 @@ export namespace DiscountCreateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'forever';
 
     livemode: boolean;
@@ -143,6 +153,8 @@ export namespace DiscountCreateResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -175,6 +187,8 @@ export namespace DiscountRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'once';
 
     livemode: boolean;
@@ -186,6 +200,8 @@ export namespace DiscountRetrieveResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember1 {
@@ -204,6 +220,8 @@ export namespace DiscountRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'number_of_payments';
 
     livemode: boolean;
@@ -218,6 +236,8 @@ export namespace DiscountRetrieveResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember2 {
@@ -236,6 +256,8 @@ export namespace DiscountRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'forever';
 
     livemode: boolean;
@@ -247,6 +269,8 @@ export namespace DiscountRetrieveResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -279,6 +303,8 @@ export namespace DiscountUpdateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'once';
 
     livemode: boolean;
@@ -290,6 +316,8 @@ export namespace DiscountUpdateResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember1 {
@@ -308,6 +336,8 @@ export namespace DiscountUpdateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'number_of_payments';
 
     livemode: boolean;
@@ -322,6 +352,8 @@ export namespace DiscountUpdateResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember2 {
@@ -340,6 +372,8 @@ export namespace DiscountUpdateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'forever';
 
     livemode: boolean;
@@ -351,6 +385,8 @@ export namespace DiscountUpdateResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -385,6 +421,8 @@ export namespace DiscountListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'once';
 
     livemode: boolean;
@@ -396,6 +434,8 @@ export namespace DiscountListResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember1 {
@@ -414,6 +454,8 @@ export namespace DiscountListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'number_of_payments';
 
     livemode: boolean;
@@ -428,6 +470,8 @@ export namespace DiscountListResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface UnionMember2 {
@@ -446,6 +490,8 @@ export namespace DiscountListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     duration: 'forever';
 
     livemode: boolean;
@@ -457,6 +503,8 @@ export namespace DiscountListResponse {
     organizationId: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -579,6 +627,8 @@ export namespace DiscountUpdateParams {
 
     createdAt?: string;
 
+    createdByCommit?: string | null;
+
     livemode?: boolean;
 
     name?: string;
@@ -586,6 +636,8 @@ export namespace DiscountUpdateParams {
     organizationId?: string;
 
     updatedAt?: string | null;
+
+    updatedByCommit?: string | null;
   }
 
   export interface UnionMember1 {
@@ -611,6 +663,8 @@ export namespace DiscountUpdateParams {
 
     createdAt?: string;
 
+    createdByCommit?: string | null;
+
     livemode?: boolean;
 
     name?: string;
@@ -618,6 +672,8 @@ export namespace DiscountUpdateParams {
     organizationId?: string;
 
     updatedAt?: string | null;
+
+    updatedByCommit?: string | null;
   }
 
   export interface UnionMember2 {
@@ -640,6 +696,8 @@ export namespace DiscountUpdateParams {
 
     createdAt?: string;
 
+    createdByCommit?: string | null;
+
     livemode?: boolean;
 
     name?: string;
@@ -647,6 +705,8 @@ export namespace DiscountUpdateParams {
     organizationId?: string;
 
     updatedAt?: string | null;
+
+    updatedByCommit?: string | null;
   }
 }
 

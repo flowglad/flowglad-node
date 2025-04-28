@@ -29,6 +29,8 @@ export interface InvoiceLineItemRetrieveResponse {
 
   createdAt: string;
 
+  createdByCommit: string | null;
+
   description: string | null;
 
   invoiceId: string;
@@ -45,6 +47,8 @@ export interface InvoiceLineItemRetrieveResponse {
   quantity: number;
 
   updatedAt: string | null;
+
+  updatedByCommit: string | null;
 }
 
 export interface InvoiceLineItemListResponse {
@@ -65,6 +69,8 @@ export namespace InvoiceLineItemListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     description: string | null;
 
     invoiceId: string;
@@ -81,6 +87,8 @@ export namespace InvoiceLineItemListResponse {
     quantity: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 

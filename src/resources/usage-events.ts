@@ -44,7 +44,7 @@ export namespace UsageEventCreateResponse {
 
     createdAt: string;
 
-    customerId: string;
+    createdByCommit: string | null;
 
     priceId: string;
 
@@ -64,14 +64,14 @@ export namespace UsageEventCreateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     /**
-     * The date the usage occurred. Currently should always the current date. If the
-     * usage occurs in a date that is outside of the current billing period, the usage
-     * will still be attached to the current billing peirod.
+     * The date the usage occurred. If the usage occurs in a date that is outside of
+     * the current billing period, the usage will still be attached to the current
+     * billing peirod.
      */
     usageDate: string;
-
-    usageMeterId: string;
   }
 }
 
@@ -87,7 +87,7 @@ export namespace UsageEventRetrieveResponse {
 
     createdAt: string;
 
-    customerId: string;
+    createdByCommit: string | null;
 
     priceId: string;
 
@@ -107,14 +107,14 @@ export namespace UsageEventRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     /**
-     * The date the usage occurred. Currently should always the current date. If the
-     * usage occurs in a date that is outside of the current billing period, the usage
-     * will still be attached to the current billing peirod.
+     * The date the usage occurred. If the usage occurs in a date that is outside of
+     * the current billing period, the usage will still be attached to the current
+     * billing peirod.
      */
     usageDate: string;
-
-    usageMeterId: string;
   }
 }
 
@@ -130,7 +130,7 @@ export namespace UsageEventUpdateResponse {
 
     createdAt: string;
 
-    customerId: string;
+    createdByCommit: string | null;
 
     priceId: string;
 
@@ -150,14 +150,14 @@ export namespace UsageEventUpdateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     /**
-     * The date the usage occurred. Currently should always the current date. If the
-     * usage occurs in a date that is outside of the current billing period, the usage
-     * will still be attached to the current billing peirod.
+     * The date the usage occurred. If the usage occurs in a date that is outside of
+     * the current billing period, the usage will still be attached to the current
+     * billing peirod.
      */
     usageDate: string;
-
-    usageMeterId: string;
   }
 }
 
@@ -169,8 +169,6 @@ export namespace UsageEventCreateParams {
   export interface UsageEvent {
     amount: number;
 
-    customerId: string;
-
     priceId: string;
 
     subscriptionId: string;
@@ -181,8 +179,6 @@ export namespace UsageEventCreateParams {
      */
     transactionId: string;
 
-    usageMeterId: string;
-
     /**
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
@@ -190,11 +186,10 @@ export namespace UsageEventCreateParams {
     properties?: Record<string, unknown> | null;
 
     /**
-     * The date the usage occurred. Currently should always the current date. If the
-     * usage occurs in a date that is outside of the current billing period, the usage
-     * will still be attached to the current billing peirod.
+     * The date the usage occurred in unix epoch milliseconds. If not provided, the
+     * current timestamp will be used.
      */
-    usageDate?: string;
+    usageDate?: number;
   }
 }
 
@@ -217,17 +212,10 @@ export namespace UsageEventUpdateParams {
     properties?: Record<string, unknown> | null;
 
     /**
-     * A unique identifier for the transaction. This is used to prevent duplicate usage
-     * events from being created.
+     * The date the usage occurred in unix epoch milliseconds. If not provided, the
+     * current timestamp will be used.
      */
-    transactionId?: string;
-
-    /**
-     * The date the usage occurred. Currently should always the current date. If the
-     * usage occurs in a date that is outside of the current billing period, the usage
-     * will still be attached to the current billing peirod.
-     */
-    usageDate?: string;
+    usageDate?: number;
   }
 }
 
