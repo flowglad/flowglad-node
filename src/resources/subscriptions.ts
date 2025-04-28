@@ -71,6 +71,8 @@ export namespace SubscriptionCreateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
      * or "cancellation_scheduled")
@@ -120,6 +122,8 @@ export namespace SubscriptionCreateResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -141,6 +145,8 @@ export namespace SubscriptionRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
      * or "cancellation_scheduled")
@@ -190,6 +196,8 @@ export namespace SubscriptionRetrieveResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -219,6 +227,8 @@ export namespace SubscriptionListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
      * or "cancellation_scheduled")
@@ -268,6 +278,8 @@ export namespace SubscriptionListResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -291,6 +303,8 @@ export namespace SubscriptionAdjustResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
      * or "cancellation_scheduled")
@@ -340,6 +354,8 @@ export namespace SubscriptionAdjustResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface SubscriptionItem {
@@ -348,6 +364,8 @@ export namespace SubscriptionAdjustResponse {
     addedDate: string;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     externalId: string | null;
 
@@ -372,6 +390,8 @@ export namespace SubscriptionAdjustResponse {
     unitPrice: number | 0;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -392,6 +412,8 @@ export namespace SubscriptionCancelResponse {
     cancelScheduledAt: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
@@ -442,6 +464,8 @@ export namespace SubscriptionCancelResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -569,6 +593,8 @@ export namespace SubscriptionAdjustParams {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       externalId: string | null;
 
       livemode: boolean;
@@ -592,6 +618,8 @@ export namespace SubscriptionAdjustParams {
       unitPrice: number | 0;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 
@@ -637,6 +665,8 @@ export namespace SubscriptionAdjustParams {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       externalId: string | null;
 
       livemode: boolean;
@@ -660,6 +690,8 @@ export namespace SubscriptionAdjustParams {
       unitPrice: number | 0;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 }

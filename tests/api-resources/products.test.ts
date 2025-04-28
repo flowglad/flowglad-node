@@ -85,10 +85,7 @@ describe('resource products', () => {
 
   // skipped: tests are disabled for the time being
   test.skip('update: only required params', async () => {
-    const responsePromise = client.products.update('id', {
-      price: { id: 'id', type: 'subscription' },
-      product: { id: 'id' },
-    });
+    const responsePromise = client.products.update('id', { product: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -101,6 +98,20 @@ describe('resource products', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
     const response = await client.products.update('id', {
+      product: {
+        id: 'id',
+        active: true,
+        catalogId: 'catalogId',
+        description: 'description',
+        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
+        externalId: 'externalId',
+        imageURL: 'imageURL',
+        livemode: true,
+        name: 'name',
+        organizationId: 'organizationId',
+        pluralQuantityLabel: 'pluralQuantityLabel',
+        singularQuantityLabel: 'singularQuantityLabel',
+      },
       price: {
         id: 'id',
         type: 'subscription',
@@ -117,20 +128,6 @@ describe('resource products', () => {
         trialPeriodDays: 0,
         unitPrice: 0,
         usageMeterId: 'usageMeterId',
-      },
-      product: {
-        id: 'id',
-        active: true,
-        catalogId: 'catalogId',
-        description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
-        externalId: 'externalId',
-        imageURL: 'imageURL',
-        livemode: true,
-        name: 'name',
-        organizationId: 'organizationId',
-        pluralQuantityLabel: 'pluralQuantityLabel',
-        singularQuantityLabel: 'singularQuantityLabel',
       },
     });
   });

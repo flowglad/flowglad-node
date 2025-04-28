@@ -95,6 +95,8 @@ export namespace CheckoutSessionCreateResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -111,7 +113,7 @@ export namespace CheckoutSessionCreateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -132,7 +134,9 @@ export namespace CheckoutSessionCreateResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -180,6 +184,8 @@ export namespace CheckoutSessionCreateResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -196,7 +202,7 @@ export namespace CheckoutSessionCreateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -217,7 +223,9 @@ export namespace CheckoutSessionCreateResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -264,6 +272,8 @@ export namespace CheckoutSessionCreateResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -280,7 +290,7 @@ export namespace CheckoutSessionCreateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -301,7 +311,9 @@ export namespace CheckoutSessionCreateResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -354,6 +366,8 @@ export namespace CheckoutSessionCreateResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     /**
@@ -373,6 +387,8 @@ export namespace CheckoutSessionCreateResponse {
   export namespace AddPaymentMethodCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
+
+      email?: string;
 
       firstName?: string;
 
@@ -396,6 +412,8 @@ export namespace CheckoutSessionCreateResponse {
         postal_code: string | null;
 
         state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -462,6 +480,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -478,7 +498,7 @@ export namespace CheckoutSessionRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -499,7 +519,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -547,6 +569,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -563,7 +587,7 @@ export namespace CheckoutSessionRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -584,7 +608,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -631,6 +657,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -647,7 +675,7 @@ export namespace CheckoutSessionRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -668,7 +696,9 @@ export namespace CheckoutSessionRetrieveResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -721,6 +751,8 @@ export namespace CheckoutSessionRetrieveResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     /**
@@ -740,6 +772,8 @@ export namespace CheckoutSessionRetrieveResponse {
   export namespace AddPaymentMethodCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
+
+      email?: string;
 
       firstName?: string;
 
@@ -763,6 +797,8 @@ export namespace CheckoutSessionRetrieveResponse {
         postal_code: string | null;
 
         state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -829,6 +865,8 @@ export namespace CheckoutSessionListResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -845,7 +883,7 @@ export namespace CheckoutSessionListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -866,7 +904,9 @@ export namespace CheckoutSessionListResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -914,6 +954,8 @@ export namespace CheckoutSessionListResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -930,7 +972,7 @@ export namespace CheckoutSessionListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -951,7 +993,9 @@ export namespace CheckoutSessionListResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -998,6 +1042,8 @@ export namespace CheckoutSessionListResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     targetSubscriptionId: 'null' | null;
@@ -1014,7 +1060,7 @@ export namespace CheckoutSessionListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -1035,7 +1081,9 @@ export namespace CheckoutSessionListResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -1088,6 +1136,8 @@ export namespace CheckoutSessionListResponse {
 
     quantity: number;
 
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
     successUrl: string | null;
 
     /**
@@ -1107,6 +1157,8 @@ export namespace CheckoutSessionListResponse {
   export namespace AddPaymentMethodCheckoutSession {
     export interface BillingAddress {
       address: BillingAddress.Address;
+
+      email?: string;
 
       firstName?: string;
 
@@ -1130,6 +1182,8 @@ export namespace CheckoutSessionListResponse {
         postal_code: string | null;
 
         state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -1200,12 +1254,6 @@ export namespace CheckoutSessionCreateParams {
      */
     successUrl: string;
 
-    /**
-     * The id of the subscription that the payment method will be added to as the
-     * default payment method.
-     */
-    targetSubscriptionId: string;
-
     type: 'add_payment_method';
 
     /**
@@ -1219,6 +1267,12 @@ export namespace CheckoutSessionCreateParams {
      * succeeds. Ignored if the checkout session is of type `invoice`.
      */
     outputName?: string;
+
+    /**
+     * The id of the subscription that the payment method will be added to as the
+     * default payment method.
+     */
+    targetSubscriptionId?: string;
   }
 }
 

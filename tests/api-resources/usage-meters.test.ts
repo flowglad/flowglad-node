@@ -60,8 +60,10 @@ describe('resource usageMeters', () => {
         id: 'id',
         aggregationType: 'sum',
         createdAt: '2019-12-27T18:11:19.117Z',
+        createdByCommit: 'createdByCommit',
         name: 'name',
         updatedAt: '2019-12-27T18:11:19.117Z',
+        updatedByCommit: 'updatedByCommit',
       },
     });
   });
