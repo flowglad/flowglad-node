@@ -54,6 +54,8 @@ export namespace PriceCreateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     currency:
       | 'USD'
       | 'AED'
@@ -224,6 +226,8 @@ export namespace PriceCreateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
   }
 
@@ -237,6 +241,8 @@ export namespace PriceCreateResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -391,6 +397,8 @@ export namespace PriceCreateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
 
     /**
@@ -423,6 +431,8 @@ export namespace PriceCreateResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -588,6 +598,8 @@ export namespace PriceCreateResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
@@ -625,6 +637,8 @@ export namespace PriceUpdateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     currency:
       | 'USD'
       | 'AED'
@@ -795,6 +809,8 @@ export namespace PriceUpdateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
   }
 
@@ -808,6 +824,8 @@ export namespace PriceUpdateResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -962,6 +980,8 @@ export namespace PriceUpdateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
 
     /**
@@ -994,6 +1014,8 @@ export namespace PriceUpdateResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1159,6 +1181,8 @@ export namespace PriceUpdateResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
@@ -1199,6 +1223,8 @@ export namespace PriceListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     currency:
       | 'USD'
       | 'AED'
@@ -1369,6 +1395,8 @@ export namespace PriceListResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
   }
 
@@ -1382,6 +1410,8 @@ export namespace PriceListResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1536,6 +1566,8 @@ export namespace PriceListResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     usageMeterId: string | null;
 
     /**
@@ -1568,6 +1600,8 @@ export namespace PriceListResponse {
     active: boolean;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1733,6 +1767,8 @@ export namespace PriceListResponse {
     unitPrice: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
@@ -1749,8 +1785,8 @@ export namespace PriceListResponse {
 
 export interface PriceCreateParams {
   /**
-   * A price record, which describes a price for a product. Products can have
-   * multiple prices.
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
    */
   price:
     | PriceCreateParams.SubscriptionPrice
@@ -1766,144 +1802,6 @@ export namespace PriceCreateParams {
   export interface SubscriptionPrice {
     active: boolean;
 
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId: string | null;
-
     /**
      * safeZodPositiveInteger
      */
@@ -1912,8 +1810,6 @@ export namespace PriceCreateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
-
-    livemode: boolean;
 
     name: string | null;
 
@@ -1946,147 +1842,7 @@ export namespace PriceCreateParams {
   export interface SinglePaymentPrice {
     active: boolean;
 
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId: string | null;
-
     isDefault: boolean;
-
-    livemode: boolean;
 
     name: string | null;
 
@@ -2128,143 +1884,7 @@ export namespace PriceCreateParams {
   export interface UsagePrice {
     active: boolean;
 
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId: string | null;
+    createdByCommit: string | null;
 
     /**
      * safeZodPositiveInteger
@@ -2274,8 +1894,6 @@ export namespace PriceCreateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     isDefault: boolean;
-
-    livemode: boolean;
 
     name: string | null;
 
@@ -2293,6 +1911,8 @@ export namespace PriceCreateParams {
      */
     unitPrice: number;
 
+    updatedByCommit: string | null;
+
     /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
@@ -2308,8 +1928,8 @@ export namespace PriceCreateParams {
 
 export interface PriceUpdateParams {
   /**
-   * A price record, which describes a price for a product. Products can have
-   * multiple prices.
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
    */
   price:
     | PriceUpdateParams.SubscriptionPrice
@@ -2329,144 +1949,6 @@ export namespace PriceUpdateParams {
 
     active?: boolean;
 
-    currency?:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId?: string | null;
-
     /**
      * safeZodPositiveInteger
      */
@@ -2475,8 +1957,6 @@ export namespace PriceUpdateParams {
     intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
-
-    livemode?: boolean;
 
     name?: string | null;
 
@@ -2511,144 +1991,6 @@ export namespace PriceUpdateParams {
 
     active?: boolean;
 
-    currency?:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId?: string | null;
-
     /**
      * safeZodNullOrUndefined
      */
@@ -2660,8 +2002,6 @@ export namespace PriceUpdateParams {
     intervalUnit?: 'null' | null | unknown;
 
     isDefault?: boolean;
-
-    livemode?: boolean;
 
     name?: string | null;
 
@@ -2695,143 +2035,7 @@ export namespace PriceUpdateParams {
 
     active?: boolean;
 
-    currency?:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId?: string | null;
+    createdByCommit?: string | null;
 
     /**
      * safeZodPositiveInteger
@@ -2841,8 +2045,6 @@ export namespace PriceUpdateParams {
     intervalUnit?: 'day' | 'week' | 'month' | 'year';
 
     isDefault?: boolean;
-
-    livemode?: boolean;
 
     name?: string | null;
 
@@ -2862,6 +2064,8 @@ export namespace PriceUpdateParams {
      * safeZodPositiveInteger
      */
     unitPrice?: number;
+
+    updatedByCommit?: string | null;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be

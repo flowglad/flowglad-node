@@ -1,4 +1,22 @@
 # Changelog
+## 0.19.3 (2025-04-28)
+
+Full Changelog: [v0.19.2...v0.19.3](https://github.com/flowglad/flowglad-node/compare/v0.19.2...v0.19.3)
+
+### Bug Fixes
+
+* **api:** lift targetSubscriptionId on add payment method checkout session ([13835f2](https://github.com/flowglad/flowglad-node/commit/13835f24eb4ff08877e793c48f7343d6b589ac90))
+* **internal:** fix file uploads in node 18 jest ([12f59fa](https://github.com/flowglad/flowglad-node/commit/12f59fa1b535d03a25e3f80b8dfbdf1056939156))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([4c5276b](https://github.com/flowglad/flowglad-node/commit/4c5276bcf69db2a4a9c29f4b5856c8c51ba6e829))
+* **ci:** only use depot for staging repos ([0821ddd](https://github.com/flowglad/flowglad-node/commit/0821ddd52ba6416de8fdc6972a699874bcd0dcf1))
+* **client:** minor internal fixes ([5d814c8](https://github.com/flowglad/flowglad-node/commit/5d814c82736e924d8fdbb1fb06319566b822e2b6))
+* **internal:** codegen related update ([d032c38](https://github.com/flowglad/flowglad-node/commit/d032c382b347ef17e58b2e4e1f1778afc8c5d655))
+* **perf:** faster base64 decoding ([7e3a28c](https://github.com/flowglad/flowglad-node/commit/7e3a28c3e842500a6cc7c9d972a6e30ad0b660e3))
+
 ## 0.19.2 (2025-04-10)
 
 Full Changelog: [v0.19.1...v0.19.2](https://github.com/flowglad/flowglad-node/compare/v0.19.1...v0.19.2)

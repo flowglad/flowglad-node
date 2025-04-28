@@ -62,9 +62,13 @@ export namespace UsageMeterCreateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     name: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -88,9 +92,13 @@ export namespace UsageMeterRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     name: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -114,9 +122,13 @@ export namespace UsageMeterUpdateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     name: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -148,9 +160,13 @@ export namespace UsageMeterListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     name: string;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -192,9 +208,13 @@ export namespace UsageMeterUpdateParams {
 
     createdAt?: string;
 
+    createdByCommit?: string | null;
+
     name?: string;
 
     updatedAt?: string | null;
+
+    updatedByCommit?: string | null;
   }
 }
 

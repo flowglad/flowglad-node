@@ -70,6 +70,8 @@ export namespace CustomerCreateResponse {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       domain: string | null;
 
       email: string;
@@ -90,6 +92,8 @@ export namespace CustomerCreateResponse {
 
       updatedAt: string | null;
 
+      updatedByCommit: string | null;
+
       userId: string | null;
     }
 
@@ -97,7 +101,7 @@ export namespace CustomerCreateResponse {
       export interface BillingAddress {
         address: BillingAddress.Address;
 
-        name: string;
+        email?: string;
 
         firstName?: string;
 
@@ -118,7 +122,9 @@ export namespace CustomerCreateResponse {
 
           postal_code: string;
 
-          state: string;
+          state: string | null;
+
+          name?: string;
         }
       }
     }
@@ -141,6 +147,8 @@ export namespace CustomerRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     domain: string | null;
 
     email: string;
@@ -161,6 +169,8 @@ export namespace CustomerRetrieveResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     userId: string | null;
   }
 
@@ -168,7 +178,7 @@ export namespace CustomerRetrieveResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -189,7 +199,9 @@ export namespace CustomerRetrieveResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -211,6 +223,8 @@ export namespace CustomerUpdateResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     domain: string | null;
 
     email: string;
@@ -231,6 +245,8 @@ export namespace CustomerUpdateResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     userId: string | null;
   }
 
@@ -238,7 +254,7 @@ export namespace CustomerUpdateResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -259,7 +275,9 @@ export namespace CustomerUpdateResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -289,6 +307,8 @@ export namespace CustomerListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     domain: string | null;
 
     email: string;
@@ -307,11 +327,15 @@ export namespace CustomerListResponse {
 
     organizationId: string;
 
+    stackAuthHostedBillingUserId: string | null;
+
     stripeCustomerId: string | null;
 
     taxId: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
 
     userId: string | null;
   }
@@ -320,7 +344,7 @@ export namespace CustomerListResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -341,7 +365,9 @@ export namespace CustomerListResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -356,11 +382,6 @@ export interface CustomerRetrieveBillingResponse {
 
   paymentMethods: Array<CustomerRetrieveBillingResponse.PaymentMethod>;
 
-  /**
-   * A purchase record, which describes a transaction that can be associated with
-   * either a subscription or single payment price. Each purchase has a specific type
-   * that determines its behavior and required fields.
-   */
   purchases: Array<
     | CustomerRetrieveBillingResponse.SubscriptionPurchase
     | CustomerRetrieveBillingResponse.SinglePaymentPurchase
@@ -386,6 +407,8 @@ export namespace CustomerRetrieveBillingResponse {
      */
     createdAt: (string & {}) | string;
 
+    createdByCommit: string | null;
+
     isDefault: boolean;
 
     livemode: boolean;
@@ -400,6 +423,8 @@ export namespace CustomerRetrieveBillingResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    updatedByCommit: string | null;
 
     usageMeters: Array<Catalog.UsageMeter>;
   }
@@ -416,6 +441,8 @@ export namespace CustomerRetrieveBillingResponse {
        * safeZodDate
        */
       createdAt: (string & {}) | string;
+
+      createdByCommit: string | null;
 
       /**
        * The default price for the product. If no price is explicitly set as default,
@@ -445,6 +472,8 @@ export namespace CustomerRetrieveBillingResponse {
        * safeZodDate
        */
       updatedAt: (string & {}) | string;
+
+      updatedByCommit: string | null;
     }
 
     export namespace Product {
@@ -458,6 +487,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -629,6 +660,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -642,6 +675,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -796,6 +831,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -828,6 +865,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -993,6 +1032,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        updatedByCommit: string | null;
 
         /**
          * The usage meter that uses this price. All usage events on that meter must be
@@ -1025,6 +1066,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         createdAt: string;
 
+        createdByCommit: string | null;
+
         currency:
           | 'USD'
           | 'AED'
@@ -1195,6 +1238,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -1208,6 +1253,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1362,6 +1409,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
 
         /**
@@ -1394,6 +1443,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -1560,6 +1611,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
@@ -1588,9 +1641,13 @@ export namespace CustomerRetrieveBillingResponse {
 
       createdAt: string;
 
+      createdByCommit: string | null;
+
       name: string;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 
@@ -1604,6 +1661,8 @@ export namespace CustomerRetrieveBillingResponse {
     catalogId: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     domain: string | null;
 
@@ -1625,6 +1684,8 @@ export namespace CustomerRetrieveBillingResponse {
 
     updatedAt: string | null;
 
+    updatedByCommit: string | null;
+
     userId: string | null;
   }
 
@@ -1632,7 +1693,7 @@ export namespace CustomerRetrieveBillingResponse {
     export interface BillingAddress {
       address: BillingAddress.Address;
 
-      name: string;
+      email?: string;
 
       firstName?: string;
 
@@ -1653,7 +1714,9 @@ export namespace CustomerRetrieveBillingResponse {
 
         postal_code: string;
 
-        state: string;
+        state: string | null;
+
+        name?: string;
       }
     }
   }
@@ -1682,12 +1745,6 @@ export namespace CustomerRetrieveBillingResponse {
 
       bankPaymentOnly: boolean | null;
 
-      billingAnchorDate: string | null;
-
-      billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-      billingIntervalCount: number | null;
-
       billingPeriodEndDate: string | null;
 
       billingPeriodId: 'null' | null;
@@ -1695,6 +1752,8 @@ export namespace CustomerRetrieveBillingResponse {
       billingPeriodStartDate: string | null;
 
       createdAt: string;
+
+      createdByCommit: string | null;
 
       currency:
         | 'USD'
@@ -2135,6 +2194,8 @@ export namespace CustomerRetrieveBillingResponse {
       type: 'purchase';
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
 
     /**
@@ -2149,12 +2210,6 @@ export namespace CustomerRetrieveBillingResponse {
 
       bankPaymentOnly: boolean | null;
 
-      billingAnchorDate: string | null;
-
-      billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-      billingIntervalCount: number | null;
-
       billingPeriodEndDate: string | null;
 
       billingPeriodId: string;
@@ -2162,6 +2217,8 @@ export namespace CustomerRetrieveBillingResponse {
       billingPeriodStartDate: string | null;
 
       createdAt: string;
+
+      createdByCommit: string | null;
 
       currency:
         | 'USD'
@@ -2602,6 +2659,8 @@ export namespace CustomerRetrieveBillingResponse {
       type: 'subscription';
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
 
     /**
@@ -2615,12 +2674,6 @@ export namespace CustomerRetrieveBillingResponse {
 
       bankPaymentOnly: boolean | null;
 
-      billingAnchorDate: string | null;
-
-      billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-      billingIntervalCount: number | null;
-
       billingPeriodEndDate: string | null;
 
       billingPeriodId: 'null' | null;
@@ -2628,6 +2681,8 @@ export namespace CustomerRetrieveBillingResponse {
       billingPeriodStartDate: string | null;
 
       createdAt: string;
+
+      createdByCommit: string | null;
 
       currency:
         | 'USD'
@@ -3068,12 +3123,16 @@ export namespace CustomerRetrieveBillingResponse {
       type: 'standalone';
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
 
     export interface InvoiceLineItem {
       id: string;
 
       createdAt: string;
+
+      createdByCommit: string | null;
 
       description: string | null;
 
@@ -3091,6 +3150,8 @@ export namespace CustomerRetrieveBillingResponse {
       quantity: number;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
   }
 
@@ -3100,6 +3161,8 @@ export namespace CustomerRetrieveBillingResponse {
     billingDetails: PaymentMethod.BillingDetails;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     customerId: string;
 
@@ -3114,6 +3177,8 @@ export namespace CustomerRetrieveBillingResponse {
     type: 'card' | 'us_bank_account' | 'sepa_debit';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export namespace PaymentMethod {
@@ -3140,6 +3205,8 @@ export namespace CustomerRetrieveBillingResponse {
         state: string | null;
 
         address?: Address.Address | null;
+
+        name?: string;
       }
 
       export namespace Address {
@@ -3155,6 +3222,8 @@ export namespace CustomerRetrieveBillingResponse {
           postal_code: string | null;
 
           state: string | null;
+
+          name?: string;
         }
       }
     }
@@ -3179,6 +3248,8 @@ export namespace CustomerRetrieveBillingResponse {
      * safeZodDate
      */
     createdAt: (string & {}) | string;
+
+    createdByCommit: string | null;
 
     customerId: string;
 
@@ -3234,6 +3305,8 @@ export namespace CustomerRetrieveBillingResponse {
      */
     updatedAt: (string & {}) | string | null;
 
+    updatedByCommit: string | null;
+
     totalPurchaseValue?: unknown;
   }
 
@@ -3256,6 +3329,8 @@ export namespace CustomerRetrieveBillingResponse {
      * safeZodDate
      */
     createdAt: (string & {}) | string;
+
+    createdByCommit: string | null;
 
     customerId: string;
 
@@ -3299,6 +3374,8 @@ export namespace CustomerRetrieveBillingResponse {
      */
     updatedAt: (string & {}) | string | null;
 
+    updatedByCommit: string | null;
+
     intervalCount?: unknown;
 
     intervalUnit?: unknown;
@@ -3329,6 +3406,8 @@ export namespace CustomerRetrieveBillingResponse {
      * safeZodDate
      */
     createdAt: (string & {}) | string;
+
+    createdByCommit: string | null;
 
     customerId: string;
 
@@ -3372,6 +3451,8 @@ export namespace CustomerRetrieveBillingResponse {
      */
     updatedAt: (string & {}) | string | null;
 
+    updatedByCommit: string | null;
+
     intervalCount?: unknown;
 
     intervalUnit?: unknown;
@@ -3395,6 +3476,8 @@ export namespace CustomerRetrieveBillingResponse {
     cancelScheduledAt: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
@@ -3447,6 +3530,8 @@ export namespace CustomerRetrieveBillingResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export namespace Subscription {
@@ -3456,6 +3541,8 @@ export namespace CustomerRetrieveBillingResponse {
       addedDate: string;
 
       createdAt: string;
+
+      createdByCommit: string | null;
 
       externalId: string | null;
 
@@ -3486,6 +3573,8 @@ export namespace CustomerRetrieveBillingResponse {
       unitPrice: number | 0;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
 
     export namespace SubscriptionItem {
@@ -3499,6 +3588,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -3670,6 +3761,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -3682,6 +3775,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -3845,6 +3940,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
@@ -3871,6 +3968,8 @@ export namespace CustomerRetrieveBillingResponse {
     cancelScheduledAt: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     /**
      * Whether the subscription is current (statuses "active", "trialing", "past_due",
@@ -3923,6 +4022,8 @@ export namespace CustomerRetrieveBillingResponse {
     trialEnd: string | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export namespace CurrentSubscription {
@@ -3932,6 +4033,8 @@ export namespace CustomerRetrieveBillingResponse {
       addedDate: string;
 
       createdAt: string;
+
+      createdByCommit: string | null;
 
       externalId: string | null;
 
@@ -3962,6 +4065,8 @@ export namespace CustomerRetrieveBillingResponse {
       unitPrice: number | 0;
 
       updatedAt: string | null;
+
+      updatedByCommit: string | null;
     }
 
     export namespace SubscriptionItem {
@@ -3975,6 +4080,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -4146,6 +4253,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedAt: string | null;
 
+        updatedByCommit: string | null;
+
         usageMeterId: string | null;
       }
 
@@ -4158,6 +4267,8 @@ export namespace CustomerRetrieveBillingResponse {
         active: boolean;
 
         createdAt: string;
+
+        createdByCommit: string | null;
 
         currency:
           | 'USD'
@@ -4320,6 +4431,8 @@ export namespace CustomerRetrieveBillingResponse {
         unitPrice: number;
 
         updatedAt: string | null;
+
+        updatedByCommit: string | null;
 
         /**
          * The usage meter that uses this price. All usage events on that meter must be
