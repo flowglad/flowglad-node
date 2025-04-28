@@ -13,10 +13,9 @@ describe('resource usageEvents', () => {
     const responsePromise = client.usageEvents.create({
       usageEvent: {
         amount: 1,
-        customerId: 'customerId',
         priceId: 'priceId',
         subscriptionId: 'subscriptionId',
-        usageMeterId: 'usageMeterId',
+        transactionId: 'transactionId',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -33,13 +32,11 @@ describe('resource usageEvents', () => {
     const response = await client.usageEvents.create({
       usageEvent: {
         amount: 1,
-        customerId: 'customerId',
         priceId: 'priceId',
         subscriptionId: 'subscriptionId',
-        usageMeterId: 'usageMeterId',
-        properties: { foo: 'bar' },
         transactionId: 'transactionId',
-        usageDate: '2019-12-27T18:11:19.117Z',
+        properties: { foo: 'bar' },
+        usageDate: 0,
       },
     });
   });
@@ -71,14 +68,7 @@ describe('resource usageEvents', () => {
   // skipped: tests are disabled for the time being
   test.skip('update: required and optional params', async () => {
     const response = await client.usageEvents.update('id', {
-      usageEvent: {
-        id: 'id',
-        amount: 1,
-        priceId: 'priceId',
-        properties: { foo: 'bar' },
-        transactionId: 'transactionId',
-        usageDate: '2019-12-27T18:11:19.117Z',
-      },
+      usageEvent: { id: 'id', amount: 1, priceId: 'priceId', properties: { foo: 'bar' }, usageDate: 0 },
     });
   });
 });

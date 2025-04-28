@@ -36,6 +36,8 @@ export namespace PaymentMethodRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     customerId: string;
 
     default: boolean;
@@ -49,6 +51,8 @@ export namespace PaymentMethodRetrieveResponse {
     type: 'card' | 'us_bank_account' | 'sepa_debit';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export namespace PaymentMethod {
@@ -75,6 +79,8 @@ export namespace PaymentMethodRetrieveResponse {
         state: string | null;
 
         address?: Address.Address | null;
+
+        name?: string;
       }
 
       export namespace Address {
@@ -90,6 +96,8 @@ export namespace PaymentMethodRetrieveResponse {
           postal_code: string | null;
 
           state: string | null;
+
+          name?: string;
         }
       }
     }
@@ -116,6 +124,8 @@ export namespace PaymentMethodListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     customerId: string;
 
     default: boolean;
@@ -129,6 +139,8 @@ export namespace PaymentMethodListResponse {
     type: 'card' | 'us_bank_account' | 'sepa_debit';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export namespace Data {
@@ -155,6 +167,8 @@ export namespace PaymentMethodListResponse {
         state: string | null;
 
         address?: Address.Address | null;
+
+        name?: string;
       }
 
       export namespace Address {
@@ -170,6 +184,8 @@ export namespace PaymentMethodListResponse {
           postal_code: string | null;
 
           state: string | null;
+
+          name?: string;
         }
       }
     }

@@ -55,6 +55,8 @@ export namespace PaymentRetrieveResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     currency:
       | 'USD'
       | 'AED'
@@ -194,6 +196,10 @@ export namespace PaymentRetrieveResponse {
     customerId: string;
 
     description: string | null;
+
+    failureCode: string | null;
+
+    failureMessage: string | null;
 
     invoiceId: string;
 
@@ -500,6 +506,8 @@ export namespace PaymentRetrieveResponse {
       | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -535,6 +543,8 @@ export namespace PaymentListResponse {
 
     createdAt: string;
 
+    createdByCommit: string | null;
+
     currency:
       | 'USD'
       | 'AED'
@@ -674,6 +684,10 @@ export namespace PaymentListResponse {
     customerId: string;
 
     description: string | null;
+
+    failureCode: string | null;
+
+    failureMessage: string | null;
 
     invoiceId: string;
 
@@ -980,6 +994,8 @@ export namespace PaymentListResponse {
       | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -1006,6 +1022,8 @@ export namespace PaymentRefundResponse {
     chargeDate: (string & {}) | string;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1146,6 +1164,10 @@ export namespace PaymentRefundResponse {
     customerId: string;
 
     description: string | null;
+
+    failureCode: string | null;
+
+    failureMessage: string | null;
 
     invoiceId: string;
 
@@ -1452,6 +1474,8 @@ export namespace PaymentRefundResponse {
       | null;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 

@@ -86,10 +86,12 @@ describe('resource discounts', () => {
         amountType: 'percent',
         code: 'xxx',
         createdAt: '2019-12-27T18:11:19.117Z',
+        createdByCommit: 'createdByCommit',
         livemode: true,
         name: 'name',
         organizationId: 'organizationId',
         updatedAt: '2019-12-27T18:11:19.117Z',
+        updatedByCommit: 'updatedByCommit',
       },
     });
   });

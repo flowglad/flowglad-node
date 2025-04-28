@@ -60,12 +60,6 @@ export namespace InvoiceCreateResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: 'null' | null;
@@ -73,6 +67,8 @@ export namespace InvoiceCreateResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -513,6 +509,8 @@ export namespace InvoiceCreateResponse {
     type: 'purchase';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   /**
@@ -527,12 +525,6 @@ export namespace InvoiceCreateResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: string;
@@ -540,6 +532,8 @@ export namespace InvoiceCreateResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -980,6 +974,8 @@ export namespace InvoiceCreateResponse {
     type: 'subscription';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   /**
@@ -993,12 +989,6 @@ export namespace InvoiceCreateResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: 'null' | null;
@@ -1006,6 +996,8 @@ export namespace InvoiceCreateResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1446,12 +1438,16 @@ export namespace InvoiceCreateResponse {
     type: 'standalone';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface InvoiceLineItem {
     id: string;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     description: string | null;
 
@@ -1469,6 +1465,8 @@ export namespace InvoiceCreateResponse {
     quantity: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -1499,12 +1497,6 @@ export namespace InvoiceRetrieveResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: 'null' | null;
@@ -1512,6 +1504,8 @@ export namespace InvoiceRetrieveResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -1952,6 +1946,8 @@ export namespace InvoiceRetrieveResponse {
     type: 'purchase';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   /**
@@ -1966,12 +1962,6 @@ export namespace InvoiceRetrieveResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: string;
@@ -1979,6 +1969,8 @@ export namespace InvoiceRetrieveResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -2419,6 +2411,8 @@ export namespace InvoiceRetrieveResponse {
     type: 'subscription';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   /**
@@ -2432,12 +2426,6 @@ export namespace InvoiceRetrieveResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: 'null' | null;
@@ -2445,6 +2433,8 @@ export namespace InvoiceRetrieveResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -2885,12 +2875,16 @@ export namespace InvoiceRetrieveResponse {
     type: 'standalone';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   export interface InvoiceLineItem {
     id: string;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     description: string | null;
 
@@ -2908,6 +2902,8 @@ export namespace InvoiceRetrieveResponse {
     quantity: number;
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -2940,12 +2936,6 @@ export namespace InvoiceListResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: 'null' | null;
@@ -2953,6 +2943,8 @@ export namespace InvoiceListResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -3393,6 +3385,8 @@ export namespace InvoiceListResponse {
     type: 'purchase';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   /**
@@ -3407,12 +3401,6 @@ export namespace InvoiceListResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: string;
@@ -3420,6 +3408,8 @@ export namespace InvoiceListResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -3860,6 +3850,8 @@ export namespace InvoiceListResponse {
     type: 'subscription';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 
   /**
@@ -3873,12 +3865,6 @@ export namespace InvoiceListResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAnchorDate: string | null;
-
-    billingInterval: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount: number | null;
-
     billingPeriodEndDate: string | null;
 
     billingPeriodId: 'null' | null;
@@ -3886,6 +3872,8 @@ export namespace InvoiceListResponse {
     billingPeriodStartDate: string | null;
 
     createdAt: string;
+
+    createdByCommit: string | null;
 
     currency:
       | 'USD'
@@ -4326,6 +4314,8 @@ export namespace InvoiceListResponse {
     type: 'standalone';
 
     updatedAt: string | null;
+
+    updatedByCommit: string | null;
   }
 }
 
@@ -4502,12 +4492,6 @@ export namespace InvoiceCreateParams {
 
     bankPaymentOnly?: boolean | null;
 
-    billingAnchorDate?: string | null;
-
-    billingInterval?: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount?: number | null;
-
     billingPeriodEndDate?: string | null;
 
     billingPeriodStartDate?: string | null;
@@ -4953,12 +4937,6 @@ export namespace InvoiceCreateParams {
 
     bankPaymentOnly?: boolean | null;
 
-    billingAnchorDate?: string | null;
-
-    billingInterval?: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount?: number | null;
-
     billingPeriodEndDate?: string | null;
 
     billingPeriodStartDate?: string | null;
@@ -5402,12 +5380,6 @@ export namespace InvoiceCreateParams {
     type: 'standalone';
 
     bankPaymentOnly?: boolean | null;
-
-    billingAnchorDate?: string | null;
-
-    billingInterval?: 'day' | 'week' | 'month' | 'year' | null;
-
-    billingIntervalCount?: number | null;
 
     billingPeriodEndDate?: string | null;
 

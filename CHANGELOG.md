@@ -1,10 +1,11 @@
 # Changelog
-## 0.19.3 (2025-04-24)
+## 0.19.3 (2025-04-28)
 
 Full Changelog: [v0.19.2...v0.19.3](https://github.com/flowglad/flowglad-node/compare/v0.19.2...v0.19.3)
 
 ### Bug Fixes
 
+* **api:** lift targetSubscriptionId on add payment method checkout session ([13835f2](https://github.com/flowglad/flowglad-node/commit/13835f24eb4ff08877e793c48f7343d6b589ac90))
 * **internal:** fix file uploads in node 18 jest ([12f59fa](https://github.com/flowglad/flowglad-node/commit/12f59fa1b535d03a25e3f80b8dfbdf1056939156))
 
 
