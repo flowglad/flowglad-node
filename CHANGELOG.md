@@ -1,4 +1,30 @@
 # Changelog
+## 0.20.0 (2025-05-10)
+
+Full Changelog: [v0.19.3...v0.20.0](https://github.com/flowglad/flowglad-node/compare/v0.19.3...v0.20.0)
+
+### Features
+
+* **client:** add withOptions helper ([ccd3f8d](https://github.com/flowglad/flowglad-node/commit/ccd3f8d8d85f1be17fb41047572477810b138941))
+
+
+### Bug Fixes
+
+* **client:** always overwrite when merging headers ([be6125e](https://github.com/flowglad/flowglad-node/commit/be6125e4fa45c50f6bdf6cf79d21c346faf099ee))
+
+
+### Chores
+
+* **client:** drop support for EOL node versions ([fe63be8](https://github.com/flowglad/flowglad-node/commit/fe63be8a99b4bc10335ade513595b5c57df36c51))
+* **internal:** codegen related update ([46cb6de](https://github.com/flowglad/flowglad-node/commit/46cb6de1846471fd9e329d1d7e8724e3d2dadc35))
+* **internal:** refactor utils ([c77f96e](https://github.com/flowglad/flowglad-node/commit/c77f96efcc737e22af3564dcd9cb1cc5aa5448cd))
+* **internal:** share typescript helpers ([3d4da28](https://github.com/flowglad/flowglad-node/commit/3d4da2880f8db32231763163897e8a81922d2e9e))
+
+
+### Documentation
+
+* **readme:** fix typo ([6dd84f2](https://github.com/flowglad/flowglad-node/commit/6dd84f2502fb96abd38fd9842b5ab4a690aa4f93))
+
 ## 0.19.3 (2025-04-28)
 
 Full Changelog: [v0.19.2...v0.19.3](https://github.com/flowglad/flowglad-node/compare/v0.19.2...v0.19.3)
