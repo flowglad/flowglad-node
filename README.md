@@ -1,6 +1,6 @@
 # Flowglad TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/@flowglad/node.svg)](https://npmjs.org/package/@flowglad/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flowglad/node)
+[![NPM version](<https://img.shields.io/npm/v/@flowglad/node.svg?label=npm%20(stable)>)](https://npmjs.org/package/@flowglad/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flowglad/node)
 
 This library provides convenient access to the Flowglad REST API from server-side TypeScript or JavaScript.
 
