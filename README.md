@@ -1,6 +1,6 @@
 # Flowglad TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/@flowglad/node.svg)](https://npmjs.org/package/@flowglad/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flowglad/node)
+[![NPM version](<https://img.shields.io/npm/v/@flowglad/node.svg?label=npm%20(stable)>)](https://npmjs.org/package/@flowglad/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@flowglad/node)
 
 This library provides convenient access to the Flowglad REST API from server-side TypeScript or JavaScript.
 
@@ -24,13 +24,9 @@ import Flowglad from '@flowglad/node';
 
 const client = new Flowglad();
 
-async function main() {
-  const payments = await client.payments.list();
+const payments = await client.payments.list();
 
-  console.log(payments.data);
-}
-
-main();
+console.log(payments.data);
 ```
 
 ### Request & Response types
@@ -43,11 +39,7 @@ import Flowglad from '@flowglad/node';
 
 const client = new Flowglad();
 
-async function main() {
-  const payments: Flowglad.PaymentListResponse = await client.payments.list();
-}
-
-main();
+const payments: Flowglad.PaymentListResponse = await client.payments.list();
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -60,22 +52,18 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const payments = await client.payments.list().catch(async (err) => {
-    if (err instanceof Flowglad.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const payments = await client.payments.list().catch(async (err) => {
+  if (err instanceof Flowglad.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Status Code | Error Type                 |
 | ----------- | -------------------------- |
@@ -230,9 +218,8 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.foo.create({
-  foo: 'my_param',
-  bar: 12,
+client.payments.list({
+  // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
 });
@@ -350,7 +337,7 @@ TypeScript >= 4.9 is supported.
 The following runtimes are supported:
 
 - Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
-- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Node.js 20 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
 - Deno v1.28.0 or higher.
 - Bun 1.0 or later.
 - Cloudflare Workers.

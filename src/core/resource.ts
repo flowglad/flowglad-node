@@ -2,7 +2,7 @@
 
 import type { Flowglad } from '../client';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: Flowglad;
 
   constructor(client: Flowglad) {
