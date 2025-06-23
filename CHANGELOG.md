@@ -1,4 +1,49 @@
 # Changelog
+## 0.20.0 (2025-06-23)
+
+Full Changelog: [v0.19.3...v0.20.0](https://github.com/flowglad/flowglad-node/compare/v0.19.3...v0.20.0)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([5a82f21](https://github.com/flowglad/flowglad-node/commit/5a82f2175b03b4f3a8257997de18443fa95adb6b))
+* **client:** add withOptions helper ([ccd3f8d](https://github.com/flowglad/flowglad-node/commit/ccd3f8d8d85f1be17fb41047572477810b138941))
+
+
+### Bug Fixes
+
+* **client:** always overwrite when merging headers ([be6125e](https://github.com/flowglad/flowglad-node/commit/be6125e4fa45c50f6bdf6cf79d21c346faf099ee))
+* **client:** explicitly copy fetch in withOptions ([a075167](https://github.com/flowglad/flowglad-node/commit/a075167dc9cee2557b3b89a84e652a0c9148b74a))
+* compat with more runtimes ([c6e2c80](https://github.com/flowglad/flowglad-node/commit/c6e2c80a6f410aeb25ab05c8ea3ea1cdd6e15ae4))
+* publish script — handle NPM errors correctly ([58f80d7](https://github.com/flowglad/flowglad-node/commit/58f80d7d4c2a250e3f01b9fec831f82c3a2329ec))
+
+
+### Chores
+
+* adjust eslint.config.mjs ignore pattern ([17914a2](https://github.com/flowglad/flowglad-node/commit/17914a24f1796b54b28cefc6dc62c684259a3b60))
+* avoid type error in certain environments ([f8edd17](https://github.com/flowglad/flowglad-node/commit/f8edd17560cc0dc62801e18c0eb36248bc458eee))
+* **ci:** enable for pull requests ([3742f46](https://github.com/flowglad/flowglad-node/commit/3742f46b541c90d80a3f62584d53e93f612c312f))
+* **client:** drop support for EOL node versions ([fe63be8](https://github.com/flowglad/flowglad-node/commit/fe63be8a99b4bc10335ade513595b5c57df36c51))
+* **client:** refactor imports ([7ccd8cd](https://github.com/flowglad/flowglad-node/commit/7ccd8cd67f75c4f8aaf4745b6f6b8814d0d017f1))
+* configure new SDK language ([fc92220](https://github.com/flowglad/flowglad-node/commit/fc92220a3df6f0032f664592e6ab4540b5a5ce95))
+* **deps:** bump eslint-plugin-prettier ([cad7a60](https://github.com/flowglad/flowglad-node/commit/cad7a603f5d66d6ba02fbe6d6e3af7695b209370))
+* **docs:** grammar improvements ([381cb9f](https://github.com/flowglad/flowglad-node/commit/381cb9fa9171106cefef5161b3cab75f616affa4))
+* **docs:** use top-level-await in example snippets ([fa4d484](https://github.com/flowglad/flowglad-node/commit/fa4d484b457830c7fa307af2955422dec4dacbb6))
+* improve publish-npm script --latest tag logic ([25c4a83](https://github.com/flowglad/flowglad-node/commit/25c4a834927a82798fd3be38fc8c9c3eba544045))
+* **internal:** add pure annotations, make base APIResource abstract ([3c796f4](https://github.com/flowglad/flowglad-node/commit/3c796f4c39455395e8548f08229d3a3dc468a2fc))
+* **internal:** codegen related update ([46cb6de](https://github.com/flowglad/flowglad-node/commit/46cb6de1846471fd9e329d1d7e8724e3d2dadc35))
+* **internal:** fix readablestream types in node 20 ([7e9b2bc](https://github.com/flowglad/flowglad-node/commit/7e9b2bc80d4159f465548ebf1fbb6637176c4de3))
+* **internal:** refactor utils ([c77f96e](https://github.com/flowglad/flowglad-node/commit/c77f96efcc737e22af3564dcd9cb1cc5aa5448cd))
+* **internal:** share typescript helpers ([3d4da28](https://github.com/flowglad/flowglad-node/commit/3d4da2880f8db32231763163897e8a81922d2e9e))
+* **internal:** update jest config ([fc657ba](https://github.com/flowglad/flowglad-node/commit/fc657ba6cd143572fdf23a060527606e0c4e8354))
+* **package:** remove engines ([fc2699b](https://github.com/flowglad/flowglad-node/commit/fc2699b14740fc8de8b13a4461bfaf4bfbbf39e6))
+* **readme:** update badges ([aeeecfb](https://github.com/flowglad/flowglad-node/commit/aeeecfbba8054e1346ba5af3b16b2564c2018b85))
+* **readme:** use better example snippet for undocumented params ([830a80c](https://github.com/flowglad/flowglad-node/commit/830a80c218feee976d2b919867d298629162bb22))
+
+
+### Documentation
+
+* **readme:** fix typo ([6dd84f2](https://github.com/flowglad/flowglad-node/commit/6dd84f2502fb96abd38fd9842b5ab4a690aa4f93))
+
 ## 0.19.3 (2025-04-28)
 
 Full Changelog: [v0.19.2...v0.19.3](https://github.com/flowglad/flowglad-node/compare/v0.19.2...v0.19.3)

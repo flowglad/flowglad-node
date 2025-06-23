@@ -26,7 +26,7 @@ export { endpoints } from './tools';
 export const server = new McpServer(
   {
     name: 'flowglad_node_api',
-    version: '0.19.3',
+    version: '0.20.0',
   },
   {
     capabilities: {
