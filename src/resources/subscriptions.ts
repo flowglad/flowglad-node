@@ -96,7 +96,7 @@ export namespace SubscriptionCreateResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -170,7 +170,7 @@ export namespace SubscriptionRetrieveResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -252,7 +252,7 @@ export namespace SubscriptionListResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -328,7 +328,7 @@ export namespace SubscriptionAdjustResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -371,7 +371,7 @@ export namespace SubscriptionAdjustResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -438,7 +438,7 @@ export namespace SubscriptionCancelResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -510,7 +510,7 @@ export interface SubscriptionCreateParams {
    */
   intervalCount?: number;
 
-  metadata?: Record<string, unknown>;
+  metadata?: { [key: string]: unknown };
 
   /**
    * The name of the subscription. If not provided, defaults to the name of the
@@ -563,7 +563,7 @@ export namespace SubscriptionAdjustParams {
 
       livemode: boolean;
 
-      metadata: Record<string, unknown> | null;
+      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 
@@ -595,7 +595,7 @@ export namespace SubscriptionAdjustParams {
 
       livemode: boolean;
 
-      metadata: Record<string, unknown> | null;
+      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 
@@ -633,7 +633,7 @@ export namespace SubscriptionAdjustParams {
 
       livemode: boolean;
 
-      metadata: Record<string, unknown> | null;
+      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 
@@ -665,7 +665,7 @@ export namespace SubscriptionAdjustParams {
 
       livemode: boolean;
 
-      metadata: Record<string, unknown> | null;
+      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 

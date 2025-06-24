@@ -44,9 +44,9 @@ export namespace PaymentMethodRetrieveResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
-    paymentMethodData: Record<string, unknown>;
+    paymentMethodData: { [key: string]: unknown };
 
     type: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
@@ -132,9 +132,9 @@ export namespace PaymentMethodListResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
-    paymentMethodData: Record<string, unknown>;
+    paymentMethodData: { [key: string]: unknown };
 
     type: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
