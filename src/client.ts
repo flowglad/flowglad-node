@@ -121,8 +121,6 @@ import {
   UsageEventCreateParams,
   UsageEventCreateResponse,
   UsageEventRetrieveResponse,
-  UsageEventUpdateParams,
-  UsageEventUpdateResponse,
   UsageEvents,
 } from './resources/usage-events';
 import {
@@ -973,9 +971,7 @@ export declare namespace Flowglad {
     UsageEvents as UsageEvents,
     type UsageEventCreateResponse as UsageEventCreateResponse,
     type UsageEventRetrieveResponse as UsageEventRetrieveResponse,
-    type UsageEventUpdateResponse as UsageEventUpdateResponse,
     type UsageEventCreateParams as UsageEventCreateParams,
-    type UsageEventUpdateParams as UsageEventUpdateParams,
   };
 
   export {

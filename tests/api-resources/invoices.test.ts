@@ -20,7 +20,9 @@ describe('resource invoices', () => {
         subscriptionId: 'null',
         type: 'purchase',
       },
-      invoiceLineItems: [{ invoiceId: 'invoiceId', price: 0, quantity: 0 }],
+      invoiceLineItems: [
+        { description: 'description', price: 0, priceId: 'priceId', quantity: 0, type: 'static' },
+      ],
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -45,6 +47,7 @@ describe('resource invoices', () => {
         bankPaymentOnly: true,
         billingPeriodEndDate: '2019-12-27T18:11:19.117Z',
         billingPeriodStartDate: '2019-12-27T18:11:19.117Z',
+        billingRunId: 'billingRunId',
         dueDate: '2019-12-27T18:11:19.117Z',
         invoiceDate: '2019-12-27T18:11:19.117Z',
         memo: 'memo',
@@ -58,7 +61,7 @@ describe('resource invoices', () => {
         taxType: 'amusement_tax',
       },
       invoiceLineItems: [
-        { invoiceId: 'invoiceId', price: 0, quantity: 0, description: 'description', priceId: 'priceId' },
+        { description: 'description', price: 0, priceId: 'priceId', quantity: 0, type: 'static' },
       ],
       autoSend: true,
     });

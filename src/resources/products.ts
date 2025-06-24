@@ -57,6 +57,8 @@ export namespace ProductCreateResponse {
 
     createdByCommit: string | null;
 
+    default: boolean;
+
     description: string | null;
 
     displayFeatures: Array<Product.DisplayFeature> | null;
@@ -72,6 +74,8 @@ export namespace ProductCreateResponse {
     pluralQuantityLabel: string | null;
 
     singularQuantityLabel: string | null;
+
+    slug: string | null;
 
     /**
      * safeZodDate
@@ -106,6 +110,8 @@ export interface ProductRetrieveResponse {
 
   createdByCommit: string | null;
 
+  default: boolean;
+
   /**
    * The default price for the product. If no price is explicitly set as default,
    * will return the first price created for the product..
@@ -136,6 +142,8 @@ export interface ProductRetrieveResponse {
   >;
 
   singularQuantityLabel: string | null;
+
+  slug: string | null;
 
   /**
    * safeZodDate
@@ -315,6 +323,8 @@ export namespace ProductRetrieveResponse {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -328,7 +338,22 @@ export namespace ProductRetrieveResponse {
 
     updatedByCommit: string | null;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -488,6 +513,8 @@ export namespace ProductRetrieveResponse {
 
     productId: string;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
@@ -495,8 +522,6 @@ export namespace ProductRetrieveResponse {
     updatedAt: string | null;
 
     updatedByCommit: string | null;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -511,12 +536,32 @@ export namespace ProductRetrieveResponse {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -682,10 +727,7 @@ export namespace ProductRetrieveResponse {
 
     productId: string;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
@@ -696,10 +738,27 @@ export namespace ProductRetrieveResponse {
     updatedByCommit: string | null;
 
     /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
+
+    /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -884,6 +943,8 @@ export namespace ProductRetrieveResponse {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -897,7 +958,22 @@ export namespace ProductRetrieveResponse {
 
     updatedByCommit: string | null;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1057,6 +1133,8 @@ export namespace ProductRetrieveResponse {
 
     productId: string;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
@@ -1064,8 +1142,6 @@ export namespace ProductRetrieveResponse {
     updatedAt: string | null;
 
     updatedByCommit: string | null;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1080,12 +1156,32 @@ export namespace ProductRetrieveResponse {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1251,10 +1347,7 @@ export namespace ProductRetrieveResponse {
 
     productId: string;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
@@ -1265,10 +1358,27 @@ export namespace ProductRetrieveResponse {
     updatedByCommit: string | null;
 
     /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
+
+    /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1296,6 +1406,8 @@ export namespace ProductUpdateResponse {
 
     createdByCommit: string | null;
 
+    default: boolean;
+
     description: string | null;
 
     displayFeatures: Array<Product.DisplayFeature> | null;
@@ -1311,6 +1423,8 @@ export namespace ProductUpdateResponse {
     pluralQuantityLabel: string | null;
 
     singularQuantityLabel: string | null;
+
+    slug: string | null;
 
     /**
      * safeZodDate
@@ -1358,6 +1472,8 @@ export namespace ProductListResponse {
 
     createdByCommit: string | null;
 
+    default: boolean;
+
     description: string | null;
 
     displayFeatures: Array<Data.DisplayFeature> | null;
@@ -1373,6 +1489,8 @@ export namespace ProductListResponse {
     pluralQuantityLabel: string | null;
 
     singularQuantityLabel: string | null;
+
+    slug: string | null;
 
     /**
      * safeZodDate
@@ -1404,6 +1522,8 @@ export interface ProductCreateParams {
     | ProductCreateParams.UnionMember2;
 
   product: ProductCreateParams.Product;
+
+  featureIds?: Array<string>;
 }
 
 export namespace ProductCreateParams {
@@ -1430,6 +1550,8 @@ export namespace ProductCreateParams {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -1439,7 +1561,22 @@ export namespace ProductCreateParams {
 
     unitPrice: number;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1453,11 +1590,11 @@ export namespace ProductCreateParams {
 
     name: string | null;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1472,12 +1609,32 @@ export namespace ProductCreateParams {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1485,8 +1642,6 @@ export namespace ProductCreateParams {
    */
   export interface UnionMember2 {
     active: boolean;
-
-    createdByCommit: string | null;
 
     /**
      * safeZodPositiveInteger
@@ -1499,22 +1654,34 @@ export namespace ProductCreateParams {
 
     name: string | null;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
     unitPrice: number;
 
-    updatedByCommit: string | null;
+    /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1527,6 +1694,8 @@ export namespace ProductCreateParams {
 
     catalogId: string;
 
+    default: boolean;
+
     description: string | null;
 
     displayFeatures: Array<Product.DisplayFeature> | null;
@@ -1538,6 +1707,8 @@ export namespace ProductCreateParams {
     pluralQuantityLabel: string | null;
 
     singularQuantityLabel: string | null;
+
+    slug: string | null;
   }
 
   export namespace Product {
@@ -1554,9 +1725,11 @@ export namespace ProductCreateParams {
 export interface ProductUpdateParams {
   product: ProductUpdateParams.Product;
 
+  featureIds?: Array<string>;
+
   /**
-   * A price record, which describes a price for a product. Products can have
-   * multiple prices.
+   * A subscription price, which will have details on the interval, default trial
+   * period, and setup fee (if any).
    */
   price?:
     | ProductUpdateParams.UnionMember0
@@ -1570,25 +1743,21 @@ export namespace ProductUpdateParams {
 
     active?: boolean;
 
-    catalogId?: string;
+    default?: boolean;
 
     description?: string | null;
 
     displayFeatures?: Array<Product.DisplayFeature> | null;
 
-    externalId?: string | null;
-
     imageURL?: string | null;
 
-    livemode?: boolean;
-
     name?: string;
-
-    organizationId?: string;
 
     pluralQuantityLabel?: string | null;
 
     singularQuantityLabel?: string | null;
+
+    slug?: string | null;
   }
 
   export namespace Product {
@@ -1612,144 +1781,6 @@ export namespace ProductUpdateParams {
 
     active?: boolean;
 
-    currency?:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId?: string | null;
-
     /**
      * safeZodPositiveInteger
      */
@@ -1759,9 +1790,12 @@ export namespace ProductUpdateParams {
 
     isDefault?: boolean;
 
-    livemode?: boolean;
-
     name?: string | null;
+
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
 
     productId?: string;
 
@@ -1770,6 +1804,10 @@ export namespace ProductUpdateParams {
      */
     setupFeeAmount?: number | 0 | null;
 
+    slug?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -1777,7 +1815,15 @@ export namespace ProductUpdateParams {
 
     unitPrice?: number;
 
-    usageMeterId?: string | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1791,144 +1837,6 @@ export namespace ProductUpdateParams {
 
     active?: boolean;
 
-    currency?:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId?: string | null;
-
     /**
      * safeZodNullOrUndefined
      */
@@ -1941,9 +1849,12 @@ export namespace ProductUpdateParams {
 
     isDefault?: boolean;
 
-    livemode?: boolean;
-
     name?: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
 
     productId?: string;
 
@@ -1952,6 +1863,13 @@ export namespace ProductUpdateParams {
      */
     setupFeeAmount?: 'null' | null | unknown;
 
+    slug?: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
     /**
      * safeZodNullOrUndefined
      */
@@ -1959,7 +1877,15 @@ export namespace ProductUpdateParams {
 
     unitPrice?: number;
 
-    usageMeterId?: string | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1972,146 +1898,6 @@ export namespace ProductUpdateParams {
 
     active?: boolean;
 
-    createdByCommit?: string | null;
-
-    currency?:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    externalId?: string | null;
-
     /**
      * safeZodPositiveInteger
      */
@@ -2121,16 +1907,23 @@ export namespace ProductUpdateParams {
 
     isDefault?: boolean;
 
-    livemode?: boolean;
-
     name?: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
 
     productId?: string;
 
     /**
-     * safeZodPositiveInteger
+     * safeZodNullOrUndefined
      */
-    setupFeeAmount?: number | 0 | null;
+    setupFeeAmount?: 'null' | null | unknown;
+
+    slug?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -2139,7 +1932,10 @@ export namespace ProductUpdateParams {
 
     unitPrice?: number;
 
-    updatedByCommit?: string | null;
+    /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit?: number;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be

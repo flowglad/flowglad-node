@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'list_payment_methods',
-  description: 'List PaymentMethods',
+  description: 'List Payment Methods',
   inputSchema: {
     type: 'object',
     properties: {

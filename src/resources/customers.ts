@@ -333,12 +333,6 @@ export namespace CustomerListResponse {
 
     organizationId: string;
 
-    stackAuthHostedBillingUserId: string | null;
-
-    stripeCustomerId: string | null;
-
-    taxId: string | null;
-
     updatedAt: string | null;
 
     updatedByCommit: string | null;
@@ -396,14 +390,18 @@ export interface CustomerRetrieveBillingResponse {
     | CustomerRetrieveBillingResponse.UnionMember2
   >;
 
-  subscriptions: Array<CustomerRetrieveBillingResponse.Subscription>;
+  subscriptions: Array<
+    CustomerRetrieveBillingResponse.UnionMember0 | CustomerRetrieveBillingResponse.UnionMember1
+  >;
 
   /**
    * The current subscriptions for the customer. By default, customers can only have
    * one active subscription at a time. This will only return multiple subscriptions
    * if you have enabled multiple subscriptions per customer.
    */
-  currentSubscriptions?: Array<CustomerRetrieveBillingResponse.CurrentSubscription>;
+  currentSubscriptions?: Array<
+    CustomerRetrieveBillingResponse.UnionMember0 | CustomerRetrieveBillingResponse.UnionMember1
+  >;
 }
 
 export namespace CustomerRetrieveBillingResponse {
@@ -435,6 +433,12 @@ export namespace CustomerRetrieveBillingResponse {
     updatedByCommit: string | null;
 
     usageMeters: Array<Catalog.UsageMeter>;
+
+    /**
+     * The default product for the catalog. If no product is explicitly set as default,
+     * will return undefined.
+     */
+    defaultProduct?: Catalog.DefaultProduct;
   }
 
   export namespace Catalog {
@@ -451,6 +455,8 @@ export namespace CustomerRetrieveBillingResponse {
       createdAt: (string & {}) | string;
 
       createdByCommit: string | null;
+
+      default: boolean;
 
       /**
        * The default price for the product. If no price is explicitly set as default,
@@ -475,6 +481,8 @@ export namespace CustomerRetrieveBillingResponse {
       prices: Array<Product.UnionMember0 | Product.UnionMember1 | Product.UnionMember2>;
 
       singularQuantityLabel: string | null;
+
+      slug: string | null;
 
       /**
        * safeZodDate
@@ -654,6 +662,8 @@ export namespace CustomerRetrieveBillingResponse {
          */
         setupFeeAmount: number | 0 | null;
 
+        slug: string | null;
+
         /**
          * safeZodPositiveInteger
          */
@@ -667,7 +677,22 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedByCommit: string | null;
 
-        usageMeterId: string | null;
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
       }
 
       /**
@@ -827,6 +852,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         productId: string;
 
+        slug: string | null;
+
         type: 'single_payment';
 
         unitPrice: number;
@@ -834,8 +861,6 @@ export namespace CustomerRetrieveBillingResponse {
         updatedAt: string | null;
 
         updatedByCommit: string | null;
-
-        usageMeterId: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -850,12 +875,32 @@ export namespace CustomerRetrieveBillingResponse {
         /**
          * safeZodNullOrUndefined
          */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
         setupFeeAmount?: 'null' | null | unknown;
 
         /**
          * safeZodNullOrUndefined
          */
+        startsWithCreditTrial?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
         trialPeriodDays?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
       }
 
       /**
@@ -1021,10 +1066,7 @@ export namespace CustomerRetrieveBillingResponse {
 
         productId: string;
 
-        /**
-         * safeZodPositiveInteger
-         */
-        setupFeeAmount: number | 0 | null;
+        slug: string | null;
 
         type: 'usage';
 
@@ -1035,10 +1077,27 @@ export namespace CustomerRetrieveBillingResponse {
         updatedByCommit: string | null;
 
         /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
          */
         usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
 
         /**
          * safeZodNullOrUndefined
@@ -1223,6 +1282,8 @@ export namespace CustomerRetrieveBillingResponse {
          */
         setupFeeAmount: number | 0 | null;
 
+        slug: string | null;
+
         /**
          * safeZodPositiveInteger
          */
@@ -1236,7 +1297,22 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedByCommit: string | null;
 
-        usageMeterId: string | null;
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
       }
 
       /**
@@ -1396,6 +1472,8 @@ export namespace CustomerRetrieveBillingResponse {
 
         productId: string;
 
+        slug: string | null;
+
         type: 'single_payment';
 
         unitPrice: number;
@@ -1403,8 +1481,6 @@ export namespace CustomerRetrieveBillingResponse {
         updatedAt: string | null;
 
         updatedByCommit: string | null;
-
-        usageMeterId: string | null;
 
         /**
          * safeZodNullOrUndefined
@@ -1419,12 +1495,32 @@ export namespace CustomerRetrieveBillingResponse {
         /**
          * safeZodNullOrUndefined
          */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
         setupFeeAmount?: 'null' | null | unknown;
 
         /**
          * safeZodNullOrUndefined
          */
+        startsWithCreditTrial?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
         trialPeriodDays?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
       }
 
       /**
@@ -1590,10 +1686,7 @@ export namespace CustomerRetrieveBillingResponse {
 
         productId: string;
 
-        /**
-         * safeZodPositiveInteger
-         */
-        setupFeeAmount: number | 0 | null;
+        slug: string | null;
 
         type: 'usage';
 
@@ -1604,10 +1697,27 @@ export namespace CustomerRetrieveBillingResponse {
         updatedByCommit: string | null;
 
         /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
          */
         usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
 
         /**
          * safeZodNullOrUndefined
@@ -1633,11 +1743,1305 @@ export namespace CustomerRetrieveBillingResponse {
 
       createdByCommit: string | null;
 
+      livemode: boolean;
+
       name: string;
+
+      organizationId: string;
+
+      slug: string;
 
       updatedAt: string | null;
 
       updatedByCommit: string | null;
+    }
+
+    /**
+     * The default product for the catalog. If no product is explicitly set as default,
+     * will return undefined.
+     */
+    export interface DefaultProduct {
+      id: string;
+
+      active: boolean;
+
+      catalogId: string;
+
+      /**
+       * safeZodDate
+       */
+      createdAt: (string & {}) | string;
+
+      createdByCommit: string | null;
+
+      default: boolean;
+
+      /**
+       * The default price for the product. If no price is explicitly set as default,
+       * will return the first price created for the product..
+       */
+      defaultPrice: DefaultProduct.UnionMember0 | DefaultProduct.UnionMember1 | DefaultProduct.UnionMember2;
+
+      description: string | null;
+
+      displayFeatures: Array<DefaultProduct.DisplayFeature> | null;
+
+      imageURL: string | null;
+
+      livemode: boolean;
+
+      name: string;
+
+      organizationId: string;
+
+      pluralQuantityLabel: string | null;
+
+      prices: Array<DefaultProduct.UnionMember0 | DefaultProduct.UnionMember1 | DefaultProduct.UnionMember2>;
+
+      singularQuantityLabel: string | null;
+
+      slug: string | null;
+
+      /**
+       * safeZodDate
+       */
+      updatedAt: (string & {}) | string;
+
+      updatedByCommit: string | null;
+    }
+
+    export namespace DefaultProduct {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A single payment price, which only gets paid once. Subscriptions cannot be made
+       * from single payment prices. Purchases, though, can.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'single_payment';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        intervalCount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        intervalUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        startsWithCreditTrial?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember2 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+
+      export interface DisplayFeature {
+        enabled: boolean;
+
+        label: string;
+
+        details?: string | null;
+      }
+
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A single payment price, which only gets paid once. Subscriptions cannot be made
+       * from single payment prices. Purchases, though, can.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'single_payment';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        intervalCount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        intervalUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        startsWithCreditTrial?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember2 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
     }
   }
 
@@ -1721,7 +3125,7 @@ export namespace CustomerRetrieveBillingResponse {
      */
     invoice: Invoice.UnionMember0 | Invoice.UnionMember1 | Invoice.UnionMember2;
 
-    invoiceLineItems: Array<Invoice.InvoiceLineItem>;
+    invoiceLineItems: Array<Invoice.UnionMember0 | Invoice.UnionMember1>;
   }
 
   export namespace Invoice {
@@ -1742,6 +3146,8 @@ export namespace CustomerRetrieveBillingResponse {
       billingPeriodId: 'null' | null;
 
       billingPeriodStartDate: string | null;
+
+      billingRunId: string | null;
 
       createdAt: string;
 
@@ -2208,6 +3614,8 @@ export namespace CustomerRetrieveBillingResponse {
 
       billingPeriodStartDate: string | null;
 
+      billingRunId: string | null;
+
       createdAt: string;
 
       createdByCommit: string | null;
@@ -2672,6 +4080,8 @@ export namespace CustomerRetrieveBillingResponse {
 
       billingPeriodStartDate: string | null;
 
+      billingRunId: string | null;
+
       createdAt: string;
 
       createdByCommit: string | null;
@@ -3119,7 +4529,10 @@ export namespace CustomerRetrieveBillingResponse {
       updatedByCommit: string | null;
     }
 
-    export interface InvoiceLineItem {
+    /**
+     * A static invoice line item, representing a fixed fee component of an invoice.
+     */
+    export interface UnionMember0 {
       id: string;
 
       createdAt: string;
@@ -3140,6 +4553,41 @@ export namespace CustomerRetrieveBillingResponse {
        * safeZodPositiveInteger
        */
       quantity: number;
+
+      type: 'static';
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+    }
+
+    /**
+     * A usage-based invoice line item, where charges are based on recorded usage
+     * events.
+     */
+    export interface UnionMember1 {
+      id: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      description: string | null;
+
+      invoiceId: string;
+
+      livemode: boolean;
+
+      price: number;
+
+      priceId: string | null;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      type: 'usage';
 
       updatedAt: string | null;
 
@@ -3374,8 +4822,6 @@ export namespace CustomerRetrieveBillingResponse {
 
     pricePerBillingCycle?: unknown;
 
-    stripesubscriptionId?: unknown;
-
     trialPeriodDays?: unknown;
   }
 
@@ -3451,46 +4897,37 @@ export namespace CustomerRetrieveBillingResponse {
 
     pricePerBillingCycle?: unknown;
 
-    stripesubscriptionId?: unknown;
-
     trialPeriodDays?: unknown;
   }
 
-  export interface Subscription {
+  export interface UnionMember0 {
     id: string;
 
-    backupPaymentMethodId: string | null;
+    backupPaymentMethodId: 'null' | null;
 
-    billingCycleAnchorDate: string;
+    billingCycleAnchorDate: 'null' | null;
 
-    canceledAt: string | null;
+    canceledAt: 'null' | null;
 
-    cancelScheduledAt: string | null;
+    cancelScheduledAt: 'null' | null;
 
     createdAt: string;
 
     createdByCommit: string | null;
 
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
-     */
     current: boolean;
 
-    currentBillingPeriodEnd: string;
+    currentBillingPeriodEnd: 'null' | null;
 
-    currentBillingPeriodStart: string;
+    currentBillingPeriodStart: 'null' | null;
 
     customerId: string;
 
-    defaultPaymentMethodId: string | null;
+    defaultPaymentMethodId: 'null' | null;
 
-    interval: 'day' | 'week' | 'month' | 'year';
+    interval: 'null' | null;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
+    intervalCount: 'null' | null;
 
     livemode: boolean;
 
@@ -3506,28 +4943,28 @@ export namespace CustomerRetrieveBillingResponse {
 
     startDate: string;
 
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
+    status: 'credit_trial';
 
-    subscriptionItems: Array<Subscription.SubscriptionItem>;
+    subscriptionItems: Array<UnionMember0.UnionMember0 | UnionMember0.UnionMember1>;
 
-    trialEnd: string | null;
+    trialEnd: 'null' | null;
 
     updatedAt: string | null;
 
     updatedByCommit: string | null;
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    experimental?: UnionMember0.Experimental;
   }
 
-  export namespace Subscription {
-    export interface SubscriptionItem {
+  export namespace UnionMember0 {
+    /**
+     * A usage-based subscription item, where charges are based on recorded usage
+     * events.
+     */
+    export interface UnionMember0 {
       id: string;
 
       addedDate: string;
@@ -3535,6 +4972,13 @@ export namespace CustomerRetrieveBillingResponse {
       createdAt: string;
 
       createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
 
       externalId: string | null;
 
@@ -3548,7 +4992,7 @@ export namespace CustomerRetrieveBillingResponse {
        * A subscribable price, which can be used to create a subscription based on
        * standard recurring subscription prices or usage-based subscriptions.
        */
-      price: SubscriptionItem.UnionMember0 | SubscriptionItem.UnionMember1;
+      price: UnionMember0.UnionMember0 | UnionMember0.UnionMember1;
 
       priceId: string;
 
@@ -3559,6 +5003,8 @@ export namespace CustomerRetrieveBillingResponse {
 
       subscriptionId: string;
 
+      type: 'usage';
+
       /**
        * safeZodPositiveInteger
        */
@@ -3567,9 +5013,19 @@ export namespace CustomerRetrieveBillingResponse {
       updatedAt: string | null;
 
       updatedByCommit: string | null;
+
+      /**
+       * The number of usage events that constitute one unit for billing.
+       */
+      usageEventsPerUnit: number;
+
+      /**
+       * The usage meter associated with this usage-based subscription item.
+       */
+      usageMeterId: string;
     }
 
-    export namespace SubscriptionItem {
+    export namespace UnionMember0 {
       /**
        * A subscription price, which will have details on the interval, default trial
        * period, and setup fee (if any).
@@ -3739,6 +5195,8 @@ export namespace CustomerRetrieveBillingResponse {
          */
         setupFeeAmount: number | 0 | null;
 
+        slug: string | null;
+
         /**
          * safeZodPositiveInteger
          */
@@ -3752,7 +5210,22 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedByCommit: string | null;
 
-        usageMeterId: string | null;
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
       }
 
       /**
@@ -3918,10 +5391,7 @@ export namespace CustomerRetrieveBillingResponse {
 
         productId: string;
 
-        /**
-         * safeZodPositiveInteger
-         */
-        setupFeeAmount: number | 0 | null;
+        slug: string | null;
 
         type: 'usage';
 
@@ -3932,6 +5402,11 @@ export namespace CustomerRetrieveBillingResponse {
         updatedByCommit: string | null;
 
         /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
          */
@@ -3940,83 +5415,27 @@ export namespace CustomerRetrieveBillingResponse {
         /**
          * safeZodNullOrUndefined
          */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
         trialPeriodDays?: 'null' | null | unknown;
       }
     }
-  }
-
-  export interface CurrentSubscription {
-    id: string;
-
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
 
     /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
+     * A static subscription item, representing a fixed fee component of a
+     * subscription.
      */
-    current: boolean;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    customerId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
-
-    subscriptionItems: Array<CurrentSubscription.SubscriptionItem>;
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export namespace CurrentSubscription {
-    export interface SubscriptionItem {
+    export interface UnionMember1 {
       id: string;
 
       addedDate: string;
@@ -4024,6 +5443,13 @@ export namespace CustomerRetrieveBillingResponse {
       createdAt: string;
 
       createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
 
       externalId: string | null;
 
@@ -4037,7 +5463,7 @@ export namespace CustomerRetrieveBillingResponse {
        * A subscribable price, which can be used to create a subscription based on
        * standard recurring subscription prices or usage-based subscriptions.
        */
-      price: SubscriptionItem.UnionMember0 | SubscriptionItem.UnionMember1;
+      price: UnionMember1.UnionMember0 | UnionMember1.UnionMember1;
 
       priceId: string;
 
@@ -4048,6 +5474,8 @@ export namespace CustomerRetrieveBillingResponse {
 
       subscriptionId: string;
 
+      type: 'static';
+
       /**
        * safeZodPositiveInteger
        */
@@ -4056,9 +5484,19 @@ export namespace CustomerRetrieveBillingResponse {
       updatedAt: string | null;
 
       updatedByCommit: string | null;
+
+      /**
+       * Usage events per unit must be null for static subscription items.
+       */
+      usageEventsPerUnit: 'null' | null;
+
+      /**
+       * Usage meter ID must be null for static subscription items.
+       */
+      usageMeterId: 'null' | null;
     }
 
-    export namespace SubscriptionItem {
+    export namespace UnionMember1 {
       /**
        * A subscription price, which will have details on the interval, default trial
        * period, and setup fee (if any).
@@ -4228,6 +5666,8 @@ export namespace CustomerRetrieveBillingResponse {
          */
         setupFeeAmount: number | 0 | null;
 
+        slug: string | null;
+
         /**
          * safeZodPositiveInteger
          */
@@ -4241,7 +5681,22 @@ export namespace CustomerRetrieveBillingResponse {
 
         updatedByCommit: string | null;
 
-        usageMeterId: string | null;
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
       }
 
       /**
@@ -4407,10 +5862,7 @@ export namespace CustomerRetrieveBillingResponse {
 
         productId: string;
 
-        /**
-         * safeZodPositiveInteger
-         */
-        setupFeeAmount: number | 0 | null;
+        slug: string | null;
 
         type: 'usage';
 
@@ -4421,6 +5873,11 @@ export namespace CustomerRetrieveBillingResponse {
         updatedByCommit: string | null;
 
         /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
          * The usage meter that uses this price. All usage events on that meter must be
          * associated with a price that is also associated with that usage meter.
          */
@@ -4429,7 +5886,3536 @@ export namespace CustomerRetrieveBillingResponse {
         /**
          * safeZodNullOrUndefined
          */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
         trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    export interface Experimental {
+      featureItems: Array<Experimental.UnionMember0 | Experimental.UnionMember1>;
+
+      usageMeterBalances: Array<Experimental.UsageMeterBalance>;
+    }
+
+    export namespace Experimental {
+      export interface UnionMember0 {
+        id: string;
+
+        amount: unknown | null;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        name: string;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: unknown | null;
+
+        slug: string;
+
+        subscriptionItemId: string;
+
+        type: 'toggle';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: unknown | null;
+      }
+
+      export interface UnionMember1 {
+        id: string;
+
+        amount: number;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: 'once' | 'every_billing_period';
+
+        subscriptionItemId: string;
+
+        type: 'usage_credit_grant';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: string;
+      }
+
+      /**
+       * A usage meter and the available balance for that meter, scoped to a given
+       * subscription.
+       */
+      export interface UsageMeterBalance {
+        id: string;
+
+        /**
+         * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+         * aggregates all the usage event amounts for the billing period.
+         * "count_distinct_properties" counts the number of distinct properties in the
+         * billing period for a given meter.
+         */
+        aggregationType: 'sum' | 'count_distinct_properties';
+
+        availableBalance: number;
+
+        catalogId: string;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        slug: string;
+
+        subscriptionId: string;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+      }
+    }
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    backupPaymentMethodId: string | null;
+
+    billingCycleAnchorDate: string;
+
+    canceledAt: string | null;
+
+    cancelScheduledAt: string | null;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    current: boolean;
+
+    currentBillingPeriodEnd: string;
+
+    currentBillingPeriodStart: string;
+
+    customerId: string;
+
+    defaultPaymentMethodId: string | null;
+
+    interval: 'day' | 'week' | 'month' | 'year';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    livemode: boolean;
+
+    metadata: { [key: string]: unknown } | null;
+
+    name: string | null;
+
+    organizationId: string;
+
+    priceId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
+
+    startDate: string;
+
+    status:
+      | 'trialing'
+      | 'active'
+      | 'past_due'
+      | 'unpaid'
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
+
+    subscriptionItems: Array<UnionMember1.UnionMember0 | UnionMember1.UnionMember1>;
+
+    trialEnd: string | null;
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    experimental?: UnionMember1.Experimental;
+  }
+
+  export namespace UnionMember1 {
+    /**
+     * A usage-based subscription item, where charges are based on recorded usage
+     * events.
+     */
+    export interface UnionMember0 {
+      id: string;
+
+      addedDate: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      metadata: { [key: string]: unknown } | null;
+
+      name: string | null;
+
+      /**
+       * A subscribable price, which can be used to create a subscription based on
+       * standard recurring subscription prices or usage-based subscriptions.
+       */
+      price: UnionMember0.UnionMember0 | UnionMember0.UnionMember1;
+
+      priceId: string;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'usage';
+
+      /**
+       * safeZodPositiveInteger
+       */
+      unitPrice: number | 0;
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+
+      /**
+       * The number of usage events that constitute one unit for billing.
+       */
+      usageEventsPerUnit: number;
+
+      /**
+       * The usage meter associated with this usage-based subscription item.
+       */
+      usageMeterId: string;
+    }
+
+    export namespace UnionMember0 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * A static subscription item, representing a fixed fee component of a
+     * subscription.
+     */
+    export interface UnionMember1 {
+      id: string;
+
+      addedDate: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      metadata: { [key: string]: unknown } | null;
+
+      name: string | null;
+
+      /**
+       * A subscribable price, which can be used to create a subscription based on
+       * standard recurring subscription prices or usage-based subscriptions.
+       */
+      price: UnionMember1.UnionMember0 | UnionMember1.UnionMember1;
+
+      priceId: string;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      /**
+       * safeZodPositiveInteger
+       */
+      unitPrice: number | 0;
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+
+      /**
+       * Usage events per unit must be null for static subscription items.
+       */
+      usageEventsPerUnit: 'null' | null;
+
+      /**
+       * Usage meter ID must be null for static subscription items.
+       */
+      usageMeterId: 'null' | null;
+    }
+
+    export namespace UnionMember1 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    export interface Experimental {
+      featureItems: Array<Experimental.UnionMember0 | Experimental.UnionMember1>;
+
+      usageMeterBalances: Array<Experimental.UsageMeterBalance>;
+    }
+
+    export namespace Experimental {
+      export interface UnionMember0 {
+        id: string;
+
+        amount: unknown | null;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        name: string;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: unknown | null;
+
+        slug: string;
+
+        subscriptionItemId: string;
+
+        type: 'toggle';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: unknown | null;
+      }
+
+      export interface UnionMember1 {
+        id: string;
+
+        amount: number;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: 'once' | 'every_billing_period';
+
+        subscriptionItemId: string;
+
+        type: 'usage_credit_grant';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: string;
+      }
+
+      /**
+       * A usage meter and the available balance for that meter, scoped to a given
+       * subscription.
+       */
+      export interface UsageMeterBalance {
+        id: string;
+
+        /**
+         * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+         * aggregates all the usage event amounts for the billing period.
+         * "count_distinct_properties" counts the number of distinct properties in the
+         * billing period for a given meter.
+         */
+        aggregationType: 'sum' | 'count_distinct_properties';
+
+        availableBalance: number;
+
+        catalogId: string;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        slug: string;
+
+        subscriptionId: string;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+      }
+    }
+  }
+
+  export interface UnionMember0 {
+    id: string;
+
+    backupPaymentMethodId: 'null' | null;
+
+    billingCycleAnchorDate: 'null' | null;
+
+    canceledAt: 'null' | null;
+
+    cancelScheduledAt: 'null' | null;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    current: boolean;
+
+    currentBillingPeriodEnd: 'null' | null;
+
+    currentBillingPeriodStart: 'null' | null;
+
+    customerId: string;
+
+    defaultPaymentMethodId: 'null' | null;
+
+    interval: 'null' | null;
+
+    intervalCount: 'null' | null;
+
+    livemode: boolean;
+
+    metadata: { [key: string]: unknown } | null;
+
+    name: string | null;
+
+    organizationId: string;
+
+    priceId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
+
+    startDate: string;
+
+    status: 'credit_trial';
+
+    subscriptionItems: Array<UnionMember0.UnionMember0 | UnionMember0.UnionMember1>;
+
+    trialEnd: 'null' | null;
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    experimental?: UnionMember0.Experimental;
+  }
+
+  export namespace UnionMember0 {
+    /**
+     * A usage-based subscription item, where charges are based on recorded usage
+     * events.
+     */
+    export interface UnionMember0 {
+      id: string;
+
+      addedDate: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      metadata: { [key: string]: unknown } | null;
+
+      name: string | null;
+
+      /**
+       * A subscribable price, which can be used to create a subscription based on
+       * standard recurring subscription prices or usage-based subscriptions.
+       */
+      price: UnionMember0.UnionMember0 | UnionMember0.UnionMember1;
+
+      priceId: string;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'usage';
+
+      /**
+       * safeZodPositiveInteger
+       */
+      unitPrice: number | 0;
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+
+      /**
+       * The number of usage events that constitute one unit for billing.
+       */
+      usageEventsPerUnit: number;
+
+      /**
+       * The usage meter associated with this usage-based subscription item.
+       */
+      usageMeterId: string;
+    }
+
+    export namespace UnionMember0 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * A static subscription item, representing a fixed fee component of a
+     * subscription.
+     */
+    export interface UnionMember1 {
+      id: string;
+
+      addedDate: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      metadata: { [key: string]: unknown } | null;
+
+      name: string | null;
+
+      /**
+       * A subscribable price, which can be used to create a subscription based on
+       * standard recurring subscription prices or usage-based subscriptions.
+       */
+      price: UnionMember1.UnionMember0 | UnionMember1.UnionMember1;
+
+      priceId: string;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      /**
+       * safeZodPositiveInteger
+       */
+      unitPrice: number | 0;
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+
+      /**
+       * Usage events per unit must be null for static subscription items.
+       */
+      usageEventsPerUnit: 'null' | null;
+
+      /**
+       * Usage meter ID must be null for static subscription items.
+       */
+      usageMeterId: 'null' | null;
+    }
+
+    export namespace UnionMember1 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    export interface Experimental {
+      featureItems: Array<Experimental.UnionMember0 | Experimental.UnionMember1>;
+
+      usageMeterBalances: Array<Experimental.UsageMeterBalance>;
+    }
+
+    export namespace Experimental {
+      export interface UnionMember0 {
+        id: string;
+
+        amount: unknown | null;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        name: string;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: unknown | null;
+
+        slug: string;
+
+        subscriptionItemId: string;
+
+        type: 'toggle';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: unknown | null;
+      }
+
+      export interface UnionMember1 {
+        id: string;
+
+        amount: number;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: 'once' | 'every_billing_period';
+
+        subscriptionItemId: string;
+
+        type: 'usage_credit_grant';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: string;
+      }
+
+      /**
+       * A usage meter and the available balance for that meter, scoped to a given
+       * subscription.
+       */
+      export interface UsageMeterBalance {
+        id: string;
+
+        /**
+         * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+         * aggregates all the usage event amounts for the billing period.
+         * "count_distinct_properties" counts the number of distinct properties in the
+         * billing period for a given meter.
+         */
+        aggregationType: 'sum' | 'count_distinct_properties';
+
+        availableBalance: number;
+
+        catalogId: string;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        slug: string;
+
+        subscriptionId: string;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+      }
+    }
+  }
+
+  export interface UnionMember1 {
+    id: string;
+
+    backupPaymentMethodId: string | null;
+
+    billingCycleAnchorDate: string;
+
+    canceledAt: string | null;
+
+    cancelScheduledAt: string | null;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    current: boolean;
+
+    currentBillingPeriodEnd: string;
+
+    currentBillingPeriodStart: string;
+
+    customerId: string;
+
+    defaultPaymentMethodId: string | null;
+
+    interval: 'day' | 'week' | 'month' | 'year';
+
+    /**
+     * safeZodPositiveInteger
+     */
+    intervalCount: number;
+
+    livemode: boolean;
+
+    metadata: { [key: string]: unknown } | null;
+
+    name: string | null;
+
+    organizationId: string;
+
+    priceId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
+
+    startDate: string;
+
+    status:
+      | 'trialing'
+      | 'active'
+      | 'past_due'
+      | 'unpaid'
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
+
+    subscriptionItems: Array<UnionMember1.UnionMember0 | UnionMember1.UnionMember1>;
+
+    trialEnd: string | null;
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    experimental?: UnionMember1.Experimental;
+  }
+
+  export namespace UnionMember1 {
+    /**
+     * A usage-based subscription item, where charges are based on recorded usage
+     * events.
+     */
+    export interface UnionMember0 {
+      id: string;
+
+      addedDate: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      metadata: { [key: string]: unknown } | null;
+
+      name: string | null;
+
+      /**
+       * A subscribable price, which can be used to create a subscription based on
+       * standard recurring subscription prices or usage-based subscriptions.
+       */
+      price: UnionMember0.UnionMember0 | UnionMember0.UnionMember1;
+
+      priceId: string;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'usage';
+
+      /**
+       * safeZodPositiveInteger
+       */
+      unitPrice: number | 0;
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+
+      /**
+       * The number of usage events that constitute one unit for billing.
+       */
+      usageEventsPerUnit: number;
+
+      /**
+       * The usage meter associated with this usage-based subscription item.
+       */
+      usageMeterId: string;
+    }
+
+    export namespace UnionMember0 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * A static subscription item, representing a fixed fee component of a
+     * subscription.
+     */
+    export interface UnionMember1 {
+      id: string;
+
+      addedDate: string;
+
+      createdAt: string;
+
+      createdByCommit: string | null;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list.
+       */
+      expiredAt: string | null;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      metadata: { [key: string]: unknown } | null;
+
+      name: string | null;
+
+      /**
+       * A subscribable price, which can be used to create a subscription based on
+       * standard recurring subscription prices or usage-based subscriptions.
+       */
+      price: UnionMember1.UnionMember0 | UnionMember1.UnionMember1;
+
+      priceId: string;
+
+      /**
+       * safeZodPositiveInteger
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      /**
+       * safeZodPositiveInteger
+       */
+      unitPrice: number | 0;
+
+      updatedAt: string | null;
+
+      updatedByCommit: string | null;
+
+      /**
+       * Usage events per unit must be null for static subscription items.
+       */
+      usageEventsPerUnit: 'null' | null;
+
+      /**
+       * Usage meter ID must be null for static subscription items.
+       */
+      usageMeterId: 'null' | null;
+    }
+
+    export namespace UnionMember1 {
+      /**
+       * A subscription price, which will have details on the interval, default trial
+       * period, and setup fee (if any).
+       */
+      export interface UnionMember0 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        setupFeeAmount: number | 0 | null;
+
+        slug: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        trialPeriodDays: number | 0 | null;
+
+        type: 'subscription';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodNullishString
+         */
+        overagePriceId?: string | null;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageEventsPerUnit?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        usageMeterId?: 'null' | null | unknown;
+      }
+
+      /**
+       * A usage price, which describes the price per unit of usage of a product.
+       */
+      export interface UnionMember1 {
+        id: string;
+
+        active: boolean;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        currency:
+          | 'USD'
+          | 'AED'
+          | 'AFN'
+          | 'ALL'
+          | 'AMD'
+          | 'ANG'
+          | 'AOA'
+          | 'ARS'
+          | 'AUD'
+          | 'AWG'
+          | 'AZN'
+          | 'BAM'
+          | 'BBD'
+          | 'BDT'
+          | 'BGN'
+          | 'BIF'
+          | 'BMD'
+          | 'BND'
+          | 'BOB'
+          | 'BRL'
+          | 'BSD'
+          | 'BWP'
+          | 'BYN'
+          | 'BZD'
+          | 'CAD'
+          | 'CDF'
+          | 'CHF'
+          | 'CLP'
+          | 'CNY'
+          | 'COP'
+          | 'CRC'
+          | 'CVE'
+          | 'CZK'
+          | 'DJF'
+          | 'DKK'
+          | 'DOP'
+          | 'DZD'
+          | 'EGP'
+          | 'ETB'
+          | 'EUR'
+          | 'FJD'
+          | 'FKP'
+          | 'GBP'
+          | 'GEL'
+          | 'GIP'
+          | 'GMD'
+          | 'GNF'
+          | 'GTQ'
+          | 'GYD'
+          | 'HKD'
+          | 'HNL'
+          | 'HTG'
+          | 'HUF'
+          | 'IDR'
+          | 'ILS'
+          | 'INR'
+          | 'ISK'
+          | 'JMD'
+          | 'JPY'
+          | 'KES'
+          | 'KGS'
+          | 'KHR'
+          | 'KMF'
+          | 'KRW'
+          | 'KYD'
+          | 'KZT'
+          | 'LAK'
+          | 'LBP'
+          | 'LKR'
+          | 'LRD'
+          | 'LSL'
+          | 'MAD'
+          | 'MDL'
+          | 'MGA'
+          | 'MKD'
+          | 'MMK'
+          | 'MNT'
+          | 'MOP'
+          | 'MUR'
+          | 'MVR'
+          | 'MWK'
+          | 'MXN'
+          | 'MYR'
+          | 'MZN'
+          | 'NAD'
+          | 'NGN'
+          | 'NIO'
+          | 'NOK'
+          | 'NPR'
+          | 'NZD'
+          | 'PAB'
+          | 'PEN'
+          | 'PGK'
+          | 'PHP'
+          | 'PKR'
+          | 'PLN'
+          | 'PYG'
+          | 'QAR'
+          | 'RON'
+          | 'RSD'
+          | 'RUB'
+          | 'RWF'
+          | 'SAR'
+          | 'SBD'
+          | 'SCR'
+          | 'SEK'
+          | 'SGD'
+          | 'SHP'
+          | 'SLE'
+          | 'SOS'
+          | 'SRD'
+          | 'STD'
+          | 'SZL'
+          | 'THB'
+          | 'TJS'
+          | 'TOP'
+          | 'TRY'
+          | 'TTD'
+          | 'TWD'
+          | 'TZS'
+          | 'UAH'
+          | 'UGX'
+          | 'UYU'
+          | 'UZS'
+          | 'VND'
+          | 'VUV'
+          | 'WST'
+          | 'XAF'
+          | 'XCD'
+          | 'XOF'
+          | 'XPF'
+          | 'YER'
+          | 'ZAR'
+          | 'ZMW';
+
+        /**
+         * safeZodPositiveInteger
+         */
+        intervalCount: number;
+
+        intervalUnit: 'day' | 'week' | 'month' | 'year';
+
+        isDefault: boolean;
+
+        livemode: boolean;
+
+        name: string | null;
+
+        productId: string;
+
+        slug: string | null;
+
+        type: 'usage';
+
+        unitPrice: number;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        /**
+         * safeZodPositiveInteger
+         */
+        usageEventsPerUnit: number;
+
+        /**
+         * The usage meter that uses this price. All usage events on that meter must be
+         * associated with a price that is also associated with that usage meter.
+         */
+        usageMeterId: string;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        overagePriceId?: 'null' | null | unknown;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        setupFeeAmount?: 'null' | null | unknown;
+
+        startsWithCreditTrial?: boolean | null;
+
+        /**
+         * safeZodNullOrUndefined
+         */
+        trialPeriodDays?: 'null' | null | unknown;
+      }
+    }
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    export interface Experimental {
+      featureItems: Array<Experimental.UnionMember0 | Experimental.UnionMember1>;
+
+      usageMeterBalances: Array<Experimental.UsageMeterBalance>;
+    }
+
+    export namespace Experimental {
+      export interface UnionMember0 {
+        id: string;
+
+        amount: unknown | null;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        name: string;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: unknown | null;
+
+        slug: string;
+
+        subscriptionItemId: string;
+
+        type: 'toggle';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: unknown | null;
+      }
+
+      export interface UnionMember1 {
+        id: string;
+
+        amount: number;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        detachedAt: string | null;
+
+        detachedReason: string | null;
+
+        expiredAt: string | null;
+
+        featureId: string;
+
+        livemode: boolean;
+
+        productFeatureId: string | null;
+
+        renewalFrequency: 'once' | 'every_billing_period';
+
+        subscriptionItemId: string;
+
+        type: 'usage_credit_grant';
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
+
+        usageMeterId: string;
+      }
+
+      /**
+       * A usage meter and the available balance for that meter, scoped to a given
+       * subscription.
+       */
+      export interface UsageMeterBalance {
+        id: string;
+
+        /**
+         * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+         * aggregates all the usage event amounts for the billing period.
+         * "count_distinct_properties" counts the number of distinct properties in the
+         * billing period for a given meter.
+         */
+        aggregationType: 'sum' | 'count_distinct_properties';
+
+        availableBalance: number;
+
+        catalogId: string;
+
+        createdAt: string;
+
+        createdByCommit: string | null;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        slug: string;
+
+        subscriptionId: string;
+
+        updatedAt: string | null;
+
+        updatedByCommit: string | null;
       }
     }
   }

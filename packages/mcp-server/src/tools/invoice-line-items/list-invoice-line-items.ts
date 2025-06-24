@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'list_invoice_line_items',
-  description: 'List InvoiceLineItems',
+  description: 'List Invoice Line Items',
   inputSchema: {
     type: 'object',
     properties: {

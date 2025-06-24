@@ -236,8 +236,6 @@ export namespace PaymentRetrieveResponse {
       | 'requires_confirmation'
       | 'requires_action';
 
-    stripeChargeId: string | null;
-
     subscriptionId: string | null;
 
     subtotal: number | null;
@@ -724,8 +722,6 @@ export namespace PaymentListResponse {
       | 'requires_confirmation'
       | 'requires_action';
 
-    stripeChargeId: string | null;
-
     subscriptionId: string | null;
 
     subtotal: number | null;
@@ -1203,8 +1199,6 @@ export namespace PaymentRefundResponse {
       | 'succeeded'
       | 'requires_confirmation'
       | 'requires_action';
-
-    stripeChargeId: string | null;
 
     subscriptionId: string | null;
 

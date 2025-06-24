@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'list_checkout_sessions',
-  description: 'List CheckoutSessions',
+  description: 'List Checkout Sessions',
   inputSchema: {
     type: 'object',
     properties: {

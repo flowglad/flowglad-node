@@ -19,10 +19,10 @@ describe('resource prices', () => {
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,
+        slug: 'slug',
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
-        usageMeterId: 'usageMeterId',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -45,10 +45,14 @@ describe('resource prices', () => {
         name: 'name',
         productId: 'productId',
         setupFeeAmount: 0,
+        slug: 'slug',
         trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
-        usageMeterId: 'usageMeterId',
+        overagePriceId: 'overagePriceId',
+        startsWithCreditTrial: true,
+        usageEventsPerUnit: 'null',
+        usageMeterId: 'null',
       },
     });
   });
@@ -76,11 +80,15 @@ describe('resource prices', () => {
         intervalUnit: 'day',
         isDefault: true,
         name: 'name',
+        overagePriceId: 'overagePriceId',
         productId: 'productId',
         setupFeeAmount: 0,
+        slug: 'slug',
+        startsWithCreditTrial: true,
         trialPeriodDays: 0,
         unitPrice: 0,
-        usageMeterId: 'usageMeterId',
+        usageEventsPerUnit: 'null',
+        usageMeterId: 'null',
       },
     });
   });

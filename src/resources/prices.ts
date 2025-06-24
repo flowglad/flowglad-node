@@ -212,6 +212,8 @@ export namespace PriceCreateResponse {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -225,7 +227,22 @@ export namespace PriceCreateResponse {
 
     updatedByCommit: string | null;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -385,6 +402,8 @@ export namespace PriceCreateResponse {
 
     productId: string;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
@@ -392,8 +411,6 @@ export namespace PriceCreateResponse {
     updatedAt: string | null;
 
     updatedByCommit: string | null;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -408,12 +425,32 @@ export namespace PriceCreateResponse {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -579,10 +616,7 @@ export namespace PriceCreateResponse {
 
     productId: string;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
@@ -593,10 +627,27 @@ export namespace PriceCreateResponse {
     updatedByCommit: string | null;
 
     /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
+
+    /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -786,6 +837,8 @@ export namespace PriceUpdateResponse {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -799,7 +852,22 @@ export namespace PriceUpdateResponse {
 
     updatedByCommit: string | null;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -959,6 +1027,8 @@ export namespace PriceUpdateResponse {
 
     productId: string;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
@@ -966,8 +1036,6 @@ export namespace PriceUpdateResponse {
     updatedAt: string | null;
 
     updatedByCommit: string | null;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -982,12 +1050,32 @@ export namespace PriceUpdateResponse {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1153,10 +1241,7 @@ export namespace PriceUpdateResponse {
 
     productId: string;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
@@ -1167,10 +1252,27 @@ export namespace PriceUpdateResponse {
     updatedByCommit: string | null;
 
     /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
+
+    /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1363,6 +1465,8 @@ export namespace PriceListResponse {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -1376,7 +1480,22 @@ export namespace PriceListResponse {
 
     updatedByCommit: string | null;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1536,6 +1655,8 @@ export namespace PriceListResponse {
 
     productId: string;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
@@ -1543,8 +1664,6 @@ export namespace PriceListResponse {
     updatedAt: string | null;
 
     updatedByCommit: string | null;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1559,12 +1678,32 @@ export namespace PriceListResponse {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1730,10 +1869,7 @@ export namespace PriceListResponse {
 
     productId: string;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
@@ -1744,10 +1880,27 @@ export namespace PriceListResponse {
     updatedByCommit: string | null;
 
     /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
+
+    /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1790,6 +1943,8 @@ export namespace PriceCreateParams {
      */
     setupFeeAmount: number | 0 | null;
 
+    slug: string | null;
+
     /**
      * safeZodPositiveInteger
      */
@@ -1799,7 +1954,22 @@ export namespace PriceCreateParams {
 
     unitPrice: number;
 
-    usageMeterId: string | null;
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1815,11 +1985,11 @@ export namespace PriceCreateParams {
 
     productId: string;
 
+    slug: string | null;
+
     type: 'single_payment';
 
     unitPrice: number;
-
-    usageMeterId: string | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1834,12 +2004,32 @@ export namespace PriceCreateParams {
     /**
      * safeZodNullOrUndefined
      */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     setupFeeAmount?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
      */
+    startsWithCreditTrial?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
     trialPeriodDays?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1847,8 +2037,6 @@ export namespace PriceCreateParams {
    */
   export interface UnionMember2 {
     active: boolean;
-
-    createdByCommit: string | null;
 
     /**
      * safeZodPositiveInteger
@@ -1863,22 +2051,34 @@ export namespace PriceCreateParams {
 
     productId: string;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
+    slug: string | null;
 
     type: 'usage';
 
     unitPrice: number;
 
-    updatedByCommit: string | null;
+    /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit: number;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be
      * associated with a price that is also associated with that usage meter.
      */
     usageMeterId: string;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    setupFeeAmount?: 'null' | null | unknown;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -1918,12 +2118,21 @@ export namespace PriceUpdateParams {
 
     name?: string | null;
 
+    /**
+     * safeZodNullishString
+     */
+    overagePriceId?: string | null;
+
     productId?: string;
 
     /**
      * safeZodPositiveInteger
      */
     setupFeeAmount?: number | 0 | null;
+
+    slug?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodPositiveInteger
@@ -1932,7 +2141,15 @@ export namespace PriceUpdateParams {
 
     unitPrice?: number;
 
-    usageMeterId?: string | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1960,12 +2177,24 @@ export namespace PriceUpdateParams {
 
     name?: string | null;
 
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
     productId?: string;
 
     /**
      * safeZodNullOrUndefined
      */
     setupFeeAmount?: 'null' | null | unknown;
+
+    slug?: string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    startsWithCreditTrial?: 'null' | null | unknown;
 
     /**
      * safeZodNullOrUndefined
@@ -1974,7 +2203,15 @@ export namespace PriceUpdateParams {
 
     unitPrice?: number;
 
-    usageMeterId?: string | null;
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageEventsPerUnit?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    usageMeterId?: 'null' | null | unknown;
   }
 
   /**
@@ -1987,8 +2224,6 @@ export namespace PriceUpdateParams {
 
     active?: boolean;
 
-    createdByCommit?: string | null;
-
     /**
      * safeZodPositiveInteger
      */
@@ -2000,12 +2235,21 @@ export namespace PriceUpdateParams {
 
     name?: string | null;
 
+    /**
+     * safeZodNullOrUndefined
+     */
+    overagePriceId?: 'null' | null | unknown;
+
     productId?: string;
 
     /**
-     * safeZodPositiveInteger
+     * safeZodNullOrUndefined
      */
-    setupFeeAmount?: number | 0 | null;
+    setupFeeAmount?: 'null' | null | unknown;
+
+    slug?: string | null;
+
+    startsWithCreditTrial?: boolean | null;
 
     /**
      * safeZodNullOrUndefined
@@ -2014,7 +2258,10 @@ export namespace PriceUpdateParams {
 
     unitPrice?: number;
 
-    updatedByCommit?: string | null;
+    /**
+     * safeZodPositiveInteger
+     */
+    usageEventsPerUnit?: number;
 
     /**
      * The usage meter that uses this price. All usage events on that meter must be

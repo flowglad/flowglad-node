@@ -42,7 +42,7 @@ export interface InvoiceCreateResponse {
     | InvoiceCreateResponse.UnionMember1
     | InvoiceCreateResponse.UnionMember2;
 
-  invoiceLineItems: Array<InvoiceCreateResponse.InvoiceLineItem>;
+  invoiceLineItems: Array<InvoiceCreateResponse.UnionMember0 | InvoiceCreateResponse.UnionMember1>;
 
   autoSend?: boolean;
 }
@@ -66,6 +66,8 @@ export namespace InvoiceCreateResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -531,6 +533,8 @@ export namespace InvoiceCreateResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -995,6 +999,8 @@ export namespace InvoiceCreateResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -1442,7 +1448,10 @@ export namespace InvoiceCreateResponse {
     updatedByCommit: string | null;
   }
 
-  export interface InvoiceLineItem {
+  /**
+   * A static invoice line item, representing a fixed fee component of an invoice.
+   */
+  export interface UnionMember0 {
     id: string;
 
     createdAt: string;
@@ -1464,6 +1473,41 @@ export namespace InvoiceCreateResponse {
      */
     quantity: number;
 
+    type: 'static';
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+  }
+
+  /**
+   * A usage-based invoice line item, where charges are based on recorded usage
+   * events.
+   */
+  export interface UnionMember1 {
+    id: string;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    description: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    price: number;
+
+    priceId: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    type: 'usage';
+
     updatedAt: string | null;
 
     updatedByCommit: string | null;
@@ -1481,7 +1525,7 @@ export interface InvoiceRetrieveResponse {
     | InvoiceRetrieveResponse.UnionMember1
     | InvoiceRetrieveResponse.UnionMember2;
 
-  invoiceLineItems: Array<InvoiceRetrieveResponse.InvoiceLineItem>;
+  invoiceLineItems: Array<InvoiceRetrieveResponse.UnionMember0 | InvoiceRetrieveResponse.UnionMember1>;
 }
 
 export namespace InvoiceRetrieveResponse {
@@ -1503,6 +1547,8 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -1968,6 +2014,8 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -2432,6 +2480,8 @@ export namespace InvoiceRetrieveResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -2879,7 +2929,10 @@ export namespace InvoiceRetrieveResponse {
     updatedByCommit: string | null;
   }
 
-  export interface InvoiceLineItem {
+  /**
+   * A static invoice line item, representing a fixed fee component of an invoice.
+   */
+  export interface UnionMember0 {
     id: string;
 
     createdAt: string;
@@ -2900,6 +2953,41 @@ export namespace InvoiceRetrieveResponse {
      * safeZodPositiveInteger
      */
     quantity: number;
+
+    type: 'static';
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+  }
+
+  /**
+   * A usage-based invoice line item, where charges are based on recorded usage
+   * events.
+   */
+  export interface UnionMember1 {
+    id: string;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    description: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    price: number;
+
+    priceId: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    type: 'usage';
 
     updatedAt: string | null;
 
@@ -2940,6 +3028,8 @@ export namespace InvoiceListResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -3405,6 +3495,8 @@ export namespace InvoiceListResponse {
 
     billingPeriodStartDate: string | null;
 
+    billingRunId: string | null;
+
     createdAt: string;
 
     createdByCommit: string | null;
@@ -3868,6 +3960,8 @@ export namespace InvoiceListResponse {
     billingPeriodId: 'null' | null;
 
     billingPeriodStartDate: string | null;
+
+    billingRunId: string | null;
 
     createdAt: string;
 
@@ -4328,7 +4422,7 @@ export interface InvoiceCreateParams {
     | InvoiceCreateParams.UnionMember1
     | InvoiceCreateParams.UnionMember2;
 
-  invoiceLineItems: Array<InvoiceCreateParams.InvoiceLineItem>;
+  invoiceLineItems: Array<InvoiceCreateParams.UnionMember0 | InvoiceCreateParams.UnionMember1>;
 
   autoSend?: boolean;
 }
@@ -4493,6 +4587,8 @@ export namespace InvoiceCreateParams {
     billingPeriodEndDate?: string | null;
 
     billingPeriodStartDate?: string | null;
+
+    billingRunId?: string | null;
 
     dueDate?: string | null;
 
@@ -4939,6 +5035,8 @@ export namespace InvoiceCreateParams {
 
     billingPeriodStartDate?: string | null;
 
+    billingRunId?: string | null;
+
     dueDate?: string | null;
 
     invoiceDate?: string;
@@ -5383,6 +5481,8 @@ export namespace InvoiceCreateParams {
 
     billingPeriodStartDate?: string | null;
 
+    billingRunId?: string | null;
+
     dueDate?: string | null;
 
     invoiceDate?: string;
@@ -5668,19 +5768,41 @@ export namespace InvoiceCreateParams {
       | null;
   }
 
-  export interface InvoiceLineItem {
-    invoiceId: string;
+  /**
+   * A static invoice line item, representing a fixed fee component of an invoice.
+   */
+  export interface UnionMember0 {
+    description: string | null;
 
     price: number;
+
+    priceId: string | null;
 
     /**
      * safeZodPositiveInteger
      */
     quantity: number;
 
-    description?: string | null;
+    type: 'static';
+  }
 
-    priceId?: string | null;
+  /**
+   * A usage-based invoice line item, where charges are based on recorded usage
+   * events.
+   */
+  export interface UnionMember1 {
+    description: string | null;
+
+    price: number;
+
+    priceId: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    type: 'usage';
   }
 }
 

@@ -7,7 +7,7 @@ import { path } from '../internal/utils/path';
 
 export class CheckoutSessions extends APIResource {
   /**
-   * Create CheckoutSession
+   * Create Checkout Session
    */
   create(
     body: CheckoutSessionCreateParams,
@@ -17,14 +17,14 @@ export class CheckoutSessions extends APIResource {
   }
 
   /**
-   * Get CheckoutSession
+   * Get Checkout Session
    */
   retrieve(id: string, options?: RequestOptions): APIPromise<CheckoutSessionRetrieveResponse> {
     return this._client.get(path`/api/v1/checkout-sessions/${id}`, options);
   }
 
   /**
-   * List CheckoutSessions
+   * List Checkout Sessions
    */
   list(
     query: CheckoutSessionListParams | null | undefined = {},
@@ -43,7 +43,8 @@ export interface CheckoutSessionCreateResponse {
     | CheckoutSessionCreateResponse.UnionMember0
     | CheckoutSessionCreateResponse.UnionMember1
     | CheckoutSessionCreateResponse.UnionMember2
-    | CheckoutSessionCreateResponse.UnionMember3;
+    | CheckoutSessionCreateResponse.UnionMember3
+    | CheckoutSessionCreateResponse.UnionMember4;
 
   /**
    * The URL to redirect to complete the purchase
@@ -99,14 +100,22 @@ export namespace CheckoutSessionCreateResponse {
 
     successUrl: string | null;
 
-    targetSubscriptionId: 'null' | null;
-
     type: 'purchase';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    targetSubscriptionId?: 'null' | null | unknown;
   }
 
   export namespace UnionMember0 {
@@ -198,6 +207,11 @@ export namespace CheckoutSessionCreateResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
   }
 
   export namespace UnionMember1 {
@@ -280,14 +294,22 @@ export namespace CheckoutSessionCreateResponse {
 
     successUrl: string | null;
 
-    targetSubscriptionId: 'null' | null;
-
     type: 'product';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    targetSubscriptionId?: 'null' | null | unknown;
   }
 
   export namespace UnionMember2 {
@@ -332,6 +354,12 @@ export namespace CheckoutSessionCreateResponse {
    */
   export interface UnionMember3 {
     id: string;
+
+    /**
+     * Whether to automatically update all current subscriptions to the new payment
+     * method. Defaults to false.
+     */
+    automaticallyUpdateSubscriptions: boolean;
 
     billingAddress: UnionMember3.BillingAddress | null;
 
@@ -423,6 +451,99 @@ export namespace CheckoutSessionCreateResponse {
       }
     }
   }
+
+  /**
+   * A checkout session to activate a subscription, which will create a payment
+   * method and associate it with the subscription, and then attempt to pay any
+   * outstanding invoices for that subscription.
+   */
+  export interface UnionMember4 {
+    id: string;
+
+    automaticallyUpdateSubscriptions: boolean | null;
+
+    billingAddress: UnionMember4.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerId: string | null;
+
+    customerName: string | null;
+
+    discountId: string | null;
+
+    invoiceId: 'null' | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    outputMetadata: { [key: string]: unknown } | null;
+
+    outputName: string | null;
+
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
+
+    priceId: string | null;
+
+    purchaseId: 'null' | null;
+
+    quantity: number;
+
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
+    successUrl: string | null;
+
+    targetSubscriptionId: string;
+
+    type: 'activate_subscription';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+  }
+
+  export namespace UnionMember4 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      email?: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      name?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string | null;
+
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+
+        name?: string;
+      }
+    }
+  }
 }
 
 export interface CheckoutSessionRetrieveResponse {
@@ -434,7 +555,8 @@ export interface CheckoutSessionRetrieveResponse {
     | CheckoutSessionRetrieveResponse.UnionMember0
     | CheckoutSessionRetrieveResponse.UnionMember1
     | CheckoutSessionRetrieveResponse.UnionMember2
-    | CheckoutSessionRetrieveResponse.UnionMember3;
+    | CheckoutSessionRetrieveResponse.UnionMember3
+    | CheckoutSessionRetrieveResponse.UnionMember4;
 
   /**
    * The URL to redirect to complete the purchase
@@ -490,14 +612,22 @@ export namespace CheckoutSessionRetrieveResponse {
 
     successUrl: string | null;
 
-    targetSubscriptionId: 'null' | null;
-
     type: 'purchase';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    targetSubscriptionId?: 'null' | null | unknown;
   }
 
   export namespace UnionMember0 {
@@ -589,6 +719,11 @@ export namespace CheckoutSessionRetrieveResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
   }
 
   export namespace UnionMember1 {
@@ -671,14 +806,22 @@ export namespace CheckoutSessionRetrieveResponse {
 
     successUrl: string | null;
 
-    targetSubscriptionId: 'null' | null;
-
     type: 'product';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    targetSubscriptionId?: 'null' | null | unknown;
   }
 
   export namespace UnionMember2 {
@@ -723,6 +866,12 @@ export namespace CheckoutSessionRetrieveResponse {
    */
   export interface UnionMember3 {
     id: string;
+
+    /**
+     * Whether to automatically update all current subscriptions to the new payment
+     * method. Defaults to false.
+     */
+    automaticallyUpdateSubscriptions: boolean;
 
     billingAddress: UnionMember3.BillingAddress | null;
 
@@ -814,6 +963,99 @@ export namespace CheckoutSessionRetrieveResponse {
       }
     }
   }
+
+  /**
+   * A checkout session to activate a subscription, which will create a payment
+   * method and associate it with the subscription, and then attempt to pay any
+   * outstanding invoices for that subscription.
+   */
+  export interface UnionMember4 {
+    id: string;
+
+    automaticallyUpdateSubscriptions: boolean | null;
+
+    billingAddress: UnionMember4.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerId: string | null;
+
+    customerName: string | null;
+
+    discountId: string | null;
+
+    invoiceId: 'null' | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    outputMetadata: { [key: string]: unknown } | null;
+
+    outputName: string | null;
+
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
+
+    priceId: string | null;
+
+    purchaseId: 'null' | null;
+
+    quantity: number;
+
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
+    successUrl: string | null;
+
+    targetSubscriptionId: string;
+
+    type: 'activate_subscription';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+  }
+
+  export namespace UnionMember4 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      email?: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      name?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string | null;
+
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+
+        name?: string;
+      }
+    }
+  }
 }
 
 export interface CheckoutSessionListResponse {
@@ -822,6 +1064,7 @@ export interface CheckoutSessionListResponse {
     | CheckoutSessionListResponse.UnionMember1
     | CheckoutSessionListResponse.UnionMember2
     | CheckoutSessionListResponse.UnionMember3
+    | CheckoutSessionListResponse.UnionMember4
   >;
 
   hasMore: boolean;
@@ -881,14 +1124,22 @@ export namespace CheckoutSessionListResponse {
 
     successUrl: string | null;
 
-    targetSubscriptionId: 'null' | null;
-
     type: 'purchase';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    targetSubscriptionId?: 'null' | null | unknown;
   }
 
   export namespace UnionMember0 {
@@ -980,6 +1231,11 @@ export namespace CheckoutSessionListResponse {
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
   }
 
   export namespace UnionMember1 {
@@ -1062,14 +1318,22 @@ export namespace CheckoutSessionListResponse {
 
     successUrl: string | null;
 
-    targetSubscriptionId: 'null' | null;
-
     type: 'product';
 
     /**
      * safeZodDate
      */
     updatedAt: (string & {}) | string | null;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    automaticallyUpdateSubscriptions?: 'null' | null | unknown;
+
+    /**
+     * safeZodNullOrUndefined
+     */
+    targetSubscriptionId?: 'null' | null | unknown;
   }
 
   export namespace UnionMember2 {
@@ -1114,6 +1378,12 @@ export namespace CheckoutSessionListResponse {
    */
   export interface UnionMember3 {
     id: string;
+
+    /**
+     * Whether to automatically update all current subscriptions to the new payment
+     * method. Defaults to false.
+     */
+    automaticallyUpdateSubscriptions: boolean;
 
     billingAddress: UnionMember3.BillingAddress | null;
 
@@ -1205,16 +1475,112 @@ export namespace CheckoutSessionListResponse {
       }
     }
   }
+
+  /**
+   * A checkout session to activate a subscription, which will create a payment
+   * method and associate it with the subscription, and then attempt to pay any
+   * outstanding invoices for that subscription.
+   */
+  export interface UnionMember4 {
+    id: string;
+
+    automaticallyUpdateSubscriptions: boolean | null;
+
+    billingAddress: UnionMember4.BillingAddress | null;
+
+    cancelUrl: string | null;
+
+    /**
+     * safeZodDate
+     */
+    createdAt: (string & {}) | string;
+
+    customerEmail: string | null;
+
+    customerId: string | null;
+
+    customerName: string | null;
+
+    discountId: string | null;
+
+    invoiceId: 'null' | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    outputMetadata: { [key: string]: unknown } | null;
+
+    outputName: string | null;
+
+    paymentMethodType: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
+
+    priceId: string | null;
+
+    purchaseId: 'null' | null;
+
+    quantity: number;
+
+    status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
+
+    successUrl: string | null;
+
+    targetSubscriptionId: string;
+
+    type: 'activate_subscription';
+
+    /**
+     * safeZodDate
+     */
+    updatedAt: (string & {}) | string | null;
+  }
+
+  export namespace UnionMember4 {
+    export interface BillingAddress {
+      address: BillingAddress.Address;
+
+      email?: string;
+
+      firstName?: string;
+
+      lastName?: string;
+
+      name?: string;
+
+      phone?: string;
+    }
+
+    export namespace BillingAddress {
+      export interface Address {
+        city: string | null;
+
+        country: string;
+
+        line1: string | null;
+
+        line2: string | null;
+
+        postal_code: string | null;
+
+        state: string | null;
+
+        name?: string;
+      }
+    }
+  }
 }
 
 export interface CheckoutSessionCreateParams {
-  checkoutSession: CheckoutSessionCreateParams.UnionMember0 | CheckoutSessionCreateParams.UnionMember1;
+  checkoutSession:
+    | CheckoutSessionCreateParams.UnionMember0
+    | CheckoutSessionCreateParams.UnionMember1
+    | CheckoutSessionCreateParams.UnionMember2;
 }
 
 export namespace CheckoutSessionCreateParams {
   export interface UnionMember0 {
     /**
-     * The URL to redirect to after the purchase is cancelled or fails
+     * The URL to redirect to after the purchase is canceled or fails
      */
     cancelUrl: string;
 
@@ -1256,7 +1622,7 @@ export namespace CheckoutSessionCreateParams {
 
   export interface UnionMember1 {
     /**
-     * The URL to redirect to after the purchase is cancelled or fails
+     * The URL to redirect to after the purchase is canceled or fails
      */
     cancelUrl: string;
 
@@ -1271,6 +1637,12 @@ export namespace CheckoutSessionCreateParams {
     successUrl: string;
 
     type: 'add_payment_method';
+
+    /**
+     * Whether to automatically update all current subscriptions to the new payment
+     * method. Defaults to false.
+     */
+    automaticallyUpdateSubscriptions?: boolean;
 
     /**
      * Metadata that will get added to the purchase or subscription created when this
@@ -1289,6 +1661,41 @@ export namespace CheckoutSessionCreateParams {
      * default payment method.
      */
     targetSubscriptionId?: string;
+  }
+
+  export interface UnionMember2 {
+    /**
+     * The URL to redirect to after the purchase is canceled or fails
+     */
+    cancelUrl: string;
+
+    /**
+     * The id of the Customer for this purchase session, as defined in your system
+     */
+    customerExternalId: string;
+
+    priceId: string;
+
+    /**
+     * The URL to redirect to after the purchase is successful
+     */
+    successUrl: string;
+
+    targetSubscriptionId: string;
+
+    type: 'activate_subscription';
+
+    /**
+     * Metadata that will get added to the purchase or subscription created when this
+     * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputMetadata?: { [key: string]: unknown };
+
+    /**
+     * The name of the purchase or subscription created when this checkout session
+     * succeeds. Ignored if the checkout session is of type `invoice`.
+     */
+    outputName?: string;
   }
 }
 

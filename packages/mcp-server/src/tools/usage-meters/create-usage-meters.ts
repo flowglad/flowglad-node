@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'create_usage_meters',
-  description: 'Create UsageMeter',
+  description: 'Create Usage Meter',
   inputSchema: {
     type: 'object',
     properties: {
@@ -30,6 +30,9 @@ export const tool: Tool = {
           name: {
             type: 'string',
           },
+          slug: {
+            type: 'string',
+          },
           aggregationType: {
             type: 'string',
             description:
@@ -37,7 +40,7 @@ export const tool: Tool = {
             enum: ['sum', 'count_distinct_properties'],
           },
         },
-        required: ['catalogId', 'name'],
+        required: ['catalogId', 'name', 'slug'],
       },
     },
   },

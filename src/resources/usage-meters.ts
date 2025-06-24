@@ -7,21 +7,21 @@ import { path } from '../internal/utils/path';
 
 export class UsageMeters extends APIResource {
   /**
-   * Create UsageMeter
+   * Create Usage Meter
    */
   create(body: UsageMeterCreateParams, options?: RequestOptions): APIPromise<UsageMeterCreateResponse> {
     return this._client.post('/api/v1/usage-meters', { body, ...options });
   }
 
   /**
-   * Get UsageMeter
+   * Get Usage Meter
    */
   retrieve(id: string, options?: RequestOptions): APIPromise<UsageMeterRetrieveResponse> {
     return this._client.get(path`/api/v1/usage-meters/${id}`, options);
   }
 
   /**
-   * Update UsageMeter
+   * Update Usage Meter
    */
   update(
     id: string,
@@ -32,7 +32,7 @@ export class UsageMeters extends APIResource {
   }
 
   /**
-   * List UsageMeters
+   * List Usage Meters
    */
   list(
     query: UsageMeterListParams | null | undefined = {},
@@ -64,7 +64,13 @@ export namespace UsageMeterCreateResponse {
 
     createdByCommit: string | null;
 
+    livemode: boolean;
+
     name: string;
+
+    organizationId: string;
+
+    slug: string;
 
     updatedAt: string | null;
 
@@ -94,7 +100,13 @@ export namespace UsageMeterRetrieveResponse {
 
     createdByCommit: string | null;
 
+    livemode: boolean;
+
     name: string;
+
+    organizationId: string;
+
+    slug: string;
 
     updatedAt: string | null;
 
@@ -124,7 +136,13 @@ export namespace UsageMeterUpdateResponse {
 
     createdByCommit: string | null;
 
+    livemode: boolean;
+
     name: string;
+
+    organizationId: string;
+
+    slug: string;
 
     updatedAt: string | null;
 
@@ -162,7 +180,13 @@ export namespace UsageMeterListResponse {
 
     createdByCommit: string | null;
 
+    livemode: boolean;
+
     name: string;
+
+    organizationId: string;
+
+    slug: string;
 
     updatedAt: string | null;
 
@@ -179,6 +203,8 @@ export namespace UsageMeterCreateParams {
     catalogId: string;
 
     name: string;
+
+    slug: string;
 
     /**
      * The type of aggregation to perform on the usage meter. Defaults to "sum", which
@@ -211,6 +237,8 @@ export namespace UsageMeterUpdateParams {
     createdByCommit?: string | null;
 
     name?: string;
+
+    slug?: string;
 
     updatedAt?: string | null;
 
