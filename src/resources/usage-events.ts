@@ -52,7 +52,7 @@ export namespace UsageEventCreateResponse {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties: Record<string, unknown>;
+    properties: { [key: string]: unknown };
 
     subscriptionId: string;
 
@@ -95,7 +95,7 @@ export namespace UsageEventRetrieveResponse {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties: Record<string, unknown>;
+    properties: { [key: string]: unknown };
 
     subscriptionId: string;
 
@@ -138,7 +138,7 @@ export namespace UsageEventUpdateResponse {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties: Record<string, unknown>;
+    properties: { [key: string]: unknown };
 
     subscriptionId: string;
 
@@ -183,7 +183,7 @@ export namespace UsageEventCreateParams {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties?: Record<string, unknown> | null;
+    properties?: { [key: string]: unknown } | null;
 
     /**
      * The date the usage occurred in unix epoch milliseconds. If not provided, the
@@ -209,7 +209,7 @@ export namespace UsageEventUpdateParams {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties?: Record<string, unknown> | null;
+    properties?: { [key: string]: unknown } | null;
 
     /**
      * The date the usage occurred in unix epoch milliseconds. If not provided, the

@@ -3170,9 +3170,9 @@ export namespace CustomerRetrieveBillingResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
-    paymentMethodData: Record<string, unknown>;
+    paymentMethodData: { [key: string]: unknown };
 
     type: 'card' | 'us_bank_account' | 'sepa_debit';
 
@@ -3240,7 +3240,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | { [key: string]: unknown };
 
     billingCycleAnchor: string | null;
 
@@ -3269,7 +3269,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string;
 
@@ -3321,7 +3321,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | { [key: string]: unknown };
 
     billingCycleAnchor: string | null;
 
@@ -3343,7 +3343,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string;
 
@@ -3398,7 +3398,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     bankPaymentOnly: boolean | null;
 
-    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | Record<string, unknown>;
+    billingAddress: string | number | boolean | 'null' | null | Array<unknown> | { [key: string]: unknown };
 
     billingCycleAnchor: string | null;
 
@@ -3420,7 +3420,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string;
 
@@ -3502,7 +3502,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -3548,7 +3548,7 @@ export namespace CustomerRetrieveBillingResponse {
 
       livemode: boolean;
 
-      metadata: Record<string, unknown> | null;
+      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 
@@ -3994,7 +3994,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
@@ -4040,7 +4040,7 @@ export namespace CustomerRetrieveBillingResponse {
 
       livemode: boolean;
 
-      metadata: Record<string, unknown> | null;
+      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 

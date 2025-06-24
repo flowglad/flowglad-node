@@ -83,7 +83,7 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -260,7 +260,7 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -354,7 +354,7 @@ export namespace CheckoutSessionCreateResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -468,7 +468,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -645,7 +645,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -739,7 +739,7 @@ export namespace CheckoutSessionRetrieveResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -853,7 +853,7 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -1030,7 +1030,7 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -1124,7 +1124,7 @@ export namespace CheckoutSessionListResponse {
 
     organizationId: string;
 
-    outputMetadata: Record<string, unknown> | null;
+    outputMetadata: { [key: string]: unknown } | null;
 
     outputName: string | null;
 
@@ -1218,7 +1218,7 @@ export namespace CheckoutSessionCreateParams {
      * Metadata that will get added to the purchase or subscription created when this
      * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
      */
-    outputMetadata?: Record<string, unknown>;
+    outputMetadata?: { [key: string]: unknown };
 
     /**
      * The name of the purchase or subscription created when this checkout session
@@ -1260,7 +1260,7 @@ export namespace CheckoutSessionCreateParams {
      * Metadata that will get added to the purchase or subscription created when this
      * checkout session succeeds. Ignored if the checkout session is of type `invoice`.
      */
-    outputMetadata?: Record<string, unknown>;
+    outputMetadata?: { [key: string]: unknown };
 
     /**
      * The name of the purchase or subscription created when this checkout session
