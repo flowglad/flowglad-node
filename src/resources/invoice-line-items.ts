@@ -14,7 +14,7 @@ export class InvoiceLineItems extends APIResource {
   }
 
   /**
-   * List InvoiceLineItems
+   * List Invoice Line Items
    */
   list(
     query: InvoiceLineItemListParams | null | undefined = {},
@@ -24,47 +24,18 @@ export class InvoiceLineItems extends APIResource {
   }
 }
 
-export interface InvoiceLineItemRetrieveResponse {
-  id: string;
+/**
+ * A static invoice line item, representing a fixed fee component of an invoice.
+ */
+export type InvoiceLineItemRetrieveResponse =
+  | InvoiceLineItemRetrieveResponse.StaticInvoiceLineItem
+  | InvoiceLineItemRetrieveResponse.UsageInvoiceLineItem;
 
-  createdAt: string;
-
-  createdByCommit: string | null;
-
-  description: string | null;
-
-  invoiceId: string;
-
-  livemode: boolean;
-
-  price: number;
-
-  priceId: string | null;
-
+export namespace InvoiceLineItemRetrieveResponse {
   /**
-   * safeZodPositiveInteger
+   * A static invoice line item, representing a fixed fee component of an invoice.
    */
-  quantity: number;
-
-  updatedAt: string | null;
-
-  updatedByCommit: string | null;
-}
-
-export interface InvoiceLineItemListResponse {
-  data: Array<InvoiceLineItemListResponse.Data>;
-
-  hasMore: boolean;
-
-  total: number;
-
-  currentCursor?: string;
-
-  nextCursor?: string;
-}
-
-export namespace InvoiceLineItemListResponse {
-  export interface Data {
+  export interface StaticInvoiceLineItem {
     id: string;
 
     createdAt: string;
@@ -85,6 +56,122 @@ export namespace InvoiceLineItemListResponse {
      * safeZodPositiveInteger
      */
     quantity: number;
+
+    type: 'static';
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+  }
+
+  /**
+   * A usage-based invoice line item, where charges are based on recorded usage
+   * events.
+   */
+  export interface UsageInvoiceLineItem {
+    id: string;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    description: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    price: number;
+
+    priceId: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    type: 'usage';
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+  }
+}
+
+export interface InvoiceLineItemListResponse {
+  data: Array<
+    InvoiceLineItemListResponse.StaticInvoiceLineItem | InvoiceLineItemListResponse.UsageInvoiceLineItem
+  >;
+
+  hasMore: boolean;
+
+  total: number;
+
+  currentCursor?: string;
+
+  nextCursor?: string;
+}
+
+export namespace InvoiceLineItemListResponse {
+  /**
+   * A static invoice line item, representing a fixed fee component of an invoice.
+   */
+  export interface StaticInvoiceLineItem {
+    id: string;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    description: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    price: number;
+
+    priceId: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    type: 'static';
+
+    updatedAt: string | null;
+
+    updatedByCommit: string | null;
+  }
+
+  /**
+   * A usage-based invoice line item, where charges are based on recorded usage
+   * events.
+   */
+  export interface UsageInvoiceLineItem {
+    id: string;
+
+    createdAt: string;
+
+    createdByCommit: string | null;
+
+    description: string | null;
+
+    invoiceId: string;
+
+    livemode: boolean;
+
+    price: number;
+
+    priceId: string | null;
+
+    /**
+     * safeZodPositiveInteger
+     */
+    quantity: number;
+
+    type: 'usage';
 
     updatedAt: string | null;
 

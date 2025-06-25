@@ -73,7 +73,7 @@ export namespace DiscountCreateResponse {
 
     createdByCommit: string | null;
 
-    duration: 'once';
+    duration: 'forever';
 
     livemode: boolean;
 
@@ -142,7 +142,7 @@ export namespace DiscountCreateResponse {
 
     createdByCommit: string | null;
 
-    duration: 'forever';
+    duration: 'once';
 
     livemode: boolean;
 
@@ -189,7 +189,7 @@ export namespace DiscountRetrieveResponse {
 
     createdByCommit: string | null;
 
-    duration: 'once';
+    duration: 'forever';
 
     livemode: boolean;
 
@@ -258,7 +258,7 @@ export namespace DiscountRetrieveResponse {
 
     createdByCommit: string | null;
 
-    duration: 'forever';
+    duration: 'once';
 
     livemode: boolean;
 
@@ -305,7 +305,7 @@ export namespace DiscountUpdateResponse {
 
     createdByCommit: string | null;
 
-    duration: 'once';
+    duration: 'forever';
 
     livemode: boolean;
 
@@ -374,7 +374,7 @@ export namespace DiscountUpdateResponse {
 
     createdByCommit: string | null;
 
-    duration: 'forever';
+    duration: 'once';
 
     livemode: boolean;
 
@@ -425,7 +425,7 @@ export namespace DiscountListResponse {
 
     createdByCommit: string | null;
 
-    duration: 'once';
+    duration: 'forever';
 
     livemode: boolean;
 
@@ -494,7 +494,7 @@ export namespace DiscountListResponse {
 
     createdByCommit: string | null;
 
-    duration: 'forever';
+    duration: 'once';
 
     livemode: boolean;
 
@@ -535,13 +535,9 @@ export namespace DiscountCreateParams {
 
     duration: 'once';
 
-    livemode: boolean;
-
     name: string;
 
     numberOfPayments: 'null' | null;
-
-    organizationId: string;
 
     active?: boolean;
   }
@@ -558,16 +554,12 @@ export namespace DiscountCreateParams {
 
     duration: 'number_of_payments';
 
-    livemode: boolean;
-
     name: string;
 
     /**
      * safeZodPositiveInteger
      */
     numberOfPayments: number;
-
-    organizationId: string;
 
     active?: boolean;
   }
@@ -584,13 +576,9 @@ export namespace DiscountCreateParams {
 
     duration: 'forever';
 
-    livemode: boolean;
-
     name: string;
 
     numberOfPayments: 'null' | null;
-
-    organizationId: string;
 
     active?: boolean;
   }
@@ -631,11 +619,7 @@ export namespace DiscountUpdateParams {
 
     createdByCommit?: string | null;
 
-    livemode?: boolean;
-
     name?: string;
-
-    organizationId?: string;
 
     updatedAt?: string | null;
 
@@ -667,11 +651,7 @@ export namespace DiscountUpdateParams {
 
     createdByCommit?: string | null;
 
-    livemode?: boolean;
-
     name?: string;
-
-    organizationId?: string;
 
     updatedAt?: string | null;
 
@@ -700,11 +680,7 @@ export namespace DiscountUpdateParams {
 
     createdByCommit?: string | null;
 
-    livemode?: boolean;
-
     name?: string;
-
-    organizationId?: string;
 
     updatedAt?: string | null;
 

@@ -11,7 +11,7 @@ describe('resource usageMeters', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name' },
+      usageMeter: { catalogId: 'catalogId', name: 'name', slug: 'slug' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,7 +25,7 @@ describe('resource usageMeters', () => {
   // skipped: tests are disabled for the time being
   test.skip('create: required and optional params', async () => {
     const response = await client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', aggregationType: 'sum' },
+      usageMeter: { catalogId: 'catalogId', name: 'name', slug: 'slug', aggregationType: 'sum' },
     });
   });
 
@@ -62,6 +62,7 @@ describe('resource usageMeters', () => {
         createdAt: '2019-12-27T18:11:19.117Z',
         createdByCommit: 'createdByCommit',
         name: 'name',
+        slug: 'slug',
         updatedAt: '2019-12-27T18:11:19.117Z',
         updatedByCommit: 'updatedByCommit',
       },

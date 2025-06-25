@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'retrieve_usage_meters',
-  description: 'Get UsageMeter',
+  description: 'Get Usage Meter',
   inputSchema: {
     type: 'object',
     properties: {

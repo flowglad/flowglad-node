@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'create_checkout_sessions',
-  description: 'Create CheckoutSession',
+  description: 'Create Checkout Session',
   inputSchema: {
     type: 'object',
     properties: {
@@ -28,7 +28,7 @@ export const tool: Tool = {
             properties: {
               cancelUrl: {
                 type: 'string',
-                description: 'The URL to redirect to after the purchase is cancelled or fails',
+                description: 'The URL to redirect to after the purchase is canceled or fails',
               },
               customerExternalId: {
                 type: 'string',
@@ -69,7 +69,7 @@ export const tool: Tool = {
             properties: {
               cancelUrl: {
                 type: 'string',
-                description: 'The URL to redirect to after the purchase is cancelled or fails',
+                description: 'The URL to redirect to after the purchase is canceled or fails',
               },
               customerExternalId: {
                 type: 'string',
@@ -82,6 +82,11 @@ export const tool: Tool = {
               type: {
                 type: 'string',
                 enum: ['add_payment_method'],
+              },
+              automaticallyUpdateSubscriptions: {
+                type: 'boolean',
+                description:
+                  'Whether to automatically update all current subscriptions to the new payment method. Defaults to false.',
               },
               outputMetadata: {
                 type: 'object',
@@ -100,6 +105,51 @@ export const tool: Tool = {
               },
             },
             required: ['cancelUrl', 'customerExternalId', 'successUrl', 'type'],
+          },
+          {
+            type: 'object',
+            properties: {
+              cancelUrl: {
+                type: 'string',
+                description: 'The URL to redirect to after the purchase is canceled or fails',
+              },
+              customerExternalId: {
+                type: 'string',
+                description: 'The id of the Customer for this purchase session, as defined in your system',
+              },
+              priceId: {
+                type: 'string',
+              },
+              successUrl: {
+                type: 'string',
+                description: 'The URL to redirect to after the purchase is successful',
+              },
+              targetSubscriptionId: {
+                type: 'string',
+              },
+              type: {
+                type: 'string',
+                enum: ['activate_subscription'],
+              },
+              outputMetadata: {
+                type: 'object',
+                description:
+                  'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+              },
+              outputName: {
+                type: 'string',
+                description:
+                  'The name of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+              },
+            },
+            required: [
+              'cancelUrl',
+              'customerExternalId',
+              'priceId',
+              'successUrl',
+              'targetSubscriptionId',
+              'type',
+            ],
           },
         ],
       },
