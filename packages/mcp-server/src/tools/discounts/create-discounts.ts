@@ -41,9 +41,6 @@ export const tool: Tool = {
                 type: 'string',
                 enum: ['once'],
               },
-              livemode: {
-                type: 'boolean',
-              },
               name: {
                 type: 'string',
               },
@@ -51,23 +48,11 @@ export const tool: Tool = {
                 type: 'string',
                 enum: ['null'],
               },
-              organizationId: {
-                type: 'string',
-              },
               active: {
                 type: 'boolean',
               },
             },
-            required: [
-              'amount',
-              'amountType',
-              'code',
-              'duration',
-              'livemode',
-              'name',
-              'numberOfPayments',
-              'organizationId',
-            ],
+            required: ['amount', 'amountType', 'code', 'duration', 'name', 'numberOfPayments'],
           },
           {
             type: 'object',
@@ -87,9 +72,6 @@ export const tool: Tool = {
                 type: 'string',
                 enum: ['number_of_payments'],
               },
-              livemode: {
-                type: 'boolean',
-              },
               name: {
                 type: 'string',
               },
@@ -97,23 +79,11 @@ export const tool: Tool = {
                 type: 'number',
                 description: 'safeZodPositiveInteger',
               },
-              organizationId: {
-                type: 'string',
-              },
               active: {
                 type: 'boolean',
               },
             },
-            required: [
-              'amount',
-              'amountType',
-              'code',
-              'duration',
-              'livemode',
-              'name',
-              'numberOfPayments',
-              'organizationId',
-            ],
+            required: ['amount', 'amountType', 'code', 'duration', 'name', 'numberOfPayments'],
           },
           {
             type: 'object',
@@ -133,9 +103,6 @@ export const tool: Tool = {
                 type: 'string',
                 enum: ['forever'],
               },
-              livemode: {
-                type: 'boolean',
-              },
               name: {
                 type: 'string',
               },
@@ -143,23 +110,11 @@ export const tool: Tool = {
                 type: 'string',
                 enum: ['null'],
               },
-              organizationId: {
-                type: 'string',
-              },
               active: {
                 type: 'boolean',
               },
             },
-            required: [
-              'amount',
-              'amountType',
-              'code',
-              'duration',
-              'livemode',
-              'name',
-              'numberOfPayments',
-              'organizationId',
-            ],
+            required: ['amount', 'amountType', 'code', 'duration', 'name', 'numberOfPayments'],
           },
         ],
         description:

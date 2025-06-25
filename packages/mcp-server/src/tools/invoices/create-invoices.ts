@@ -199,6 +199,9 @@ export const tool: Tool = {
                 type: 'string',
                 format: 'date-time',
               },
+              billingRunId: {
+                type: 'string',
+              },
               dueDate: {
                 type: 'string',
                 format: 'date-time',
@@ -685,6 +688,9 @@ export const tool: Tool = {
               billingPeriodStartDate: {
                 type: 'string',
                 format: 'date-time',
+              },
+              billingRunId: {
+                type: 'string',
               },
               dueDate: {
                 type: 'string',
@@ -1175,6 +1181,9 @@ export const tool: Tool = {
                 type: 'string',
                 format: 'date-time',
               },
+              billingRunId: {
+                type: 'string',
+              },
               dueDate: {
                 type: 'string',
                 format: 'date-time',
@@ -1494,26 +1503,58 @@ export const tool: Tool = {
       invoiceLineItems: {
         type: 'array',
         items: {
-          type: 'object',
-          properties: {
-            invoiceId: {
-              type: 'string',
+          anyOf: [
+            {
+              type: 'object',
+              description: 'A static invoice line item, representing a fixed fee component of an invoice.',
+              properties: {
+                description: {
+                  type: 'string',
+                },
+                price: {
+                  type: 'number',
+                },
+                priceId: {
+                  type: 'string',
+                },
+                quantity: {
+                  type: 'number',
+                  description: 'safeZodPositiveInteger',
+                },
+                type: {
+                  type: 'string',
+                  enum: ['static'],
+                },
+              },
+              required: ['description', 'price', 'priceId', 'quantity', 'type'],
             },
-            price: {
-              type: 'number',
+            {
+              type: 'object',
+              description:
+                'A usage-based invoice line item, where charges are based on recorded usage events.',
+              properties: {
+                description: {
+                  type: 'string',
+                },
+                price: {
+                  type: 'number',
+                },
+                priceId: {
+                  type: 'string',
+                },
+                quantity: {
+                  type: 'number',
+                  description: 'safeZodPositiveInteger',
+                },
+                type: {
+                  type: 'string',
+                  enum: ['usage'],
+                },
+              },
+              required: ['description', 'price', 'priceId', 'quantity', 'type'],
             },
-            quantity: {
-              type: 'number',
-              description: 'safeZodPositiveInteger',
-            },
-            description: {
-              type: 'string',
-            },
-            priceId: {
-              type: 'string',
-            },
-          },
-          required: ['invoiceId', 'price', 'quantity'],
+          ],
+          description: 'A static invoice line item, representing a fixed fee component of an invoice.',
         },
       },
       autoSend: {

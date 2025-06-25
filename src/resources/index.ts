@@ -105,9 +105,7 @@ export {
   UsageEvents,
   type UsageEventCreateResponse,
   type UsageEventRetrieveResponse,
-  type UsageEventUpdateResponse,
   type UsageEventCreateParams,
-  type UsageEventUpdateParams,
 } from './usage-events';
 export {
   UsageMeters,

@@ -172,13 +172,11 @@ Types:
 
 - <code><a href="./src/resources/usage-events.ts">UsageEventCreateResponse</a></code>
 - <code><a href="./src/resources/usage-events.ts">UsageEventRetrieveResponse</a></code>
-- <code><a href="./src/resources/usage-events.ts">UsageEventUpdateResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/usage-events">client.usageEvents.<a href="./src/resources/usage-events.ts">create</a>({ ...params }) -> UsageEventCreateResponse</code>
 - <code title="get /api/v1/usage-events/{id}">client.usageEvents.<a href="./src/resources/usage-events.ts">retrieve</a>(id) -> UsageEventRetrieveResponse</code>
-- <code title="put /api/v1/usage-events/{id}">client.usageEvents.<a href="./src/resources/usage-events.ts">update</a>(id, { ...params }) -> UsageEventUpdateResponse</code>
 
 # UsageMeters
 

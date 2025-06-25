@@ -174,7 +174,7 @@ The following tools are available in this MCP server.
 ### Resource `invoice_line_items`:
 
 - `retrieve_invoice_line_items` (`read`): Get Invoice Line Item
-- `list_invoice_line_items` (`read`): List InvoiceLineItems
+- `list_invoice_line_items` (`read`): List Invoice Line Items
 
 ### Resource `catalogs`:
 
@@ -187,9 +187,9 @@ The following tools are available in this MCP server.
 
 ### Resource `checkout_sessions`:
 
-- `create_checkout_sessions` (`write`): Create CheckoutSession
-- `retrieve_checkout_sessions` (`read`): Get CheckoutSession
-- `list_checkout_sessions` (`read`): List CheckoutSessions
+- `create_checkout_sessions` (`write`): Create Checkout Session
+- `retrieve_checkout_sessions` (`read`): Get Checkout Session
+- `list_checkout_sessions` (`read`): List Checkout Sessions
 
 ### Resource `products`:
 
@@ -227,8 +227,8 @@ The following tools are available in this MCP server.
 
 ### Resource `payment_methods`:
 
-- `retrieve_payment_methods` (`read`): Get PaymentMethod
-- `list_payment_methods` (`read`): List PaymentMethods
+- `retrieve_payment_methods` (`read`): Get Payment Method
+- `list_payment_methods` (`read`): List Payment Methods
 
 ### Resource `subscriptions`:
 
@@ -240,13 +240,12 @@ The following tools are available in this MCP server.
 
 ### Resource `usage_events`:
 
-- `create_usage_events` (`write`): Create UsageEvent
-- `retrieve_usage_events` (`read`): Get UsageEvent
-- `update_usage_events` (`write`): Update UsageEvent
+- `create_usage_events` (`write`): Create Usage Event
+- `retrieve_usage_events` (`read`): Get Usage Event
 
 ### Resource `usage_meters`:
 
-- `create_usage_meters` (`write`): Create UsageMeter
-- `retrieve_usage_meters` (`read`): Get UsageMeter
-- `update_usage_meters` (`write`): Update UsageMeter
-- `list_usage_meters` (`read`): List UsageMeters
+- `create_usage_meters` (`write`): Create Usage Meter
+- `retrieve_usage_meters` (`read`): Get Usage Meter
+- `update_usage_meters` (`write`): Update Usage Meter
+- `list_usage_meters` (`read`): List Usage Meters

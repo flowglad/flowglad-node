@@ -62,6 +62,9 @@ export const tool: Tool = {
                 ],
                 description: 'safeZodPositiveInteger',
               },
+              slug: {
+                type: 'string',
+              },
               trialPeriodDays: {
                 anyOf: [
                   {
@@ -83,8 +86,36 @@ export const tool: Tool = {
               unitPrice: {
                 type: 'number',
               },
-              usageMeterId: {
+              overagePriceId: {
                 type: 'string',
+                description: 'safeZodNullishString',
+              },
+              startsWithCreditTrial: {
+                type: 'boolean',
+              },
+              usageEventsPerUnit: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
+              usageMeterId: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
               },
             },
             required: [
@@ -95,10 +126,10 @@ export const tool: Tool = {
               'name',
               'productId',
               'setupFeeAmount',
+              'slug',
               'trialPeriodDays',
               'type',
               'unitPrice',
-              'usageMeterId',
             ],
           },
           {
@@ -118,15 +149,15 @@ export const tool: Tool = {
               productId: {
                 type: 'string',
               },
+              slug: {
+                type: 'string',
+              },
               type: {
                 type: 'string',
                 enum: ['single_payment'],
               },
               unitPrice: {
                 type: 'number',
-              },
-              usageMeterId: {
-                type: 'string',
               },
               intervalCount: {
                 anyOf: [
@@ -152,7 +183,31 @@ export const tool: Tool = {
                 ],
                 description: 'safeZodNullOrUndefined',
               },
+              overagePriceId: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
               setupFeeAmount: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
+              startsWithCreditTrial: {
                 anyOf: [
                   {
                     type: 'string',
@@ -176,8 +231,32 @@ export const tool: Tool = {
                 ],
                 description: 'safeZodNullOrUndefined',
               },
+              usageEventsPerUnit: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
+              usageMeterId: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
             },
-            required: ['active', 'isDefault', 'name', 'productId', 'type', 'unitPrice', 'usageMeterId'],
+            required: ['active', 'isDefault', 'name', 'productId', 'slug', 'type', 'unitPrice'],
           },
           {
             type: 'object',
@@ -185,9 +264,6 @@ export const tool: Tool = {
             properties: {
               active: {
                 type: 'boolean',
-              },
-              createdByCommit: {
-                type: 'string',
               },
               intervalCount: {
                 type: 'number',
@@ -206,19 +282,8 @@ export const tool: Tool = {
               productId: {
                 type: 'string',
               },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'number',
-                    description: 'safeZodPositiveInteger',
-                  },
-                  {
-                    type: 'string',
-                    description: 'safeZodPositiveInteger',
-                    enum: [0],
-                  },
-                ],
-                description: 'safeZodPositiveInteger',
+              slug: {
+                type: 'string',
               },
               type: {
                 type: 'string',
@@ -227,13 +292,41 @@ export const tool: Tool = {
               unitPrice: {
                 type: 'number',
               },
-              updatedByCommit: {
-                type: 'string',
+              usageEventsPerUnit: {
+                type: 'number',
+                description: 'safeZodPositiveInteger',
               },
               usageMeterId: {
                 type: 'string',
                 description:
                   'The usage meter that uses this price. All usage events on that meter must be associated with a price that is also associated with that usage meter.',
+              },
+              overagePriceId: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
+              setupFeeAmount: {
+                anyOf: [
+                  {
+                    type: 'string',
+                    enum: ['null'],
+                  },
+                  {
+                    type: 'object',
+                  },
+                ],
+                description: 'safeZodNullOrUndefined',
+              },
+              startsWithCreditTrial: {
+                type: 'boolean',
               },
               trialPeriodDays: {
                 anyOf: [
@@ -250,16 +343,15 @@ export const tool: Tool = {
             },
             required: [
               'active',
-              'createdByCommit',
               'intervalCount',
               'intervalUnit',
               'isDefault',
               'name',
               'productId',
-              'setupFeeAmount',
+              'slug',
               'type',
               'unitPrice',
-              'updatedByCommit',
+              'usageEventsPerUnit',
               'usageMeterId',
             ],
           },

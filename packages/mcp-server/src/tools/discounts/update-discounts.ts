@@ -61,13 +61,7 @@ export const tool: Tool = {
               createdByCommit: {
                 type: 'string',
               },
-              livemode: {
-                type: 'boolean',
-              },
               name: {
-                type: 'string',
-              },
-              organizationId: {
                 type: 'string',
               },
               updatedAt: {
@@ -115,13 +109,7 @@ export const tool: Tool = {
               createdByCommit: {
                 type: 'string',
               },
-              livemode: {
-                type: 'boolean',
-              },
               name: {
-                type: 'string',
-              },
-              organizationId: {
                 type: 'string',
               },
               updatedAt: {
@@ -169,13 +157,7 @@ export const tool: Tool = {
               createdByCommit: {
                 type: 'string',
               },
-              livemode: {
-                type: 'boolean',
-              },
               name: {
-                type: 'string',
-              },
-              organizationId: {
                 type: 'string',
               },
               updatedAt: {

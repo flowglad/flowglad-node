@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'update_usage_meters',
-  description: 'Update UsageMeter',
+  description: 'Update Usage Meter',
   inputSchema: {
     type: 'object',
     properties: {
@@ -44,6 +44,9 @@ export const tool: Tool = {
             type: 'string',
           },
           name: {
+            type: 'string',
+          },
+          slug: {
             type: 'string',
           },
           updatedAt: {

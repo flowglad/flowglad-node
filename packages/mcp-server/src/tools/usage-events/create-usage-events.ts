@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'create_usage_events',
-  description: 'Create UsageEvent',
+  description: 'Create Usage Event',
   inputSchema: {
     type: 'object',
     properties: {

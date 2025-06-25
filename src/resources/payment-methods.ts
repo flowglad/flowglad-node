@@ -7,14 +7,14 @@ import { path } from '../internal/utils/path';
 
 export class PaymentMethods extends APIResource {
   /**
-   * Get PaymentMethod
+   * Get Payment Method
    */
   retrieve(id: string, options?: RequestOptions): APIPromise<PaymentMethodRetrieveResponse> {
     return this._client.get(path`/api/v1/payment-methods/${id}`, options);
   }
 
   /**
-   * List PaymentMethods
+   * List Payment Methods
    */
   list(
     query: PaymentMethodListParams | null | undefined = {},
@@ -44,9 +44,9 @@ export namespace PaymentMethodRetrieveResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
-    paymentMethodData: Record<string, unknown>;
+    paymentMethodData: { [key: string]: unknown };
 
     type: 'card' | 'us_bank_account' | 'sepa_debit';
 
@@ -132,9 +132,9 @@ export namespace PaymentMethodListResponse {
 
     livemode: boolean;
 
-    metadata: Record<string, unknown> | null;
+    metadata: { [key: string]: unknown } | null;
 
-    paymentMethodData: Record<string, unknown>;
+    paymentMethodData: { [key: string]: unknown };
 
     type: 'card' | 'us_bank_account' | 'sepa_debit';
 

@@ -16,10 +16,8 @@ describe('resource discounts', () => {
         amountType: 'percent',
         code: 'xxx',
         duration: 'once',
-        livemode: true,
         name: 'name',
         numberOfPayments: 'null',
-        organizationId: 'organizationId',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -39,10 +37,8 @@ describe('resource discounts', () => {
         amountType: 'percent',
         code: 'xxx',
         duration: 'once',
-        livemode: true,
         name: 'name',
         numberOfPayments: 'null',
-        organizationId: 'organizationId',
         active: true,
       },
     });
@@ -87,9 +83,7 @@ describe('resource discounts', () => {
         code: 'xxx',
         createdAt: '2019-12-27T18:11:19.117Z',
         createdByCommit: 'createdByCommit',
-        livemode: true,
         name: 'name',
-        organizationId: 'organizationId',
         updatedAt: '2019-12-27T18:11:19.117Z',
         updatedByCommit: 'updatedByCommit',
       },
