@@ -1,4 +1,17 @@
 # Changelog
+## 0.21.0 (2025-06-25)
+
+Full Changelog: [v0.20.0...v0.21.0](https://github.com/flowglad/flowglad-node/compare/v0.20.0...v0.21.0)
+
+### Features
+
+* **api:** activate subscription checkout session ([9a2a56e](https://github.com/flowglad/flowglad-node/commit/9a2a56e061fe8db260568d0a5547c4dc81a3756a))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([560e1a4](https://github.com/flowglad/flowglad-node/commit/560e1a4b96210410b5a934a8c42f68c6f8280ed0))
+
 ## 0.20.0 (2025-06-23)
 
 Full Changelog: [v0.19.3...v0.20.0](https://github.com/flowglad/flowglad-node/compare/v0.19.3...v0.20.0)
