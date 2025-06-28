@@ -1,4 +1,18 @@
 # Changelog
+## 0.21.1 (2025-06-28)
+
+Full Changelog: [v0.21.0...v0.21.1](https://github.com/flowglad/flowglad-node/compare/v0.21.0...v0.21.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([51f10bf](https://github.com/flowglad/flowglad-node/commit/51f10bf06bf5c8700293510678a512dc23ea9b57))
+* **client:** get fetchOptions type more reliably ([f992b90](https://github.com/flowglad/flowglad-node/commit/f992b90421e4693bc00d956a736c70691b494bfb))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([7133a67](https://github.com/flowglad/flowglad-node/commit/7133a67258382c3a4f657185410be9b51c18f68f))
+
 ## 0.21.0 (2025-06-25)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/flowglad/flowglad-node/compare/v0.20.0...v0.21.0)
