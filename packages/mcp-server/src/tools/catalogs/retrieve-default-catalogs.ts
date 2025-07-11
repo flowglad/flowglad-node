@@ -17,7 +17,8 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'retrieve_default_catalogs',
-  description: 'Get Default Catalog for Organization',
+  description:
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nGet Default Catalog for Organization",
   inputSchema: {
     type: 'object',
     properties: {},
