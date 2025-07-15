@@ -22,7 +22,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Flowglad from '@flowglad/node';
 
-const client = new Flowglad();
+const client = new Flowglad({
+  apiKey: process.env['FLOWGLAD_SECRET_KEY'], // This is the default and can be omitted
+});
 
 const payments = await client.payments.list();
 
@@ -37,7 +39,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Flowglad from '@flowglad/node';
 
-const client = new Flowglad();
+const client = new Flowglad({
+  apiKey: process.env['FLOWGLAD_SECRET_KEY'], // This is the default and can be omitted
+});
 
 const payments: Flowglad.PaymentListResponse = await client.payments.list();
 ```
