@@ -417,6 +417,7 @@ export const tool: Tool = {
         },
       },
     },
+    required: ['price', 'product'],
   },
 };
 

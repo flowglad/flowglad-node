@@ -360,6 +360,7 @@ export const tool: Tool = {
           'A subscription price, which will have details on the interval, default trial period, and setup fee (if any).',
       },
     },
+    required: ['price'],
   },
 };
 

@@ -1561,6 +1561,7 @@ export const tool: Tool = {
         type: 'boolean',
       },
     },
+    required: ['invoice', 'invoiceLineItems'],
   },
 };
 
