@@ -175,6 +175,7 @@ export const tool: Tool = {
           'A discount record, which describes a discount that can be applied to purchases or subscriptions. Discounts can be one-time, have a fixed number of payments, or be applied indefinitely.',
       },
     },
+    required: ['id', 'discount'],
   },
 };
 

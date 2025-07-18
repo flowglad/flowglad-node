@@ -30,6 +30,7 @@ export const tool: Tool = {
           'The amount to refund. If not provided, the entire amount will be refunded. Cannot exceed the amount of the associated payment.',
       },
     },
+    required: ['id'],
   },
 };
 
