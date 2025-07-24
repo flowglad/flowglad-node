@@ -70,6 +70,9 @@ export const tool: Tool = {
     },
     required: ['externalId', 'customer'],
   },
+  annotations: {
+    idempotentHint: true,
+  },
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

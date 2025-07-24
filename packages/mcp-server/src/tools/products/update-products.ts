@@ -407,6 +407,9 @@ export const tool: Tool = {
     },
     required: ['id', 'product'],
   },
+  annotations: {
+    idempotentHint: true,
+  },
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
