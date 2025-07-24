@@ -30,6 +30,7 @@ export const tool: Tool = {
     },
     required: ['id', 'name'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

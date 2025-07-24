@@ -52,6 +52,7 @@ export const tool: Tool = {
     },
     required: ['usageMeter'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

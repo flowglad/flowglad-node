@@ -156,6 +156,7 @@ export const tool: Tool = {
     },
     required: ['checkoutSession'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

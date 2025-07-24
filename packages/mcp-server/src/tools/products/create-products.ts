@@ -419,6 +419,7 @@ export const tool: Tool = {
     },
     required: ['price', 'product'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

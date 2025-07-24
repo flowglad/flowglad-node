@@ -784,6 +784,7 @@ export const tool: Tool = {
     },
     required: ['id', 'adjustment'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
