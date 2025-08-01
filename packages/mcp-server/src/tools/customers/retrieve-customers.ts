@@ -40,8 +40,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
-  const { externalId, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(args, await client.customers.retrieve(externalId)));
+  const { externalId, jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.customers.retrieve(externalId)));
 };
 
 export default { metadata, tool, handler };
