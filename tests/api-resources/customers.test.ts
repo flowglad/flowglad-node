@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource customers', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.customers.create({
       customer: { email: 'email', externalId: 'externalId', name: 'name' },
@@ -22,7 +22,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.customers.create({
       customer: {
@@ -39,7 +39,7 @@ describe('resource customers', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.customers.retrieve('externalId');
     const rawResponse = await responsePromise.asResponse();
@@ -51,7 +51,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.customers.update('externalId', { customer: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
@@ -63,7 +63,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.customers.update('externalId', {
       customer: {
@@ -81,7 +81,7 @@ describe('resource customers', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.customers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -93,7 +93,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -101,7 +101,7 @@ describe('resource customers', () => {
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieveBilling', async () => {
     const responsePromise = client.customers.retrieveBilling('externalId');
     const rawResponse = await responsePromise.asResponse();

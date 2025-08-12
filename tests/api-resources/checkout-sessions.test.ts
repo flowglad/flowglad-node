@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource checkoutSessions', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.checkoutSessions.create({
       checkoutSession: {
@@ -28,7 +28,7 @@ describe('resource checkoutSessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.checkoutSessions.create({
       checkoutSession: {
@@ -44,7 +44,7 @@ describe('resource checkoutSessions', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.checkoutSessions.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -56,7 +56,7 @@ describe('resource checkoutSessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.checkoutSessions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -68,7 +68,7 @@ describe('resource checkoutSessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
