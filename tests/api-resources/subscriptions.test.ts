@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource subscriptions', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.subscriptions.create({ customerId: 'customerId', priceId: 'priceId' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.subscriptions.create({
       customerId: 'customerId',
@@ -37,7 +37,7 @@ describe('resource subscriptions', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.subscriptions.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -49,7 +49,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.subscriptions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -61,7 +61,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -69,7 +69,7 @@ describe('resource subscriptions', () => {
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('adjust: only required params', async () => {
     const responsePromise = client.subscriptions.adjust('id', {
       adjustment: {
@@ -100,7 +100,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('adjust: required and optional params', async () => {
     const response = await client.subscriptions.adjust('id', {
       adjustment: {
@@ -124,7 +124,7 @@ describe('resource subscriptions', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: only required params', async () => {
     const responsePromise = client.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
@@ -138,7 +138,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: required and optional params', async () => {
     const response = await client.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
