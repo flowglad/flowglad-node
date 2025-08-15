@@ -52,6 +52,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -125,6 +126,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -215,6 +217,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -319,6 +322,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -430,6 +434,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -503,6 +508,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -593,6 +599,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
@@ -697,6 +704,7 @@ export const tool: Tool = {
                         },
                         metadata: {
                           type: 'object',
+                          additionalProperties: true,
                         },
                         name: {
                           type: 'string',
