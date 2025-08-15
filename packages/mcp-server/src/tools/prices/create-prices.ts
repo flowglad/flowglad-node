@@ -100,6 +100,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -112,6 +113,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -166,6 +168,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -178,6 +181,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -190,6 +194,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -202,6 +207,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -214,6 +220,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -226,6 +233,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -238,6 +246,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -250,6 +259,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -308,6 +318,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -320,6 +331,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',
@@ -335,6 +347,7 @@ export const tool: Tool = {
                   },
                   {
                     type: 'object',
+                    additionalProperties: true,
                   },
                 ],
                 description: 'safeZodNullOrUndefined',

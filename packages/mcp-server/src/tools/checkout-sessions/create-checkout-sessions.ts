@@ -49,6 +49,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+                additionalProperties: true,
               },
               outputName: {
                 type: 'string',
@@ -91,6 +92,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+                additionalProperties: true,
               },
               outputName: {
                 type: 'string',
@@ -134,6 +136,7 @@ export const tool: Tool = {
                 type: 'object',
                 description:
                   'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+                additionalProperties: true,
               },
               outputName: {
                 type: 'string',
