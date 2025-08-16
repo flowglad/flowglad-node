@@ -844,6 +844,7 @@ export class Flowglad {
   usageEvents: API.UsageEvents = new API.UsageEvents(this);
   usageMeters: API.UsageMeters = new API.UsageMeters(this);
 }
+
 Flowglad.Invoices = Invoices;
 Flowglad.InvoiceLineItems = InvoiceLineItems;
 Flowglad.Catalogs = Catalogs;
@@ -857,6 +858,7 @@ Flowglad.PaymentMethods = PaymentMethods;
 Flowglad.Subscriptions = Subscriptions;
 Flowglad.UsageEvents = UsageEvents;
 Flowglad.UsageMeters = UsageMeters;
+
 export declare namespace Flowglad {
   export type RequestOptions = Opts.RequestOptions;
 
