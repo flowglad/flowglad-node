@@ -6,7 +6,7 @@ import { IncomingMessage } from 'node:http';
 
 export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
   const apiKey =
-    req.headers['x-flowglad-secret-key'] instanceof Array ?
+    Array.isArray(req.headers['x-flowglad-secret-key']) ?
       req.headers['x-flowglad-secret-key'][0]
     : req.headers['x-flowglad-secret-key'];
   return { apiKey };
