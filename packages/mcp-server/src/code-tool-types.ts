@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type ClientOptions } from '@flowglad/node/client';
+import { ClientOptions } from '@flowglad/node';
 
 export type WorkerInput = {
   opts: ClientOptions;
