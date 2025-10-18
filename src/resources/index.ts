@@ -1,20 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export {
-  Catalogs,
-  type CatalogCreateResponse,
-  type CatalogRetrieveResponse,
-  type CatalogUpdateResponse,
-  type CatalogListResponse,
-  type CatalogCloneResponse,
-  type CatalogRetrieveDefaultResponse,
-  type CatalogCreateParams,
-  type CatalogUpdateParams,
-  type CatalogListParams,
-  type CatalogCloneParams,
-} from './catalogs';
+export * from './shared';
 export {
   CheckoutSessions,
+  type ActivateSubscriptionCheckoutSessionClientSelectSchema,
+  type AddPaymentMethodCheckoutSessionClientSelectSchema,
+  type InvoiceCheckoutSessionClientSelectSchema,
+  type ProductCheckoutSessionClientSelectSchema,
+  type PurchaseCheckoutSessionClientSelectSchema,
   type CheckoutSessionCreateResponse,
   type CheckoutSessionRetrieveResponse,
   type CheckoutSessionListResponse,
@@ -23,6 +16,9 @@ export {
 } from './checkout-sessions';
 export {
   Customers,
+  type CustomerClientSelectSchema,
+  type ToggleSubscriptionItemFeatureRecord,
+  type UsageCreditGrantSubscriptionItemFeatureClientSelectSchema,
   type CustomerCreateResponse,
   type CustomerRetrieveResponse,
   type CustomerUpdateResponse,
@@ -34,6 +30,9 @@ export {
 } from './customers';
 export {
   Discounts,
+  type DefaultDiscountClientSelectSchema,
+  type ForeverDiscountClientSelectSchema,
+  type NumberOfPaymentsDiscountClientSelectSchema,
   type DiscountCreateResponse,
   type DiscountRetrieveResponse,
   type DiscountUpdateResponse,
@@ -50,10 +49,8 @@ export {
 } from './invoice-line-items';
 export {
   Invoices,
-  type InvoiceCreateResponse,
   type InvoiceRetrieveResponse,
   type InvoiceListResponse,
-  type InvoiceCreateParams,
   type InvoiceListParams,
 } from './invoices';
 export {
@@ -64,6 +61,7 @@ export {
 } from './payment-methods';
 export {
   Payments,
+  type PaymentClientSelectSchema,
   type PaymentRetrieveResponse,
   type PaymentListResponse,
   type PaymentRefundResponse,
@@ -72,6 +70,9 @@ export {
 } from './payments';
 export {
   Prices,
+  type SinglePaymentPriceClientSelectSchema,
+  type SubscriptionPriceClientSelectSchema,
+  type UsagePriceClientSelectSchema,
   type PriceCreateResponse,
   type PriceUpdateResponse,
   type PriceListResponse,
@@ -80,7 +81,22 @@ export {
   type PriceListParams,
 } from './prices';
 export {
+  PricingModels,
+  type PricingModelClientSelectSchema,
+  type PricingModelCreateResponse,
+  type PricingModelRetrieveResponse,
+  type PricingModelUpdateResponse,
+  type PricingModelListResponse,
+  type PricingModelCloneResponse,
+  type PricingModelRetrieveDefaultResponse,
+  type PricingModelCreateParams,
+  type PricingModelUpdateParams,
+  type PricingModelListParams,
+  type PricingModelCloneParams,
+} from './pricing-models';
+export {
   Products,
+  type ProductClientSelectSchema,
   type ProductCreateResponse,
   type ProductRetrieveResponse,
   type ProductUpdateResponse,

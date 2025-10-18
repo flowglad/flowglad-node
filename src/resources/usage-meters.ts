@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as Shared from './shared';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -43,115 +44,19 @@ export class UsageMeters extends APIResource {
 }
 
 export interface UsageMeterCreateResponse {
-  usageMeter: UsageMeterCreateResponse.UsageMeter;
-}
-
-export namespace UsageMeterCreateResponse {
-  export interface UsageMeter {
-    id: string;
-
-    /**
-     * The type of aggregation to perform on the usage meter. Defaults to "sum", which
-     * aggregates all the usage event amounts for the billing period.
-     * "count_distinct_properties" counts the number of distinct properties in the
-     * billing period for a given meter.
-     */
-    aggregationType: 'sum' | 'count_distinct_properties';
-
-    catalogId: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    slug: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+  usageMeter: Shared.UsageMeterClientSelectSchema;
 }
 
 export interface UsageMeterRetrieveResponse {
-  usageMeter: UsageMeterRetrieveResponse.UsageMeter;
-}
-
-export namespace UsageMeterRetrieveResponse {
-  export interface UsageMeter {
-    id: string;
-
-    /**
-     * The type of aggregation to perform on the usage meter. Defaults to "sum", which
-     * aggregates all the usage event amounts for the billing period.
-     * "count_distinct_properties" counts the number of distinct properties in the
-     * billing period for a given meter.
-     */
-    aggregationType: 'sum' | 'count_distinct_properties';
-
-    catalogId: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    slug: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+  usageMeter: Shared.UsageMeterClientSelectSchema;
 }
 
 export interface UsageMeterUpdateResponse {
-  usageMeter: UsageMeterUpdateResponse.UsageMeter;
-}
-
-export namespace UsageMeterUpdateResponse {
-  export interface UsageMeter {
-    id: string;
-
-    /**
-     * The type of aggregation to perform on the usage meter. Defaults to "sum", which
-     * aggregates all the usage event amounts for the billing period.
-     * "count_distinct_properties" counts the number of distinct properties in the
-     * billing period for a given meter.
-     */
-    aggregationType: 'sum' | 'count_distinct_properties';
-
-    catalogId: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    slug: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+  usageMeter: Shared.UsageMeterClientSelectSchema;
 }
 
 export interface UsageMeterListResponse {
-  data: Array<UsageMeterListResponse.Data>;
+  data: Array<Shared.UsageMeterClientSelectSchema>;
 
   hasMore: boolean;
 
@@ -162,47 +67,15 @@ export interface UsageMeterListResponse {
   nextCursor?: string;
 }
 
-export namespace UsageMeterListResponse {
-  export interface Data {
-    id: string;
-
-    /**
-     * The type of aggregation to perform on the usage meter. Defaults to "sum", which
-     * aggregates all the usage event amounts for the billing period.
-     * "count_distinct_properties" counts the number of distinct properties in the
-     * billing period for a given meter.
-     */
-    aggregationType: 'sum' | 'count_distinct_properties';
-
-    catalogId: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    slug: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-}
-
 export interface UsageMeterCreateParams {
   usageMeter: UsageMeterCreateParams.UsageMeter;
 }
 
 export namespace UsageMeterCreateParams {
   export interface UsageMeter {
-    catalogId: string;
-
     name: string;
+
+    pricingModelId: string;
 
     slug: string;
 
@@ -232,24 +105,16 @@ export namespace UsageMeterUpdateParams {
      */
     aggregationType?: 'sum' | 'count_distinct_properties';
 
-    createdAt?: string;
-
-    createdByCommit?: string | null;
-
     name?: string;
 
     slug?: string;
-
-    updatedAt?: string | null;
-
-    updatedByCommit?: string | null;
   }
 }
 
 export interface UsageMeterListParams {
   cursor?: string;
 
-  limit?: number;
+  limit?: string;
 }
 
 export declare namespace UsageMeters {

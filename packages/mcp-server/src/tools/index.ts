@@ -4,17 +4,16 @@ import { Metadata, Endpoint, HandlerFunction } from './types';
 
 export { Metadata, Endpoint, HandlerFunction };
 
-import create_invoices from './invoices/create-invoices';
 import retrieve_invoices from './invoices/retrieve-invoices';
 import list_invoices from './invoices/list-invoices';
 import retrieve_invoice_line_items from './invoice-line-items/retrieve-invoice-line-items';
 import list_invoice_line_items from './invoice-line-items/list-invoice-line-items';
-import create_catalogs from './catalogs/create-catalogs';
-import retrieve_catalogs from './catalogs/retrieve-catalogs';
-import update_catalogs from './catalogs/update-catalogs';
-import list_catalogs from './catalogs/list-catalogs';
-import clone_catalogs from './catalogs/clone-catalogs';
-import retrieve_default_catalogs from './catalogs/retrieve-default-catalogs';
+import create_pricing_models from './pricing-models/create-pricing-models';
+import retrieve_pricing_models from './pricing-models/retrieve-pricing-models';
+import update_pricing_models from './pricing-models/update-pricing-models';
+import list_pricing_models from './pricing-models/list-pricing-models';
+import clone_pricing_models from './pricing-models/clone-pricing-models';
+import retrieve_default_pricing_models from './pricing-models/retrieve-default-pricing-models';
 import create_checkout_sessions from './checkout-sessions/create-checkout-sessions';
 import retrieve_checkout_sessions from './checkout-sessions/retrieve-checkout-sessions';
 import list_checkout_sessions from './checkout-sessions/list-checkout-sessions';
@@ -57,17 +56,16 @@ function addEndpoint(endpoint: Endpoint) {
   endpoints.push(endpoint);
 }
 
-addEndpoint(create_invoices);
 addEndpoint(retrieve_invoices);
 addEndpoint(list_invoices);
 addEndpoint(retrieve_invoice_line_items);
 addEndpoint(list_invoice_line_items);
-addEndpoint(create_catalogs);
-addEndpoint(retrieve_catalogs);
-addEndpoint(update_catalogs);
-addEndpoint(list_catalogs);
-addEndpoint(clone_catalogs);
-addEndpoint(retrieve_default_catalogs);
+addEndpoint(create_pricing_models);
+addEndpoint(retrieve_pricing_models);
+addEndpoint(update_pricing_models);
+addEndpoint(list_pricing_models);
+addEndpoint(clone_pricing_models);
+addEndpoint(retrieve_default_pricing_models);
 addEndpoint(create_checkout_sessions);
 addEndpoint(retrieve_checkout_sessions);
 addEndpoint(list_checkout_sessions);

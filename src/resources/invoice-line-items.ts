@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as Shared from './shared';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -24,82 +25,12 @@ export class InvoiceLineItems extends APIResource {
   }
 }
 
-/**
- * A static invoice line item, representing a fixed fee component of an invoice.
- */
 export type InvoiceLineItemRetrieveResponse =
-  | InvoiceLineItemRetrieveResponse.UnionMember0
-  | InvoiceLineItemRetrieveResponse.UnionMember1;
-
-export namespace InvoiceLineItemRetrieveResponse {
-  /**
-   * A static invoice line item, representing a fixed fee component of an invoice.
-   */
-  export interface UnionMember0 {
-    id: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    description: string | null;
-
-    invoiceId: string;
-
-    livemode: boolean;
-
-    price: number;
-
-    priceId: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    quantity: number;
-
-    type: 'static';
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  /**
-   * A usage-based invoice line item, where charges are based on recorded usage
-   * events.
-   */
-  export interface UnionMember1 {
-    id: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    description: string | null;
-
-    invoiceId: string;
-
-    livemode: boolean;
-
-    price: number;
-
-    priceId: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    quantity: number;
-
-    type: 'usage';
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-}
+  | Shared.StaticInvoiceLineItemClientSelectSchema
+  | Shared.UsageInvoiceLineItemClientSelectSchema;
 
 export interface InvoiceLineItemListResponse {
-  data: Array<InvoiceLineItemListResponse.UnionMember0 | InvoiceLineItemListResponse.UnionMember1>;
+  data: Array<Shared.StaticInvoiceLineItemClientSelectSchema | Shared.UsageInvoiceLineItemClientSelectSchema>;
 
   hasMore: boolean;
 
@@ -110,77 +41,10 @@ export interface InvoiceLineItemListResponse {
   nextCursor?: string;
 }
 
-export namespace InvoiceLineItemListResponse {
-  /**
-   * A static invoice line item, representing a fixed fee component of an invoice.
-   */
-  export interface UnionMember0 {
-    id: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    description: string | null;
-
-    invoiceId: string;
-
-    livemode: boolean;
-
-    price: number;
-
-    priceId: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    quantity: number;
-
-    type: 'static';
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  /**
-   * A usage-based invoice line item, where charges are based on recorded usage
-   * events.
-   */
-  export interface UnionMember1 {
-    id: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    description: string | null;
-
-    invoiceId: string;
-
-    livemode: boolean;
-
-    price: number;
-
-    priceId: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    quantity: number;
-
-    type: 'usage';
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-}
-
 export interface InvoiceLineItemListParams {
   cursor?: string;
 
-  limit?: number;
+  limit?: string;
 }
 
 export declare namespace InvoiceLineItems {

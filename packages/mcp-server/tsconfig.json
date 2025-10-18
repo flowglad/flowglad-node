@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@flowglad/node-mcp/*": ["src/*"],
-      "@flowglad/node-mcp": ["src/index.ts"]
+      "@flowglad/node-mcp/*": ["./src/*"],
+      "@flowglad/node-mcp": ["./src/index.ts"]
     },
     "noEmit": true,
 

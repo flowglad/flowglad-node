@@ -36,7 +36,7 @@ describe('resource usageEvents', () => {
         subscriptionId: 'subscriptionId',
         transactionId: 'transactionId',
         properties: { foo: 'bar' },
-        usageDate: 0,
+        usageDate: -9007199254740991,
       },
     });
   });

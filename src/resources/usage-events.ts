@@ -32,27 +32,15 @@ export namespace UsageEventCreateResponse {
     amount: number;
 
     /**
-     * The billing period the usage belongs to. If the usage occurs in a date that is
-     * outside of the current billing period, the usage will still be attached to the
-     * current billing peirod.
+     * Epoch milliseconds.
      */
-    billingPeriodId: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
+    createdAt: number;
 
     customerId: string;
 
     livemode: boolean;
 
     priceId: string;
-
-    /**
-     * Properties for the usage event. Only required when using the
-     * "count_distinct_properties" aggregation type.
-     */
-    properties: { [key: string]: unknown };
 
     subscriptionId: string;
 
@@ -62,18 +50,32 @@ export namespace UsageEventCreateResponse {
      */
     transactionId: string;
 
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
 
     /**
      * The date the usage occurred. If the usage occurs in a date that is outside of
      * the current billing period, the usage will still be attached to the current
-     * billing peirod.
+     * billing period. Epoch milliseconds.
      */
-    usageDate: string;
+    usageDate: number;
 
     usageMeterId: string;
+
+    /**
+     * The billing period the usage belongs to. If the usage occurs in a date that is
+     * outside of the current billing period, the usage will still be attached to the
+     * current billing peirod.
+     */
+    billingPeriodId?: string | null;
+
+    /**
+     * Properties for the usage event. Only required when using the
+     * "count_distinct_properties" aggregation type.
+     */
+    properties?: { [key: string]: unknown };
   }
 }
 
@@ -88,27 +90,15 @@ export namespace UsageEventRetrieveResponse {
     amount: number;
 
     /**
-     * The billing period the usage belongs to. If the usage occurs in a date that is
-     * outside of the current billing period, the usage will still be attached to the
-     * current billing peirod.
+     * Epoch milliseconds.
      */
-    billingPeriodId: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
+    createdAt: number;
 
     customerId: string;
 
     livemode: boolean;
 
     priceId: string;
-
-    /**
-     * Properties for the usage event. Only required when using the
-     * "count_distinct_properties" aggregation type.
-     */
-    properties: { [key: string]: unknown };
 
     subscriptionId: string;
 
@@ -118,18 +108,32 @@ export namespace UsageEventRetrieveResponse {
      */
     transactionId: string;
 
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
 
     /**
      * The date the usage occurred. If the usage occurs in a date that is outside of
      * the current billing period, the usage will still be attached to the current
-     * billing peirod.
+     * billing period. Epoch milliseconds.
      */
-    usageDate: string;
+    usageDate: number;
 
     usageMeterId: string;
+
+    /**
+     * The billing period the usage belongs to. If the usage occurs in a date that is
+     * outside of the current billing period, the usage will still be attached to the
+     * current billing peirod.
+     */
+    billingPeriodId?: string | null;
+
+    /**
+     * Properties for the usage event. Only required when using the
+     * "count_distinct_properties" aggregation type.
+     */
+    properties?: { [key: string]: unknown };
   }
 }
 
@@ -155,11 +159,12 @@ export namespace UsageEventCreateParams {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties?: { [key: string]: unknown } | null;
+    properties?: { [key: string]: unknown };
 
     /**
-     * The date the usage occurred in unix epoch milliseconds. If not provided, the
-     * current timestamp will be used.
+     * The date the usage occurred. If the usage occurs in a date that is outside of
+     * the current billing period, the usage will still be attached to the current
+     * billing period. Epoch milliseconds.
      */
     usageDate?: number;
   }

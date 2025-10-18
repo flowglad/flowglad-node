@@ -24,7 +24,7 @@ export const tool: Tool = {
         type: 'string',
       },
       limit: {
-        type: 'number',
+        type: 'string',
       },
     },
     required: [],

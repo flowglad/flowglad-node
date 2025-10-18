@@ -6,37 +6,40 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
-  resource: 'checkout_sessions',
-  operation: 'read',
+  resource: 'pricing_models',
+  operation: 'write',
   tags: [],
-  httpMethod: 'get',
-  httpPath: '/api/v1/checkout-sessions',
-  operationId: 'checkoutSessions-list',
+  httpMethod: 'post',
+  httpPath: '/api/v1/pricing-models/{id}/clone',
+  operationId: 'pricingModels-clone',
 };
 
 export const tool: Tool = {
-  name: 'list_checkout_sessions',
-  description: 'List Checkout Sessions',
+  name: 'clone_pricing_models',
+  description: 'Clone a PricingModel',
   inputSchema: {
     type: 'object',
     properties: {
-      cursor: {
+      id: {
         type: 'string',
       },
-      limit: {
+      name: {
         type: 'string',
+        description: 'The name of the new pricing model.',
+      },
+      destinationEnvironment: {
+        type: 'string',
+        enum: ['livemode', 'testmode'],
       },
     },
-    required: [],
+    required: ['id', 'name'],
   },
-  annotations: {
-    readOnlyHint: true,
-  },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
-  const body = args as any;
-  return asTextContentResult(await client.checkoutSessions.list(body));
+  const { id, ...body } = args as any;
+  return asTextContentResult(await client.pricingModels.clone(id, body));
 };
 
 export default { metadata, tool, handler };

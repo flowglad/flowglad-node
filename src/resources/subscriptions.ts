@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as Shared from './shared';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -31,7 +32,9 @@ export class Subscriptions extends APIResource {
   }
 
   /**
-   * Adjust a Subscription
+   * Note: Immediate adjustments are in private preview (Please let us know you use
+   * this feature: https://github.com/flowglad/flowglad/issues/616). Adjustments at
+   * the end of the current billing period are generally available.
    */
   adjust(
     id: string,
@@ -54,267 +57,15 @@ export class Subscriptions extends APIResource {
 }
 
 export interface SubscriptionCreateResponse {
-  subscription: SubscriptionCreateResponse.UnionMember0 | SubscriptionCreateResponse.UnionMember1;
-}
-
-export namespace SubscriptionCreateResponse {
-  export interface UnionMember0 {
-    id: string;
-
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    customerId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface UnionMember1 {
-    id: string;
-
-    backupPaymentMethodId: 'null' | null;
-
-    billingCycleAnchorDate: 'null' | null;
-
-    canceledAt: 'null' | null;
-
-    cancelScheduledAt: 'null' | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * "cancellation_scheduled", or "credit_trial")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: 'null' | null;
-
-    currentBillingPeriodStart: 'null' | null;
-
-    customerId: string;
-
-    defaultPaymentMethodId: 'null' | null;
-
-    interval: 'null' | null;
-
-    intervalCount: 'null' | null;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status: 'credit_trial';
-
-    trialEnd: 'null' | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+  subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
 }
 
 export interface SubscriptionRetrieveResponse {
-  subscription: SubscriptionRetrieveResponse.UnionMember0 | SubscriptionRetrieveResponse.UnionMember1;
-}
-
-export namespace SubscriptionRetrieveResponse {
-  export interface UnionMember0 {
-    id: string;
-
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    customerId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface UnionMember1 {
-    id: string;
-
-    backupPaymentMethodId: 'null' | null;
-
-    billingCycleAnchorDate: 'null' | null;
-
-    canceledAt: 'null' | null;
-
-    cancelScheduledAt: 'null' | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * "cancellation_scheduled", or "credit_trial")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: 'null' | null;
-
-    currentBillingPeriodStart: 'null' | null;
-
-    customerId: string;
-
-    defaultPaymentMethodId: 'null' | null;
-
-    interval: 'null' | null;
-
-    intervalCount: 'null' | null;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status: 'credit_trial';
-
-    trialEnd: 'null' | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+  subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
 }
 
 export interface SubscriptionListResponse {
-  data: Array<SubscriptionListResponse.UnionMember0 | SubscriptionListResponse.UnionMember1>;
+  data: Array<Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord>;
 
   hasMore: boolean;
 
@@ -325,295 +76,36 @@ export interface SubscriptionListResponse {
   nextCursor?: string;
 }
 
-export namespace SubscriptionListResponse {
-  export interface UnionMember0 {
-    id: string;
-
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    customerId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface UnionMember1 {
-    id: string;
-
-    backupPaymentMethodId: 'null' | null;
-
-    billingCycleAnchorDate: 'null' | null;
-
-    canceledAt: 'null' | null;
-
-    cancelScheduledAt: 'null' | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * "cancellation_scheduled", or "credit_trial")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: 'null' | null;
-
-    currentBillingPeriodStart: 'null' | null;
-
-    customerId: string;
-
-    defaultPaymentMethodId: 'null' | null;
-
-    interval: 'null' | null;
-
-    intervalCount: 'null' | null;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status: 'credit_trial';
-
-    trialEnd: 'null' | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-}
-
 export interface SubscriptionAdjustResponse {
-  subscription: SubscriptionAdjustResponse.UnionMember0 | SubscriptionAdjustResponse.UnionMember1;
+  subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
 
-  subscriptionItems: Array<SubscriptionAdjustResponse.UnionMember0 | SubscriptionAdjustResponse.UnionMember1>;
+  subscriptionItems: Array<SubscriptionAdjustResponse.SubscriptionItem>;
 }
 
 export namespace SubscriptionAdjustResponse {
-  export interface UnionMember0 {
+  export interface SubscriptionItem {
     id: string;
 
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
+    /**
+     * Epoch milliseconds.
+     */
+    addedDate: number;
 
     /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
+     * Epoch milliseconds.
      */
-    current: boolean;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    customerId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface UnionMember1 {
-    id: string;
-
-    backupPaymentMethodId: 'null' | null;
-
-    billingCycleAnchorDate: 'null' | null;
-
-    canceledAt: 'null' | null;
-
-    cancelScheduledAt: 'null' | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * "cancellation_scheduled", or "credit_trial")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: 'null' | null;
-
-    currentBillingPeriodStart: 'null' | null;
-
-    customerId: string;
-
-    defaultPaymentMethodId: 'null' | null;
-
-    interval: 'null' | null;
-
-    intervalCount: 'null' | null;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status: 'credit_trial';
-
-    trialEnd: 'null' | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  /**
-   * A static subscription item, representing a fixed fee component of a
-   * subscription.
-   */
-  export interface UnionMember0 {
-    id: string;
-
-    addedDate: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Used as a flag to soft delete a subscription item without losing its history for
-     * auditability. If set, it will be removed from the subscription items list and
-     * will not be included in the billing period item list.
-     */
-    expiredAt: string | null;
+    createdAt: number;
 
     externalId: string | null;
 
     livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
 
     name: string | null;
 
     priceId: string;
 
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     quantity: number;
 
@@ -621,214 +113,29 @@ export namespace SubscriptionAdjustResponse {
 
     type: 'static';
 
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: number | 0;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
+    unitPrice: number;
 
     /**
-     * Usage events per unit must be null for static subscription items.
+     * Epoch milliseconds.
      */
-    usageEventsPerUnit: 'null' | null;
-
-    /**
-     * Usage meter ID must be null for static subscription items.
-     */
-    usageMeterId: 'null' | null;
-  }
-
-  /**
-   * A usage-based subscription item, where charges are based on recorded usage
-   * events.
-   */
-  export interface UnionMember1 {
-    id: string;
-
-    addedDate: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
+    updatedAt: number;
 
     /**
      * Used as a flag to soft delete a subscription item without losing its history for
      * auditability. If set, it will be removed from the subscription items list and
-     * will not be included in the billing period item list.
+     * will not be included in the billing period item list. Epoch milliseconds.
      */
-    expiredAt: string | null;
-
-    externalId: string | null;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    priceId: string;
+    expiredAt?: number | null;
 
     /**
-     * safeZodPositiveInteger
+     * JSON object
      */
-    quantity: number;
-
-    subscriptionId: string;
-
-    type: 'usage';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: number | 0;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * The number of usage events that constitute one unit for billing.
-     */
-    usageEventsPerUnit: number;
-
-    /**
-     * The usage meter associated with this usage-based subscription item.
-     */
-    usageMeterId: string;
+    metadata?: { [key: string]: string | number | boolean } | null;
   }
 }
 
 export interface SubscriptionCancelResponse {
-  subscription: SubscriptionCancelResponse.UnionMember0 | SubscriptionCancelResponse.UnionMember1;
-}
-
-export namespace SubscriptionCancelResponse {
-  export interface UnionMember0 {
-    id: string;
-
-    backupPaymentMethodId: string | null;
-
-    billingCycleAnchorDate: string;
-
-    canceledAt: string | null;
-
-    cancelScheduledAt: string | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * or "cancellation_scheduled")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: string;
-
-    currentBillingPeriodStart: string;
-
-    customerId: string;
-
-    defaultPaymentMethodId: string | null;
-
-    interval: 'day' | 'week' | 'month' | 'year';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status:
-      | 'trialing'
-      | 'active'
-      | 'past_due'
-      | 'unpaid'
-      | 'cancellation_scheduled'
-      | 'incomplete'
-      | 'incomplete_expired'
-      | 'canceled'
-      | 'paused';
-
-    trialEnd: string | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface UnionMember1 {
-    id: string;
-
-    backupPaymentMethodId: 'null' | null;
-
-    billingCycleAnchorDate: 'null' | null;
-
-    canceledAt: 'null' | null;
-
-    cancelScheduledAt: 'null' | null;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    /**
-     * Whether the subscription is current (statuses "active", "trialing", "past_due",
-     * "cancellation_scheduled", or "credit_trial")
-     */
-    current: boolean;
-
-    currentBillingPeriodEnd: 'null' | null;
-
-    currentBillingPeriodStart: 'null' | null;
-
-    customerId: string;
-
-    defaultPaymentMethodId: 'null' | null;
-
-    interval: 'null' | null;
-
-    intervalCount: 'null' | null;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    name: string | null;
-
-    organizationId: string;
-
-    priceId: string | null;
-
-    runBillingAtPeriodStart: boolean | null;
-
-    startDate: string;
-
-    status: 'credit_trial';
-
-    trialEnd: 'null' | null;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+  subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
 }
 
 export interface SubscriptionCreateParams {
@@ -872,7 +179,10 @@ export interface SubscriptionCreateParams {
    */
   intervalCount?: number;
 
-  metadata?: { [key: string]: unknown };
+  /**
+   * JSON object
+   */
+  metadata?: { [key: string]: string | number | boolean };
 
   /**
    * The name of the subscription. If not provided, defaults to the name of the
@@ -901,152 +211,42 @@ export interface SubscriptionCreateParams {
 export interface SubscriptionListParams {
   cursor?: string;
 
-  limit?: number;
+  limit?: string;
 }
 
 export interface SubscriptionAdjustParams {
-  adjustment: SubscriptionAdjustParams.UnionMember0 | SubscriptionAdjustParams.UnionMember1;
+  adjustment:
+    | SubscriptionAdjustParams.AdjustSubscriptionImmediatelyInput
+    | SubscriptionAdjustParams.AdjustSubscriptionAtEndOfCurrentBillingPeriodInput;
 }
 
 export namespace SubscriptionAdjustParams {
-  export interface UnionMember0 {
+  export interface AdjustSubscriptionImmediatelyInput {
     newSubscriptionItems: Array<
-      | UnionMember0.UnionMember0
-      | UnionMember0.UnionMember1
-      | UnionMember0.UnionMember2
-      | UnionMember0.UnionMember3
+      | AdjustSubscriptionImmediatelyInput.StaticSubscriptionItemClientInsertSchema
+      | AdjustSubscriptionImmediatelyInput.StaticSubscriptionItemClientSelectSchema
     >;
 
     prorateCurrentBillingPeriod: boolean;
 
+    /**
+     * Note: Immediate adjustments are in private preview. Please let us know you use
+     * this feature: https://github.com/flowglad/flowglad/issues/616.
+     */
     timing: 'immediately';
   }
 
-  export namespace UnionMember0 {
-    /**
-     * A static subscription item, representing a fixed fee component of a
-     * subscription.
-     */
-    export interface UnionMember0 {
-      addedDate: string;
-
+  export namespace AdjustSubscriptionImmediatelyInput {
+    export interface StaticSubscriptionItemClientInsertSchema {
       /**
-       * Used as a flag to soft delete a subscription item without losing its history for
-       * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
+       * Epoch milliseconds.
        */
-      expiredAt: string | null;
-
-      externalId: string | null;
-
-      metadata: { [key: string]: unknown } | null;
-
-      name: string | null;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      quantity: number;
-
-      type: 'static';
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number | 0;
-
-      /**
-       * Usage events per unit must be null for static subscription items.
-       */
-      usageEventsPerUnit: 'null' | null;
-
-      /**
-       * Usage meter ID must be null for static subscription items.
-       */
-      usageMeterId: 'null' | null;
-    }
-
-    /**
-     * A usage-based subscription item, where charges are based on recorded usage
-     * events.
-     */
-    export interface UnionMember1 {
-      addedDate: string;
-
-      /**
-       * Used as a flag to soft delete a subscription item without losing its history for
-       * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
-       */
-      expiredAt: string | null;
-
-      externalId: string | null;
-
-      livemode: boolean;
-
-      metadata: { [key: string]: unknown } | null;
-
-      name: string | null;
+      addedDate: number;
 
       priceId: string;
 
       /**
-       * safeZodPositiveInteger
-       */
-      quantity: number;
-
-      subscriptionId: string;
-
-      type: 'usage';
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number | 0;
-
-      /**
-       * The number of usage events that constitute one unit for billing.
-       */
-      usageEventsPerUnit: number;
-
-      /**
-       * The usage meter associated with this usage-based subscription item.
-       */
-      usageMeterId: string;
-    }
-
-    /**
-     * A static subscription item, representing a fixed fee component of a
-     * subscription.
-     */
-    export interface UnionMember2 {
-      id: string;
-
-      addedDate: string;
-
-      createdAt: string;
-
-      createdByCommit: string | null;
-
-      /**
-       * Used as a flag to soft delete a subscription item without losing its history for
-       * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
-       */
-      expiredAt: string | null;
-
-      externalId: string | null;
-
-      livemode: boolean;
-
-      metadata: { [key: string]: unknown } | null;
-
-      name: string | null;
-
-      priceId: string;
-
-      /**
-       * safeZodPositiveInteger
+       * A positive integer
        */
       quantity: number;
 
@@ -1054,222 +254,96 @@ export namespace SubscriptionAdjustParams {
 
       type: 'static';
 
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number | 0;
-
-      updatedAt: string | null;
-
-      updatedByCommit: string | null;
-
-      /**
-       * Usage events per unit must be null for static subscription items.
-       */
-      usageEventsPerUnit: 'null' | null;
-
-      /**
-       * Usage meter ID must be null for static subscription items.
-       */
-      usageMeterId: 'null' | null;
-    }
-
-    /**
-     * A usage-based subscription item, where charges are based on recorded usage
-     * events.
-     */
-    export interface UnionMember3 {
-      id: string;
-
-      addedDate: string;
-
-      createdAt: string;
-
-      createdByCommit: string | null;
+      unitPrice: number;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
        * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
+       * will not be included in the billing period item list. Epoch milliseconds.
        */
-      expiredAt: string | null;
+      expiredAt?: number | null;
+
+      externalId?: string | null;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      name?: string | null;
+    }
+
+    export interface StaticSubscriptionItemClientSelectSchema {
+      id: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
 
       externalId: string | null;
 
       livemode: boolean;
-
-      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 
       priceId: string;
 
       /**
-       * safeZodPositiveInteger
+       * A positive integer
        */
       quantity: number;
 
       subscriptionId: string;
 
-      type: 'usage';
+      type: 'static';
+
+      unitPrice: number;
 
       /**
-       * safeZodPositiveInteger
+       * Epoch milliseconds.
        */
-      unitPrice: number | 0;
-
-      updatedAt: string | null;
-
-      updatedByCommit: string | null;
+      updatedAt: number;
 
       /**
-       * The number of usage events that constitute one unit for billing.
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
        */
-      usageEventsPerUnit: number;
+      expiredAt?: number | null;
 
       /**
-       * The usage meter associated with this usage-based subscription item.
+       * JSON object
        */
-      usageMeterId: string;
+      metadata?: { [key: string]: string | number | boolean } | null;
     }
   }
 
-  export interface UnionMember1 {
+  export interface AdjustSubscriptionAtEndOfCurrentBillingPeriodInput {
     newSubscriptionItems: Array<
-      | UnionMember1.UnionMember0
-      | UnionMember1.UnionMember1
-      | UnionMember1.UnionMember2
-      | UnionMember1.UnionMember3
+      | AdjustSubscriptionAtEndOfCurrentBillingPeriodInput.StaticSubscriptionItemClientInsertSchema
+      | AdjustSubscriptionAtEndOfCurrentBillingPeriodInput.StaticSubscriptionItemClientSelectSchema
     >;
 
     timing: 'at_end_of_current_billing_period';
   }
 
-  export namespace UnionMember1 {
-    /**
-     * A static subscription item, representing a fixed fee component of a
-     * subscription.
-     */
-    export interface UnionMember0 {
-      addedDate: string;
-
+  export namespace AdjustSubscriptionAtEndOfCurrentBillingPeriodInput {
+    export interface StaticSubscriptionItemClientInsertSchema {
       /**
-       * Used as a flag to soft delete a subscription item without losing its history for
-       * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
+       * Epoch milliseconds.
        */
-      expiredAt: string | null;
-
-      externalId: string | null;
-
-      metadata: { [key: string]: unknown } | null;
-
-      name: string | null;
-
-      /**
-       * safeZodPositiveInteger
-       */
-      quantity: number;
-
-      type: 'static';
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number | 0;
-
-      /**
-       * Usage events per unit must be null for static subscription items.
-       */
-      usageEventsPerUnit: 'null' | null;
-
-      /**
-       * Usage meter ID must be null for static subscription items.
-       */
-      usageMeterId: 'null' | null;
-    }
-
-    /**
-     * A usage-based subscription item, where charges are based on recorded usage
-     * events.
-     */
-    export interface UnionMember1 {
-      addedDate: string;
-
-      /**
-       * Used as a flag to soft delete a subscription item without losing its history for
-       * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
-       */
-      expiredAt: string | null;
-
-      externalId: string | null;
-
-      livemode: boolean;
-
-      metadata: { [key: string]: unknown } | null;
-
-      name: string | null;
+      addedDate: number;
 
       priceId: string;
 
       /**
-       * safeZodPositiveInteger
-       */
-      quantity: number;
-
-      subscriptionId: string;
-
-      type: 'usage';
-
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number | 0;
-
-      /**
-       * The number of usage events that constitute one unit for billing.
-       */
-      usageEventsPerUnit: number;
-
-      /**
-       * The usage meter associated with this usage-based subscription item.
-       */
-      usageMeterId: string;
-    }
-
-    /**
-     * A static subscription item, representing a fixed fee component of a
-     * subscription.
-     */
-    export interface UnionMember2 {
-      id: string;
-
-      addedDate: string;
-
-      createdAt: string;
-
-      createdByCommit: string | null;
-
-      /**
-       * Used as a flag to soft delete a subscription item without losing its history for
-       * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
-       */
-      expiredAt: string | null;
-
-      externalId: string | null;
-
-      livemode: boolean;
-
-      metadata: { [key: string]: unknown } | null;
-
-      name: string | null;
-
-      priceId: string;
-
-      /**
-       * safeZodPositiveInteger
+       * A positive integer
        */
       quantity: number;
 
@@ -1277,106 +351,99 @@ export namespace SubscriptionAdjustParams {
 
       type: 'static';
 
-      /**
-       * safeZodPositiveInteger
-       */
-      unitPrice: number | 0;
-
-      updatedAt: string | null;
-
-      updatedByCommit: string | null;
-
-      /**
-       * Usage events per unit must be null for static subscription items.
-       */
-      usageEventsPerUnit: 'null' | null;
-
-      /**
-       * Usage meter ID must be null for static subscription items.
-       */
-      usageMeterId: 'null' | null;
-    }
-
-    /**
-     * A usage-based subscription item, where charges are based on recorded usage
-     * events.
-     */
-    export interface UnionMember3 {
-      id: string;
-
-      addedDate: string;
-
-      createdAt: string;
-
-      createdByCommit: string | null;
+      unitPrice: number;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
        * auditability. If set, it will be removed from the subscription items list and
-       * will not be included in the billing period item list.
+       * will not be included in the billing period item list. Epoch milliseconds.
        */
-      expiredAt: string | null;
+      expiredAt?: number | null;
+
+      externalId?: string | null;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      name?: string | null;
+    }
+
+    export interface StaticSubscriptionItemClientSelectSchema {
+      id: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
 
       externalId: string | null;
 
       livemode: boolean;
-
-      metadata: { [key: string]: unknown } | null;
 
       name: string | null;
 
       priceId: string;
 
       /**
-       * safeZodPositiveInteger
+       * A positive integer
        */
       quantity: number;
 
       subscriptionId: string;
 
-      type: 'usage';
+      type: 'static';
+
+      unitPrice: number;
 
       /**
-       * safeZodPositiveInteger
+       * Epoch milliseconds.
        */
-      unitPrice: number | 0;
-
-      updatedAt: string | null;
-
-      updatedByCommit: string | null;
+      updatedAt: number;
 
       /**
-       * The number of usage events that constitute one unit for billing.
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
        */
-      usageEventsPerUnit: number;
+      expiredAt?: number | null;
 
       /**
-       * The usage meter associated with this usage-based subscription item.
+       * JSON object
        */
-      usageMeterId: string;
+      metadata?: { [key: string]: string | number | boolean } | null;
     }
   }
 }
 
 export interface SubscriptionCancelParams {
   cancellation:
-    | SubscriptionCancelParams.Timing
-    | SubscriptionCancelParams.UnionMember1
-    | SubscriptionCancelParams.Timing;
+    | SubscriptionCancelParams.CancelSubscriptionAtEndOfBillingPeriodInput
+    | SubscriptionCancelParams.CancelSubscriptionAtFutureDateInput
+    | SubscriptionCancelParams.CancelSubscriptionImmediatelyInput;
 }
 
 export namespace SubscriptionCancelParams {
-  export interface Timing {
+  export interface CancelSubscriptionAtEndOfBillingPeriodInput {
     timing: 'at_end_of_current_billing_period';
   }
 
-  export interface UnionMember1 {
-    endDate: string;
+  export interface CancelSubscriptionAtFutureDateInput {
+    /**
+     * Epoch milliseconds.
+     */
+    endDate: number;
 
     timing: 'at_future_date';
   }
 
-  export interface Timing {
+  export interface CancelSubscriptionImmediatelyInput {
     timing: 'immediately';
   }
 }

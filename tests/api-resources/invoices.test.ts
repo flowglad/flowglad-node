@@ -9,65 +9,6 @@ const client = new Flowglad({
 
 describe('resource invoices', () => {
   // Prism tests are disabled
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.invoices.create({
-      invoice: {
-        billingPeriodId: 'null',
-        currency: 'USD',
-        customerId: 'customerId',
-        invoiceNumber: 'invoiceNumber',
-        purchaseId: 'purchaseId',
-        subscriptionId: 'null',
-        type: 'purchase',
-      },
-      invoiceLineItems: [
-        { description: 'description', price: 0, priceId: 'priceId', quantity: 0, type: 'static' },
-      ],
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('create: required and optional params', async () => {
-    const response = await client.invoices.create({
-      invoice: {
-        billingPeriodId: 'null',
-        currency: 'USD',
-        customerId: 'customerId',
-        invoiceNumber: 'invoiceNumber',
-        purchaseId: 'purchaseId',
-        subscriptionId: 'null',
-        type: 'purchase',
-        bankPaymentOnly: true,
-        billingPeriodEndDate: '2019-12-27T18:11:19.117Z',
-        billingPeriodStartDate: '2019-12-27T18:11:19.117Z',
-        billingRunId: 'billingRunId',
-        dueDate: '2019-12-27T18:11:19.117Z',
-        invoiceDate: '2019-12-27T18:11:19.117Z',
-        memo: 'memo',
-        ownerMembershipId: 'ownerMembershipId',
-        pdfURL: 'https://example.com',
-        receiptPdfURL: 'https://example.com',
-        status: 'draft',
-        subtotal: 0,
-        taxCountry: 'AF',
-        taxState: 'taxState',
-        taxType: 'amusement_tax',
-      },
-      invoiceLineItems: [
-        { description: 'description', price: 0, priceId: 'priceId', quantity: 0, type: 'static' },
-      ],
-      autoSend: true,
-    });
-  });
-
-  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.invoices.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -95,7 +36,7 @@ describe('resource invoices', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.invoices.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.invoices.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

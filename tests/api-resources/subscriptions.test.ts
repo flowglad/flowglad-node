@@ -29,10 +29,10 @@ describe('resource subscriptions', () => {
       defaultPaymentMethodId: 'defaultPaymentMethodId',
       interval: 'day',
       intervalCount: 0,
-      metadata: { foo: 'bar' },
+      metadata: { foo: 'string' },
       name: 'name',
       quantity: 0,
-      startDate: '2019-12-27T18:11:19.117Z',
+      startDate: 'startDate',
       trialEnd: 0,
     });
   });
@@ -65,7 +65,7 @@ describe('resource subscriptions', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.subscriptions.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.subscriptions.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
@@ -75,16 +75,12 @@ describe('resource subscriptions', () => {
       adjustment: {
         newSubscriptionItems: [
           {
-            addedDate: '2019-12-27T18:11:19.117Z',
-            expiredAt: '2019-12-27T18:11:19.117Z',
-            externalId: 'externalId',
-            metadata: { foo: 'bar' },
-            name: 'name',
-            quantity: 0,
+            addedDate: -9007199254740991,
+            priceId: 'priceId',
+            quantity: 1,
+            subscriptionId: 'subscriptionId',
             type: 'static',
             unitPrice: 0,
-            usageEventsPerUnit: 'null',
-            usageMeterId: 'null',
           },
         ],
         prorateCurrentBillingPeriod: true,
@@ -106,16 +102,16 @@ describe('resource subscriptions', () => {
       adjustment: {
         newSubscriptionItems: [
           {
-            addedDate: '2019-12-27T18:11:19.117Z',
-            expiredAt: '2019-12-27T18:11:19.117Z',
-            externalId: 'externalId',
-            metadata: { foo: 'bar' },
-            name: 'name',
-            quantity: 0,
+            addedDate: -9007199254740991,
+            priceId: 'priceId',
+            quantity: 1,
+            subscriptionId: 'subscriptionId',
             type: 'static',
             unitPrice: 0,
-            usageEventsPerUnit: 'null',
-            usageMeterId: 'null',
+            expiredAt: -9007199254740991,
+            externalId: 'externalId',
+            metadata: { foo: 'string' },
+            name: 'name',
           },
         ],
         prorateCurrentBillingPeriod: true,

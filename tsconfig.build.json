@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@flowglad/node/*": ["dist/src/*"],
-      "@flowglad/node": ["dist/src/index.ts"]
+      "@flowglad/node/*": ["./dist/src/*"],
+      "@flowglad/node": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

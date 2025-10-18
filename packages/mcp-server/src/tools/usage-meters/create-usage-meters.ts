@@ -18,17 +18,17 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'create_usage_meters',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Usage Meter\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    usageMeter: {\n      type: 'object',\n      properties: {\n        id: {\n          type: 'string'\n        },\n        aggregationType: {\n          type: 'string',\n          description: 'The type of aggregation to perform on the usage meter. Defaults to \"sum\", which aggregates all the usage event amounts for the billing period. \"count_distinct_properties\" counts the number of distinct properties in the billing period for a given meter.',\n          enum: [            'sum',\n            'count_distinct_properties'\n          ]\n        },\n        catalogId: {\n          type: 'string'\n        },\n        createdAt: {\n          type: 'string',\n          format: 'date-time'\n        },\n        createdByCommit: {\n          type: 'string'\n        },\n        livemode: {\n          type: 'boolean'\n        },\n        name: {\n          type: 'string'\n        },\n        organizationId: {\n          type: 'string'\n        },\n        slug: {\n          type: 'string'\n        },\n        updatedAt: {\n          type: 'string',\n          format: 'date-time'\n        },\n        updatedByCommit: {\n          type: 'string'\n        }\n      },\n      required: [        'id',\n        'aggregationType',\n        'catalogId',\n        'createdAt',\n        'createdByCommit',\n        'livemode',\n        'name',\n        'organizationId',\n        'slug',\n        'updatedAt',\n        'updatedByCommit'\n      ]\n    }\n  },\n  required: [    'usageMeter'\n  ]\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Usage Meter\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/usage_meter_create_response',\n  $defs: {\n    usage_meter_create_response: {\n      type: 'object',\n      properties: {\n        usageMeter: {\n          $ref: '#/$defs/usage_meter_client_select_schema'\n        }\n      },\n      required: [        'usageMeter'\n      ]\n    },\n    usage_meter_client_select_schema: {\n      type: 'object',\n      properties: {\n        id: {\n          type: 'string'\n        },\n        aggregationType: {\n          type: 'string',\n          description: 'The type of aggregation to perform on the usage meter. Defaults to \"sum\", which aggregates all the usage event amounts for the billing period. \"count_distinct_properties\" counts the number of distinct properties in the billing period for a given meter.',\n          enum: [            'sum',\n            'count_distinct_properties'\n          ]\n        },\n        createdAt: {\n          type: 'integer',\n          description: 'Epoch milliseconds.'\n        },\n        livemode: {\n          type: 'boolean'\n        },\n        name: {\n          type: 'string'\n        },\n        organizationId: {\n          type: 'string'\n        },\n        pricingModelId: {\n          type: 'string'\n        },\n        slug: {\n          type: 'string'\n        },\n        updatedAt: {\n          type: 'integer',\n          description: 'Epoch milliseconds.'\n        }\n      },\n      required: [        'id',\n        'aggregationType',\n        'createdAt',\n        'livemode',\n        'name',\n        'organizationId',\n        'pricingModelId',\n        'slug',\n        'updatedAt'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
       usageMeter: {
         type: 'object',
         properties: {
-          catalogId: {
+          name: {
             type: 'string',
           },
-          name: {
+          pricingModelId: {
             type: 'string',
           },
           slug: {
@@ -41,7 +41,7 @@ export const tool: Tool = {
             enum: ['sum', 'count_distinct_properties'],
           },
         },
-        required: ['catalogId', 'name', 'slug'],
+        required: ['name', 'pricingModelId', 'slug'],
       },
       jq_filter: {
         type: 'string',

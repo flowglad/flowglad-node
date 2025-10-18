@@ -6,35 +6,29 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
-  resource: 'catalogs',
-  operation: 'write',
+  resource: 'pricing_models',
+  operation: 'read',
   tags: [],
-  httpMethod: 'post',
-  httpPath: '/api/v1/catalogs/{id}/clone',
-  operationId: 'catalogs-clone',
+  httpMethod: 'get',
+  httpPath: '/api/v1/pricing-models/default',
+  operationId: 'pricingModels-getDefault',
 };
 
 export const tool: Tool = {
-  name: 'clone_catalogs',
-  description: 'Clone a Catalog',
+  name: 'retrieve_default_pricing_models',
+  description: 'Get Default Pricing Model for Organization',
   inputSchema: {
     type: 'object',
-    properties: {
-      id: {
-        type: 'string',
-      },
-      name: {
-        type: 'string',
-      },
-    },
-    required: ['id', 'name'],
+    properties: {},
+    required: [],
   },
-  annotations: {},
+  annotations: {
+    readOnlyHint: true,
+  },
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
-  const { id, ...body } = args as any;
-  return asTextContentResult(await client.catalogs.clone(id, body));
+  return asTextContentResult(await client.pricingModels.retrieveDefault());
 };
 
 export default { metadata, tool, handler };

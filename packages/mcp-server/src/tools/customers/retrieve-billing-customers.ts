@@ -22,6 +22,7 @@ export const tool: Tool = {
     properties: {
       externalId: {
         type: 'string',
+        description: 'The ID of the customer, as defined in your application',
       },
     },
     required: ['externalId'],
