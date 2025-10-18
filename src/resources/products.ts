@@ -1,6 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as PricesAPI from './prices';
+import * as Shared from './shared';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -38,62 +40,44 @@ export class Products extends APIResource {
   }
 }
 
-export interface ProductCreateResponse {
-  product: ProductCreateResponse.Product;
+export interface ProductClientSelectSchema {
+  id: string;
+
+  active: boolean;
+
+  /**
+   * Epoch milliseconds.
+   */
+  createdAt: number;
+
+  default: boolean;
+
+  description: string | null;
+
+  imageURL: string | null;
+
+  livemode: boolean;
+
+  name: string;
+
+  organizationId: string;
+
+  pluralQuantityLabel: string | null;
+
+  pricingModelId: string;
+
+  singularQuantityLabel: string | null;
+
+  slug: string | null;
+
+  /**
+   * Epoch milliseconds.
+   */
+  updatedAt: number;
 }
 
-export namespace ProductCreateResponse {
-  export interface Product {
-    id: string;
-
-    active: boolean;
-
-    catalogId: string;
-
-    /**
-     * safeZodDate
-     */
-    createdAt: (string & {}) | string;
-
-    createdByCommit: string | null;
-
-    default: boolean;
-
-    description: string | null;
-
-    displayFeatures: Array<Product.DisplayFeature> | null;
-
-    imageURL: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    pluralQuantityLabel: string | null;
-
-    singularQuantityLabel: string | null;
-
-    slug: string | null;
-
-    /**
-     * safeZodDate
-     */
-    updatedAt: (string & {}) | string;
-
-    updatedByCommit: string | null;
-  }
-
-  export namespace Product {
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-  }
+export interface ProductCreateResponse {
+  product: ProductClientSelectSchema;
 }
 
 export interface ProductRetrieveResponse {
@@ -101,14 +85,10 @@ export interface ProductRetrieveResponse {
 
   active: boolean;
 
-  catalogId: string;
-
   /**
-   * safeZodDate
+   * Epoch milliseconds.
    */
-  createdAt: (string & {}) | string;
-
-  createdByCommit: string | null;
+  createdAt: number;
 
   default: boolean;
 
@@ -117,13 +97,13 @@ export interface ProductRetrieveResponse {
    * will return the first price created for the product..
    */
   defaultPrice:
-    | ProductRetrieveResponse.SubscriptionPrice
-    | ProductRetrieveResponse.SinglePaymentPrice
-    | ProductRetrieveResponse.UsagePrice;
+    | PricesAPI.SubscriptionPriceClientSelectSchema
+    | PricesAPI.SinglePaymentPriceClientSelectSchema
+    | PricesAPI.UsagePriceClientSelectSchema;
 
   description: string | null;
 
-  displayFeatures: Array<ProductRetrieveResponse.DisplayFeature> | null;
+  features: Array<Shared.ToggleFeatureClientSelectSchema | Shared.UsageCreditGrantFeatureClientSelectSchema>;
 
   imageURL: string | null;
 
@@ -136,1326 +116,29 @@ export interface ProductRetrieveResponse {
   pluralQuantityLabel: string | null;
 
   prices: Array<
-    | ProductRetrieveResponse.SubscriptionPrice
-    | ProductRetrieveResponse.SinglePaymentPrice
-    | ProductRetrieveResponse.UsagePrice
+    | PricesAPI.SubscriptionPriceClientSelectSchema
+    | PricesAPI.SinglePaymentPriceClientSelectSchema
+    | PricesAPI.UsagePriceClientSelectSchema
   >;
+
+  pricingModelId: string;
 
   singularQuantityLabel: string | null;
 
   slug: string | null;
 
   /**
-   * safeZodDate
+   * Epoch milliseconds.
    */
-  updatedAt: (string & {}) | string;
-
-  updatedByCommit: string | null;
-}
-
-export namespace ProductRetrieveResponse {
-  /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
-   */
-  export interface SubscriptionPrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    intervalUnit: 'day' | 'week' | 'month' | 'year';
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    productId: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
-
-    slug: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    trialPeriodDays: number | 0 | null;
-
-    type: 'subscription';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: number;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * safeZodNullishString
-     */
-    overagePriceId?: string | null;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
-  }
-
-  /**
-   * A single payment price, which only gets paid once. Subscriptions cannot be made
-   * from single payment prices. Purchases, though, can.
-   */
-  export interface SinglePaymentPrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    productId: string;
-
-    slug: string | null;
-
-    type: 'single_payment';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: number;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalCount?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    startsWithCreditTrial?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
-  }
-
-  /**
-   * A usage-based price, which charges based on usage of a particular meter.
-   */
-  export interface UsagePrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    intervalUnit: 'day' | 'week' | 'month' | 'year';
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    productId: string;
-
-    slug: string | null;
-
-    type: 'usage';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: number;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    usageEventsPerUnit: number;
-
-    /**
-     * The usage meter that uses this price. All usage events on that meter must be
-     * associated with a price that is also associated with that usage meter.
-     */
-    usageMeterId: string;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: 'null' | null | unknown;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
-  }
-
-  export interface DisplayFeature {
-    enabled: boolean;
-
-    label: string;
-
-    details?: string | null;
-  }
-
-  /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
-   */
-  export interface SubscriptionPrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    intervalUnit: 'day' | 'week' | 'month' | 'year';
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    productId: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
-
-    slug: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    trialPeriodDays: number | 0 | null;
-
-    type: 'subscription';
-
-    unitPrice: number;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * safeZodNullishString
-     */
-    overagePriceId?: string | null;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
-  }
-
-  /**
-   * A single payment price, which only gets paid once. Subscriptions cannot be made
-   * from single payment prices. Purchases, though, can.
-   */
-  export interface SinglePaymentPrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    productId: string;
-
-    slug: string | null;
-
-    type: 'single_payment';
-
-    unitPrice: number;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalCount?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    startsWithCreditTrial?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
-  }
-
-  /**
-   * A usage price, which describes the price per unit of usage of a product.
-   */
-  export interface UsagePrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    currency:
-      | 'USD'
-      | 'AED'
-      | 'AFN'
-      | 'ALL'
-      | 'AMD'
-      | 'ANG'
-      | 'AOA'
-      | 'ARS'
-      | 'AUD'
-      | 'AWG'
-      | 'AZN'
-      | 'BAM'
-      | 'BBD'
-      | 'BDT'
-      | 'BGN'
-      | 'BIF'
-      | 'BMD'
-      | 'BND'
-      | 'BOB'
-      | 'BRL'
-      | 'BSD'
-      | 'BWP'
-      | 'BYN'
-      | 'BZD'
-      | 'CAD'
-      | 'CDF'
-      | 'CHF'
-      | 'CLP'
-      | 'CNY'
-      | 'COP'
-      | 'CRC'
-      | 'CVE'
-      | 'CZK'
-      | 'DJF'
-      | 'DKK'
-      | 'DOP'
-      | 'DZD'
-      | 'EGP'
-      | 'ETB'
-      | 'EUR'
-      | 'FJD'
-      | 'FKP'
-      | 'GBP'
-      | 'GEL'
-      | 'GIP'
-      | 'GMD'
-      | 'GNF'
-      | 'GTQ'
-      | 'GYD'
-      | 'HKD'
-      | 'HNL'
-      | 'HTG'
-      | 'HUF'
-      | 'IDR'
-      | 'ILS'
-      | 'INR'
-      | 'ISK'
-      | 'JMD'
-      | 'JPY'
-      | 'KES'
-      | 'KGS'
-      | 'KHR'
-      | 'KMF'
-      | 'KRW'
-      | 'KYD'
-      | 'KZT'
-      | 'LAK'
-      | 'LBP'
-      | 'LKR'
-      | 'LRD'
-      | 'LSL'
-      | 'MAD'
-      | 'MDL'
-      | 'MGA'
-      | 'MKD'
-      | 'MMK'
-      | 'MNT'
-      | 'MOP'
-      | 'MUR'
-      | 'MVR'
-      | 'MWK'
-      | 'MXN'
-      | 'MYR'
-      | 'MZN'
-      | 'NAD'
-      | 'NGN'
-      | 'NIO'
-      | 'NOK'
-      | 'NPR'
-      | 'NZD'
-      | 'PAB'
-      | 'PEN'
-      | 'PGK'
-      | 'PHP'
-      | 'PKR'
-      | 'PLN'
-      | 'PYG'
-      | 'QAR'
-      | 'RON'
-      | 'RSD'
-      | 'RUB'
-      | 'RWF'
-      | 'SAR'
-      | 'SBD'
-      | 'SCR'
-      | 'SEK'
-      | 'SGD'
-      | 'SHP'
-      | 'SLE'
-      | 'SOS'
-      | 'SRD'
-      | 'STD'
-      | 'SZL'
-      | 'THB'
-      | 'TJS'
-      | 'TOP'
-      | 'TRY'
-      | 'TTD'
-      | 'TWD'
-      | 'TZS'
-      | 'UAH'
-      | 'UGX'
-      | 'UYU'
-      | 'UZS'
-      | 'VND'
-      | 'VUV'
-      | 'WST'
-      | 'XAF'
-      | 'XCD'
-      | 'XOF'
-      | 'XPF'
-      | 'YER'
-      | 'ZAR'
-      | 'ZMW';
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: number;
-
-    intervalUnit: 'day' | 'week' | 'month' | 'year';
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    productId: string;
-
-    slug: string | null;
-
-    type: 'usage';
-
-    unitPrice: number;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    usageEventsPerUnit: number;
-
-    /**
-     * The usage meter that uses this price. All usage events on that meter must be
-     * associated with a price that is also associated with that usage meter.
-     */
-    usageMeterId: string;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: 'null' | null | unknown;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
-  }
+  updatedAt: number;
 }
 
 export interface ProductUpdateResponse {
-  product: ProductUpdateResponse.Product;
-}
-
-export namespace ProductUpdateResponse {
-  export interface Product {
-    id: string;
-
-    active: boolean;
-
-    catalogId: string;
-
-    /**
-     * safeZodDate
-     */
-    createdAt: (string & {}) | string;
-
-    createdByCommit: string | null;
-
-    default: boolean;
-
-    description: string | null;
-
-    displayFeatures: Array<Product.DisplayFeature> | null;
-
-    imageURL: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    pluralQuantityLabel: string | null;
-
-    singularQuantityLabel: string | null;
-
-    slug: string | null;
-
-    /**
-     * safeZodDate
-     */
-    updatedAt: (string & {}) | string;
-
-    updatedByCommit: string | null;
-  }
-
-  export namespace Product {
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-  }
+  product: ProductClientSelectSchema;
 }
 
 export interface ProductListResponse {
-  data: Array<ProductListResponse.Data>;
+  data: Array<ProductClientSelectSchema>;
 
   hasMore: boolean;
 
@@ -1466,156 +149,11 @@ export interface ProductListResponse {
   nextCursor?: string;
 }
 
-export namespace ProductListResponse {
-  export interface Data {
-    id: string;
-
-    active: boolean;
-
-    catalogId: string;
-
-    /**
-     * safeZodDate
-     */
-    createdAt: (string & {}) | string;
-
-    createdByCommit: string | null;
-
-    default: boolean;
-
-    description: string | null;
-
-    displayFeatures: Array<Data.DisplayFeature> | null;
-
-    imageURL: string | null;
-
-    livemode: boolean;
-
-    name: string;
-
-    organizationId: string;
-
-    pluralQuantityLabel: string | null;
-
-    singularQuantityLabel: string | null;
-
-    slug: string | null;
-
-    /**
-     * safeZodDate
-     */
-    updatedAt: (string & {}) | string;
-
-    updatedByCommit: string | null;
-  }
-
-  export namespace Data {
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-  }
-
-  export interface SubscriptionPrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount: string | number;
-
-    intervalUnit: 'day' | 'week' | 'month' | 'year' | (string & {});
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    priceType: 'subscription';
-
-    ProductId: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: string | number | 0 | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    trialPeriodDays: string | number | 0 | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: string | number;
-
-    updatedAt: string | null;
-  }
-
-  export interface SinglePaymentPrice {
-    id: string;
-
-    active: boolean;
-
-    createdAt: string;
-
-    isDefault: boolean;
-
-    livemode: boolean;
-
-    name: string | null;
-
-    priceType: 'single_payment';
-
-    ProductId: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice: string | number;
-
-    updatedAt: string | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalCount?: unknown | unknown | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalUnit?: unknown | unknown | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: unknown | unknown | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: unknown | unknown | null;
-  }
-}
-
 export interface ProductCreateParams {
-  /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
-   */
   price:
-    | ProductCreateParams.SubscriptionPrice
-    | ProductCreateParams.SinglePaymentPrice
-    | ProductCreateParams.UsagePrice;
+    | ProductCreateParams.ProductSubscriptionPriceInsert
+    | ProductCreateParams.ProductSinglePaymentPriceInsert
+    | ProductCreateParams.ProductUsagePriceInsert;
 
   product: ProductCreateParams.Product;
 
@@ -1623,150 +161,123 @@ export interface ProductCreateParams {
 }
 
 export namespace ProductCreateParams {
-  /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
-   */
-  export interface SubscriptionPrice {
-    active: boolean;
-
+  export interface ProductSubscriptionPriceInsert {
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
+    /**
+     * Whether or not this price is the default price for the product.
+     */
     isDefault: boolean;
-
-    name: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount: number | 0 | null;
-
-    slug: string | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    trialPeriodDays: number | 0 | null;
 
     type: 'subscription';
 
     /**
-     * safeZodPositiveInteger
+     * The price per unit. This should be in the smallest unit of the currency. For
+     * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
+     * cents.
      */
     unitPrice: number;
 
-    /**
-     * safeZodNullishString
-     */
-    overagePriceId?: string | null;
+    active?: boolean;
 
-    startsWithCreditTrial?: boolean | null;
+    name?: string | null;
 
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
+    slug?: string | null;
 
     /**
-     * safeZodNullOrUndefined
+     * The trial period in days. If the trial period is 0 or null, there will be no
+     * trial period.
      */
-    usageMeterId?: 'null' | null | unknown;
+    trialPeriodDays?: number | null;
+
+    /**
+     * Omitted.
+     */
+    usageEventsPerUnit?: null;
+
+    /**
+     * Omitted.
+     */
+    usageMeterId?: null;
   }
 
-  /**
-   * A single payment price, which only gets paid once. Subscriptions cannot be made
-   * from single payment prices. Purchases, though, can.
-   */
-  export interface SinglePaymentPrice {
-    active: boolean;
-
+  export interface ProductSinglePaymentPriceInsert {
+    /**
+     * Whether or not this price is the default price for the product.
+     */
     isDefault: boolean;
-
-    name: string | null;
-
-    slug: string | null;
 
     type: 'single_payment';
 
     /**
-     * safeZodPositiveInteger
+     * The price per unit. This should be in the smallest unit of the currency. For
+     * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
+     * cents.
      */
     unitPrice: number;
 
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalCount?: 'null' | null | unknown;
+    active?: boolean;
 
     /**
-     * safeZodNullOrUndefined
+     * Omitted.
      */
-    intervalUnit?: 'null' | null | unknown;
+    intervalCount?: null;
 
     /**
-     * safeZodNullOrUndefined
+     * Omitted.
      */
-    overagePriceId?: 'null' | null | unknown;
+    intervalUnit?: null;
+
+    name?: string | null;
+
+    slug?: string | null;
 
     /**
-     * safeZodNullOrUndefined
+     * Omitted.
      */
-    setupFeeAmount?: 'null' | null | unknown;
+    trialPeriodDays?: null;
 
     /**
-     * safeZodNullOrUndefined
+     * Omitted.
      */
-    startsWithCreditTrial?: 'null' | null | unknown;
+    usageEventsPerUnit?: null;
 
     /**
-     * safeZodNullOrUndefined
+     * Omitted.
      */
-    trialPeriodDays?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
+    usageMeterId?: null;
   }
 
-  /**
-   * A usage price, which describes the price per unit of usage of a product.
-   */
-  export interface UsagePrice {
-    active: boolean;
-
+  export interface ProductUsagePriceInsert {
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     intervalCount: number;
 
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
+    /**
+     * Whether or not this price is the default price for the product.
+     */
     isDefault: boolean;
-
-    name: string | null;
-
-    slug: string | null;
 
     type: 'usage';
 
     /**
-     * safeZodPositiveInteger
+     * The price per unit. This should be in the smallest unit of the currency. For
+     * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
+     * cents.
      */
     unitPrice: number;
 
     /**
-     * safeZodPositiveInteger
+     * The number of usage events per unit. Used to determine how to map usage events
+     * to quantities when raising invoices for usage.
      */
     usageEventsPerUnit: number;
 
@@ -1776,54 +287,36 @@ export namespace ProductCreateParams {
      */
     usageMeterId: string;
 
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
+    active?: boolean;
+
+    name?: string | null;
+
+    slug?: string | null;
 
     /**
-     * safeZodNullOrUndefined
+     * Omitted.
      */
-    setupFeeAmount?: 'null' | null | unknown;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
+    trialPeriodDays?: null;
   }
 
   export interface Product {
     active: boolean;
 
-    catalogId: string;
-
-    default: boolean;
-
-    description: string | null;
-
-    displayFeatures: Array<Product.DisplayFeature> | null;
-
-    imageURL: string | null;
-
     name: string;
 
-    pluralQuantityLabel: string | null;
+    pricingModelId: string;
 
-    singularQuantityLabel: string | null;
+    default?: boolean;
 
-    slug: string | null;
-  }
+    description?: string | null;
 
-  export namespace Product {
-    export interface DisplayFeature {
-      enabled: boolean;
+    imageURL?: string | null;
 
-      label: string;
+    pluralQuantityLabel?: string | null;
 
-      details?: string | null;
-    }
+    singularQuantityLabel?: string | null;
+
+    slug?: string | null;
   }
 }
 
@@ -1832,31 +325,25 @@ export interface ProductUpdateParams {
 
   featureIds?: Array<string>;
 
-  /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
-   */
   price?:
-    | ProductUpdateParams.SubscriptionPrice
-    | ProductUpdateParams.SinglePaymentPrice
-    | ProductUpdateParams.UsagePrice;
+    | ProductUpdateParams.SubscriptionPriceClientUpdateSchema
+    | ProductUpdateParams.SinglePaymentPriceClientUpdateSchema
+    | ProductUpdateParams.UsagePriceClientUpdateSchema;
 }
 
 export namespace ProductUpdateParams {
   export interface Product {
     id: string;
 
-    active?: boolean;
+    active: boolean;
+
+    name: string;
 
     default?: boolean;
 
     description?: string | null;
 
-    displayFeatures?: Array<Product.DisplayFeature> | null;
-
     imageURL?: string | null;
-
-    name?: string;
 
     pluralQuantityLabel?: string | null;
 
@@ -1865,208 +352,67 @@ export namespace ProductUpdateParams {
     slug?: string | null;
   }
 
-  export namespace Product {
-    export interface DisplayFeature {
-      enabled: boolean;
-
-      label: string;
-
-      details?: string | null;
-    }
-  }
-
-  /**
-   * A subscription price, which will have details on the interval, default trial
-   * period, and setup fee (if any).
-   */
-  export interface SubscriptionPrice {
+  export interface SubscriptionPriceClientUpdateSchema {
     id: string;
+
+    /**
+     * Whether or not this price is the default price for the product.
+     */
+    isDefault: boolean;
 
     type: 'subscription';
 
     active?: boolean;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount?: number;
-
-    intervalUnit?: 'day' | 'week' | 'month' | 'year';
-
-    isDefault?: boolean;
-
     name?: string | null;
 
-    /**
-     * safeZodNullishString
-     */
-    overagePriceId?: string | null;
-
-    productId?: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    setupFeeAmount?: number | 0 | null;
-
     slug?: string | null;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    trialPeriodDays?: number | 0 | null;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice?: number;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
   }
 
-  /**
-   * A single payment price, which only gets paid once. Subscriptions cannot be made
-   * from single payment prices. Purchases, though, can.
-   */
-  export interface SinglePaymentPrice {
+  export interface SinglePaymentPriceClientUpdateSchema {
     id: string;
+
+    /**
+     * Whether or not this price is the default price for the product.
+     */
+    isDefault: boolean;
 
     type: 'single_payment';
 
     active?: boolean;
 
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalCount?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    intervalUnit?: 'null' | null | unknown;
-
-    isDefault?: boolean;
-
     name?: string | null;
 
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
-
-    productId?: string;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: 'null' | null | unknown;
-
     slug?: string | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    startsWithCreditTrial?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice?: number;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageEventsPerUnit?: 'null' | null | unknown;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    usageMeterId?: 'null' | null | unknown;
   }
 
-  /**
-   * A usage price, which describes the price per unit of usage of a product.
-   */
-  export interface UsagePrice {
+  export interface UsagePriceClientUpdateSchema {
     id: string;
+
+    /**
+     * Whether or not this price is the default price for the product.
+     */
+    isDefault: boolean;
 
     type: 'usage';
 
     active?: boolean;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    intervalCount?: number;
-
-    intervalUnit?: 'day' | 'week' | 'month' | 'year';
-
-    isDefault?: boolean;
-
     name?: string | null;
 
-    /**
-     * safeZodNullOrUndefined
-     */
-    overagePriceId?: 'null' | null | unknown;
-
-    productId?: string;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    setupFeeAmount?: 'null' | null | unknown;
-
     slug?: string | null;
-
-    startsWithCreditTrial?: boolean | null;
-
-    /**
-     * safeZodNullOrUndefined
-     */
-    trialPeriodDays?: 'null' | null | unknown;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    unitPrice?: number;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    usageEventsPerUnit?: number;
-
-    /**
-     * The usage meter that uses this price. All usage events on that meter must be
-     * associated with a price that is also associated with that usage meter.
-     */
-    usageMeterId?: string;
   }
 }
 
 export interface ProductListParams {
   cursor?: string;
 
-  limit?: number;
+  limit?: string;
 }
 
 export declare namespace Products {
   export {
+    type ProductClientSelectSchema as ProductClientSelectSchema,
     type ProductCreateResponse as ProductCreateResponse,
     type ProductRetrieveResponse as ProductRetrieveResponse,
     type ProductUpdateResponse as ProductUpdateResponse,

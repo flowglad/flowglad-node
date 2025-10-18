@@ -1,9 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { asTextContentResult } from '@flowglad/node-mcp/tools/types';
+import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
@@ -36,9 +35,6 @@ export const tool: Tool = {
           archived: {
             type: 'boolean',
           },
-          catalogId: {
-            type: 'string',
-          },
           domain: {
             type: 'string',
           },
@@ -48,6 +44,9 @@ export const tool: Tool = {
           logoURL: {
             type: 'string',
           },
+          pricingModelId: {
+            type: 'string',
+          },
           userId: {
             type: 'string',
           },
@@ -55,7 +54,9 @@ export const tool: Tool = {
         required: ['email', 'externalId', 'name'],
       },
     },
+    required: ['customer'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

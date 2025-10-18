@@ -1,39 +1,34 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { asTextContentResult } from '@flowglad/node-mcp/tools/types';
+import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
-  resource: 'catalogs',
+  resource: 'pricing_models',
   operation: 'read',
   tags: [],
   httpMethod: 'get',
-  httpPath: '/api/v1/catalogs',
-  operationId: 'catalogs-list',
+  httpPath: '/api/v1/pricing-models/default',
+  operationId: 'pricingModels-getDefault',
 };
 
 export const tool: Tool = {
-  name: 'list_catalogs',
-  description: 'List Catalogs',
+  name: 'retrieve_default_pricing_models',
+  description: 'Get Default Pricing Model for Organization',
   inputSchema: {
     type: 'object',
-    properties: {
-      cursor: {
-        type: 'string',
-      },
-      limit: {
-        type: 'number',
-      },
-    },
+    properties: {},
+    required: [],
+  },
+  annotations: {
+    readOnlyHint: true,
   },
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
-  const body = args as any;
-  return asTextContentResult(await client.catalogs.list(body));
+  return asTextContentResult(await client.pricingModels.retrieveDefault());
 };
 
 export default { metadata, tool, handler };

@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource subscriptions', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.subscriptions.create({ customerId: 'customerId', priceId: 'priceId' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.subscriptions.create({
       customerId: 'customerId',
@@ -29,15 +29,15 @@ describe('resource subscriptions', () => {
       defaultPaymentMethodId: 'defaultPaymentMethodId',
       interval: 'day',
       intervalCount: 0,
-      metadata: { foo: 'bar' },
+      metadata: { foo: 'string' },
       name: 'name',
       quantity: 0,
-      startDate: '2019-12-27T18:11:19.117Z',
+      startDate: 'startDate',
       trialEnd: 0,
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.subscriptions.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -49,7 +49,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.subscriptions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -61,30 +61,26 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.subscriptions.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.subscriptions.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('adjust: only required params', async () => {
     const responsePromise = client.subscriptions.adjust('id', {
       adjustment: {
         newSubscriptionItems: [
           {
-            addedDate: '2019-12-27T18:11:19.117Z',
-            expiredAt: '2019-12-27T18:11:19.117Z',
-            externalId: 'externalId',
-            metadata: { foo: 'bar' },
-            name: 'name',
-            quantity: 0,
+            addedDate: -9007199254740991,
+            priceId: 'priceId',
+            quantity: 1,
+            subscriptionId: 'subscriptionId',
             type: 'static',
             unitPrice: 0,
-            usageEventsPerUnit: 'null',
-            usageMeterId: 'null',
           },
         ],
         prorateCurrentBillingPeriod: true,
@@ -100,22 +96,22 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('adjust: required and optional params', async () => {
     const response = await client.subscriptions.adjust('id', {
       adjustment: {
         newSubscriptionItems: [
           {
-            addedDate: '2019-12-27T18:11:19.117Z',
-            expiredAt: '2019-12-27T18:11:19.117Z',
-            externalId: 'externalId',
-            metadata: { foo: 'bar' },
-            name: 'name',
-            quantity: 0,
+            addedDate: -9007199254740991,
+            priceId: 'priceId',
+            quantity: 1,
+            subscriptionId: 'subscriptionId',
             type: 'static',
             unitPrice: 0,
-            usageEventsPerUnit: 'null',
-            usageMeterId: 'null',
+            expiredAt: -9007199254740991,
+            externalId: 'externalId',
+            metadata: { foo: 'string' },
+            name: 'name',
           },
         ],
         prorateCurrentBillingPeriod: true,
@@ -124,7 +120,7 @@ describe('resource subscriptions', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: only required params', async () => {
     const responsePromise = client.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
@@ -138,7 +134,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('cancel: required and optional params', async () => {
     const response = await client.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },

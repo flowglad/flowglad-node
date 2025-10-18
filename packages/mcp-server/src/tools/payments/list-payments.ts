@@ -1,9 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { asTextContentResult } from '@flowglad/node-mcp/tools/types';
+import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
@@ -25,9 +24,13 @@ export const tool: Tool = {
         type: 'string',
       },
       limit: {
-        type: 'number',
+        type: 'string',
       },
     },
+    required: [],
+  },
+  annotations: {
+    readOnlyHint: true,
   },
 };
 

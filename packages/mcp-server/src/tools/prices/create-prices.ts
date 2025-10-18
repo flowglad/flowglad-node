@@ -1,9 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { asTextContentResult } from '@flowglad/node-mcp/tools/types';
+import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
@@ -25,15 +24,10 @@ export const tool: Tool = {
         anyOf: [
           {
             type: 'object',
-            description:
-              'A subscription price, which will have details on the interval, default trial period, and setup fee (if any).',
             properties: {
-              active: {
-                type: 'boolean',
-              },
               intervalCount: {
-                type: 'number',
-                description: 'safeZodPositiveInteger',
+                type: 'integer',
+                description: 'A positive integer',
               },
               intervalUnit: {
                 type: 'string',
@@ -41,43 +35,10 @@ export const tool: Tool = {
               },
               isDefault: {
                 type: 'boolean',
-              },
-              name: {
-                type: 'string',
+                description: 'Whether or not this price is the default price for the product.',
               },
               productId: {
                 type: 'string',
-              },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'number',
-                    description: 'safeZodPositiveInteger',
-                  },
-                  {
-                    type: 'string',
-                    description: 'safeZodPositiveInteger',
-                    enum: [0],
-                  },
-                ],
-                description: 'safeZodPositiveInteger',
-              },
-              slug: {
-                type: 'string',
-              },
-              trialPeriodDays: {
-                anyOf: [
-                  {
-                    type: 'number',
-                    description: 'safeZodPositiveInteger',
-                  },
-                  {
-                    type: 'string',
-                    description: 'safeZodPositiveInteger',
-                    enum: [0],
-                  },
-                ],
-                description: 'safeZodPositiveInteger',
               },
               type: {
                 type: 'string',
@@ -85,71 +46,42 @@ export const tool: Tool = {
               },
               unitPrice: {
                 type: 'number',
+                description:
+                  'The price per unit. This should be in the smallest unit of the currency. For example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in cents.',
               },
-              overagePriceId: {
-                type: 'string',
-                description: 'safeZodNullishString',
-              },
-              startsWithCreditTrial: {
-                type: 'boolean',
-              },
-              usageEventsPerUnit: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              usageMeterId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-            },
-            required: [
-              'active',
-              'intervalCount',
-              'intervalUnit',
-              'isDefault',
-              'name',
-              'productId',
-              'setupFeeAmount',
-              'slug',
-              'trialPeriodDays',
-              'type',
-              'unitPrice',
-            ],
-          },
-          {
-            type: 'object',
-            description:
-              'A single payment price, which only gets paid once. Subscriptions cannot be made from single payment prices. Purchases, though, can.',
-            properties: {
               active: {
-                type: 'boolean',
-              },
-              isDefault: {
                 type: 'boolean',
               },
               name: {
                 type: 'string',
               },
-              productId: {
+              slug: {
                 type: 'string',
               },
-              slug: {
+              trialPeriodDays: {
+                type: 'number',
+                description:
+                  'The trial period in days. If the trial period is 0 or null, there will be no trial period.',
+              },
+              usageEventsPerUnit: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              usageMeterId: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+            },
+            required: ['intervalCount', 'intervalUnit', 'isDefault', 'productId', 'type', 'unitPrice'],
+          },
+          {
+            type: 'object',
+            properties: {
+              isDefault: {
+                type: 'boolean',
+                description: 'Whether or not this price is the default price for the product.',
+              },
+              productId: {
                 type: 'string',
               },
               type: {
@@ -158,116 +90,47 @@ export const tool: Tool = {
               },
               unitPrice: {
                 type: 'number',
+                description:
+                  'The price per unit. This should be in the smallest unit of the currency. For example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in cents.',
               },
-              intervalCount: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              intervalUnit: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              overagePriceId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              startsWithCreditTrial: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              trialPeriodDays: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              usageEventsPerUnit: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              usageMeterId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-            },
-            required: ['active', 'isDefault', 'name', 'productId', 'slug', 'type', 'unitPrice'],
-          },
-          {
-            type: 'object',
-            description: 'A usage price, which describes the price per unit of usage of a product.',
-            properties: {
               active: {
                 type: 'boolean',
               },
               intervalCount: {
-                type: 'number',
-                description: 'safeZodPositiveInteger',
+                type: 'null',
+                description: 'Omitted.',
+              },
+              intervalUnit: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              name: {
+                type: 'string',
+              },
+              slug: {
+                type: 'string',
+              },
+              trialPeriodDays: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              usageEventsPerUnit: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              usageMeterId: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+            },
+            required: ['isDefault', 'productId', 'type', 'unitPrice'],
+          },
+          {
+            type: 'object',
+            properties: {
+              intervalCount: {
+                type: 'integer',
+                description: 'A positive integer',
               },
               intervalUnit: {
                 type: 'string',
@@ -275,14 +138,9 @@ export const tool: Tool = {
               },
               isDefault: {
                 type: 'boolean',
-              },
-              name: {
-                type: 'string',
+                description: 'Whether or not this price is the default price for the product.',
               },
               productId: {
-                type: 'string',
-              },
-              slug: {
                 type: 'string',
               },
               type: {
@@ -291,64 +149,38 @@ export const tool: Tool = {
               },
               unitPrice: {
                 type: 'number',
+                description:
+                  'The price per unit. This should be in the smallest unit of the currency. For example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in cents.',
               },
               usageEventsPerUnit: {
-                type: 'number',
-                description: 'safeZodPositiveInteger',
+                type: 'integer',
+                description:
+                  'The number of usage events per unit. Used to determine how to map usage events to quantities when raising invoices for usage.',
               },
               usageMeterId: {
                 type: 'string',
                 description:
                   'The usage meter that uses this price. All usage events on that meter must be associated with a price that is also associated with that usage meter.',
               },
-              overagePriceId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              startsWithCreditTrial: {
+              active: {
                 type: 'boolean',
               },
+              name: {
+                type: 'string',
+              },
+              slug: {
+                type: 'string',
+              },
               trialPeriodDays: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
+                type: 'null',
+                description: 'Omitted.',
               },
             },
             required: [
-              'active',
               'intervalCount',
               'intervalUnit',
               'isDefault',
-              'name',
               'productId',
-              'slug',
               'type',
               'unitPrice',
               'usageEventsPerUnit',
@@ -356,11 +188,11 @@ export const tool: Tool = {
             ],
           },
         ],
-        description:
-          'A subscription price, which will have details on the interval, default trial period, and setup fee (if any).',
       },
     },
+    required: ['price'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

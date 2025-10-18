@@ -1,14 +1,30 @@
+# Shared
+
+Types:
+
+- <code><a href="./src/resources/shared.ts">BillingAddress</a></code>
+- <code><a href="./src/resources/shared.ts">NonRenewingSubscriptionRecord</a></code>
+- <code><a href="./src/resources/shared.ts">PaymentMethodClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">PricingModelDetailsRecord</a></code>
+- <code><a href="./src/resources/shared.ts">PurchaseInvoiceClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">StandaloneInvoiceClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">StandardSubscriptionRecord</a></code>
+- <code><a href="./src/resources/shared.ts">StaticInvoiceLineItemClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">SubscriptionInvoiceClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">ToggleFeatureClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">UsageCreditGrantFeatureClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">UsageInvoiceLineItemClientSelectSchema</a></code>
+- <code><a href="./src/resources/shared.ts">UsageMeterClientSelectSchema</a></code>
+
 # Invoices
 
 Types:
 
-- <code><a href="./src/resources/invoices.ts">InvoiceCreateResponse</a></code>
 - <code><a href="./src/resources/invoices.ts">InvoiceRetrieveResponse</a></code>
 - <code><a href="./src/resources/invoices.ts">InvoiceListResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/invoices">client.invoices.<a href="./src/resources/invoices.ts">create</a>({ ...params }) -> InvoiceCreateResponse</code>
 - <code title="get /api/v1/invoices/{id}">client.invoices.<a href="./src/resources/invoices.ts">retrieve</a>(id) -> InvoiceRetrieveResponse</code>
 - <code title="get /api/v1/invoices">client.invoices.<a href="./src/resources/invoices.ts">list</a>({ ...params }) -> InvoiceListResponse</code>
 
@@ -24,30 +40,36 @@ Methods:
 - <code title="get /api/v1/invoice-line-items/{id}">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">retrieve</a>(id) -> InvoiceLineItemRetrieveResponse</code>
 - <code title="get /api/v1/invoice-line-items">client.invoiceLineItems.<a href="./src/resources/invoice-line-items.ts">list</a>({ ...params }) -> InvoiceLineItemListResponse</code>
 
-# Catalogs
+# PricingModels
 
 Types:
 
-- <code><a href="./src/resources/catalogs.ts">CatalogCreateResponse</a></code>
-- <code><a href="./src/resources/catalogs.ts">CatalogRetrieveResponse</a></code>
-- <code><a href="./src/resources/catalogs.ts">CatalogUpdateResponse</a></code>
-- <code><a href="./src/resources/catalogs.ts">CatalogListResponse</a></code>
-- <code><a href="./src/resources/catalogs.ts">CatalogCloneResponse</a></code>
-- <code><a href="./src/resources/catalogs.ts">CatalogRetrieveDefaultResponse</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelClientSelectSchema</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelCreateResponse</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelRetrieveResponse</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelUpdateResponse</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelListResponse</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelCloneResponse</a></code>
+- <code><a href="./src/resources/pricing-models.ts">PricingModelRetrieveDefaultResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v1/catalogs">client.catalogs.<a href="./src/resources/catalogs.ts">create</a>({ ...params }) -> CatalogCreateResponse</code>
-- <code title="get /api/v1/catalogs/{id}">client.catalogs.<a href="./src/resources/catalogs.ts">retrieve</a>(id) -> CatalogRetrieveResponse</code>
-- <code title="put /api/v1/catalogs/{id}">client.catalogs.<a href="./src/resources/catalogs.ts">update</a>(id, { ...params }) -> CatalogUpdateResponse</code>
-- <code title="get /api/v1/catalogs">client.catalogs.<a href="./src/resources/catalogs.ts">list</a>({ ...params }) -> CatalogListResponse</code>
-- <code title="post /api/v1/catalogs/{id}/clone">client.catalogs.<a href="./src/resources/catalogs.ts">clone</a>(id, { ...params }) -> CatalogCloneResponse</code>
-- <code title="get /api/v1/catalogs/default">client.catalogs.<a href="./src/resources/catalogs.ts">retrieveDefault</a>() -> CatalogRetrieveDefaultResponse</code>
+- <code title="post /api/v1/pricing-models">client.pricingModels.<a href="./src/resources/pricing-models.ts">create</a>({ ...params }) -> PricingModelCreateResponse</code>
+- <code title="get /api/v1/pricing-models/{id}">client.pricingModels.<a href="./src/resources/pricing-models.ts">retrieve</a>(id) -> PricingModelRetrieveResponse</code>
+- <code title="put /api/v1/pricing-models/{id}">client.pricingModels.<a href="./src/resources/pricing-models.ts">update</a>(id, { ...params }) -> PricingModelUpdateResponse</code>
+- <code title="get /api/v1/pricing-models">client.pricingModels.<a href="./src/resources/pricing-models.ts">list</a>({ ...params }) -> PricingModelListResponse</code>
+- <code title="post /api/v1/pricing-models/{id}/clone">client.pricingModels.<a href="./src/resources/pricing-models.ts">clone</a>(id, { ...params }) -> PricingModelCloneResponse</code>
+- <code title="get /api/v1/pricing-models/default">client.pricingModels.<a href="./src/resources/pricing-models.ts">retrieveDefault</a>() -> PricingModelRetrieveDefaultResponse</code>
 
 # CheckoutSessions
 
 Types:
 
+- <code><a href="./src/resources/checkout-sessions.ts">ActivateSubscriptionCheckoutSessionClientSelectSchema</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">AddPaymentMethodCheckoutSessionClientSelectSchema</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">InvoiceCheckoutSessionClientSelectSchema</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">ProductCheckoutSessionClientSelectSchema</a></code>
+- <code><a href="./src/resources/checkout-sessions.ts">PurchaseCheckoutSessionClientSelectSchema</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionCreateResponse</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionRetrieveResponse</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionListResponse</a></code>
@@ -62,6 +84,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/products.ts">ProductClientSelectSchema</a></code>
 - <code><a href="./src/resources/products.ts">ProductCreateResponse</a></code>
 - <code><a href="./src/resources/products.ts">ProductRetrieveResponse</a></code>
 - <code><a href="./src/resources/products.ts">ProductUpdateResponse</a></code>
@@ -78,6 +101,9 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/prices.ts">SinglePaymentPriceClientSelectSchema</a></code>
+- <code><a href="./src/resources/prices.ts">SubscriptionPriceClientSelectSchema</a></code>
+- <code><a href="./src/resources/prices.ts">UsagePriceClientSelectSchema</a></code>
 - <code><a href="./src/resources/prices.ts">PriceCreateResponse</a></code>
 - <code><a href="./src/resources/prices.ts">PriceUpdateResponse</a></code>
 - <code><a href="./src/resources/prices.ts">PriceListResponse</a></code>
@@ -92,6 +118,9 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/discounts.ts">DefaultDiscountClientSelectSchema</a></code>
+- <code><a href="./src/resources/discounts.ts">ForeverDiscountClientSelectSchema</a></code>
+- <code><a href="./src/resources/discounts.ts">NumberOfPaymentsDiscountClientSelectSchema</a></code>
 - <code><a href="./src/resources/discounts.ts">DiscountCreateResponse</a></code>
 - <code><a href="./src/resources/discounts.ts">DiscountRetrieveResponse</a></code>
 - <code><a href="./src/resources/discounts.ts">DiscountUpdateResponse</a></code>
@@ -108,6 +137,9 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/customers.ts">CustomerClientSelectSchema</a></code>
+- <code><a href="./src/resources/customers.ts">ToggleSubscriptionItemFeatureRecord</a></code>
+- <code><a href="./src/resources/customers.ts">UsageCreditGrantSubscriptionItemFeatureClientSelectSchema</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerCreateResponse</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerRetrieveResponse</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerUpdateResponse</a></code>
@@ -126,6 +158,7 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/payments.ts">PaymentClientSelectSchema</a></code>
 - <code><a href="./src/resources/payments.ts">PaymentRetrieveResponse</a></code>
 - <code><a href="./src/resources/payments.ts">PaymentListResponse</a></code>
 - <code><a href="./src/resources/payments.ts">PaymentRefundResponse</a></code>

@@ -1,9 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { asTextContentResult } from '@flowglad/node-mcp/tools/types';
+import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
@@ -17,7 +16,8 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'adjust_subscriptions',
-  description: 'Adjust a Subscription',
+  description:
+    'Note: Immediate adjustments are in private preview (Please let us know you use this feature: https://github.com/flowglad/flowglad/issues/616). Adjustments at the end of the current billing period are generally available.',
   inputSchema: {
     type: 'object',
     properties: {
@@ -35,197 +35,17 @@ export const tool: Tool = {
                   anyOf: [
                     {
                       type: 'object',
-                      description:
-                        'A static subscription item, representing a fixed fee component of a subscription.',
                       properties: {
                         addedDate: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
-                        },
-                        externalId: {
-                          type: 'string',
-                        },
-                        metadata: {
-                          type: 'object',
-                        },
-                        name: {
-                          type: 'string',
-                        },
-                        quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
-                        },
-                        type: {
-                          type: 'string',
-                          enum: ['static'],
-                        },
-                        unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
-                        },
-                        usageEventsPerUnit: {
-                          type: 'string',
-                          description: 'Usage events per unit must be null for static subscription items.',
-                          enum: ['null'],
-                        },
-                        usageMeterId: {
-                          type: 'string',
-                          description: 'Usage meter ID must be null for static subscription items.',
-                          enum: ['null'],
-                        },
-                      },
-                      required: [
-                        'addedDate',
-                        'expiredAt',
-                        'externalId',
-                        'metadata',
-                        'name',
-                        'quantity',
-                        'type',
-                        'unitPrice',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
-                      ],
-                    },
-                    {
-                      type: 'object',
-                      description:
-                        'A usage-based subscription item, where charges are based on recorded usage events.',
-                      properties: {
-                        addedDate: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
-                        },
-                        externalId: {
-                          type: 'string',
-                        },
-                        livemode: {
-                          type: 'boolean',
-                        },
-                        metadata: {
-                          type: 'object',
-                        },
-                        name: {
-                          type: 'string',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
                         priceId: {
                           type: 'string',
                         },
                         quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
-                        },
-                        subscriptionId: {
-                          type: 'string',
-                        },
-                        type: {
-                          type: 'string',
-                          enum: ['usage'],
-                        },
-                        unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
-                        },
-                        usageEventsPerUnit: {
-                          type: 'number',
-                          description: 'The number of usage events that constitute one unit for billing.',
-                        },
-                        usageMeterId: {
-                          type: 'string',
-                          description: 'The usage meter associated with this usage-based subscription item.',
-                        },
-                      },
-                      required: [
-                        'addedDate',
-                        'expiredAt',
-                        'externalId',
-                        'livemode',
-                        'metadata',
-                        'name',
-                        'priceId',
-                        'quantity',
-                        'subscriptionId',
-                        'type',
-                        'unitPrice',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
-                      ],
-                    },
-                    {
-                      type: 'object',
-                      description:
-                        'A static subscription item, representing a fixed fee component of a subscription.',
-                      properties: {
-                        id: {
-                          type: 'string',
-                        },
-                        addedDate: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        createdAt: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        createdByCommit: {
-                          type: 'string',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
-                        },
-                        externalId: {
-                          type: 'string',
-                        },
-                        livemode: {
-                          type: 'boolean',
-                        },
-                        metadata: {
-                          type: 'object',
-                        },
-                        name: {
-                          type: 'string',
-                        },
-                        priceId: {
-                          type: 'string',
-                        },
-                        quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
+                          type: 'integer',
+                          description: 'A positive integer',
                         },
                         subscriptionId: {
                           type: 'string',
@@ -235,91 +55,46 @@ export const tool: Tool = {
                           enum: ['static'],
                         },
                         unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
+                          type: 'number',
                         },
-                        updatedAt: {
-                          type: 'string',
-                          format: 'date-time',
+                        expiredAt: {
+                          type: 'integer',
+                          description:
+                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list. Epoch milliseconds.',
                         },
-                        updatedByCommit: {
+                        externalId: {
                           type: 'string',
                         },
-                        usageEventsPerUnit: {
-                          type: 'string',
-                          description: 'Usage events per unit must be null for static subscription items.',
-                          enum: ['null'],
+                        metadata: {
+                          type: 'object',
+                          description: 'JSON object',
+                          additionalProperties: true,
                         },
-                        usageMeterId: {
+                        name: {
                           type: 'string',
-                          description: 'Usage meter ID must be null for static subscription items.',
-                          enum: ['null'],
                         },
                       },
-                      required: [
-                        'id',
-                        'addedDate',
-                        'createdAt',
-                        'createdByCommit',
-                        'expiredAt',
-                        'externalId',
-                        'livemode',
-                        'metadata',
-                        'name',
-                        'priceId',
-                        'quantity',
-                        'subscriptionId',
-                        'type',
-                        'unitPrice',
-                        'updatedAt',
-                        'updatedByCommit',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
-                      ],
+                      required: ['addedDate', 'priceId', 'quantity', 'subscriptionId', 'type', 'unitPrice'],
                     },
                     {
                       type: 'object',
-                      description:
-                        'A usage-based subscription item, where charges are based on recorded usage events.',
                       properties: {
                         id: {
                           type: 'string',
                         },
                         addedDate: {
-                          type: 'string',
-                          format: 'date-time',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
                         createdAt: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        createdByCommit: {
-                          type: 'string',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
                         externalId: {
                           type: 'string',
                         },
                         livemode: {
                           type: 'boolean',
-                        },
-                        metadata: {
-                          type: 'object',
                         },
                         name: {
                           type: 'string',
@@ -328,55 +103,40 @@ export const tool: Tool = {
                           type: 'string',
                         },
                         quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
+                          type: 'integer',
+                          description: 'A positive integer',
                         },
                         subscriptionId: {
                           type: 'string',
                         },
                         type: {
                           type: 'string',
-                          enum: ['usage'],
+                          enum: ['static'],
                         },
                         unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
+                          type: 'number',
                         },
                         updatedAt: {
-                          type: 'string',
-                          format: 'date-time',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
-                        updatedByCommit: {
-                          type: 'string',
+                        expiredAt: {
+                          type: 'integer',
+                          description:
+                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list. Epoch milliseconds.',
                         },
-                        usageEventsPerUnit: {
-                          type: 'number',
-                          description: 'The number of usage events that constitute one unit for billing.',
-                        },
-                        usageMeterId: {
-                          type: 'string',
-                          description: 'The usage meter associated with this usage-based subscription item.',
+                        metadata: {
+                          type: 'object',
+                          description: 'JSON object',
+                          additionalProperties: true,
                         },
                       },
                       required: [
                         'id',
                         'addedDate',
                         'createdAt',
-                        'createdByCommit',
-                        'expiredAt',
                         'externalId',
                         'livemode',
-                        'metadata',
                         'name',
                         'priceId',
                         'quantity',
@@ -384,14 +144,9 @@ export const tool: Tool = {
                         'type',
                         'unitPrice',
                         'updatedAt',
-                        'updatedByCommit',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
                       ],
                     },
                   ],
-                  description:
-                    'A static subscription item, representing a fixed fee component of a subscription.',
                 },
               },
               prorateCurrentBillingPeriod: {
@@ -399,6 +154,8 @@ export const tool: Tool = {
               },
               timing: {
                 type: 'string',
+                description:
+                  'Note: Immediate adjustments are in private preview. Please let us know you use this feature: https://github.com/flowglad/flowglad/issues/616.',
                 enum: ['immediately'],
               },
             },
@@ -413,197 +170,17 @@ export const tool: Tool = {
                   anyOf: [
                     {
                       type: 'object',
-                      description:
-                        'A static subscription item, representing a fixed fee component of a subscription.',
                       properties: {
                         addedDate: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
-                        },
-                        externalId: {
-                          type: 'string',
-                        },
-                        metadata: {
-                          type: 'object',
-                        },
-                        name: {
-                          type: 'string',
-                        },
-                        quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
-                        },
-                        type: {
-                          type: 'string',
-                          enum: ['static'],
-                        },
-                        unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
-                        },
-                        usageEventsPerUnit: {
-                          type: 'string',
-                          description: 'Usage events per unit must be null for static subscription items.',
-                          enum: ['null'],
-                        },
-                        usageMeterId: {
-                          type: 'string',
-                          description: 'Usage meter ID must be null for static subscription items.',
-                          enum: ['null'],
-                        },
-                      },
-                      required: [
-                        'addedDate',
-                        'expiredAt',
-                        'externalId',
-                        'metadata',
-                        'name',
-                        'quantity',
-                        'type',
-                        'unitPrice',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
-                      ],
-                    },
-                    {
-                      type: 'object',
-                      description:
-                        'A usage-based subscription item, where charges are based on recorded usage events.',
-                      properties: {
-                        addedDate: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
-                        },
-                        externalId: {
-                          type: 'string',
-                        },
-                        livemode: {
-                          type: 'boolean',
-                        },
-                        metadata: {
-                          type: 'object',
-                        },
-                        name: {
-                          type: 'string',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
                         priceId: {
                           type: 'string',
                         },
                         quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
-                        },
-                        subscriptionId: {
-                          type: 'string',
-                        },
-                        type: {
-                          type: 'string',
-                          enum: ['usage'],
-                        },
-                        unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
-                        },
-                        usageEventsPerUnit: {
-                          type: 'number',
-                          description: 'The number of usage events that constitute one unit for billing.',
-                        },
-                        usageMeterId: {
-                          type: 'string',
-                          description: 'The usage meter associated with this usage-based subscription item.',
-                        },
-                      },
-                      required: [
-                        'addedDate',
-                        'expiredAt',
-                        'externalId',
-                        'livemode',
-                        'metadata',
-                        'name',
-                        'priceId',
-                        'quantity',
-                        'subscriptionId',
-                        'type',
-                        'unitPrice',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
-                      ],
-                    },
-                    {
-                      type: 'object',
-                      description:
-                        'A static subscription item, representing a fixed fee component of a subscription.',
-                      properties: {
-                        id: {
-                          type: 'string',
-                        },
-                        addedDate: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        createdAt: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        createdByCommit: {
-                          type: 'string',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
-                        },
-                        externalId: {
-                          type: 'string',
-                        },
-                        livemode: {
-                          type: 'boolean',
-                        },
-                        metadata: {
-                          type: 'object',
-                        },
-                        name: {
-                          type: 'string',
-                        },
-                        priceId: {
-                          type: 'string',
-                        },
-                        quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
+                          type: 'integer',
+                          description: 'A positive integer',
                         },
                         subscriptionId: {
                           type: 'string',
@@ -613,91 +190,46 @@ export const tool: Tool = {
                           enum: ['static'],
                         },
                         unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
+                          type: 'number',
                         },
-                        updatedAt: {
-                          type: 'string',
-                          format: 'date-time',
+                        expiredAt: {
+                          type: 'integer',
+                          description:
+                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list. Epoch milliseconds.',
                         },
-                        updatedByCommit: {
+                        externalId: {
                           type: 'string',
                         },
-                        usageEventsPerUnit: {
-                          type: 'string',
-                          description: 'Usage events per unit must be null for static subscription items.',
-                          enum: ['null'],
+                        metadata: {
+                          type: 'object',
+                          description: 'JSON object',
+                          additionalProperties: true,
                         },
-                        usageMeterId: {
+                        name: {
                           type: 'string',
-                          description: 'Usage meter ID must be null for static subscription items.',
-                          enum: ['null'],
                         },
                       },
-                      required: [
-                        'id',
-                        'addedDate',
-                        'createdAt',
-                        'createdByCommit',
-                        'expiredAt',
-                        'externalId',
-                        'livemode',
-                        'metadata',
-                        'name',
-                        'priceId',
-                        'quantity',
-                        'subscriptionId',
-                        'type',
-                        'unitPrice',
-                        'updatedAt',
-                        'updatedByCommit',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
-                      ],
+                      required: ['addedDate', 'priceId', 'quantity', 'subscriptionId', 'type', 'unitPrice'],
                     },
                     {
                       type: 'object',
-                      description:
-                        'A usage-based subscription item, where charges are based on recorded usage events.',
                       properties: {
                         id: {
                           type: 'string',
                         },
                         addedDate: {
-                          type: 'string',
-                          format: 'date-time',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
                         createdAt: {
-                          type: 'string',
-                          format: 'date-time',
-                        },
-                        createdByCommit: {
-                          type: 'string',
-                        },
-                        expiredAt: {
-                          type: 'string',
-                          description:
-                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list.',
-                          format: 'date-time',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
                         externalId: {
                           type: 'string',
                         },
                         livemode: {
                           type: 'boolean',
-                        },
-                        metadata: {
-                          type: 'object',
                         },
                         name: {
                           type: 'string',
@@ -706,55 +238,40 @@ export const tool: Tool = {
                           type: 'string',
                         },
                         quantity: {
-                          type: 'number',
-                          description: 'safeZodPositiveInteger',
+                          type: 'integer',
+                          description: 'A positive integer',
                         },
                         subscriptionId: {
                           type: 'string',
                         },
                         type: {
                           type: 'string',
-                          enum: ['usage'],
+                          enum: ['static'],
                         },
                         unitPrice: {
-                          anyOf: [
-                            {
-                              type: 'number',
-                              description: 'safeZodPositiveInteger',
-                            },
-                            {
-                              type: 'string',
-                              description: 'safeZodPositiveInteger',
-                              enum: [0],
-                            },
-                          ],
-                          description: 'safeZodPositiveInteger',
+                          type: 'number',
                         },
                         updatedAt: {
-                          type: 'string',
-                          format: 'date-time',
+                          type: 'integer',
+                          description: 'Epoch milliseconds.',
                         },
-                        updatedByCommit: {
-                          type: 'string',
+                        expiredAt: {
+                          type: 'integer',
+                          description:
+                            'Used as a flag to soft delete a subscription item without losing its history for auditability. If set, it will be removed from the subscription items list and will not be included in the billing period item list. Epoch milliseconds.',
                         },
-                        usageEventsPerUnit: {
-                          type: 'number',
-                          description: 'The number of usage events that constitute one unit for billing.',
-                        },
-                        usageMeterId: {
-                          type: 'string',
-                          description: 'The usage meter associated with this usage-based subscription item.',
+                        metadata: {
+                          type: 'object',
+                          description: 'JSON object',
+                          additionalProperties: true,
                         },
                       },
                       required: [
                         'id',
                         'addedDate',
                         'createdAt',
-                        'createdByCommit',
-                        'expiredAt',
                         'externalId',
                         'livemode',
-                        'metadata',
                         'name',
                         'priceId',
                         'quantity',
@@ -762,14 +279,9 @@ export const tool: Tool = {
                         'type',
                         'unitPrice',
                         'updatedAt',
-                        'updatedByCommit',
-                        'usageEventsPerUnit',
-                        'usageMeterId',
                       ],
                     },
                   ],
-                  description:
-                    'A static subscription item, representing a fixed fee component of a subscription.',
                 },
               },
               timing: {
@@ -782,7 +294,9 @@ export const tool: Tool = {
         ],
       },
     },
+    required: ['id', 'adjustment'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

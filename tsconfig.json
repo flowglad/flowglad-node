@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@flowglad/node/*": ["src/*"],
-      "@flowglad/node": ["src/index.ts"]
+      "@flowglad/node/*": ["./src/*"],
+      "@flowglad/node": ["./src/index.ts"]
     },
     "noEmit": true,
 

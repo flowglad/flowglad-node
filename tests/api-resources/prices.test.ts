@@ -8,19 +8,14 @@ const client = new Flowglad({
 });
 
 describe('resource prices', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.prices.create({
       price: {
-        active: true,
-        intervalCount: 0,
+        intervalCount: 1,
         intervalUnit: 'day',
         isDefault: true,
-        name: 'name',
         productId: 'productId',
-        setupFeeAmount: 0,
-        slug: 'slug',
-        trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
       },
@@ -34,32 +29,31 @@ describe('resource prices', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.prices.create({
       price: {
-        active: true,
-        intervalCount: 0,
+        intervalCount: 1,
         intervalUnit: 'day',
         isDefault: true,
-        name: 'name',
         productId: 'productId',
-        setupFeeAmount: 0,
-        slug: 'slug',
-        trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
-        overagePriceId: 'overagePriceId',
-        startsWithCreditTrial: true,
-        usageEventsPerUnit: 'null',
-        usageMeterId: 'null',
+        active: true,
+        name: 'name',
+        slug: 'slug',
+        trialPeriodDays: 0,
+        usageEventsPerUnit: null,
+        usageMeterId: null,
       },
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.prices.update('id', { price: { id: 'id', type: 'subscription' } });
+    const responsePromise = client.prices.update('id', {
+      price: { id: 'id', isDefault: true, type: 'subscription' },
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -69,31 +63,14 @@ describe('resource prices', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.prices.update('id', {
-      price: {
-        id: 'id',
-        type: 'subscription',
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        overagePriceId: 'overagePriceId',
-        productId: 'productId',
-        setupFeeAmount: 0,
-        slug: 'slug',
-        startsWithCreditTrial: true,
-        trialPeriodDays: 0,
-        unitPrice: 0,
-        usageEventsPerUnit: 'null',
-        usageMeterId: 'null',
-      },
+      price: { id: 'id', isDefault: true, type: 'subscription', active: true, name: 'name', slug: 'slug' },
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.prices.list();
     const rawResponse = await responsePromise.asResponse();
@@ -105,11 +82,11 @@ describe('resource prices', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.prices.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.prices.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

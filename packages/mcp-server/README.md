@@ -126,6 +126,43 @@ over time, you can manually enable or disable certain capabilities:
 --resource=cards,accounts --operation=read --tag=kyc --no-tool=create_cards
 ```
 
+## Running remotely
+
+Launching the client with `--transport=http` launches the server as a remote server using Streamable HTTP transport. The `--port` setting can choose the port it will run on, and the `--socket` setting allows it to run on a Unix socket.
+
+Authorization can be provided via the following headers:
+| Header | Equivalent client option | Security scheme |
+| ----------------------- | ------------------------ | --------------- |
+| `x-flowglad-secret-key` | `apiKey` | ApiKeyAuth |
+
+A configuration JSON for this server might look like this, assuming the server is hosted at `http://localhost:3000`:
+
+```json
+{
+  "mcpServers": {
+    "flowglad_node_api": {
+      "url": "http://localhost:3000",
+      "headers": {
+        "x-flowglad-secret-key": "My API Key"
+      }
+    }
+  }
+}
+```
+
+The command-line arguments for filtering tools and specifying clients can also be used as query parameters in the URL.
+For example, to exclude specific tools while including others, use the URL:
+
+```
+http://localhost:3000?resource=cards&resource=accounts&no_tool=create_cards
+```
+
+Or, to configure for the Cursor client, with a custom max tool name length, use the URL:
+
+```
+http://localhost:3000?client=cursor&capability=tool-name-length%3D40
+```
+
 ## Importing the tools and server individually
 
 ```js
@@ -133,7 +170,7 @@ over time, you can manually enable or disable certain capabilities:
 import { server, endpoints, init } from "@flowglad/node-mcp/server";
 
 // import a specific tool
-import createInvoices from "@flowglad/node-mcp/tools/invoices/create-invoices";
+import retrieveInvoices from "@flowglad/node-mcp/tools/invoices/retrieve-invoices";
 
 // initialize the server and all endpoints
 init({ server, endpoints });
@@ -158,7 +195,7 @@ const myCustomEndpoint = {
 };
 
 // initialize the server with your custom endpoints
-init({ server: myServer, endpoints: [createInvoices, myCustomEndpoint] });
+init({ server: myServer, endpoints: [retrieveInvoices, myCustomEndpoint] });
 ```
 
 ## Available Tools
@@ -167,7 +204,6 @@ The following tools are available in this MCP server.
 
 ### Resource `invoices`:
 
-- `create_invoices` (`write`): Create Invoice
 - `retrieve_invoices` (`read`): Get Invoice
 - `list_invoices` (`read`): List Invoices
 
@@ -176,14 +212,14 @@ The following tools are available in this MCP server.
 - `retrieve_invoice_line_items` (`read`): Get Invoice Line Item
 - `list_invoice_line_items` (`read`): List Invoice Line Items
 
-### Resource `catalogs`:
+### Resource `pricing_models`:
 
-- `create_catalogs` (`write`): Create Catalog
-- `retrieve_catalogs` (`read`): Get Catalog
-- `update_catalogs` (`write`): Update Catalog
-- `list_catalogs` (`read`): List Catalogs
-- `clone_catalogs` (`write`): Clone a Catalog
-- `retrieve_default_catalogs` (`read`): Get Default Catalog for Organization
+- `create_pricing_models` (`write`): Create Pricing Model
+- `retrieve_pricing_models` (`read`): Get Pricing Model
+- `update_pricing_models` (`write`): Update Pricing Model
+- `list_pricing_models` (`read`): List Pricing Models
+- `clone_pricing_models` (`write`): Clone a PricingModel
+- `retrieve_default_pricing_models` (`read`): Get Default Pricing Model for Organization
 
 ### Resource `checkout_sessions`:
 
@@ -235,7 +271,7 @@ The following tools are available in this MCP server.
 - `create_subscriptions` (`write`): Create Subscription
 - `retrieve_subscriptions` (`read`): Get Subscription
 - `list_subscriptions` (`read`): List Subscriptions
-- `adjust_subscriptions` (`write`): Adjust a Subscription
+- `adjust_subscriptions` (`write`): Note: Immediate adjustments are in private preview (Please let us know you use this feature: https://github.com/flowglad/flowglad/issues/616). Adjustments at the end of the current billing period are generally available.
 - `cancel_subscriptions` (`write`): Cancel a Subscription
 
 ### Resource `usage_events`:

@@ -1,9 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { asTextContentResult } from '@flowglad/node-mcp/tools/types';
+import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
@@ -46,15 +45,23 @@ export const tool: Tool = {
                 type: 'string',
                 enum: ['product'],
               },
+              anonymous: {
+                type: 'boolean',
+              },
               outputMetadata: {
                 type: 'object',
-                description:
-                  'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+                description: 'JSON object',
+                additionalProperties: true,
               },
               outputName: {
                 type: 'string',
                 description:
                   'The name of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+              },
+              preserveBillingCycleAnchor: {
+                type: 'boolean',
+                description:
+                  'Whether to preserve the billing cycle anchor date in the case that the customer already has an active subscription that renews. If not provided, defaults to false.',
               },
               quantity: {
                 type: 'number',
@@ -67,13 +74,17 @@ export const tool: Tool = {
           {
             type: 'object',
             properties: {
+              anonymous: {
+                type: 'string',
+                enum: [true],
+              },
               cancelUrl: {
                 type: 'string',
                 description: 'The URL to redirect to after the purchase is canceled or fails',
               },
-              customerExternalId: {
+              priceId: {
                 type: 'string',
-                description: 'The id of the Customer for this purchase session, as defined in your system',
+                description: 'The ID of the price the customer shall purchase',
               },
               successUrl: {
                 type: 'string',
@@ -81,30 +92,33 @@ export const tool: Tool = {
               },
               type: {
                 type: 'string',
-                enum: ['add_payment_method'],
+                enum: ['product'],
               },
-              automaticallyUpdateSubscriptions: {
-                type: 'boolean',
-                description:
-                  'Whether to automatically update all current subscriptions to the new payment method. Defaults to false.',
+              customerExternalId: {
+                type: 'null',
               },
               outputMetadata: {
                 type: 'object',
-                description:
-                  'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+                description: 'JSON object',
+                additionalProperties: true,
               },
               outputName: {
                 type: 'string',
                 description:
                   'The name of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
               },
-              targetSubscriptionId: {
-                type: 'string',
+              preserveBillingCycleAnchor: {
+                type: 'boolean',
                 description:
-                  'The id of the subscription that the payment method will be added to as the default payment method.',
+                  'Whether to preserve the billing cycle anchor date in the case that the customer already has an active subscription that renews. If not provided, defaults to false.',
+              },
+              quantity: {
+                type: 'number',
+                description:
+                  'The quantity of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
               },
             },
-            required: ['cancelUrl', 'customerExternalId', 'successUrl', 'type'],
+            required: ['anonymous', 'cancelUrl', 'priceId', 'successUrl', 'type'],
           },
           {
             type: 'object',
@@ -133,13 +147,18 @@ export const tool: Tool = {
               },
               outputMetadata: {
                 type: 'object',
-                description:
-                  'Metadata that will get added to the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+                description: 'JSON object',
+                additionalProperties: true,
               },
               outputName: {
                 type: 'string',
                 description:
                   'The name of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+              },
+              preserveBillingCycleAnchor: {
+                type: 'boolean',
+                description:
+                  'Whether to preserve the billing cycle anchor date in the case that the customer already has an active subscription that renews. If not provided, defaults to false.',
               },
             },
             required: [
@@ -151,10 +170,54 @@ export const tool: Tool = {
               'type',
             ],
           },
+          {
+            type: 'object',
+            properties: {
+              cancelUrl: {
+                type: 'string',
+                description: 'The URL to redirect to after the purchase is canceled or fails',
+              },
+              customerExternalId: {
+                type: 'string',
+                description: 'The id of the Customer for this purchase session, as defined in your system',
+              },
+              successUrl: {
+                type: 'string',
+                description: 'The URL to redirect to after the purchase is successful',
+              },
+              type: {
+                type: 'string',
+                enum: ['add_payment_method'],
+              },
+              automaticallyUpdateSubscriptions: {
+                type: 'boolean',
+                description:
+                  'Whether to automatically update all current subscriptions to the new payment method. Defaults to false.',
+              },
+              outputMetadata: {
+                type: 'object',
+                description: 'JSON object',
+                additionalProperties: true,
+              },
+              outputName: {
+                type: 'string',
+                description:
+                  'The name of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
+              },
+              targetSubscriptionId: {
+                type: 'string',
+                description:
+                  'The id of the subscription that the payment method will be added to as the default payment method.',
+              },
+            },
+            required: ['cancelUrl', 'customerExternalId', 'successUrl', 'type'],
+          },
         ],
       },
     },
+    required: ['checkoutSession'],
   },
+  annotations: {},
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {

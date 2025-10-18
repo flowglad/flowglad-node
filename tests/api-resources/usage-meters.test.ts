@@ -8,10 +8,10 @@ const client = new Flowglad({
 });
 
 describe('resource usageMeters', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', slug: 'slug' },
+      usageMeter: { name: 'name', pricingModelId: 'pricingModelId', slug: 'slug' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -22,14 +22,14 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', slug: 'slug', aggregationType: 'sum' },
+      usageMeter: { name: 'name', pricingModelId: 'pricingModelId', slug: 'slug', aggregationType: 'sum' },
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.usageMeters.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -41,7 +41,7 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.usageMeters.update('id', { usageMeter: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
@@ -53,23 +53,14 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.usageMeters.update('id', {
-      usageMeter: {
-        id: 'id',
-        aggregationType: 'sum',
-        createdAt: '2019-12-27T18:11:19.117Z',
-        createdByCommit: 'createdByCommit',
-        name: 'name',
-        slug: 'slug',
-        updatedAt: '2019-12-27T18:11:19.117Z',
-        updatedByCommit: 'updatedByCommit',
-      },
+      usageMeter: { id: 'id', aggregationType: 'sum', name: 'name', slug: 'slug' },
     });
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.usageMeters.list();
     const rawResponse = await responsePromise.asResponse();
@@ -81,11 +72,11 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.usageMeters.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.usageMeters.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });
