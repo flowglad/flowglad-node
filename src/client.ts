@@ -17,27 +17,20 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import {
-  CatalogCloneParams,
-  CatalogCloneResponse,
-  CatalogCreateParams,
-  CatalogCreateResponse,
-  CatalogListParams,
-  CatalogListResponse,
-  CatalogRetrieveDefaultResponse,
-  CatalogRetrieveResponse,
-  CatalogUpdateParams,
-  CatalogUpdateResponse,
-  Catalogs,
-} from './resources/catalogs';
-import {
+  ActivateSubscriptionCheckoutSessionClientSelectSchema,
+  AddPaymentMethodCheckoutSessionClientSelectSchema,
   CheckoutSessionCreateParams,
   CheckoutSessionCreateResponse,
   CheckoutSessionListParams,
   CheckoutSessionListResponse,
   CheckoutSessionRetrieveResponse,
   CheckoutSessions,
+  InvoiceCheckoutSessionClientSelectSchema,
+  ProductCheckoutSessionClientSelectSchema,
+  PurchaseCheckoutSessionClientSelectSchema,
 } from './resources/checkout-sessions';
 import {
+  CustomerClientSelectSchema,
   CustomerCreateParams,
   CustomerCreateResponse,
   CustomerListParams,
@@ -47,8 +40,11 @@ import {
   CustomerUpdateParams,
   CustomerUpdateResponse,
   Customers,
+  ToggleSubscriptionItemFeatureRecord,
+  UsageCreditGrantSubscriptionItemFeatureClientSelectSchema,
 } from './resources/customers';
 import {
+  DefaultDiscountClientSelectSchema,
   DiscountCreateParams,
   DiscountCreateResponse,
   DiscountListParams,
@@ -57,6 +53,8 @@ import {
   DiscountUpdateParams,
   DiscountUpdateResponse,
   Discounts,
+  ForeverDiscountClientSelectSchema,
+  NumberOfPaymentsDiscountClientSelectSchema,
 } from './resources/discounts';
 import {
   InvoiceLineItemListParams,
@@ -65,8 +63,6 @@ import {
   InvoiceLineItems,
 } from './resources/invoice-line-items';
 import {
-  InvoiceCreateParams,
-  InvoiceCreateResponse,
   InvoiceListParams,
   InvoiceListResponse,
   InvoiceRetrieveResponse,
@@ -79,6 +75,7 @@ import {
   PaymentMethods,
 } from './resources/payment-methods';
 import {
+  PaymentClientSelectSchema,
   PaymentListParams,
   PaymentListResponse,
   PaymentRefundParams,
@@ -94,8 +91,26 @@ import {
   PriceUpdateParams,
   PriceUpdateResponse,
   Prices,
+  SinglePaymentPriceClientSelectSchema,
+  SubscriptionPriceClientSelectSchema,
+  UsagePriceClientSelectSchema,
 } from './resources/prices';
 import {
+  PricingModelClientSelectSchema,
+  PricingModelCloneParams,
+  PricingModelCloneResponse,
+  PricingModelCreateParams,
+  PricingModelCreateResponse,
+  PricingModelListParams,
+  PricingModelListResponse,
+  PricingModelRetrieveDefaultResponse,
+  PricingModelRetrieveResponse,
+  PricingModelUpdateParams,
+  PricingModelUpdateResponse,
+  PricingModels,
+} from './resources/pricing-models';
+import {
+  ProductClientSelectSchema,
   ProductCreateParams,
   ProductCreateResponse,
   ProductListParams,
@@ -484,7 +499,7 @@ export class Flowglad {
     const response = await this.fetchWithTimeout(url, req, timeout, controller).catch(castToError);
     const headersTime = Date.now();
 
-    if (response instanceof Error) {
+    if (response instanceof globalThis.Error) {
       const retryMessage = `retrying, ${retriesRemaining} attempts remaining`;
       if (options.signal?.aborted) {
         throw new Errors.APIUserAbortError();
@@ -832,7 +847,7 @@ export class Flowglad {
 
   invoices: API.Invoices = new API.Invoices(this);
   invoiceLineItems: API.InvoiceLineItems = new API.InvoiceLineItems(this);
-  catalogs: API.Catalogs = new API.Catalogs(this);
+  pricingModels: API.PricingModels = new API.PricingModels(this);
   checkoutSessions: API.CheckoutSessions = new API.CheckoutSessions(this);
   products: API.Products = new API.Products(this);
   prices: API.Prices = new API.Prices(this);
@@ -847,7 +862,7 @@ export class Flowglad {
 
 Flowglad.Invoices = Invoices;
 Flowglad.InvoiceLineItems = InvoiceLineItems;
-Flowglad.Catalogs = Catalogs;
+Flowglad.PricingModels = PricingModels;
 Flowglad.CheckoutSessions = CheckoutSessions;
 Flowglad.Products = Products;
 Flowglad.Prices = Prices;
@@ -864,10 +879,8 @@ export declare namespace Flowglad {
 
   export {
     Invoices as Invoices,
-    type InvoiceCreateResponse as InvoiceCreateResponse,
     type InvoiceRetrieveResponse as InvoiceRetrieveResponse,
     type InvoiceListResponse as InvoiceListResponse,
-    type InvoiceCreateParams as InvoiceCreateParams,
     type InvoiceListParams as InvoiceListParams,
   };
 
@@ -879,21 +892,27 @@ export declare namespace Flowglad {
   };
 
   export {
-    Catalogs as Catalogs,
-    type CatalogCreateResponse as CatalogCreateResponse,
-    type CatalogRetrieveResponse as CatalogRetrieveResponse,
-    type CatalogUpdateResponse as CatalogUpdateResponse,
-    type CatalogListResponse as CatalogListResponse,
-    type CatalogCloneResponse as CatalogCloneResponse,
-    type CatalogRetrieveDefaultResponse as CatalogRetrieveDefaultResponse,
-    type CatalogCreateParams as CatalogCreateParams,
-    type CatalogUpdateParams as CatalogUpdateParams,
-    type CatalogListParams as CatalogListParams,
-    type CatalogCloneParams as CatalogCloneParams,
+    PricingModels as PricingModels,
+    type PricingModelClientSelectSchema as PricingModelClientSelectSchema,
+    type PricingModelCreateResponse as PricingModelCreateResponse,
+    type PricingModelRetrieveResponse as PricingModelRetrieveResponse,
+    type PricingModelUpdateResponse as PricingModelUpdateResponse,
+    type PricingModelListResponse as PricingModelListResponse,
+    type PricingModelCloneResponse as PricingModelCloneResponse,
+    type PricingModelRetrieveDefaultResponse as PricingModelRetrieveDefaultResponse,
+    type PricingModelCreateParams as PricingModelCreateParams,
+    type PricingModelUpdateParams as PricingModelUpdateParams,
+    type PricingModelListParams as PricingModelListParams,
+    type PricingModelCloneParams as PricingModelCloneParams,
   };
 
   export {
     CheckoutSessions as CheckoutSessions,
+    type ActivateSubscriptionCheckoutSessionClientSelectSchema as ActivateSubscriptionCheckoutSessionClientSelectSchema,
+    type AddPaymentMethodCheckoutSessionClientSelectSchema as AddPaymentMethodCheckoutSessionClientSelectSchema,
+    type InvoiceCheckoutSessionClientSelectSchema as InvoiceCheckoutSessionClientSelectSchema,
+    type ProductCheckoutSessionClientSelectSchema as ProductCheckoutSessionClientSelectSchema,
+    type PurchaseCheckoutSessionClientSelectSchema as PurchaseCheckoutSessionClientSelectSchema,
     type CheckoutSessionCreateResponse as CheckoutSessionCreateResponse,
     type CheckoutSessionRetrieveResponse as CheckoutSessionRetrieveResponse,
     type CheckoutSessionListResponse as CheckoutSessionListResponse,
@@ -903,6 +922,7 @@ export declare namespace Flowglad {
 
   export {
     Products as Products,
+    type ProductClientSelectSchema as ProductClientSelectSchema,
     type ProductCreateResponse as ProductCreateResponse,
     type ProductRetrieveResponse as ProductRetrieveResponse,
     type ProductUpdateResponse as ProductUpdateResponse,
@@ -914,6 +934,9 @@ export declare namespace Flowglad {
 
   export {
     Prices as Prices,
+    type SinglePaymentPriceClientSelectSchema as SinglePaymentPriceClientSelectSchema,
+    type SubscriptionPriceClientSelectSchema as SubscriptionPriceClientSelectSchema,
+    type UsagePriceClientSelectSchema as UsagePriceClientSelectSchema,
     type PriceCreateResponse as PriceCreateResponse,
     type PriceUpdateResponse as PriceUpdateResponse,
     type PriceListResponse as PriceListResponse,
@@ -924,6 +947,9 @@ export declare namespace Flowglad {
 
   export {
     Discounts as Discounts,
+    type DefaultDiscountClientSelectSchema as DefaultDiscountClientSelectSchema,
+    type ForeverDiscountClientSelectSchema as ForeverDiscountClientSelectSchema,
+    type NumberOfPaymentsDiscountClientSelectSchema as NumberOfPaymentsDiscountClientSelectSchema,
     type DiscountCreateResponse as DiscountCreateResponse,
     type DiscountRetrieveResponse as DiscountRetrieveResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,
@@ -935,6 +961,9 @@ export declare namespace Flowglad {
 
   export {
     Customers as Customers,
+    type CustomerClientSelectSchema as CustomerClientSelectSchema,
+    type ToggleSubscriptionItemFeatureRecord as ToggleSubscriptionItemFeatureRecord,
+    type UsageCreditGrantSubscriptionItemFeatureClientSelectSchema as UsageCreditGrantSubscriptionItemFeatureClientSelectSchema,
     type CustomerCreateResponse as CustomerCreateResponse,
     type CustomerRetrieveResponse as CustomerRetrieveResponse,
     type CustomerUpdateResponse as CustomerUpdateResponse,
@@ -947,6 +976,7 @@ export declare namespace Flowglad {
 
   export {
     Payments as Payments,
+    type PaymentClientSelectSchema as PaymentClientSelectSchema,
     type PaymentRetrieveResponse as PaymentRetrieveResponse,
     type PaymentListResponse as PaymentListResponse,
     type PaymentRefundResponse as PaymentRefundResponse,
@@ -991,4 +1021,18 @@ export declare namespace Flowglad {
     type UsageMeterUpdateParams as UsageMeterUpdateParams,
     type UsageMeterListParams as UsageMeterListParams,
   };
+
+  export type BillingAddress = API.BillingAddress;
+  export type NonRenewingSubscriptionRecord = API.NonRenewingSubscriptionRecord;
+  export type PaymentMethodClientSelectSchema = API.PaymentMethodClientSelectSchema;
+  export type PricingModelDetailsRecord = API.PricingModelDetailsRecord;
+  export type PurchaseInvoiceClientSelectSchema = API.PurchaseInvoiceClientSelectSchema;
+  export type StandaloneInvoiceClientSelectSchema = API.StandaloneInvoiceClientSelectSchema;
+  export type StandardSubscriptionRecord = API.StandardSubscriptionRecord;
+  export type StaticInvoiceLineItemClientSelectSchema = API.StaticInvoiceLineItemClientSelectSchema;
+  export type SubscriptionInvoiceClientSelectSchema = API.SubscriptionInvoiceClientSelectSchema;
+  export type ToggleFeatureClientSelectSchema = API.ToggleFeatureClientSelectSchema;
+  export type UsageCreditGrantFeatureClientSelectSchema = API.UsageCreditGrantFeatureClientSelectSchema;
+  export type UsageInvoiceLineItemClientSelectSchema = API.UsageInvoiceLineItemClientSelectSchema;
+  export type UsageMeterClientSelectSchema = API.UsageMeterClientSelectSchema;
 }

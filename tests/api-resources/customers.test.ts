@@ -30,10 +30,10 @@ describe('resource customers', () => {
         externalId: 'externalId',
         name: 'name',
         archived: true,
-        catalogId: 'catalogId',
         domain: 'domain',
         iconURL: 'iconURL',
         logoURL: 'logoURL',
+        pricingModelId: 'pricingModelId',
         userId: 'userId',
       },
     });
@@ -53,7 +53,7 @@ describe('resource customers', () => {
 
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.customers.update('externalId', { customer: { id: 'id' } });
+    const responsePromise = client.customers.update('externalId', { customer: {} });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -67,15 +67,13 @@ describe('resource customers', () => {
   test.skip('update: required and optional params', async () => {
     const response = await client.customers.update('externalId', {
       customer: {
-        id: 'id',
         archived: true,
-        catalogId: 'catalogId',
         domain: 'domain',
         email: 'email',
-        externalId: 'externalId',
         iconURL: 'iconURL',
         logoURL: 'logoURL',
         name: 'name',
+        pricingModelId: 'pricingModelId',
         userId: 'userId',
       },
     });
@@ -97,7 +95,7 @@ describe('resource customers', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.customers.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.customers.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 

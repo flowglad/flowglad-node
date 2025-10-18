@@ -11,30 +11,8 @@ describe('resource products', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.products.create({
-      price: {
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        setupFeeAmount: 0,
-        slug: 'slug',
-        trialPeriodDays: 0,
-        type: 'subscription',
-        unitPrice: 0,
-      },
-      product: {
-        active: true,
-        catalogId: 'catalogId',
-        default: true,
-        description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label' }],
-        imageURL: 'imageURL',
-        name: 'name',
-        pluralQuantityLabel: 'pluralQuantityLabel',
-        singularQuantityLabel: 'singularQuantityLabel',
-        slug: 'slug',
-      },
+      price: { intervalCount: 1, intervalUnit: 'day', isDefault: true, type: 'subscription', unitPrice: 0 },
+      product: { active: true, name: 'name', pricingModelId: 'pricingModelId' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -49,29 +27,25 @@ describe('resource products', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.products.create({
       price: {
-        active: true,
-        intervalCount: 0,
+        intervalCount: 1,
         intervalUnit: 'day',
         isDefault: true,
-        name: 'name',
-        setupFeeAmount: 0,
-        slug: 'slug',
-        trialPeriodDays: 0,
         type: 'subscription',
         unitPrice: 0,
-        overagePriceId: 'overagePriceId',
-        startsWithCreditTrial: true,
-        usageEventsPerUnit: 'null',
-        usageMeterId: 'null',
+        active: true,
+        name: 'name',
+        slug: 'slug',
+        trialPeriodDays: 0,
+        usageEventsPerUnit: null,
+        usageMeterId: null,
       },
       product: {
         active: true,
-        catalogId: 'catalogId',
+        name: 'name',
+        pricingModelId: 'pricingModelId',
         default: true,
         description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
         imageURL: 'imageURL',
-        name: 'name',
         pluralQuantityLabel: 'pluralQuantityLabel',
         singularQuantityLabel: 'singularQuantityLabel',
         slug: 'slug',
@@ -94,7 +68,9 @@ describe('resource products', () => {
 
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.products.update('id', { product: { id: 'id' } });
+    const responsePromise = client.products.update('id', {
+      product: { id: 'id', active: true, name: 'name' },
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -110,34 +86,16 @@ describe('resource products', () => {
       product: {
         id: 'id',
         active: true,
+        name: 'name',
         default: true,
         description: 'description',
-        displayFeatures: [{ enabled: true, label: 'label', details: 'details' }],
         imageURL: 'imageURL',
-        name: 'name',
         pluralQuantityLabel: 'pluralQuantityLabel',
         singularQuantityLabel: 'singularQuantityLabel',
         slug: 'slug',
       },
       featureIds: ['string'],
-      price: {
-        id: 'id',
-        type: 'subscription',
-        active: true,
-        intervalCount: 0,
-        intervalUnit: 'day',
-        isDefault: true,
-        name: 'name',
-        overagePriceId: 'overagePriceId',
-        productId: 'productId',
-        setupFeeAmount: 0,
-        slug: 'slug',
-        startsWithCreditTrial: true,
-        trialPeriodDays: 0,
-        unitPrice: 0,
-        usageEventsPerUnit: 'null',
-        usageMeterId: 'null',
-      },
+      price: { id: 'id', isDefault: true, type: 'subscription', active: true, name: 'name', slug: 'slug' },
     });
   });
 
@@ -157,7 +115,7 @@ describe('resource products', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.products.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.products.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

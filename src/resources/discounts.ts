@@ -42,6 +42,123 @@ export class Discounts extends APIResource {
   }
 }
 
+export interface DefaultDiscountClientSelectSchema {
+  id: string;
+
+  active: boolean;
+
+  /**
+   * A positive integer
+   */
+  amount: number;
+
+  amountType: 'percent' | 'fixed';
+
+  /**
+   * The discount code, must be unique and between 3 and 20 characters.
+   */
+  code: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  createdAt: number;
+
+  duration: 'once';
+
+  livemode: boolean;
+
+  name: string;
+
+  organizationId: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  updatedAt: number;
+
+  numberOfPayments?: null;
+}
+
+export interface ForeverDiscountClientSelectSchema {
+  id: string;
+
+  active: boolean;
+
+  /**
+   * A positive integer
+   */
+  amount: number;
+
+  amountType: 'percent' | 'fixed';
+
+  /**
+   * The discount code, must be unique and between 3 and 20 characters.
+   */
+  code: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  createdAt: number;
+
+  duration: 'forever';
+
+  livemode: boolean;
+
+  name: string;
+
+  organizationId: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  updatedAt: number;
+
+  numberOfPayments?: null;
+}
+
+export interface NumberOfPaymentsDiscountClientSelectSchema {
+  id: string;
+
+  active: boolean;
+
+  /**
+   * A positive integer
+   */
+  amount: number;
+
+  amountType: 'percent' | 'fixed';
+
+  /**
+   * The discount code, must be unique and between 3 and 20 characters.
+   */
+  code: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  createdAt: number;
+
+  duration: 'number_of_payments';
+
+  livemode: boolean;
+
+  name: string;
+
+  /**
+   * A positive integer
+   */
+  numberOfPayments: number;
+
+  organizationId: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  updatedAt: number;
+}
+
 export interface DiscountCreateResponse {
   /**
    * A discount record, which describes a discount that can be applied to purchases
@@ -49,113 +166,9 @@ export interface DiscountCreateResponse {
    * be applied indefinitely.
    */
   discount:
-    | DiscountCreateResponse.OnceDiscount
-    | DiscountCreateResponse.NumberOfPaymentsDiscount
-    | DiscountCreateResponse.ForeverDiscount;
-}
-
-export namespace DiscountCreateResponse {
-  export interface OnceDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'forever';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface NumberOfPaymentsDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'number_of_payments';
-
-    livemode: boolean;
-
-    name: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    numberOfPayments: number;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface ForeverDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'once';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+    | ForeverDiscountClientSelectSchema
+    | NumberOfPaymentsDiscountClientSelectSchema
+    | DefaultDiscountClientSelectSchema;
 }
 
 export interface DiscountRetrieveResponse {
@@ -165,113 +178,9 @@ export interface DiscountRetrieveResponse {
    * be applied indefinitely.
    */
   discount:
-    | DiscountRetrieveResponse.OnceDiscount
-    | DiscountRetrieveResponse.NumberOfPaymentsDiscount
-    | DiscountRetrieveResponse.ForeverDiscount;
-}
-
-export namespace DiscountRetrieveResponse {
-  export interface OnceDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'forever';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface NumberOfPaymentsDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'number_of_payments';
-
-    livemode: boolean;
-
-    name: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    numberOfPayments: number;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface ForeverDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'once';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+    | ForeverDiscountClientSelectSchema
+    | NumberOfPaymentsDiscountClientSelectSchema
+    | DefaultDiscountClientSelectSchema;
 }
 
 export interface DiscountUpdateResponse {
@@ -281,120 +190,16 @@ export interface DiscountUpdateResponse {
    * be applied indefinitely.
    */
   discount:
-    | DiscountUpdateResponse.OnceDiscount
-    | DiscountUpdateResponse.NumberOfPaymentsDiscount
-    | DiscountUpdateResponse.ForeverDiscount;
-}
-
-export namespace DiscountUpdateResponse {
-  export interface OnceDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'forever';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface NumberOfPaymentsDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'number_of_payments';
-
-    livemode: boolean;
-
-    name: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    numberOfPayments: number;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface ForeverDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'once';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
+    | ForeverDiscountClientSelectSchema
+    | NumberOfPaymentsDiscountClientSelectSchema
+    | DefaultDiscountClientSelectSchema;
 }
 
 export interface DiscountListResponse {
   data: Array<
-    | DiscountListResponse.OnceDiscount
-    | DiscountListResponse.NumberOfPaymentsDiscount
-    | DiscountListResponse.ForeverDiscount
+    | ForeverDiscountClientSelectSchema
+    | NumberOfPaymentsDiscountClientSelectSchema
+    | DefaultDiscountClientSelectSchema
   >;
 
   hasMore: boolean;
@@ -406,110 +211,6 @@ export interface DiscountListResponse {
   nextCursor?: string;
 }
 
-export namespace DiscountListResponse {
-  export interface OnceDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'forever';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface NumberOfPaymentsDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'number_of_payments';
-
-    livemode: boolean;
-
-    name: string;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    numberOfPayments: number;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export interface ForeverDiscount {
-    id: string;
-
-    active: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount: number;
-
-    amountType: 'percent' | 'fixed';
-
-    code: string;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    duration: 'once';
-
-    livemode: boolean;
-
-    name: string;
-
-    numberOfPayments: 'null' | null;
-
-    organizationId: string;
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-}
-
 export interface DiscountCreateParams {
   /**
    * A discount record, which describes a discount that can be applied to purchases
@@ -517,39 +218,45 @@ export interface DiscountCreateParams {
    * be applied indefinitely.
    */
   discount:
-    | DiscountCreateParams.OnceDiscount
-    | DiscountCreateParams.NumberOfPaymentsDiscount
-    | DiscountCreateParams.ForeverDiscount;
+    | DiscountCreateParams.DefaultDiscountClientInsertSchema
+    | DiscountCreateParams.NumberOfPaymentsDiscountClientInsertSchema
+    | DiscountCreateParams.ForeverDiscountClientInsertSchema;
 }
 
 export namespace DiscountCreateParams {
-  export interface OnceDiscount {
+  export interface DefaultDiscountClientInsertSchema {
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     amount: number;
 
     amountType: 'percent' | 'fixed';
 
+    /**
+     * The discount code, must be unique and between 3 and 20 characters.
+     */
     code: string;
 
     duration: 'once';
 
     name: string;
 
-    numberOfPayments: 'null' | null;
-
     active?: boolean;
+
+    numberOfPayments?: null;
   }
 
-  export interface NumberOfPaymentsDiscount {
+  export interface NumberOfPaymentsDiscountClientInsertSchema {
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     amount: number;
 
     amountType: 'percent' | 'fixed';
 
+    /**
+     * The discount code, must be unique and between 3 and 20 characters.
+     */
     code: string;
 
     duration: 'number_of_payments';
@@ -557,30 +264,33 @@ export namespace DiscountCreateParams {
     name: string;
 
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     numberOfPayments: number;
 
     active?: boolean;
   }
 
-  export interface ForeverDiscount {
+  export interface ForeverDiscountClientInsertSchema {
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     amount: number;
 
     amountType: 'percent' | 'fixed';
 
+    /**
+     * The discount code, must be unique and between 3 and 20 characters.
+     */
     code: string;
 
     duration: 'forever';
 
     name: string;
 
-    numberOfPayments: 'null' | null;
-
     active?: boolean;
+
+    numberOfPayments?: null;
   }
 }
 
@@ -591,111 +301,99 @@ export interface DiscountUpdateParams {
    * be applied indefinitely.
    */
   discount:
-    | DiscountUpdateParams.OnceDiscount
-    | DiscountUpdateParams.NumberOfPaymentsDiscount
-    | DiscountUpdateParams.ForeverDiscount;
+    | DiscountUpdateParams.DefaultDiscountClientUpdateSchema
+    | DiscountUpdateParams.NumberOfPaymentsDiscountClientUpdateSchema
+    | DiscountUpdateParams.ForeverDiscountClientUpdateSchema;
 }
 
 export namespace DiscountUpdateParams {
-  export interface OnceDiscount {
+  export interface DefaultDiscountClientUpdateSchema {
     id: string;
+
+    /**
+     * A positive integer
+     */
+    amount: number;
+
+    amountType: 'percent' | 'fixed';
+
+    /**
+     * The discount code, must be unique and between 3 and 20 characters.
+     */
+    code: string;
 
     duration: 'once';
 
-    numberOfPayments: 'null' | null;
-
     active?: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount?: number;
-
-    amountType?: 'percent' | 'fixed';
-
-    code?: string;
-
-    createdAt?: string;
-
-    createdByCommit?: string | null;
 
     name?: string;
 
-    updatedAt?: string | null;
-
-    updatedByCommit?: string | null;
+    numberOfPayments?: null;
   }
 
-  export interface NumberOfPaymentsDiscount {
+  export interface NumberOfPaymentsDiscountClientUpdateSchema {
     id: string;
+
+    /**
+     * A positive integer
+     */
+    amount: number;
+
+    amountType: 'percent' | 'fixed';
+
+    /**
+     * The discount code, must be unique and between 3 and 20 characters.
+     */
+    code: string;
 
     duration: 'number_of_payments';
 
     /**
-     * safeZodPositiveInteger
+     * A positive integer
      */
     numberOfPayments: number;
 
     active?: boolean;
 
-    /**
-     * safeZodPositiveInteger
-     */
-    amount?: number;
-
-    amountType?: 'percent' | 'fixed';
-
-    code?: string;
-
-    createdAt?: string;
-
-    createdByCommit?: string | null;
-
     name?: string;
-
-    updatedAt?: string | null;
-
-    updatedByCommit?: string | null;
   }
 
-  export interface ForeverDiscount {
+  export interface ForeverDiscountClientUpdateSchema {
     id: string;
+
+    /**
+     * A positive integer
+     */
+    amount: number;
+
+    amountType: 'percent' | 'fixed';
+
+    /**
+     * The discount code, must be unique and between 3 and 20 characters.
+     */
+    code: string;
 
     duration: 'forever';
 
-    numberOfPayments: 'null' | null;
-
     active?: boolean;
-
-    /**
-     * safeZodPositiveInteger
-     */
-    amount?: number;
-
-    amountType?: 'percent' | 'fixed';
-
-    code?: string;
-
-    createdAt?: string;
-
-    createdByCommit?: string | null;
 
     name?: string;
 
-    updatedAt?: string | null;
-
-    updatedByCommit?: string | null;
+    numberOfPayments?: null;
   }
 }
 
 export interface DiscountListParams {
   cursor?: string;
 
-  limit?: number;
+  limit?: string;
 }
 
 export declare namespace Discounts {
   export {
+    type DefaultDiscountClientSelectSchema as DefaultDiscountClientSelectSchema,
+    type ForeverDiscountClientSelectSchema as ForeverDiscountClientSelectSchema,
+    type NumberOfPaymentsDiscountClientSelectSchema as NumberOfPaymentsDiscountClientSelectSchema,
     type DiscountCreateResponse as DiscountCreateResponse,
     type DiscountRetrieveResponse as DiscountRetrieveResponse,
     type DiscountUpdateResponse as DiscountUpdateResponse,

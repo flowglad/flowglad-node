@@ -6,17 +6,17 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Flowglad from '@flowglad/node';
 
 export const metadata: Metadata = {
-  resource: 'catalogs',
+  resource: 'pricing_models',
   operation: 'read',
   tags: [],
   httpMethod: 'get',
-  httpPath: '/api/v1/catalogs/{id}',
-  operationId: 'catalogs-get',
+  httpPath: '/api/v1/pricing-models/{id}',
+  operationId: 'pricingModels-get',
 };
 
 export const tool: Tool = {
-  name: 'retrieve_catalogs',
-  description: 'Get Catalog',
+  name: 'retrieve_pricing_models',
+  description: 'Get Pricing Model',
   inputSchema: {
     type: 'object',
     properties: {
@@ -33,7 +33,7 @@ export const tool: Tool = {
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
   const { id, ...body } = args as any;
-  return asTextContentResult(await client.catalogs.retrieve(id));
+  return asTextContentResult(await client.pricingModels.retrieve(id));
 };
 
 export default { metadata, tool, handler };

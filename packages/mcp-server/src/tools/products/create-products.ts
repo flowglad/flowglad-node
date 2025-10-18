@@ -1,5 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { maybeFilter } from '@flowglad/node-mcp/filtering';
 import { Metadata, asTextContentResult } from '@flowglad/node-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
@@ -16,7 +17,8 @@ export const metadata: Metadata = {
 
 export const tool: Tool = {
   name: 'create_products',
-  description: 'Create Product',
+  description:
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreate Product\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/product_create_response',\n  $defs: {\n    product_create_response: {\n      type: 'object',\n      properties: {\n        product: {\n          $ref: '#/$defs/product_client_select_schema'\n        }\n      },\n      required: [        'product'\n      ]\n    },\n    product_client_select_schema: {\n      type: 'object',\n      properties: {\n        id: {\n          type: 'string'\n        },\n        active: {\n          type: 'boolean'\n        },\n        createdAt: {\n          type: 'integer',\n          description: 'Epoch milliseconds.'\n        },\n        default: {\n          type: 'boolean'\n        },\n        description: {\n          type: 'string'\n        },\n        imageURL: {\n          type: 'string'\n        },\n        livemode: {\n          type: 'boolean'\n        },\n        name: {\n          type: 'string'\n        },\n        organizationId: {\n          type: 'string'\n        },\n        pluralQuantityLabel: {\n          type: 'string'\n        },\n        pricingModelId: {\n          type: 'string'\n        },\n        singularQuantityLabel: {\n          type: 'string'\n        },\n        slug: {\n          type: 'string'\n        },\n        updatedAt: {\n          type: 'integer',\n          description: 'Epoch milliseconds.'\n        }\n      },\n      required: [        'id',\n        'active',\n        'createdAt',\n        'default',\n        'description',\n        'imageURL',\n        'livemode',\n        'name',\n        'organizationId',\n        'pluralQuantityLabel',\n        'pricingModelId',\n        'singularQuantityLabel',\n        'slug',\n        'updatedAt'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -24,15 +26,10 @@ export const tool: Tool = {
         anyOf: [
           {
             type: 'object',
-            description:
-              'A subscription price, which will have details on the interval, default trial period, and setup fee (if any).',
             properties: {
-              active: {
-                type: 'boolean',
-              },
               intervalCount: {
-                type: 'number',
-                description: 'safeZodPositiveInteger',
+                type: 'integer',
+                description: 'A positive integer',
               },
               intervalUnit: {
                 type: 'string',
@@ -40,40 +37,7 @@ export const tool: Tool = {
               },
               isDefault: {
                 type: 'boolean',
-              },
-              name: {
-                type: 'string',
-              },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'number',
-                    description: 'safeZodPositiveInteger',
-                  },
-                  {
-                    type: 'string',
-                    description: 'safeZodPositiveInteger',
-                    enum: [0],
-                  },
-                ],
-                description: 'safeZodPositiveInteger',
-              },
-              slug: {
-                type: 'string',
-              },
-              trialPeriodDays: {
-                anyOf: [
-                  {
-                    type: 'number',
-                    description: 'safeZodPositiveInteger',
-                  },
-                  {
-                    type: 'string',
-                    description: 'safeZodPositiveInteger',
-                    enum: [0],
-                  },
-                ],
-                description: 'safeZodPositiveInteger',
+                description: 'Whether or not this price is the default price for the product.',
               },
               type: {
                 type: 'string',
@@ -81,63 +45,10 @@ export const tool: Tool = {
               },
               unitPrice: {
                 type: 'number',
+                description:
+                  'The price per unit. This should be in the smallest unit of the currency. For example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in cents.',
               },
-              overagePriceId: {
-                type: 'string',
-                description: 'safeZodNullishString',
-              },
-              startsWithCreditTrial: {
-                type: 'boolean',
-              },
-              usageEventsPerUnit: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              usageMeterId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-            },
-            required: [
-              'active',
-              'intervalCount',
-              'intervalUnit',
-              'isDefault',
-              'name',
-              'setupFeeAmount',
-              'slug',
-              'trialPeriodDays',
-              'type',
-              'unitPrice',
-            ],
-          },
-          {
-            type: 'object',
-            description:
-              'A single payment price, which only gets paid once. Subscriptions cannot be made from single payment prices. Purchases, though, can.',
-            properties: {
               active: {
-                type: 'boolean',
-              },
-              isDefault: {
                 type: 'boolean',
               },
               name: {
@@ -145,6 +56,29 @@ export const tool: Tool = {
               },
               slug: {
                 type: 'string',
+              },
+              trialPeriodDays: {
+                type: 'number',
+                description:
+                  'The trial period in days. If the trial period is 0 or null, there will be no trial period.',
+              },
+              usageEventsPerUnit: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              usageMeterId: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+            },
+            required: ['intervalCount', 'intervalUnit', 'isDefault', 'type', 'unitPrice'],
+          },
+          {
+            type: 'object',
+            properties: {
+              isDefault: {
+                type: 'boolean',
+                description: 'Whether or not this price is the default price for the product.',
               },
               type: {
                 type: 'string',
@@ -152,130 +86,76 @@ export const tool: Tool = {
               },
               unitPrice: {
                 type: 'number',
+                description:
+                  'The price per unit. This should be in the smallest unit of the currency. For example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in cents.',
               },
-              intervalCount: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              intervalUnit: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              overagePriceId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              startsWithCreditTrial: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              trialPeriodDays: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              usageEventsPerUnit: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              usageMeterId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-            },
-            required: ['active', 'isDefault', 'name', 'slug', 'type', 'unitPrice'],
-          },
-          {
-            type: 'object',
-            description: 'A usage price, which describes the price per unit of usage of a product.',
-            properties: {
               active: {
                 type: 'boolean',
               },
               intervalCount: {
-                type: 'number',
-                description: 'safeZodPositiveInteger',
+                type: 'null',
+                description: 'Omitted.',
+              },
+              intervalUnit: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              name: {
+                type: 'string',
+              },
+              slug: {
+                type: 'string',
+              },
+              trialPeriodDays: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              usageEventsPerUnit: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+              usageMeterId: {
+                type: 'null',
+                description: 'Omitted.',
+              },
+            },
+            required: ['isDefault', 'type', 'unitPrice'],
+          },
+          {
+            type: 'object',
+            properties: {
+              intervalCount: {
+                type: 'integer',
+                description: 'A positive integer',
               },
               intervalUnit: {
                 type: 'string',
                 enum: ['day', 'week', 'month', 'year'],
               },
               isDefault: {
+                type: 'boolean',
+                description: 'Whether or not this price is the default price for the product.',
+              },
+              type: {
+                type: 'string',
+                enum: ['usage'],
+              },
+              unitPrice: {
+                type: 'number',
+                description:
+                  'The price per unit. This should be in the smallest unit of the currency. For example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in cents.',
+              },
+              usageEventsPerUnit: {
+                type: 'integer',
+                description:
+                  'The number of usage events per unit. Used to determine how to map usage events to quantities when raising invoices for usage.',
+              },
+              usageMeterId: {
+                type: 'string',
+                description:
+                  'The usage meter that uses this price. All usage events on that meter must be associated with a price that is also associated with that usage meter.',
+              },
+              active: {
                 type: 'boolean',
               },
               name: {
@@ -284,72 +164,15 @@ export const tool: Tool = {
               slug: {
                 type: 'string',
               },
-              type: {
-                type: 'string',
-                enum: ['usage'],
-              },
-              unitPrice: {
-                type: 'number',
-              },
-              usageEventsPerUnit: {
-                type: 'number',
-                description: 'safeZodPositiveInteger',
-              },
-              usageMeterId: {
-                type: 'string',
-                description:
-                  'The usage meter that uses this price. All usage events on that meter must be associated with a price that is also associated with that usage meter.',
-              },
-              overagePriceId: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              setupFeeAmount: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
-              },
-              startsWithCreditTrial: {
-                type: 'boolean',
-              },
               trialPeriodDays: {
-                anyOf: [
-                  {
-                    type: 'string',
-                    enum: ['null'],
-                  },
-                  {
-                    type: 'object',
-                    additionalProperties: true,
-                  },
-                ],
-                description: 'safeZodNullOrUndefined',
+                type: 'null',
+                description: 'Omitted.',
               },
             },
             required: [
-              'active',
               'intervalCount',
               'intervalUnit',
               'isDefault',
-              'name',
-              'slug',
               'type',
               'unitPrice',
               'usageEventsPerUnit',
@@ -357,8 +180,6 @@ export const tool: Tool = {
             ],
           },
         ],
-        description:
-          'A subscription price, which will have details on the interval, default trial period, and setup fee (if any).',
       },
       product: {
         type: 'object',
@@ -366,7 +187,10 @@ export const tool: Tool = {
           active: {
             type: 'boolean',
           },
-          catalogId: {
+          name: {
+            type: 'string',
+          },
+          pricingModelId: {
             type: 'string',
           },
           default: {
@@ -375,28 +199,7 @@ export const tool: Tool = {
           description: {
             type: 'string',
           },
-          displayFeatures: {
-            type: 'array',
-            items: {
-              type: 'object',
-              properties: {
-                enabled: {
-                  type: 'boolean',
-                },
-                label: {
-                  type: 'string',
-                },
-                details: {
-                  type: 'string',
-                },
-              },
-              required: ['enabled', 'label'],
-            },
-          },
           imageURL: {
-            type: 'string',
-          },
-          name: {
             type: 'string',
           },
           pluralQuantityLabel: {
@@ -409,24 +212,19 @@ export const tool: Tool = {
             type: 'string',
           },
         },
-        required: [
-          'active',
-          'catalogId',
-          'default',
-          'description',
-          'displayFeatures',
-          'imageURL',
-          'name',
-          'pluralQuantityLabel',
-          'singularQuantityLabel',
-          'slug',
-        ],
+        required: ['active', 'name', 'pricingModelId'],
       },
       featureIds: {
         type: 'array',
         items: {
           type: 'string',
         },
+      },
+      jq_filter: {
+        type: 'string',
+        title: 'jq Filter',
+        description:
+          'A jq filter to apply to the response to include certain fields. Consult the output schema in the tool description to see the fields that are available.\n\nFor example: to include only the `name` field in every object of a results array, you can provide ".results[].name".\n\nFor more information, see the [jq documentation](https://jqlang.org/manual/).',
       },
     },
     required: ['price', 'product'],
@@ -435,8 +233,8 @@ export const tool: Tool = {
 };
 
 export const handler = async (client: Flowglad, args: Record<string, unknown> | undefined) => {
-  const body = args as any;
-  return asTextContentResult(await client.products.create(body));
+  const { jq_filter, ...body } = args as any;
+  return asTextContentResult(await maybeFilter(jq_filter, await client.products.create(body)));
 };
 
 export default { metadata, tool, handler };

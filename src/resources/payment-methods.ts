@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as Shared from './shared';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -25,87 +26,11 @@ export class PaymentMethods extends APIResource {
 }
 
 export interface PaymentMethodRetrieveResponse {
-  paymentMethod: PaymentMethodRetrieveResponse.PaymentMethod;
-}
-
-export namespace PaymentMethodRetrieveResponse {
-  export interface PaymentMethod {
-    id: string;
-
-    billingDetails: PaymentMethod.BillingDetails;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    customerId: string;
-
-    default: boolean;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    paymentMethodData: { [key: string]: unknown };
-
-    type: 'card' | 'us_bank_account' | 'sepa_debit';
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export namespace PaymentMethod {
-    export interface BillingDetails {
-      address: BillingDetails.Address;
-
-      email: string | null;
-
-      name: string | null;
-    }
-
-    export namespace BillingDetails {
-      export interface Address {
-        city: string | null;
-
-        country: string;
-
-        line1: string | null;
-
-        line2: string | null;
-
-        postal_code: string | null;
-
-        state: string | null;
-
-        address?: Address.Address | null;
-
-        name?: string;
-      }
-
-      export namespace Address {
-        export interface Address {
-          city: string | null;
-
-          country: string;
-
-          line1: string | null;
-
-          line2: string | null;
-
-          postal_code: string | null;
-
-          state: string | null;
-
-          name?: string;
-        }
-      }
-    }
-  }
+  paymentMethod: Shared.PaymentMethodClientSelectSchema;
 }
 
 export interface PaymentMethodListResponse {
-  data: Array<PaymentMethodListResponse.Data>;
+  data: Array<Shared.PaymentMethodClientSelectSchema>;
 
   hasMore: boolean;
 
@@ -116,86 +41,10 @@ export interface PaymentMethodListResponse {
   nextCursor?: string;
 }
 
-export namespace PaymentMethodListResponse {
-  export interface Data {
-    id: string;
-
-    billingDetails: Data.BillingDetails;
-
-    createdAt: string;
-
-    createdByCommit: string | null;
-
-    customerId: string;
-
-    default: boolean;
-
-    livemode: boolean;
-
-    metadata: { [key: string]: unknown } | null;
-
-    paymentMethodData: { [key: string]: unknown };
-
-    type: 'card' | 'us_bank_account' | 'sepa_debit';
-
-    updatedAt: string | null;
-
-    updatedByCommit: string | null;
-  }
-
-  export namespace Data {
-    export interface BillingDetails {
-      address: BillingDetails.Address;
-
-      email: string | null;
-
-      name: string | null;
-    }
-
-    export namespace BillingDetails {
-      export interface Address {
-        city: string | null;
-
-        country: string;
-
-        line1: string | null;
-
-        line2: string | null;
-
-        postal_code: string | null;
-
-        state: string | null;
-
-        address?: Address.Address | null;
-
-        name?: string;
-      }
-
-      export namespace Address {
-        export interface Address {
-          city: string | null;
-
-          country: string;
-
-          line1: string | null;
-
-          line2: string | null;
-
-          postal_code: string | null;
-
-          state: string | null;
-
-          name?: string;
-        }
-      }
-    }
-  }
-}
-
 export interface PaymentMethodListParams {
   cursor?: string;
 
-  limit?: number;
+  limit?: string;
 }
 
 export declare namespace PaymentMethods {

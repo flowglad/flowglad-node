@@ -11,7 +11,7 @@ describe('resource usageMeters', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', slug: 'slug' },
+      usageMeter: { name: 'name', pricingModelId: 'pricingModelId', slug: 'slug' },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -25,7 +25,7 @@ describe('resource usageMeters', () => {
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.usageMeters.create({
-      usageMeter: { catalogId: 'catalogId', name: 'name', slug: 'slug', aggregationType: 'sum' },
+      usageMeter: { name: 'name', pricingModelId: 'pricingModelId', slug: 'slug', aggregationType: 'sum' },
     });
   });
 
@@ -56,16 +56,7 @@ describe('resource usageMeters', () => {
   // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.usageMeters.update('id', {
-      usageMeter: {
-        id: 'id',
-        aggregationType: 'sum',
-        createdAt: '2019-12-27T18:11:19.117Z',
-        createdByCommit: 'createdByCommit',
-        name: 'name',
-        slug: 'slug',
-        updatedAt: '2019-12-27T18:11:19.117Z',
-        updatedByCommit: 'updatedByCommit',
-      },
+      usageMeter: { id: 'id', aggregationType: 'sum', name: 'name', slug: 'slug' },
     });
   });
 
@@ -85,7 +76,7 @@ describe('resource usageMeters', () => {
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.usageMeters.list({ cursor: 'cursor', limit: 1 }, { path: '/_stainless_unknown_path' }),
+      client.usageMeters.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });
