@@ -1,4 +1,67 @@
 # Changelog
+## 0.22.0 (2025-10-18)
+
+Full Changelog: [v0.21.0...v0.22.0](https://github.com/flowglad/flowglad-node/compare/v0.21.0...v0.22.0)
+
+### Features
+
+* **api:** pre-launch SDK release ([dcfff9e](https://github.com/flowglad/flowglad-node/commit/dcfff9e3bfa07cfbbbe10e47e8889bb6fc920eda))
+* clean up environment call outs ([6dd40c6](https://github.com/flowglad/flowglad-node/commit/6dd40c6a4371b69cd1a5b81a46290fb534e64960))
+* **mcp:** add code execution tool ([b6cd343](https://github.com/flowglad/flowglad-node/commit/b6cd3435bd2b5ed81dff1c6998deb378815bec1c))
+* **mcp:** add logging when environment variable is set ([1a342dd](https://github.com/flowglad/flowglad-node/commit/1a342dd3ee2ad5216f48fd9000094d13b06a823b))
+* **mcp:** add option to infer mcp client ([79eb017](https://github.com/flowglad/flowglad-node/commit/79eb0176c1f772f9dafcc4cbc30f780f9333efa4))
+* **mcp:** add unix socket option for remote MCP ([d9046c9](https://github.com/flowglad/flowglad-node/commit/d9046c9f0ff82694a1da1785b283873f9f67a415))
+* **mcp:** parse query string as mcp client options in mcp server ([4595852](https://github.com/flowglad/flowglad-node/commit/45958528bbef675814b9d3fa71c647722c1801f9))
+* **mcp:** remote server with passthru auth ([3790db5](https://github.com/flowglad/flowglad-node/commit/3790db5b8572ae511b04a16e5c019da11511b7fa))
+* **mcp:** support filtering tool results by a jq expression ([b6fb8e2](https://github.com/flowglad/flowglad-node/commit/b6fb8e222bd687786c96a0b023b22f371a4bbf7d))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([51f10bf](https://github.com/flowglad/flowglad-node/commit/51f10bf06bf5c8700293510678a512dc23ea9b57))
+* **client:** get fetchOptions type more reliably ([f992b90](https://github.com/flowglad/flowglad-node/commit/f992b90421e4693bc00d956a736c70691b494bfb))
+* **mcp:** avoid sending `jq_filter` to base API ([47e138e](https://github.com/flowglad/flowglad-node/commit/47e138e835bc86287ad681923bd9d37554ffaf29))
+* **mcp:** fix bug in header handling ([b02cec9](https://github.com/flowglad/flowglad-node/commit/b02cec933dfea867bc0fd7cff8d1752c1deeddd3))
+* **mcp:** fix tool description of jq_filter ([a3c1124](https://github.com/flowglad/flowglad-node/commit/a3c112419f677e9864bd7c2e3b20eb6dc0739cd0))
+* **mcp:** generate additionalProperties=true for map schemas to avoid validation issues ([7a8aefb](https://github.com/flowglad/flowglad-node/commit/7a8aefbbac9baa8e9c9bbfa19cf4731e8066df7e))
+* **mcp:** include required section for top-level properties and support naming transformations ([d954143](https://github.com/flowglad/flowglad-node/commit/d9541434fddbcf1be078671a1047dfc81f3327bd))
+* **mcp:** relax input type for asTextContextResult ([4eb359e](https://github.com/flowglad/flowglad-node/commit/4eb359e33f8de5825640fb86203956c4496ab8de))
+* **mcp:** reverse validJson capability option and limit scope ([0114889](https://github.com/flowglad/flowglad-node/commit/01148896da612b853195710bf33ebdf2ef2339f7))
+* **mcp:** support jq filtering on cloudflare workers ([1cb62d7](https://github.com/flowglad/flowglad-node/commit/1cb62d721ed4c9b10745fe940590c7e0f518f34a))
+
+
+### Chores
+
+* add docs to RequestOptions type ([5673bd9](https://github.com/flowglad/flowglad-node/commit/5673bd9adaf5d53b6b740bf972236ad50c2a0300))
+* add package to package.json ([4e57a8f](https://github.com/flowglad/flowglad-node/commit/4e57a8f2250113400fa243aff2577eda22258b29))
+* **ci:** only run for pushes and fork pull requests ([7133a67](https://github.com/flowglad/flowglad-node/commit/7133a67258382c3a4f657185410be9b51c18f68f))
+* **client:** improve path param validation ([40bf088](https://github.com/flowglad/flowglad-node/commit/40bf088914e1bed67f4bdffb0d2f57d15acb005b))
+* **client:** qualify global Blob ([cd495ee](https://github.com/flowglad/flowglad-node/commit/cd495ee6316fd1446b3f75c6391614a65fa077b2))
+* **deps:** update dependency @types/node to v20.17.58 ([7de8c26](https://github.com/flowglad/flowglad-node/commit/7de8c26d2445a86dbb169927474d4532fc9be9db))
+* **internal:** codegen related update ([1fee692](https://github.com/flowglad/flowglad-node/commit/1fee69217a0af68c31e20ff9dce4b5a1aa2a5796))
+* **internal:** codegen related update ([0b5da41](https://github.com/flowglad/flowglad-node/commit/0b5da41eee71d91adfe082a3ccedf362acee76f8))
+* **internal:** codegen related update ([5cc2ae0](https://github.com/flowglad/flowglad-node/commit/5cc2ae097780f0c82353c97bf3a174b3f540e9ef))
+* **internal:** codegen related update ([a3b57a4](https://github.com/flowglad/flowglad-node/commit/a3b57a4f643053e79b6dd171076df37494824738))
+* **internal:** formatting change ([57a4460](https://github.com/flowglad/flowglad-node/commit/57a4460b3bb1954afcb735b61f3c30f622b40404))
+* **internal:** make mcp-server publishing public by defaut ([dedddc8](https://github.com/flowglad/flowglad-node/commit/dedddc805fbf512c0d65c8d2d728b652d32c653e))
+* **internal:** move publish config ([65be443](https://github.com/flowglad/flowglad-node/commit/65be443b89aadf906fe1a6cbddb5a00e0174fcb1))
+* **internal:** refactor array check ([88ca819](https://github.com/flowglad/flowglad-node/commit/88ca819ac06af4800a2337b4ad4a57276cded8ee))
+* **internal:** remove redundant imports config ([62fbf68](https://github.com/flowglad/flowglad-node/commit/62fbf68fcc53ef784abf22955bd63e81c062779e))
+* **internal:** update comment in script ([ecd3afd](https://github.com/flowglad/flowglad-node/commit/ecd3afd63aabdf4d9d92ed49dfbf60d603987118))
+* make some internal functions async ([d14a6a0](https://github.com/flowglad/flowglad-node/commit/d14a6a0c3ede0dfbd908bccc52e0a20f9bab2e79))
+* **mcp:** add cors to oauth metadata route ([1a638e6](https://github.com/flowglad/flowglad-node/commit/1a638e6e931926156ab3d312abbea1ee6de1e69c))
+* **mcp:** document remote server in README.md ([13d6332](https://github.com/flowglad/flowglad-node/commit/13d6332d23369dc5d6ba4838c250ec58fec9866d))
+* **mcp:** formatting ([30ba925](https://github.com/flowglad/flowglad-node/commit/30ba92555911cb0fc0e5069f3ecc736549663db5))
+* **mcp:** minor cleanup of types and package.json ([53ee586](https://github.com/flowglad/flowglad-node/commit/53ee5863b0f001ea4f87412c740347e4b471cd19))
+* **mcp:** refactor streamable http transport ([537cc07](https://github.com/flowglad/flowglad-node/commit/537cc079137027a1b7c5bb50c9e6dd89a8210c98))
+* **mcp:** rework imports in tools ([4fb589d](https://github.com/flowglad/flowglad-node/commit/4fb589d6bbd22237a3dfb908c9b76935086259cc))
+* **mcp:** update package.json ([3e6dbd9](https://github.com/flowglad/flowglad-node/commit/3e6dbd9ce8bd763d5f0c07e9cafdd81b57c9b7c7))
+* **mcp:** update README ([8640f1b](https://github.com/flowglad/flowglad-node/commit/8640f1b212b97452e5e80076f979e0c9af089b49))
+* **mcp:** update types ([fa495cb](https://github.com/flowglad/flowglad-node/commit/fa495cb6f78f4ff90234cd024aff809bfaee726b))
+* **ts:** reorder package.json imports ([75a2591](https://github.com/flowglad/flowglad-node/commit/75a25917485552028c3b738098a3ca198378f347))
+* update @stainless-api/prism-cli to v5.15.0 ([1a848b0](https://github.com/flowglad/flowglad-node/commit/1a848b075c1d9bc00c3a4fcc775e29c4445e5d48))
+* update CI script ([7958db2](https://github.com/flowglad/flowglad-node/commit/7958db2cb6b6c62ae8e177f84698b480d8f2d1fd))
+
 ## 0.21.0 (2025-06-25)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/flowglad/flowglad-node/compare/v0.20.0...v0.21.0)
