@@ -519,11 +519,6 @@ export namespace CheckoutSessionCreateParams {
      * succeeds. Ignored if the checkout session is of type `invoice`. If not provided, defaults to 1.
      */
     quantity?: number;
-
-    /**
-     * The ID of the price the customer shall purchase.
-     */
-    priceId: string;
   }
 
   export interface AnonymousProductCheckoutSessionInput {
