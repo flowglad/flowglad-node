@@ -95,7 +95,20 @@ describe('resource products', () => {
         slug: 'slug',
       },
       featureIds: ['string'],
-      price: { id: 'id', isDefault: true, type: 'subscription', active: true, name: 'name', slug: 'slug' },
+      price: {
+        intervalCount: 1,
+        intervalUnit: 'day',
+        isDefault: true,
+        productId: 'productId',
+        type: 'subscription',
+        unitPrice: 0,
+        active: true,
+        name: 'name',
+        slug: 'slug',
+        trialPeriodDays: 0,
+        usageEventsPerUnit: null,
+        usageMeterId: null,
+      },
     });
   });
 

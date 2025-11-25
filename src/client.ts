@@ -41,7 +41,7 @@ import {
   CustomerUpdateResponse,
   Customers,
   ToggleSubscriptionItemFeatureRecord,
-  UsageCreditGrantSubscriptionItemFeatureClientSelectSchema,
+  UsageCreditGrantSubscriptionItemFeatureRecord,
 } from './resources/customers';
 import {
   DefaultDiscountClientSelectSchema,
@@ -963,7 +963,7 @@ export declare namespace Flowglad {
     Customers as Customers,
     type CustomerClientSelectSchema as CustomerClientSelectSchema,
     type ToggleSubscriptionItemFeatureRecord as ToggleSubscriptionItemFeatureRecord,
-    type UsageCreditGrantSubscriptionItemFeatureClientSelectSchema as UsageCreditGrantSubscriptionItemFeatureClientSelectSchema,
+    type UsageCreditGrantSubscriptionItemFeatureRecord as UsageCreditGrantSubscriptionItemFeatureRecord,
     type CustomerCreateResponse as CustomerCreateResponse,
     type CustomerRetrieveResponse as CustomerRetrieveResponse,
     type CustomerUpdateResponse as CustomerUpdateResponse,
