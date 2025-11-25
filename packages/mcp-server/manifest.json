@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.2",
   "name": "@flowglad/node-mcp",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "description": "The official MCP Server for the Flowglad API",
   "author": {
     "name": "Flowglad",
