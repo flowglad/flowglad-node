@@ -69,6 +69,8 @@ export interface UsageMeterListResponse {
 
 export interface UsageMeterCreateParams {
   usageMeter: UsageMeterCreateParams.UsageMeter;
+
+  price?: UsageMeterCreateParams.Price;
 }
 
 export namespace UsageMeterCreateParams {
@@ -86,6 +88,14 @@ export namespace UsageMeterCreateParams {
      * billing period for a given meter.
      */
     aggregationType?: 'sum' | 'count_distinct_properties';
+  }
+
+  export interface Price {
+    type?: 'single_payment' | 'subscription' | 'usage';
+
+    unitPrice?: number;
+
+    usageEventsPerUnit?: number;
   }
 }
 

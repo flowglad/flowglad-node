@@ -28,9 +28,6 @@ export const tool: Tool = {
           amount: {
             type: 'integer',
           },
-          priceId: {
-            type: 'string',
-          },
           subscriptionId: {
             type: 'string',
           },
@@ -38,6 +35,14 @@ export const tool: Tool = {
             type: 'string',
             description:
               'A unique identifier for the transaction. This is used to prevent duplicate usage events from being created.',
+          },
+          priceId: {
+            type: 'string',
+            description: 'The internal ID of the price. If not provided, priceSlug is required.',
+          },
+          priceSlug: {
+            type: 'string',
+            description: 'The slug of the price. If not provided, priceId is required.',
           },
           properties: {
             type: 'object',
@@ -51,7 +56,7 @@ export const tool: Tool = {
               'The date the usage occurred. If the usage occurs in a date that is outside of the current billing period, the usage will still be attached to the current billing period. Epoch milliseconds.',
           },
         },
-        required: ['amount', 'priceId', 'subscriptionId', 'transactionId'],
+        required: ['amount', 'subscriptionId', 'transactionId'],
       },
       jq_filter: {
         type: 'string',
