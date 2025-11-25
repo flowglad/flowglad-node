@@ -1,4 +1,39 @@
 # Changelog
+## 0.23.0 (2025-11-25)
+
+Full Changelog: [v0.22.0...v0.23.0](https://github.com/flowglad/flowglad-node/compare/v0.22.0...v0.23.0)
+
+### Features
+
+* **api:** manual updates ([1a19816](https://github.com/flowglad/flowglad-node/commit/1a19816abcef63fe94de504d04586c5ceb3ed58e))
+* **api:** update via SDK Studio ([539f4c4](https://github.com/flowglad/flowglad-node/commit/539f4c4518cb92b9d71ae7c890f55498cbf47d88))
+* **mcp:** enable optional code execution tool on http mcp servers ([090ca8f](https://github.com/flowglad/flowglad-node/commit/090ca8fb6207a056c1f4dc41fbd3b457bcc7007d))
+
+
+### Bug Fixes
+
+* **mcpb:** pin @anthropic-ai/mcpb version ([c8bf746](https://github.com/flowglad/flowglad-node/commit/c8bf74639585d555710ec2a68d1a51224bd12d8f))
+* **mcp:** return tool execution error on jq failure ([047276b](https://github.com/flowglad/flowglad-node/commit/047276bc4d3bd247613d349f63f1bdbdb60b1416))
+
+
+### Chores
+
+* **internal:** codegen related update ([f45deec](https://github.com/flowglad/flowglad-node/commit/f45deec19f15bc5e89faa32905fdf0b1ef03abe5))
+* **internal:** codegen related update ([d8c690d](https://github.com/flowglad/flowglad-node/commit/d8c690d0b0b316915e3276cee1aa2c07099a6ddf))
+* **internal:** grammar fix (it's -&gt; its) ([ceea4b0](https://github.com/flowglad/flowglad-node/commit/ceea4b006184694f7fdd6c38a6b9efc8534270c0))
+* mcp code tool explicit error message when missing a run function ([9f95cba](https://github.com/flowglad/flowglad-node/commit/9f95cba7b813396b26890f8ce60f895eb066a321))
+* **mcp:** add friendlier MCP code tool errors on incorrect method invocations ([69bd7b0](https://github.com/flowglad/flowglad-node/commit/69bd7b061e2806e6843fab6ef5c7ef6c42dc230e))
+* **mcp:** add line numbers to code tool errors ([48cfd3a](https://github.com/flowglad/flowglad-node/commit/48cfd3a78bd865fd461cacabc85b720e12cbedee))
+* **mcp:** clarify http auth error ([8a6a2cb](https://github.com/flowglad/flowglad-node/commit/8a6a2cbd9cae370bcbf1bd8c24a2d2b70ca0f8b4))
+* **mcp:** upgrade jq-web ([51ca5f4](https://github.com/flowglad/flowglad-node/commit/51ca5f4ac13ccf1b7d2c7d11d3996005c7362717))
+* use structured error when code execution tool errors ([20cc664](https://github.com/flowglad/flowglad-node/commit/20cc6648e532399cbc3517e57badf36a61e6cd17))
+
+
+### Documentation
+
+* **mcp:** add a README button for one-click add to Cursor ([d0679c8](https://github.com/flowglad/flowglad-node/commit/d0679c80b534c7f4d853a494685333f2ef761c61))
+* **mcp:** add a README link to add server to VS Code or Claude Code ([5526204](https://github.com/flowglad/flowglad-node/commit/55262048deb2efe9c80d17ca998fe10bf6dd48af))
+
 ## 0.22.0 (2025-10-18)
 
 Full Changelog: [v0.21.0...v0.22.0](https://github.com/flowglad/flowglad-node/compare/v0.21.0...v0.22.0)
