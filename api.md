@@ -139,6 +139,7 @@ Types:
 
 - <code><a href="./src/resources/customers.ts">CustomerClientSelectSchema</a></code>
 - <code><a href="./src/resources/customers.ts">ToggleSubscriptionItemFeatureRecord</a></code>
+- <code><a href="./src/resources/customers.ts">UsageCreditGrantSubscriptionItemFeatureRecord</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerCreateResponse</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerRetrieveResponse</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerUpdateResponse</a></code>

@@ -138,6 +138,52 @@ export interface ToggleSubscriptionItemFeatureRecord {
   usageMeterId?: null;
 }
 
+export interface UsageCreditGrantSubscriptionItemFeatureRecord {
+  id: string;
+
+  amount: number;
+
+  /**
+   * Epoch milliseconds.
+   */
+  createdAt: number;
+
+  featureId: string;
+
+  livemode: boolean;
+
+  name: string;
+
+  renewalFrequency: 'once' | 'every_billing_period';
+
+  slug: string;
+
+  subscriptionItemId: string;
+
+  type: 'usage_credit_grant';
+
+  /**
+   * Epoch milliseconds.
+   */
+  updatedAt: number;
+
+  usageMeterId: string;
+
+  /**
+   * Epoch milliseconds.
+   */
+  detachedAt?: number | null;
+
+  detachedReason?: string | null;
+
+  /**
+   * Epoch milliseconds.
+   */
+  expiredAt?: number | null;
+
+  productFeatureId?: string | null;
+}
+
 export interface CustomerCreateResponse {
   data: CustomerCreateResponse.Data;
 }
@@ -707,7 +753,433 @@ export namespace CustomerRetrieveBillingResponse {
     export interface Experimental {
       featureItems: Array<
         | CustomersAPI.ToggleSubscriptionItemFeatureRecord
-        | Experimental.UsageCreditGrantSubscriptionItemFeatureRecord
+        | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
+      >;
+
+      usageMeterBalances: Array<Experimental.UsageMeterBalance>;
+    }
+
+    export namespace Experimental {
+      /**
+       * A usage meter and the available balance for that meter, scoped to a given
+       * subscription.
+       */
+      export interface UsageMeterBalance {
+        id: string;
+
+        /**
+         * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+         * aggregates all the usage event amounts for the billing period.
+         * "count_distinct_properties" counts the number of distinct properties in the
+         * billing period for a given meter.
+         */
+        aggregationType: 'sum' | 'count_distinct_properties';
+
+        availableBalance: number;
+
+        /**
+         * Epoch milliseconds.
+         */
+        createdAt: number;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        pricingModelId: string;
+
+        slug: string;
+
+        subscriptionId: string;
+
+        /**
+         * Epoch milliseconds.
+         */
+        updatedAt: number;
+      }
+    }
+  }
+
+  export interface StandardSubscriptionDetails {
+    id: string;
+
+    backupPaymentMethodId: string | null;
+
+    cancellationReason: string | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    createdAt: number;
+
+    current: boolean;
+
+    customerId: string;
+
+    defaultPaymentMethodId: string | null;
+
+    interval: 'day' | 'week' | 'month' | 'year';
+
+    /**
+     * A positive integer
+     */
+    intervalCount: number;
+
+    isFreePlan: boolean | null;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    organizationId: string;
+
+    priceId: string | null;
+
+    renews: true;
+
+    replacedBySubscriptionId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    startDate: number;
+
+    status:
+      | 'trialing'
+      | 'active'
+      | 'past_due'
+      | 'unpaid'
+      | 'cancellation_scheduled'
+      | 'incomplete'
+      | 'incomplete_expired'
+      | 'canceled'
+      | 'paused';
+
+    subscriptionItems: Array<StandardSubscriptionDetails.SubscriptionItem>;
+
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
+
+    /**
+     * Epoch milliseconds.
+     */
+    billingCycleAnchorDate?: number | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    canceledAt?: number | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    cancelScheduledAt?: number | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    currentBillingPeriodEnd?: number | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    currentBillingPeriodStart?: number | null;
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    experimental?: StandardSubscriptionDetails.Experimental;
+
+    /**
+     * JSON object
+     */
+    metadata?: { [key: string]: string | number | boolean } | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    trialEnd?: number | null;
+  }
+
+  export namespace StandardSubscriptionDetails {
+    export interface SubscriptionItem {
+      id: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      name: string | null;
+
+      price:
+        | PricesAPI.SubscriptionPriceClientSelectSchema
+        | PricesAPI.SinglePaymentPriceClientSelectSchema
+        | PricesAPI.UsagePriceClientSelectSchema;
+
+      priceId: string;
+
+      /**
+       * A positive integer
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+    }
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    export interface Experimental {
+      featureItems: Array<
+        | CustomersAPI.ToggleSubscriptionItemFeatureRecord
+        | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
+      >;
+
+      usageMeterBalances: Array<Experimental.UsageMeterBalance>;
+    }
+
+    export namespace Experimental {
+      /**
+       * A usage meter and the available balance for that meter, scoped to a given
+       * subscription.
+       */
+      export interface UsageMeterBalance {
+        id: string;
+
+        /**
+         * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+         * aggregates all the usage event amounts for the billing period.
+         * "count_distinct_properties" counts the number of distinct properties in the
+         * billing period for a given meter.
+         */
+        aggregationType: 'sum' | 'count_distinct_properties';
+
+        availableBalance: number;
+
+        /**
+         * Epoch milliseconds.
+         */
+        createdAt: number;
+
+        livemode: boolean;
+
+        name: string;
+
+        organizationId: string;
+
+        pricingModelId: string;
+
+        slug: string;
+
+        subscriptionId: string;
+
+        /**
+         * Epoch milliseconds.
+         */
+        updatedAt: number;
+      }
+    }
+  }
+
+  export interface NonRenewingSubscriptionDetails {
+    id: string;
+
+    backupPaymentMethodId: string | null;
+
+    /**
+     * Omitted.
+     */
+    billingCycleAnchorDate: null;
+
+    cancellationReason: string | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    createdAt: number;
+
+    current: boolean;
+
+    /**
+     * Omitted.
+     */
+    currentBillingPeriodEnd: null;
+
+    /**
+     * Omitted.
+     */
+    currentBillingPeriodStart: null;
+
+    customerId: string;
+
+    defaultPaymentMethodId: string | null;
+
+    /**
+     * Omitted.
+     */
+    interval: null;
+
+    /**
+     * Omitted.
+     */
+    intervalCount: null;
+
+    isFreePlan: boolean | null;
+
+    livemode: boolean;
+
+    name: string | null;
+
+    organizationId: string;
+
+    priceId: string | null;
+
+    renews: boolean;
+
+    replacedBySubscriptionId: string | null;
+
+    runBillingAtPeriodStart: boolean | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    startDate: number;
+
+    status: 'active' | 'canceled' | 'credit_trial';
+
+    subscriptionItems: Array<NonRenewingSubscriptionDetails.SubscriptionItem>;
+
+    /**
+     * Omitted.
+     */
+    trialEnd: null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
+
+    /**
+     * Epoch milliseconds.
+     */
+    canceledAt?: number | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    cancelScheduledAt?: number | null;
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    experimental?: NonRenewingSubscriptionDetails.Experimental;
+
+    /**
+     * JSON object
+     */
+    metadata?: { [key: string]: string | number | boolean } | null;
+  }
+
+  export namespace NonRenewingSubscriptionDetails {
+    export interface SubscriptionItem {
+      id: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      name: string | null;
+
+      price:
+        | PricesAPI.SubscriptionPriceClientSelectSchema
+        | PricesAPI.SinglePaymentPriceClientSelectSchema
+        | PricesAPI.UsagePriceClientSelectSchema;
+
+      priceId: string;
+
+      /**
+       * A positive integer
+       */
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+    }
+
+    /**
+     * Experimental fields. May change without notice.
+     */
+    export interface Experimental {
+      featureItems: Array<
+        | CustomersAPI.ToggleSubscriptionItemFeatureRecord
+        | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
       >;
 
       usageMeterBalances: Array<Experimental.UsageMeterBalance>;
@@ -969,7 +1441,7 @@ export namespace CustomerRetrieveBillingResponse {
     export interface Experimental {
       featureItems: Array<
         | CustomersAPI.ToggleSubscriptionItemFeatureRecord
-        | Experimental.UsageCreditGrantSubscriptionItemFeatureRecord
+        | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
       >;
 
       usageMeterBalances: Array<Experimental.UsageMeterBalance>;
@@ -1225,7 +1697,7 @@ export namespace CustomerRetrieveBillingResponse {
     export interface Experimental {
       featureItems: Array<
         | CustomersAPI.ToggleSubscriptionItemFeatureRecord
-        | Experimental.UsageCreditGrantSubscriptionItemFeatureRecord
+        | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
       >;
 
       usageMeterBalances: Array<Experimental.UsageMeterBalance>;
@@ -1487,7 +1959,7 @@ export namespace CustomerRetrieveBillingResponse {
     export interface Experimental {
       featureItems: Array<
         | CustomersAPI.ToggleSubscriptionItemFeatureRecord
-        | Experimental.UsageCreditGrantSubscriptionItemFeatureRecord
+        | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
       >;
 
       usageMeterBalances: Array<Experimental.UsageMeterBalance>;
@@ -2161,6 +2633,7 @@ export declare namespace Customers {
   export {
     type CustomerClientSelectSchema as CustomerClientSelectSchema,
     type ToggleSubscriptionItemFeatureRecord as ToggleSubscriptionItemFeatureRecord,
+    type UsageCreditGrantSubscriptionItemFeatureRecord as UsageCreditGrantSubscriptionItemFeatureRecord,
     type CustomerCreateResponse as CustomerCreateResponse,
     type CustomerRetrieveResponse as CustomerRetrieveResponse,
     type CustomerUpdateResponse as CustomerUpdateResponse,
