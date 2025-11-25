@@ -43,6 +43,21 @@ export const tool: Tool = {
         },
         required: ['name', 'pricingModelId', 'slug'],
       },
+      price: {
+        type: 'object',
+        properties: {
+          type: {
+            type: 'string',
+            enum: ['single_payment', 'subscription', 'usage'],
+          },
+          unitPrice: {
+            type: 'number',
+          },
+          usageEventsPerUnit: {
+            type: 'number',
+          },
+        },
+      },
       jq_filter: {
         type: 'string',
         title: 'jq Filter',

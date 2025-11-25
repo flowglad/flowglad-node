@@ -45,7 +45,7 @@ export class Subscriptions extends APIResource {
   }
 
   /**
-   * Cancel a Subscription
+   * Cancel Subscription
    */
   cancel(
     id: string,
@@ -140,22 +140,21 @@ export interface SubscriptionCancelResponse {
 
 export interface SubscriptionCreateParams {
   /**
-   * The customer for the subscription.
-   */
-  customerId: string;
-
-  /**
-   * The price to subscribe to. Used to determine whether the subscription is
-   * usage-based or not, and set other defaults such as trial period and billing
-   * intervals.
-   */
-  priceId: string;
-
-  /**
    * The payment method to try if charges for the subscription fail with the default
    * payment method.
    */
   backupPaymentMethodId?: string;
+
+  /**
+   * The external ID of the customer. If not provided, customerId is required.
+   */
+  customerExternalId?: string;
+
+  /**
+   * The internal ID of the customer. If not provided, customerExternalId is
+   * required.
+   */
+  customerId?: string;
 
   /**
    * The default payment method to use when attempting to run charges for the
@@ -169,7 +168,7 @@ export interface SubscriptionCreateParams {
 
   /**
    * The interval of the subscription. If not provided, defaults to the interval of
-   * the price provided by `priceId`.
+   * the price provided by `priceId` or `priceSlug`.
    */
   interval?: 'day' | 'week' | 'month' | 'year';
 
@@ -186,9 +185,24 @@ export interface SubscriptionCreateParams {
 
   /**
    * The name of the subscription. If not provided, defaults to the name of the
-   * product associated with the price provided by 'priceId'.
+   * product associated with the price provided by 'priceId' or 'priceSlug'.
    */
   name?: string;
+
+  /**
+   * The id of the price to subscribe to. If not provided, priceSlug is required.
+   * Used to determine whether the subscription is usage-based or not, and set other
+   * defaults such as trial period and billing intervals.
+   */
+  priceId?: string;
+
+  /**
+   * The slug of the price to subscribe to. If not provided, priceId is required.
+   * Price slugs are scoped to the customer's pricing model. Used to determine
+   * whether the subscription is usage-based or not, and set other defaults such as
+   * trial period and billing intervals.
+   */
+  priceSlug?: string;
 
   /**
    * The quantity of the price purchased. If not provided, defaults to 1.

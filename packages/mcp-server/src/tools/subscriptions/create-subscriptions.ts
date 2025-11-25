@@ -22,19 +22,18 @@ export const tool: Tool = {
   inputSchema: {
     type: 'object',
     properties: {
-      customerId: {
-        type: 'string',
-        description: 'The customer for the subscription.',
-      },
-      priceId: {
-        type: 'string',
-        description:
-          'The price to subscribe to. Used to determine whether the subscription is usage-based or not, and set other defaults such as trial period and billing intervals.',
-      },
       backupPaymentMethodId: {
         type: 'string',
         description:
           'The payment method to try if charges for the subscription fail with the default payment method.',
+      },
+      customerExternalId: {
+        type: 'string',
+        description: 'The external ID of the customer. If not provided, customerId is required.',
+      },
+      customerId: {
+        type: 'string',
+        description: 'The internal ID of the customer. If not provided, customerExternalId is required.',
       },
       defaultPaymentMethodId: {
         type: 'string',
@@ -44,7 +43,7 @@ export const tool: Tool = {
       interval: {
         type: 'string',
         description:
-          'The interval of the subscription. If not provided, defaults to the interval of the price provided by `priceId`.',
+          'The interval of the subscription. If not provided, defaults to the interval of the price provided by `priceId` or `priceSlug`.',
         enum: ['day', 'week', 'month', 'year'],
       },
       intervalCount: {
@@ -60,7 +59,17 @@ export const tool: Tool = {
       name: {
         type: 'string',
         description:
-          "The name of the subscription. If not provided, defaults to the name of the product associated with the price provided by 'priceId'.",
+          "The name of the subscription. If not provided, defaults to the name of the product associated with the price provided by 'priceId' or 'priceSlug'.",
+      },
+      priceId: {
+        type: 'string',
+        description:
+          'The id of the price to subscribe to. If not provided, priceSlug is required. Used to determine whether the subscription is usage-based or not, and set other defaults such as trial period and billing intervals.',
+      },
+      priceSlug: {
+        type: 'string',
+        description:
+          "The slug of the price to subscribe to. If not provided, priceId is required. Price slugs are scoped to the customer's pricing model. Used to determine whether the subscription is usage-based or not, and set other defaults such as trial period and billing intervals.",
       },
       quantity: {
         type: 'number',
@@ -82,7 +91,7 @@ export const tool: Tool = {
           'A jq filter to apply to the response to include certain fields. Consult the output schema in the tool description to see the fields that are available.\n\nFor example: to include only the `name` field in every object of a results array, you can provide ".results[].name".\n\nFor more information, see the [jq documentation](https://jqlang.org/manual/).',
       },
     },
-    required: ['customerId', 'priceId'],
+    required: [],
   },
   annotations: {},
 };

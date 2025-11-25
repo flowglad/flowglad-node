@@ -33,10 +33,6 @@ export const tool: Tool = {
                 type: 'string',
                 description: 'The id of the Customer for this purchase session, as defined in your system',
               },
-              priceId: {
-                type: 'string',
-                description: 'The ID of the price the customer shall purchase',
-              },
               successUrl: {
                 type: 'string',
                 description: 'The URL to redirect to after the purchase is successful',
@@ -63,13 +59,23 @@ export const tool: Tool = {
                 description:
                   'Whether to preserve the billing cycle anchor date in the case that the customer already has an active subscription that renews. If not provided, defaults to false.',
               },
+              priceId: {
+                type: 'string',
+                description:
+                  'The ID of the price the customer shall purchase. If not provided, priceSlug is required.',
+              },
+              priceSlug: {
+                type: 'string',
+                description:
+                  'The slug of the price the customer shall purchase. If not provided, priceId is required.',
+              },
               quantity: {
                 type: 'number',
                 description:
                   'The quantity of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
               },
             },
-            required: ['cancelUrl', 'customerExternalId', 'priceId', 'successUrl', 'type'],
+            required: ['cancelUrl', 'customerExternalId', 'successUrl', 'type'],
           },
           {
             type: 'object',
@@ -81,10 +87,6 @@ export const tool: Tool = {
               cancelUrl: {
                 type: 'string',
                 description: 'The URL to redirect to after the purchase is canceled or fails',
-              },
-              priceId: {
-                type: 'string',
-                description: 'The ID of the price the customer shall purchase',
               },
               successUrl: {
                 type: 'string',
@@ -112,13 +114,23 @@ export const tool: Tool = {
                 description:
                   'Whether to preserve the billing cycle anchor date in the case that the customer already has an active subscription that renews. If not provided, defaults to false.',
               },
+              priceId: {
+                type: 'string',
+                description:
+                  'The ID of the price the customer shall purchase. If not provided, priceSlug is required.',
+              },
+              priceSlug: {
+                type: 'string',
+                description:
+                  "The slug of the price the customer shall purchase from the organization's default pricing model. If not provided, priceId is required.",
+              },
               quantity: {
                 type: 'number',
                 description:
                   'The quantity of the purchase or subscription created when this checkout session succeeds. Ignored if the checkout session is of type `invoice`.',
               },
             },
-            required: ['anonymous', 'cancelUrl', 'priceId', 'successUrl', 'type'],
+            required: ['anonymous', 'cancelUrl', 'successUrl', 'type'],
           },
           {
             type: 'object',
@@ -130,9 +142,6 @@ export const tool: Tool = {
               customerExternalId: {
                 type: 'string',
                 description: 'The id of the Customer for this purchase session, as defined in your system',
-              },
-              priceId: {
-                type: 'string',
               },
               successUrl: {
                 type: 'string',
@@ -161,14 +170,7 @@ export const tool: Tool = {
                   'Whether to preserve the billing cycle anchor date in the case that the customer already has an active subscription that renews. If not provided, defaults to false.',
               },
             },
-            required: [
-              'cancelUrl',
-              'customerExternalId',
-              'priceId',
-              'successUrl',
-              'targetSubscriptionId',
-              'type',
-            ],
+            required: ['cancelUrl', 'customerExternalId', 'successUrl', 'targetSubscriptionId', 'type'],
           },
           {
             type: 'object',

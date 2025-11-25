@@ -308,7 +308,7 @@ The following tools are available in this MCP server.
 - `retrieve_subscriptions` (`read`): Get Subscription
 - `list_subscriptions` (`read`): List Subscriptions
 - `adjust_subscriptions` (`write`): Note: Immediate adjustments are in private preview (Please let us know you use this feature: https://github.com/flowglad/flowglad/issues/616). Adjustments at the end of the current billing period are generally available.
-- `cancel_subscriptions` (`write`): Cancel a Subscription
+- `cancel_subscriptions` (`write`): Cancel Subscription
 
 ### Resource `usage_events`:
 

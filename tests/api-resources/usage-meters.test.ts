@@ -26,6 +26,7 @@ describe('resource usageMeters', () => {
   test.skip('create: required and optional params', async () => {
     const response = await client.usageMeters.create({
       usageMeter: { name: 'name', pricingModelId: 'pricingModelId', slug: 'slug', aggregationType: 'sum' },
+      price: { type: 'single_payment', unitPrice: 0, usageEventsPerUnit: 0 },
     });
   });
 

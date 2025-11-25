@@ -503,6 +503,18 @@ export namespace CheckoutSessionCreateParams {
     preserveBillingCycleAnchor?: boolean;
 
     /**
+     * The ID of the price the customer shall purchase. If not provided, priceSlug is
+     * required.
+     */
+    priceId?: string;
+
+    /**
+     * The slug of the price the customer shall purchase. If not provided, priceId is
+     * required.
+     */
+    priceSlug?: string;
+
+    /**
      * The quantity of the purchase or subscription created when this checkout session
      * succeeds. Ignored if the checkout session is of type `invoice`. If not provided, defaults to 1.
      */
@@ -521,11 +533,6 @@ export namespace CheckoutSessionCreateParams {
      * The URL to redirect to after the purchase is canceled or fails
      */
     cancelUrl: string;
-
-    /**
-     * The ID of the price the customer shall purchase
-     */
-    priceId: string;
 
     /**
      * The URL to redirect to after the purchase is successful
@@ -555,6 +562,18 @@ export namespace CheckoutSessionCreateParams {
     preserveBillingCycleAnchor?: boolean;
 
     /**
+     * The ID of the price the customer shall purchase. If not provided, priceSlug is
+     * required.
+     */
+    priceId?: string;
+
+    /**
+     * The slug of the price the customer shall purchase from the organization's
+     * default pricing model. If not provided, priceId is required.
+     */
+    priceSlug?: string;
+
+    /**
      * The quantity of the purchase or subscription created when this checkout session
      * succeeds. Ignored if the checkout session is of type `invoice`.
      */
@@ -571,8 +590,6 @@ export namespace CheckoutSessionCreateParams {
      * The id of the Customer for this purchase session, as defined in your system
      */
     customerExternalId: string;
-
-    priceId: string;
 
     /**
      * The URL to redirect to after the purchase is successful
