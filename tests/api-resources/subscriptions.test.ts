@@ -9,8 +9,8 @@ const client = new Flowglad({
 
 describe('resource subscriptions', () => {
   // Prism tests are disabled
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.subscriptions.create({ customerId: 'customerId', priceId: 'priceId' });
+  test.skip('create', async () => {
+    const responsePromise = client.subscriptions.create({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,23 +18,6 @@ describe('resource subscriptions', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('create: required and optional params', async () => {
-    const response = await client.subscriptions.create({
-      customerId: 'customerId',
-      priceId: 'priceId',
-      backupPaymentMethodId: 'backupPaymentMethodId',
-      defaultPaymentMethodId: 'defaultPaymentMethodId',
-      interval: 'day',
-      intervalCount: 0,
-      metadata: { foo: 'string' },
-      name: 'name',
-      quantity: 0,
-      startDate: 'startDate',
-      trialEnd: 0,
-    });
   });
 
   // Prism tests are disabled

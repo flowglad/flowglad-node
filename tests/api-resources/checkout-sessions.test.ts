@@ -14,7 +14,6 @@ describe('resource checkoutSessions', () => {
       checkoutSession: {
         cancelUrl: 'cancelUrl',
         customerExternalId: 'customerExternalId',
-        priceId: 'priceId',
         successUrl: 'successUrl',
         type: 'product',
       },
@@ -40,7 +39,7 @@ describe('resource checkoutSessions', () => {
         outputMetadata: { foo: 'string' },
         outputName: 'outputName',
         preserveBillingCycleAnchor: true,
-        priceId: '',
+        priceId: 'abc',
         quantity: 0,
       },
     });

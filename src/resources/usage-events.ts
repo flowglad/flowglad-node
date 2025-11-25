@@ -75,7 +75,7 @@ export namespace UsageEventCreateResponse {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties?: { [key: string]: unknown };
+    properties?: { [key: string]: unknown } | null;
   }
 }
 
@@ -133,7 +133,7 @@ export namespace UsageEventRetrieveResponse {
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties?: { [key: string]: unknown };
+    properties?: { [key: string]: unknown } | null;
   }
 }
 
@@ -145,8 +145,6 @@ export namespace UsageEventCreateParams {
   export interface UsageEvent {
     amount: number;
 
-    priceId: string;
-
     subscriptionId: string;
 
     /**
@@ -156,10 +154,20 @@ export namespace UsageEventCreateParams {
     transactionId: string;
 
     /**
+     * The internal ID of the price. If not provided, priceSlug is required.
+     */
+    priceId?: string;
+
+    /**
+     * The slug of the price. If not provided, priceId is required.
+     */
+    priceSlug?: string;
+
+    /**
      * Properties for the usage event. Only required when using the
      * "count_distinct_properties" aggregation type.
      */
-    properties?: { [key: string]: unknown };
+    properties?: { [key: string]: unknown } | null;
 
     /**
      * The date the usage occurred. If the usage occurs in a date that is outside of

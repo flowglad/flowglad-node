@@ -326,9 +326,9 @@ export interface ProductUpdateParams {
   featureIds?: Array<string>;
 
   price?:
-    | ProductUpdateParams.SubscriptionPriceClientUpdateSchema
-    | ProductUpdateParams.SinglePaymentPriceClientUpdateSchema
-    | ProductUpdateParams.UsagePriceClientUpdateSchema;
+    | ProductUpdateParams.SubscriptionPriceClientInsertSchema
+    | ProductUpdateParams.SinglePaymentPriceClientInsertSchema
+    | ProductUpdateParams.UsagePriceClientInsertSchema;
 }
 
 export namespace ProductUpdateParams {
@@ -352,55 +352,148 @@ export namespace ProductUpdateParams {
     slug?: string | null;
   }
 
-  export interface SubscriptionPriceClientUpdateSchema {
-    id: string;
+  export interface SubscriptionPriceClientInsertSchema {
+    /**
+     * A positive integer
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
      * Whether or not this price is the default price for the product.
      */
     isDefault: boolean;
+
+    productId: string;
 
     type: 'subscription';
 
+    /**
+     * The price per unit. This should be in the smallest unit of the currency. For
+     * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
+     * cents.
+     */
+    unitPrice: number;
+
     active?: boolean;
 
     name?: string | null;
 
     slug?: string | null;
+
+    /**
+     * The trial period in days. If the trial period is 0 or null, there will be no
+     * trial period.
+     */
+    trialPeriodDays?: number | null;
+
+    /**
+     * Omitted.
+     */
+    usageEventsPerUnit?: null;
+
+    /**
+     * Omitted.
+     */
+    usageMeterId?: null;
   }
 
-  export interface SinglePaymentPriceClientUpdateSchema {
-    id: string;
-
+  export interface SinglePaymentPriceClientInsertSchema {
     /**
      * Whether or not this price is the default price for the product.
      */
     isDefault: boolean;
+
+    productId: string;
 
     type: 'single_payment';
 
+    /**
+     * The price per unit. This should be in the smallest unit of the currency. For
+     * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
+     * cents.
+     */
+    unitPrice: number;
+
     active?: boolean;
+
+    /**
+     * Omitted.
+     */
+    intervalCount?: null;
+
+    /**
+     * Omitted.
+     */
+    intervalUnit?: null;
 
     name?: string | null;
 
     slug?: string | null;
+
+    /**
+     * Omitted.
+     */
+    trialPeriodDays?: null;
+
+    /**
+     * Omitted.
+     */
+    usageEventsPerUnit?: null;
+
+    /**
+     * Omitted.
+     */
+    usageMeterId?: null;
   }
 
-  export interface UsagePriceClientUpdateSchema {
-    id: string;
+  export interface UsagePriceClientInsertSchema {
+    /**
+     * A positive integer
+     */
+    intervalCount: number;
+
+    intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
      * Whether or not this price is the default price for the product.
      */
     isDefault: boolean;
 
+    productId: string;
+
     type: 'usage';
+
+    /**
+     * The price per unit. This should be in the smallest unit of the currency. For
+     * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
+     * cents.
+     */
+    unitPrice: number;
+
+    /**
+     * The number of usage events per unit. Used to determine how to map usage events
+     * to quantities when raising invoices for usage.
+     */
+    usageEventsPerUnit: number;
+
+    /**
+     * The usage meter that uses this price. All usage events on that meter must be
+     * associated with a price that is also associated with that usage meter.
+     */
+    usageMeterId: string;
 
     active?: boolean;
 
     name?: string | null;
 
     slug?: string | null;
+
+    /**
+     * Omitted.
+     */
+    trialPeriodDays?: null;
   }
 }
 
