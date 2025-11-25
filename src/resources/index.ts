@@ -18,6 +18,7 @@ export {
   Customers,
   type CustomerClientSelectSchema,
   type ToggleSubscriptionItemFeatureRecord,
+  type UsageCreditGrantSubscriptionItemFeatureRecord,
   type CustomerCreateResponse,
   type CustomerRetrieveResponse,
   type CustomerUpdateResponse,
