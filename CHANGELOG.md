@@ -1,4 +1,12 @@
 # Changelog
+## 0.24.0 (2025-11-26)
+
+Full Changelog: [v0.23.0...v0.24.0](https://github.com/flowglad/flowglad-node/compare/v0.23.0...v0.24.0)
+
+### Features
+
+* **mcp:** add detail field to docs search tool ([8f77fc6](https://github.com/flowglad/flowglad-node/commit/8f77fc63d5b4f1bd1d7dd91540fcda293eb23446))
+
 ## 0.23.0 (2025-11-25)
 
 Full Changelog: [v0.22.0...v0.23.0](https://github.com/flowglad/flowglad-node/compare/v0.22.0...v0.23.0)
