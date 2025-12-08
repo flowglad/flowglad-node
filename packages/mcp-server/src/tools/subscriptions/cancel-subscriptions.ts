@@ -40,20 +40,6 @@ export const tool: Tool = {
           {
             type: 'object',
             properties: {
-              endDate: {
-                type: 'integer',
-                description: 'Epoch milliseconds.',
-              },
-              timing: {
-                type: 'string',
-                enum: ['at_future_date'],
-              },
-            },
-            required: ['endDate', 'timing'],
-          },
-          {
-            type: 'object',
-            properties: {
               timing: {
                 type: 'string',
                 enum: ['immediately'],

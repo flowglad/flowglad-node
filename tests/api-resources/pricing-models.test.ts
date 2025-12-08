@@ -23,7 +23,7 @@ describe('resource pricingModels', () => {
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.pricingModels.create({
-      pricingModel: { name: 'name', integrationGuideHash: 'integrationGuideHash', isDefault: true },
+      pricingModel: { name: 'name', isDefault: true },
       defaultPlanIntervalUnit: 'day',
     });
   });
@@ -55,7 +55,7 @@ describe('resource pricingModels', () => {
   // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.pricingModels.update('id', {
-      pricingModel: { id: 'id', integrationGuideHash: 'integrationGuideHash', isDefault: true, name: 'name' },
+      pricingModel: { id: 'id', isDefault: true, name: 'name' },
     });
   });
 
