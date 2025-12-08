@@ -1013,7 +1013,6 @@ export namespace CustomerRetrieveBillingResponse {
      */
     purchaseDate?: number | null;
   }
-
 }
 
 export interface CustomerCreateParams {
