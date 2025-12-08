@@ -47,7 +47,7 @@ export const handler = async (client: Flowglad, args: Record<string, unknown> | 
   try {
     return asTextContentResult(await maybeFilter(jq_filter, await client.paymentMethods.list(body)));
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Flowglad.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;

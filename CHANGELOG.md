@@ -1,4 +1,32 @@
 # Changelog
+## 0.24.0 (2025-12-08)
+
+Full Changelog: [v0.23.0...v0.24.0](https://github.com/flowglad/flowglad-node/compare/v0.23.0...v0.24.0)
+
+### Features
+
+* **api:** manual updates ([533552d](https://github.com/flowglad/flowglad-node/commit/533552d8c6d991a0112811d45878478708d438d6))
+* **mcp:** add detail field to docs search tool ([8f77fc6](https://github.com/flowglad/flowglad-node/commit/8f77fc63d5b4f1bd1d7dd91540fcda293eb23446))
+* **mcp:** add typescript check to code execution tool ([7578b49](https://github.com/flowglad/flowglad-node/commit/7578b4915985dd8f6e838391edf606fd60647963))
+* **mcp:** handle code mode calls in the Stainless API ([42fd808](https://github.com/flowglad/flowglad-node/commit/42fd808cd8ec2a409488eb75547f350346d77dc5))
+* **mcp:** return logs on code tool errors ([709d568](https://github.com/flowglad/flowglad-node/commit/709d568089128af16a33960bd8528be7774c99f6))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([42ff072](https://github.com/flowglad/flowglad-node/commit/42ff072b8078f78c2ee00fe024a5ed44c552301c))
+* **mcp:** return correct lines on typescript errors ([4597857](https://github.com/flowglad/flowglad-node/commit/4597857934207a36fbc78b4ca73e21c9b19d1da5))
+* **mcp:** return tool execution error on api error ([53a87cf](https://github.com/flowglad/flowglad-node/commit/53a87cfb1c4b1dfdd23c14ad392af14ea4f17f18))
+
+
+### Chores
+
+* **client:** fix logger property type ([78eb993](https://github.com/flowglad/flowglad-node/commit/78eb993f61b5c5528942ef52cc778794833613d2))
+* **internal:** codegen related update ([07d7563](https://github.com/flowglad/flowglad-node/commit/07d7563a6fcd0f41af3c473fafbb170a1fb5b81f))
+* **internal:** codegen related update ([8e7dd46](https://github.com/flowglad/flowglad-node/commit/8e7dd46ab42f14aa74bb605b4438ce1df4ee6e34))
+* **internal:** upgrade eslint ([6b56a2d](https://github.com/flowglad/flowglad-node/commit/6b56a2d8837a4d089528993bb6c3f45bd03baf12))
+* use latest @modelcontextprotocol/sdk ([430a047](https://github.com/flowglad/flowglad-node/commit/430a04773b86428e9b5ee9be10d6884bb97e9bd7))
+
 ## 0.23.0 (2025-11-25)
 
 Full Changelog: [v0.22.0...v0.23.0](https://github.com/flowglad/flowglad-node/compare/v0.22.0...v0.23.0)

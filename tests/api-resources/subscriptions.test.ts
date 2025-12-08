@@ -123,4 +123,16 @@ describe('resource subscriptions', () => {
       cancellation: { timing: 'at_end_of_current_billing_period' },
     });
   });
+
+  // Prism tests are disabled
+  test.skip('uncancel', async () => {
+    const responsePromise = client.subscriptions.uncancel('id');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
 });

@@ -17,6 +17,8 @@ export {
 export {
   Customers,
   type CustomerClientSelectSchema,
+  type NonRenewingSubscriptionDetails,
+  type StandardSubscriptionDetails,
   type ToggleSubscriptionItemFeatureRecord,
   type UsageCreditGrantSubscriptionItemFeatureRecord,
   type CustomerCreateResponse,
@@ -112,6 +114,7 @@ export {
   type SubscriptionListResponse,
   type SubscriptionAdjustResponse,
   type SubscriptionCancelResponse,
+  type SubscriptionUncancelResponse,
   type SubscriptionCreateParams,
   type SubscriptionListParams,
   type SubscriptionAdjustParams,

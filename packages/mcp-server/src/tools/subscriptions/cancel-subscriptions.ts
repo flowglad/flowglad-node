@@ -40,20 +40,6 @@ export const tool: Tool = {
           {
             type: 'object',
             properties: {
-              endDate: {
-                type: 'integer',
-                description: 'Epoch milliseconds.',
-              },
-              timing: {
-                type: 'string',
-                enum: ['at_future_date'],
-              },
-            },
-            required: ['endDate', 'timing'],
-          },
-          {
-            type: 'object',
-            properties: {
               timing: {
                 type: 'string',
                 enum: ['immediately'],
@@ -80,7 +66,7 @@ export const handler = async (client: Flowglad, args: Record<string, unknown> | 
   try {
     return asTextContentResult(await maybeFilter(jq_filter, await client.subscriptions.cancel(id, body)));
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Flowglad.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;

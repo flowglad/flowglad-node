@@ -325,6 +325,10 @@ export interface ProductUpdateParams {
 
   featureIds?: Array<string>;
 
+  /**
+   * The latest price fields. Ignored if the product is a default product for its
+   * pricing model.
+   */
   price?:
     | ProductUpdateParams.SubscriptionPriceClientInsertSchema
     | ProductUpdateParams.SinglePaymentPriceClientInsertSchema

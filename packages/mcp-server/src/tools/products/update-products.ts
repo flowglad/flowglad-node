@@ -232,6 +232,8 @@ export const tool: Tool = {
             ],
           },
         ],
+        description:
+          'The latest price fields. Ignored if the product is a default product for its pricing model.',
       },
       jq_filter: {
         type: 'string',
@@ -252,7 +254,7 @@ export const handler = async (client: Flowglad, args: Record<string, unknown> | 
   try {
     return asTextContentResult(await maybeFilter(jq_filter, await client.products.update(id, body)));
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Flowglad.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
