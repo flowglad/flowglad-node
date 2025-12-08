@@ -218,8 +218,6 @@ export interface PricingModelDetailsRecord {
    */
   createdAt: number;
 
-  integrationGuideHash: string | null;
-
   isDefault: boolean;
 
   livemode: boolean;

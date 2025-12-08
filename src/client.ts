@@ -40,6 +40,8 @@ import {
   CustomerUpdateParams,
   CustomerUpdateResponse,
   Customers,
+  NonRenewingSubscriptionDetails,
+  StandardSubscriptionDetails,
   ToggleSubscriptionItemFeatureRecord,
   UsageCreditGrantSubscriptionItemFeatureRecord,
 } from './resources/customers';
@@ -130,6 +132,7 @@ import {
   SubscriptionListParams,
   SubscriptionListResponse,
   SubscriptionRetrieveResponse,
+  SubscriptionUncancelResponse,
   Subscriptions,
 } from './resources/subscriptions';
 import {
@@ -962,6 +965,8 @@ export declare namespace Flowglad {
   export {
     Customers as Customers,
     type CustomerClientSelectSchema as CustomerClientSelectSchema,
+    type NonRenewingSubscriptionDetails as NonRenewingSubscriptionDetails,
+    type StandardSubscriptionDetails as StandardSubscriptionDetails,
     type ToggleSubscriptionItemFeatureRecord as ToggleSubscriptionItemFeatureRecord,
     type UsageCreditGrantSubscriptionItemFeatureRecord as UsageCreditGrantSubscriptionItemFeatureRecord,
     type CustomerCreateResponse as CustomerCreateResponse,
@@ -998,6 +1003,7 @@ export declare namespace Flowglad {
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
     type SubscriptionCancelResponse as SubscriptionCancelResponse,
+    type SubscriptionUncancelResponse as SubscriptionUncancelResponse,
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionListParams as SubscriptionListParams,
     type SubscriptionAdjustParams as SubscriptionAdjustParams,

@@ -309,6 +309,7 @@ The following tools are available in this MCP server.
 - `list_subscriptions` (`read`): List Subscriptions
 - `adjust_subscriptions` (`write`): Note: Immediate adjustments are in private preview (Please let us know you use this feature: https://github.com/flowglad/flowglad/issues/616). Adjustments at the end of the current billing period are generally available.
 - `cancel_subscriptions` (`write`): Cancel Subscription
+- `uncancel_subscriptions` (`write`): Reverses a scheduled subscription cancellation. The subscription must be in `cancellation_scheduled` status. This will restore the subscription to its previous status (typically `active` or `trialing`) and reschedule any billing runs that were aborted. For paid subscriptions, a valid payment method is required.
 
 ### Resource `usage_events`:
 

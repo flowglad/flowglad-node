@@ -54,6 +54,17 @@ export class Subscriptions extends APIResource {
   ): APIPromise<SubscriptionCancelResponse> {
     return this._client.post(path`/api/v1/subscriptions/${id}/cancel`, { body, ...options });
   }
+
+  /**
+   * Reverses a scheduled subscription cancellation. The subscription must be in
+   * `cancellation_scheduled` status. This will restore the subscription to its
+   * previous status (typically `active` or `trialing`) and reschedule any billing
+   * runs that were aborted. For paid subscriptions, a valid payment method is
+   * required.
+   */
+  uncancel(id: string, options?: RequestOptions): APIPromise<SubscriptionUncancelResponse> {
+    return this._client.post(path`/api/v1/subscriptions/${id}/uncancel`, options);
+  }
 }
 
 export interface SubscriptionCreateResponse {
@@ -135,6 +146,10 @@ export namespace SubscriptionAdjustResponse {
 }
 
 export interface SubscriptionCancelResponse {
+  subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
+}
+
+export interface SubscriptionUncancelResponse {
   subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
 }
 
@@ -439,22 +454,12 @@ export namespace SubscriptionAdjustParams {
 export interface SubscriptionCancelParams {
   cancellation:
     | SubscriptionCancelParams.CancelSubscriptionAtEndOfBillingPeriodInput
-    | SubscriptionCancelParams.CancelSubscriptionAtFutureDateInput
     | SubscriptionCancelParams.CancelSubscriptionImmediatelyInput;
 }
 
 export namespace SubscriptionCancelParams {
   export interface CancelSubscriptionAtEndOfBillingPeriodInput {
     timing: 'at_end_of_current_billing_period';
-  }
-
-  export interface CancelSubscriptionAtFutureDateInput {
-    /**
-     * Epoch milliseconds.
-     */
-    endDate: number;
-
-    timing: 'at_future_date';
   }
 
   export interface CancelSubscriptionImmediatelyInput {
@@ -469,6 +474,7 @@ export declare namespace Subscriptions {
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionAdjustResponse as SubscriptionAdjustResponse,
     type SubscriptionCancelResponse as SubscriptionCancelResponse,
+    type SubscriptionUncancelResponse as SubscriptionUncancelResponse,
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionListParams as SubscriptionListParams,
     type SubscriptionAdjustParams as SubscriptionAdjustParams,

@@ -232,6 +232,8 @@ export const tool: Tool = {
             ],
           },
         ],
+        description:
+          'The latest price fields. Ignored if the product is a default product for its pricing model.',
       },
       jq_filter: {
         type: 'string',

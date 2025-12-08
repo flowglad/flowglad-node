@@ -69,8 +69,6 @@ export interface PricingModelClientSelectSchema {
    */
   createdAt: number;
 
-  integrationGuideHash: string | null;
-
   isDefault: boolean;
 
   livemode: boolean;
@@ -127,8 +125,6 @@ export namespace PricingModelCreateParams {
   export interface PricingModel {
     name: string;
 
-    integrationGuideHash?: string | null;
-
     isDefault?: boolean;
   }
 }
@@ -140,8 +136,6 @@ export interface PricingModelUpdateParams {
 export namespace PricingModelUpdateParams {
   export interface PricingModel {
     id: string;
-
-    integrationGuideHash?: string | null;
 
     isDefault?: boolean;
 

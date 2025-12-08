@@ -138,6 +138,8 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/customers.ts">CustomerClientSelectSchema</a></code>
+- <code><a href="./src/resources/customers.ts">NonRenewingSubscriptionDetails</a></code>
+- <code><a href="./src/resources/customers.ts">StandardSubscriptionDetails</a></code>
 - <code><a href="./src/resources/customers.ts">ToggleSubscriptionItemFeatureRecord</a></code>
 - <code><a href="./src/resources/customers.ts">UsageCreditGrantSubscriptionItemFeatureRecord</a></code>
 - <code><a href="./src/resources/customers.ts">CustomerCreateResponse</a></code>
@@ -190,6 +192,7 @@ Types:
 - <code><a href="./src/resources/subscriptions.ts">SubscriptionListResponse</a></code>
 - <code><a href="./src/resources/subscriptions.ts">SubscriptionAdjustResponse</a></code>
 - <code><a href="./src/resources/subscriptions.ts">SubscriptionCancelResponse</a></code>
+- <code><a href="./src/resources/subscriptions.ts">SubscriptionUncancelResponse</a></code>
 
 Methods:
 
@@ -198,6 +201,7 @@ Methods:
 - <code title="get /api/v1/subscriptions">client.subscriptions.<a href="./src/resources/subscriptions.ts">list</a>({ ...params }) -> SubscriptionListResponse</code>
 - <code title="post /api/v1/subscriptions/{id}/adjust">client.subscriptions.<a href="./src/resources/subscriptions.ts">adjust</a>(id, { ...params }) -> SubscriptionAdjustResponse</code>
 - <code title="post /api/v1/subscriptions/{id}/cancel">client.subscriptions.<a href="./src/resources/subscriptions.ts">cancel</a>(id, { ...params }) -> SubscriptionCancelResponse</code>
+- <code title="post /api/v1/subscriptions/{id}/uncancel">client.subscriptions.<a href="./src/resources/subscriptions.ts">uncancel</a>(id) -> SubscriptionUncancelResponse</code>
 
 # UsageEvents
 

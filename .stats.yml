@@ -1,4 +1,4 @@
-configured_endpoints: 45
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/flowglad%2Fflowglad-71d495f9b7d8f8c9d80340c0db0a71352f19b22a53688dbc268c7d9137390f2e.yml
-openapi_spec_hash: c6293dd58700ec577dc2e10f8eb8f061
-config_hash: 3f7672efb046f15f1ee86bcb480da1a2
+configured_endpoints: 46
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/flowglad%2Fflowglad-d53efdb1a90202370f6191070b177c81adc4a91fb55e98afb34c353a22f53f80.yml
+openapi_spec_hash: ea6ffc0d58287a5e8974898352d7e661
+config_hash: 9e63503c65fe4eb194dc4892d4a12985
