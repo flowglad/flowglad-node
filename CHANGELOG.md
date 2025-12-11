@@ -1,4 +1,17 @@
 # Changelog
+## 0.24.1 (2025-12-11)
+
+Full Changelog: [v0.24.0...v0.24.1](https://github.com/flowglad/flowglad-node/compare/v0.24.0...v0.24.1)
+
+### Bug Fixes
+
+* **mcp:** add client instantiation options to code tool ([9af9932](https://github.com/flowglad/flowglad-node/commit/9af99329f36d61f792255d4695210d67940260c0))
+
+
+### Chores
+
+* **mcp:** update lockfile ([06783ad](https://github.com/flowglad/flowglad-node/commit/06783ad1f379228e59aac505e5eba2fa824d8e94))
+
 ## 0.24.0 (2025-12-08)
 
 Full Changelog: [v0.23.0...v0.24.0](https://github.com/flowglad/flowglad-node/compare/v0.23.0...v0.24.0)
