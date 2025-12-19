@@ -21,7 +21,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'flowglad_node_api',
-      version: '0.24.0',
+      version: '0.25.0',
     },
     { capabilities: { tools: {}, logging: {} } },
   );

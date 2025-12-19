@@ -1,4 +1,24 @@
 # Changelog
+## 0.25.0 (2025-12-19)
+
+Full Changelog: [v0.24.0...v0.25.0](https://github.com/flowglad/flowglad-node/compare/v0.24.0...v0.25.0)
+
+### ⚠ BREAKING CHANGES
+
+* **mcp:** remove deprecated tool schemes
+* **mcp:** **Migration:** To migrate, simply modify the command used to invoke the MCP server. Currently, the only supported tool scheme is code mode. Now, starting the server with just `node /path/to/mcp/server` or `npx package-name` will invoke code tools: changing your command to one of these is likely all you will need to do.
+
+### Bug Fixes
+
+* **mcp:** add client instantiation options to code tool ([9af9932](https://github.com/flowglad/flowglad-node/commit/9af99329f36d61f792255d4695210d67940260c0))
+* **mcp:** pass base url to code tool ([3ad4714](https://github.com/flowglad/flowglad-node/commit/3ad4714d57a8aa9abe6a903a253033516c944fae))
+
+
+### Chores
+
+* **mcp:** remove deprecated tool schemes ([6d54339](https://github.com/flowglad/flowglad-node/commit/6d5433967c016f96cea8294cbc9bc7b34d869a6e))
+* **mcp:** update lockfile ([06783ad](https://github.com/flowglad/flowglad-node/commit/06783ad1f379228e59aac505e5eba2fa824d8e94))
+
 ## 0.24.0 (2025-12-08)
 
 Full Changelog: [v0.23.0...v0.24.0](https://github.com/flowglad/flowglad-node/compare/v0.23.0...v0.24.0)
