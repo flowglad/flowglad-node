@@ -39,7 +39,7 @@ For clients with a configuration JSON, it might look something like this:
 If you use Cursor, you can install the MCP server by using the button below. You will need to set your environment variables
 in Cursor's `mcp.json`, which can be found in Cursor Settings > Tools & MCP > New MCP Server.
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=@flowglad/node-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBmbG93Z2xhZC9ub2RlLW1jcCJdLCJlbnYiOnsiRkxPV0dMQURfU0VDUkVUX0tFWSI6IlNldCB5b3VyIEZMT1dHTEFEX1NFQ1JFVF9LRVkgaGVyZS4ifX0)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=%40flowglad%2Fnode-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBmbG93Z2xhZC9ub2RlLW1jcCJdLCJlbnYiOnsiRkxPV0dMQURfU0VDUkVUX0tFWSI6IlNldCB5b3VyIEZMT1dHTEFEX1NFQ1JFVF9LRVkgaGVyZS4ifX0)
 
 ### VS Code
 
@@ -54,7 +54,7 @@ If you use Claude Code, you can install the MCP server by running the command be
 environment variables in Claude Code's `.claude.json`, which can be found in your home directory.
 
 ```
-claude mcp add --transport stdio flowglad_node_api --env FLOWGLAD_SECRET_KEY="Your FLOWGLAD_SECRET_KEY here." -- npx -y @flowglad/node-mcp
+claude mcp add flowglad_node_mcp_api --env FLOWGLAD_SECRET_KEY="Your FLOWGLAD_SECRET_KEY here." -- npx -y @flowglad/node-mcp
 ```
 
 ## Code Mode
