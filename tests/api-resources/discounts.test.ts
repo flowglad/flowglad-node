@@ -11,7 +11,13 @@ describe('resource discounts', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.discounts.create({
-      discount: { amount: 1, amountType: 'percent', code: 'code', duration: 'once', name: 'name' },
+      discount: {
+        amount: 1,
+        amountType: 'percent',
+        code: 'code',
+        duration: 'once',
+        name: 'name',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -52,7 +58,13 @@ describe('resource discounts', () => {
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.discounts.update('id', {
-      discount: { id: 'id', amount: 1, amountType: 'percent', code: 'code', duration: 'once' },
+      discount: {
+        id: 'id',
+        amount: 1,
+        amountType: 'percent',
+        code: 'code',
+        duration: 'once',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

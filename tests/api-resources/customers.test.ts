@@ -11,7 +11,11 @@ describe('resource customers', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.customers.create({
-      customer: { email: 'email', externalId: 'externalId', name: 'name' },
+      customer: {
+        email: 'email',
+        externalId: 'externalId',
+        name: 'name',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

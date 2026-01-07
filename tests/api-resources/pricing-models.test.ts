@@ -55,7 +55,11 @@ describe('resource pricingModels', () => {
   // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.pricingModels.update('id', {
-      pricingModel: { id: 'id', isDefault: true, name: 'name' },
+      pricingModel: {
+        id: 'id',
+        isDefault: true,
+        name: 'name',
+      },
     });
   });
 

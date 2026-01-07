@@ -52,7 +52,11 @@ describe('resource prices', () => {
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.prices.update('id', {
-      price: { id: 'id', isDefault: true, type: 'subscription' },
+      price: {
+        id: 'id',
+        isDefault: true,
+        type: 'subscription',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -66,7 +70,14 @@ describe('resource prices', () => {
   // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.prices.update('id', {
-      price: { id: 'id', isDefault: true, type: 'subscription', active: true, name: 'name', slug: 'slug' },
+      price: {
+        id: 'id',
+        isDefault: true,
+        type: 'subscription',
+        active: true,
+        name: 'name',
+        slug: 'slug',
+      },
     });
   });
 
