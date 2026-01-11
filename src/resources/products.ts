@@ -103,7 +103,11 @@ export interface ProductRetrieveResponse {
 
   description: string | null;
 
-  features: Array<Shared.ToggleFeatureClientSelectSchema | Shared.UsageCreditGrantFeatureClientSelectSchema>;
+  features: Array<
+    | Shared.ToggleFeatureClientSelectSchema
+    | Shared.UsageCreditGrantFeatureClientSelectSchema
+    | ProductRetrieveResponse.ResourceFeatureClientSelectSchema
+  >;
 
   imageURL: string | null;
 
@@ -131,6 +135,49 @@ export interface ProductRetrieveResponse {
    * Epoch milliseconds.
    */
   updatedAt: number;
+}
+
+export namespace ProductRetrieveResponse {
+  export interface ResourceFeatureClientSelectSchema {
+    id: string;
+
+    active: boolean;
+
+    /**
+     * A positive integer
+     */
+    amount: number;
+
+    /**
+     * Epoch milliseconds.
+     */
+    createdAt: number;
+
+    description: string;
+
+    livemode: boolean;
+
+    name: string;
+
+    organizationId: string;
+
+    pricingModelId: string;
+
+    resourceId: string;
+
+    slug: string;
+
+    type: 'resource';
+
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
+
+    renewalFrequency?: null;
+
+    usageMeterId?: null;
+  }
 }
 
 export interface ProductUpdateResponse {

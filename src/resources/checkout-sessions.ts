@@ -66,6 +66,8 @@ export interface ActivateSubscriptionCheckoutSessionClientSelectSchema {
 
   priceId: string | null;
 
+  pricingModelId: string;
+
   quantity: number;
 
   status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
@@ -141,6 +143,8 @@ export interface AddPaymentMethodCheckoutSessionClientSelectSchema {
 
   priceId: string | null;
 
+  pricingModelId: string;
+
   purchaseId: string | null;
 
   quantity: number;
@@ -180,82 +184,6 @@ export interface AddPaymentMethodCheckoutSessionClientSelectSchema {
   targetSubscriptionId?: string | null;
 }
 
-export interface InvoiceCheckoutSessionClientSelectSchema {
-  id: string;
-
-  /**
-   * Omitted.
-   */
-  automaticallyUpdateSubscriptions: null;
-
-  /**
-   * Epoch milliseconds.
-   */
-  createdAt: number;
-
-  customerEmail: string | null;
-
-  customerId: string | null;
-
-  customerName: string | null;
-
-  discountId: string | null;
-
-  /**
-   * Epoch milliseconds.
-   */
-  expires: number;
-
-  invoiceId: string;
-
-  livemode: boolean;
-
-  organizationId: string;
-
-  /**
-   * Omitted.
-   */
-  outputMetadata: null;
-
-  outputName: string | null;
-
-  /**
-   * Omitted.
-   */
-  priceId: null;
-
-  /**
-   * Omitted.
-   */
-  purchaseId: null;
-
-  quantity: number;
-
-  status: 'open' | 'pending' | 'succeeded' | 'failed' | 'expired';
-
-  /**
-   * Omitted.
-   */
-  targetSubscriptionId: null;
-
-  type: 'invoice';
-
-  /**
-   * Epoch milliseconds.
-   */
-  updatedAt: number;
-
-  billingAddress?: Shared.BillingAddress | null;
-
-  cancelUrl?: string | null;
-
-  paymentMethodType?: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
-
-  preserveBillingCycleAnchor?: boolean;
-
-  successUrl?: string | null;
-}
-
 export interface ProductCheckoutSessionClientSelectSchema {
   id: string;
 
@@ -284,6 +212,8 @@ export interface ProductCheckoutSessionClientSelectSchema {
   outputName: string | null;
 
   priceId: string;
+
+  pricingModelId: string;
 
   purchaseId: string | null;
 
@@ -362,6 +292,8 @@ export interface PurchaseCheckoutSessionClientSelectSchema {
 
   priceId: string;
 
+  pricingModelId: string;
+
   purchaseId: string;
 
   quantity: number;
@@ -408,7 +340,6 @@ export interface CheckoutSessionCreateResponse {
    */
   checkoutSession:
     | PurchaseCheckoutSessionClientSelectSchema
-    | InvoiceCheckoutSessionClientSelectSchema
     | ProductCheckoutSessionClientSelectSchema
     | AddPaymentMethodCheckoutSessionClientSelectSchema
     | ActivateSubscriptionCheckoutSessionClientSelectSchema;
@@ -426,7 +357,6 @@ export interface CheckoutSessionRetrieveResponse {
    */
   checkoutSession:
     | PurchaseCheckoutSessionClientSelectSchema
-    | InvoiceCheckoutSessionClientSelectSchema
     | ProductCheckoutSessionClientSelectSchema
     | AddPaymentMethodCheckoutSessionClientSelectSchema
     | ActivateSubscriptionCheckoutSessionClientSelectSchema;
@@ -440,7 +370,6 @@ export interface CheckoutSessionRetrieveResponse {
 export interface CheckoutSessionListResponse {
   data: Array<
     | PurchaseCheckoutSessionClientSelectSchema
-    | InvoiceCheckoutSessionClientSelectSchema
     | ProductCheckoutSessionClientSelectSchema
     | AddPaymentMethodCheckoutSessionClientSelectSchema
     | ActivateSubscriptionCheckoutSessionClientSelectSchema
@@ -667,7 +596,6 @@ export declare namespace CheckoutSessions {
   export {
     type ActivateSubscriptionCheckoutSessionClientSelectSchema as ActivateSubscriptionCheckoutSessionClientSelectSchema,
     type AddPaymentMethodCheckoutSessionClientSelectSchema as AddPaymentMethodCheckoutSessionClientSelectSchema,
-    type InvoiceCheckoutSessionClientSelectSchema as InvoiceCheckoutSessionClientSelectSchema,
     type ProductCheckoutSessionClientSelectSchema as ProductCheckoutSessionClientSelectSchema,
     type PurchaseCheckoutSessionClientSelectSchema as PurchaseCheckoutSessionClientSelectSchema,
     type CheckoutSessionCreateResponse as CheckoutSessionCreateResponse,

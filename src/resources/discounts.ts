@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../core/resource';
+import * as DiscountsAPI from './discounts';
 import { APIPromise } from '../core/api-promise';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
@@ -172,15 +173,27 @@ export interface DiscountCreateResponse {
 }
 
 export interface DiscountRetrieveResponse {
-  /**
-   * A discount record, which describes a discount that can be applied to purchases
-   * or subscriptions. Discounts can be one-time, have a fixed number of payments, or
-   * be applied indefinitely.
-   */
   discount:
-    | ForeverDiscountClientSelectSchema
-    | NumberOfPaymentsDiscountClientSelectSchema
-    | DefaultDiscountClientSelectSchema;
+    | DiscountRetrieveResponse.DiscountsForeverDiscountClientSelectSchema
+    | DiscountRetrieveResponse.DiscountsNumberOfPaymentsDiscountClientSelectSchema
+    | DiscountRetrieveResponse.DiscountsDefaultDiscountClientSelectSchema;
+}
+
+export namespace DiscountRetrieveResponse {
+  export interface DiscountsForeverDiscountClientSelectSchema
+    extends DiscountsAPI.ForeverDiscountClientSelectSchema {
+    redemptionCount: number;
+  }
+
+  export interface DiscountsNumberOfPaymentsDiscountClientSelectSchema
+    extends DiscountsAPI.NumberOfPaymentsDiscountClientSelectSchema {
+    redemptionCount: number;
+  }
+
+  export interface DiscountsDefaultDiscountClientSelectSchema
+    extends DiscountsAPI.DefaultDiscountClientSelectSchema {
+    redemptionCount: number;
+  }
 }
 
 export interface DiscountUpdateResponse {
@@ -197,9 +210,9 @@ export interface DiscountUpdateResponse {
 
 export interface DiscountListResponse {
   data: Array<
-    | ForeverDiscountClientSelectSchema
-    | NumberOfPaymentsDiscountClientSelectSchema
-    | DefaultDiscountClientSelectSchema
+    | DiscountListResponse.DiscountsForeverDiscountClientSelectSchema
+    | DiscountListResponse.DiscountsNumberOfPaymentsDiscountClientSelectSchema
+    | DiscountListResponse.DiscountsDefaultDiscountClientSelectSchema
   >;
 
   hasMore: boolean;
@@ -209,6 +222,23 @@ export interface DiscountListResponse {
   currentCursor?: string;
 
   nextCursor?: string;
+}
+
+export namespace DiscountListResponse {
+  export interface DiscountsForeverDiscountClientSelectSchema
+    extends DiscountsAPI.ForeverDiscountClientSelectSchema {
+    redemptionCount: number;
+  }
+
+  export interface DiscountsNumberOfPaymentsDiscountClientSelectSchema
+    extends DiscountsAPI.NumberOfPaymentsDiscountClientSelectSchema {
+    redemptionCount: number;
+  }
+
+  export interface DiscountsDefaultDiscountClientSelectSchema
+    extends DiscountsAPI.DefaultDiscountClientSelectSchema {
+    redemptionCount: number;
+  }
 }
 
 export interface DiscountCreateParams {

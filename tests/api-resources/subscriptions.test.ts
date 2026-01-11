@@ -59,14 +59,12 @@ describe('resource subscriptions', () => {
         newSubscriptionItems: [
           {
             addedDate: -9007199254740991,
-            priceId: 'priceId',
-            quantity: 1,
+            quantity: 0,
             subscriptionId: 'subscriptionId',
             type: 'static',
             unitPrice: 0,
           },
         ],
-        prorateCurrentBillingPeriod: true,
         timing: 'immediately',
       },
     });
@@ -86,19 +84,20 @@ describe('resource subscriptions', () => {
         newSubscriptionItems: [
           {
             addedDate: -9007199254740991,
-            priceId: 'priceId',
-            quantity: 1,
+            quantity: 0,
             subscriptionId: 'subscriptionId',
             type: 'static',
             unitPrice: 0,
             expiredAt: -9007199254740991,
             externalId: 'externalId',
+            manuallyCreated: true,
             metadata: { foo: 'string' },
             name: 'name',
+            priceId: 'priceId',
           },
         ],
-        prorateCurrentBillingPeriod: true,
         timing: 'immediately',
+        prorateCurrentBillingPeriod: true,
       },
     });
   });

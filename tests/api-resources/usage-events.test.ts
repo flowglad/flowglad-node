@@ -37,6 +37,8 @@ describe('resource usageEvents', () => {
         priceSlug: 'priceSlug',
         properties: { foo: 'bar' },
         usageDate: -9007199254740991,
+        usageMeterId: 'usageMeterId',
+        usageMeterSlug: 'usageMeterSlug',
       },
     });
   });

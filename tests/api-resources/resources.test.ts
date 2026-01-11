@@ -7,14 +7,14 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource customers', () => {
+describe('resource resources', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
-    const responsePromise = client.customers.create({
-      customer: {
-        email: 'email',
-        externalId: 'externalId',
+    const responsePromise = client.resources.create({
+      resource: {
         name: 'name',
+        pricingModelId: 'pricingModelId',
+        slug: 'slug',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -28,24 +28,19 @@ describe('resource customers', () => {
 
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
-    const response = await client.customers.create({
-      customer: {
-        email: 'email',
-        externalId: 'externalId',
+    const response = await client.resources.create({
+      resource: {
         name: 'name',
-        archived: true,
-        domain: 'domain',
-        iconURL: 'iconURL',
-        logoURL: 'logoURL',
         pricingModelId: 'pricingModelId',
-        userId: 'userId',
+        slug: 'slug',
+        active: true,
       },
     });
   });
 
   // Prism tests are disabled
   test.skip('retrieve', async () => {
-    const responsePromise = client.customers.retrieve('externalId');
+    const responsePromise = client.resources.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -57,7 +52,7 @@ describe('resource customers', () => {
 
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.customers.update('externalId', { customer: {} });
+    const responsePromise = client.resources.update('id', { resource: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -69,22 +64,19 @@ describe('resource customers', () => {
 
   // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
-    const response = await client.customers.update('externalId', {
-      customer: {
-        archived: true,
-        domain: 'domain',
-        email: 'email',
-        iconURL: 'iconURL',
-        logoURL: 'logoURL',
+    const response = await client.resources.update('id', {
+      resource: {
+        id: 'id',
+        active: true,
         name: 'name',
-        userId: 'userId',
+        slug: 'slug',
       },
     });
   });
 
   // Prism tests are disabled
-  test.skip('list', async () => {
-    const responsePromise = client.customers.list();
+  test.skip('list: only required params', async () => {
+    const responsePromise = client.resources.list({ pricingModelId: 'pricingModelId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -95,22 +87,7 @@ describe('resource customers', () => {
   });
 
   // Prism tests are disabled
-  test.skip('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.customers.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Flowglad.NotFoundError);
-  });
-
-  // Prism tests are disabled
-  test.skip('retrieveBilling', async () => {
-    const responsePromise = client.customers.retrieveBilling('externalId');
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
+  test.skip('list: required and optional params', async () => {
+    const response = await client.resources.list({ pricingModelId: 'pricingModelId' });
   });
 });

@@ -72,6 +72,8 @@ export interface NonRenewingSubscriptionRecord {
 
   defaultPaymentMethodId: string | null;
 
+  doNotCharge: boolean | null;
+
   /**
    * Omitted.
    */
@@ -90,7 +92,9 @@ export interface NonRenewingSubscriptionRecord {
 
   organizationId: string;
 
-  priceId: string | null;
+  priceId: string;
+
+  pricingModelId: string;
 
   renews: boolean;
 
@@ -267,7 +271,9 @@ export namespace PricingModelDetailsRecord {
     description: string | null;
 
     features: Array<
-      Shared.ToggleFeatureClientSelectSchema | Shared.UsageCreditGrantFeatureClientSelectSchema
+      | Shared.ToggleFeatureClientSelectSchema
+      | Shared.UsageCreditGrantFeatureClientSelectSchema
+      | Product.ResourceFeatureClientSelectSchema
     >;
 
     imageURL: string | null;
@@ -298,6 +304,49 @@ export namespace PricingModelDetailsRecord {
     updatedAt: number;
   }
 
+  export namespace Product {
+    export interface ResourceFeatureClientSelectSchema {
+      id: string;
+
+      active: boolean;
+
+      /**
+       * A positive integer
+       */
+      amount: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      description: string;
+
+      livemode: boolean;
+
+      name: string;
+
+      organizationId: string;
+
+      pricingModelId: string;
+
+      resourceId: string;
+
+      slug: string;
+
+      type: 'resource';
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      renewalFrequency?: null;
+
+      usageMeterId?: null;
+    }
+  }
+
   /**
    * The default product for the pricing model. If no product is explicitly set as
    * default, will return undefined.
@@ -326,7 +375,9 @@ export namespace PricingModelDetailsRecord {
     description: string | null;
 
     features: Array<
-      Shared.ToggleFeatureClientSelectSchema | Shared.UsageCreditGrantFeatureClientSelectSchema
+      | Shared.ToggleFeatureClientSelectSchema
+      | Shared.UsageCreditGrantFeatureClientSelectSchema
+      | DefaultProduct.ResourceFeatureClientSelectSchema
     >;
 
     imageURL: string | null;
@@ -355,6 +406,49 @@ export namespace PricingModelDetailsRecord {
      * Epoch milliseconds.
      */
     updatedAt: number;
+  }
+
+  export namespace DefaultProduct {
+    export interface ResourceFeatureClientSelectSchema {
+      id: string;
+
+      active: boolean;
+
+      /**
+       * A positive integer
+       */
+      amount: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      description: string;
+
+      livemode: boolean;
+
+      name: string;
+
+      organizationId: string;
+
+      pricingModelId: string;
+
+      resourceId: string;
+
+      slug: string;
+
+      type: 'resource';
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      renewalFrequency?: null;
+
+      usageMeterId?: null;
+    }
   }
 }
 
@@ -527,6 +621,8 @@ export interface PurchaseInvoiceClientSelectSchema {
   organizationId: string;
 
   ownerMembershipId: string | null;
+
+  pricingModelId: string;
 
   purchaseId: string;
 
@@ -1032,6 +1128,8 @@ export interface StandaloneInvoiceClientSelectSchema {
 
   ownerMembershipId: string | null;
 
+  pricingModelId: string;
+
   /**
    * Omitted.
    */
@@ -1387,6 +1485,8 @@ export interface StandardSubscriptionRecord {
 
   defaultPaymentMethodId: string | null;
 
+  doNotCharge: boolean | null;
+
   interval: 'day' | 'week' | 'month' | 'year';
 
   /**
@@ -1402,7 +1502,9 @@ export interface StandardSubscriptionRecord {
 
   organizationId: string;
 
-  priceId: string | null;
+  priceId: string;
+
+  pricingModelId: string;
 
   renews: true;
 
@@ -1484,6 +1586,8 @@ export interface StaticInvoiceLineItemClientSelectSchema {
   price: number;
 
   priceId: string | null;
+
+  pricingModelId: string;
 
   quantity: number;
 
@@ -1670,6 +1774,8 @@ export interface SubscriptionInvoiceClientSelectSchema {
   organizationId: string;
 
   ownerMembershipId: string | null;
+
+  pricingModelId: string;
 
   /**
    * Omitted.
@@ -2028,6 +2134,8 @@ export interface ToggleFeatureClientSelectSchema {
 
   renewalFrequency?: null;
 
+  resourceId?: null;
+
   usageMeterId?: null;
 }
 
@@ -2036,6 +2144,9 @@ export interface UsageCreditGrantFeatureClientSelectSchema {
 
   active: boolean;
 
+  /**
+   * A positive integer
+   */
   amount: number;
 
   /**
@@ -2065,6 +2176,8 @@ export interface UsageCreditGrantFeatureClientSelectSchema {
   updatedAt: number;
 
   usageMeterId: string;
+
+  resourceId?: null;
 }
 
 export interface UsageInvoiceLineItemClientSelectSchema {
@@ -2090,6 +2203,8 @@ export interface UsageInvoiceLineItemClientSelectSchema {
   price: number;
 
   priceId: string | null;
+
+  pricingModelId: string;
 
   quantity: number;
 
@@ -2119,12 +2234,18 @@ export interface UsageMeterClientSelectSchema {
 
   livemode: boolean;
 
+  /**
+   * The name of the usage meter
+   */
   name: string;
 
   organizationId: string;
 
   pricingModelId: string;
 
+  /**
+   * The slug of the usage meter
+   */
   slug: string;
 
   /**
