@@ -189,6 +189,8 @@ export interface SinglePaymentPriceClientSelectSchema {
 
   name: string | null;
 
+  pricingModelId: string;
+
   productId: string;
 
   slug: string | null;
@@ -398,6 +400,8 @@ export interface SubscriptionPriceClientSelectSchema {
 
   name: string | null;
 
+  pricingModelId: string;
+
   productId: string;
 
   slug: string | null;
@@ -597,6 +601,8 @@ export interface UsagePriceClientSelectSchema {
   livemode: boolean;
 
   name: string | null;
+
+  pricingModelId: string;
 
   productId: string;
 

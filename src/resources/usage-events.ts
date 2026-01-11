@@ -40,7 +40,9 @@ export namespace UsageEventCreateResponse {
 
     livemode: boolean;
 
-    priceId: string;
+    priceId: string | null;
+
+    pricingModelId: string;
 
     subscriptionId: string;
 
@@ -98,7 +100,9 @@ export namespace UsageEventRetrieveResponse {
 
     livemode: boolean;
 
-    priceId: string;
+    priceId: string | null;
+
+    pricingModelId: string;
 
     subscriptionId: string;
 
@@ -154,12 +158,14 @@ export namespace UsageEventCreateParams {
     transactionId: string;
 
     /**
-     * The internal ID of the price. If not provided, priceSlug is required.
+     * The internal ID of the price. Exactly one of priceId, priceSlug, usageMeterId,
+     * or usageMeterSlug must be provided.
      */
     priceId?: string;
 
     /**
-     * The slug of the price. If not provided, priceId is required.
+     * The slug of the price. Exactly one of priceId, priceSlug, usageMeterId, or
+     * usageMeterSlug must be provided.
      */
     priceSlug?: string;
 
@@ -175,6 +181,18 @@ export namespace UsageEventCreateParams {
      * billing period. Epoch milliseconds.
      */
     usageDate?: number;
+
+    /**
+     * The internal ID of the usage meter. Exactly one of priceId, priceSlug,
+     * usageMeterId, or usageMeterSlug must be provided.
+     */
+    usageMeterId?: string;
+
+    /**
+     * The slug of the usage meter. Exactly one of priceId, priceSlug, usageMeterId, or
+     * usageMeterSlug must be provided.
+     */
+    usageMeterSlug?: string;
   }
 }
 

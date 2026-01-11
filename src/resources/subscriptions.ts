@@ -32,9 +32,13 @@ export class Subscriptions extends APIResource {
   }
 
   /**
-   * Note: Immediate adjustments are in private preview (Please let us know you use
-   * this feature: https://github.com/flowglad/flowglad/issues/616). Adjustments at
-   * the end of the current billing period are generally available.
+   * Adjust an active subscription by changing its plan or quantity. Supports
+   * immediate adjustments with proration, end-of-billing-period adjustments for
+   * downgrades, and auto timing that automatically chooses based on whether it's an
+   * upgrade or downgrade. Also supports priceSlug for referencing prices by slug
+   * instead of id. For immediate adjustments with proration, this endpoint waits for
+   * the billing run to complete before returning, ensuring the subscription is fully
+   * updated.
    */
   adjust(
     id: string,
@@ -88,6 +92,19 @@ export interface SubscriptionListResponse {
 }
 
 export interface SubscriptionAdjustResponse {
+  /**
+   * Whether this adjustment is an upgrade (true) or downgrade/lateral move (false).
+   * An upgrade means the new plan total is greater than the old plan total.
+   */
+  isUpgrade: boolean;
+
+  /**
+   * The actual timing applied. When 'auto' timing is requested, this indicates
+   * whether the adjustment was applied immediately (for upgrades) or at the end of
+   * the billing period (for downgrades).
+   */
+  resolvedTiming: 'immediately' | 'at_end_of_current_billing_period';
+
   subscription: Shared.StandardSubscriptionRecord | Shared.NonRenewingSubscriptionRecord;
 
   subscriptionItems: Array<SubscriptionAdjustResponse.SubscriptionItem>;
@@ -111,13 +128,14 @@ export namespace SubscriptionAdjustResponse {
 
     livemode: boolean;
 
+    manuallyCreated: boolean;
+
     name: string | null;
 
-    priceId: string;
+    priceId: string | null;
 
-    /**
-     * A positive integer
-     */
+    pricingModelId: string;
+
     quantity: number;
 
     subscriptionId: string;
@@ -180,6 +198,13 @@ export interface SubscriptionCreateParams {
    * trial period.
    */
   defaultPaymentMethodId?: string;
+
+  /**
+   * If true, the subscription item's unitPrice will be set to 0, resulting in no
+   * charges. The original price.unitPrice value in the price record remains
+   * unchanged.
+   */
+  doNotCharge?: boolean;
 
   /**
    * The interval of the subscription. If not provided, defaults to the interval of
@@ -246,7 +271,8 @@ export interface SubscriptionListParams {
 export interface SubscriptionAdjustParams {
   adjustment:
     | SubscriptionAdjustParams.AdjustSubscriptionImmediatelyInput
-    | SubscriptionAdjustParams.AdjustSubscriptionAtEndOfCurrentBillingPeriodInput;
+    | SubscriptionAdjustParams.AdjustSubscriptionAtEndOfCurrentBillingPeriodInput
+    | SubscriptionAdjustParams.AdjustSubscriptionAutoTimingInput;
 }
 
 export namespace SubscriptionAdjustParams {
@@ -254,15 +280,20 @@ export namespace SubscriptionAdjustParams {
     newSubscriptionItems: Array<
       | AdjustSubscriptionImmediatelyInput.StaticSubscriptionItemClientInsertSchema
       | AdjustSubscriptionImmediatelyInput.StaticSubscriptionItemClientSelectSchema
+      | AdjustSubscriptionImmediatelyInput.SubscriptionItemWithPriceSlugInput
+      | AdjustSubscriptionImmediatelyInput.TerseSubscriptionItem
     >;
 
-    prorateCurrentBillingPeriod: boolean;
-
     /**
-     * Note: Immediate adjustments are in private preview. Please let us know you use
-     * this feature: https://github.com/flowglad/flowglad/issues/616.
+     * Apply the adjustment immediately.
      */
     timing: 'immediately';
+
+    /**
+     * Whether to prorate the current billing period. Defaults to true for immediate
+     * adjustments.
+     */
+    prorateCurrentBillingPeriod?: boolean;
   }
 
   export namespace AdjustSubscriptionImmediatelyInput {
@@ -272,11 +303,6 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      priceId: string;
-
-      /**
-       * A positive integer
-       */
       quantity: number;
 
       subscriptionId: string;
@@ -294,12 +320,16 @@ export namespace SubscriptionAdjustParams {
 
       externalId?: string | null;
 
+      manuallyCreated?: boolean;
+
       /**
        * JSON object
        */
       metadata?: { [key: string]: string | number | boolean } | null;
 
       name?: string | null;
+
+      priceId?: string | null;
     }
 
     export interface StaticSubscriptionItemClientSelectSchema {
@@ -319,13 +349,14 @@ export namespace SubscriptionAdjustParams {
 
       livemode: boolean;
 
+      manuallyCreated: boolean;
+
       name: string | null;
 
-      priceId: string;
+      priceId: string | null;
 
-      /**
-       * A positive integer
-       */
+      pricingModelId: string;
+
       quantity: number;
 
       subscriptionId: string;
@@ -351,12 +382,79 @@ export namespace SubscriptionAdjustParams {
        */
       metadata?: { [key: string]: string | number | boolean } | null;
     }
+
+    export interface SubscriptionItemWithPriceSlugInput {
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      externalId?: string | null;
+
+      manuallyCreated?: boolean;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      name?: string | null;
+
+      priceId?: string | null;
+
+      /**
+       * The slug of the price to subscribe to. If not provided, priceId is required.
+       * Price slugs are scoped to the customer's pricing model. Used to determine
+       * whether the subscription is usage-based or not, and set other defaults such as
+       * trial period and billing intervals.
+       */
+      priceSlug?: string;
+    }
+
+    export interface TerseSubscriptionItem {
+      /**
+       * The id of the price to subscribe to. If not provided, priceSlug is required.
+       * Used to determine whether the subscription is usage-based or not, and set other
+       * defaults such as trial period and billing intervals.
+       */
+      priceId?: string;
+
+      /**
+       * The slug of the price to subscribe to. If not provided, priceId is required.
+       * Price slugs are scoped to the customer's pricing model. Used to determine
+       * whether the subscription is usage-based or not, and set other defaults such as
+       * trial period and billing intervals.
+       */
+      priceSlug?: string;
+
+      /**
+       * The quantity of units. Defaults to 1.
+       */
+      quantity?: number;
+    }
   }
 
   export interface AdjustSubscriptionAtEndOfCurrentBillingPeriodInput {
     newSubscriptionItems: Array<
       | AdjustSubscriptionAtEndOfCurrentBillingPeriodInput.StaticSubscriptionItemClientInsertSchema
       | AdjustSubscriptionAtEndOfCurrentBillingPeriodInput.StaticSubscriptionItemClientSelectSchema
+      | AdjustSubscriptionAtEndOfCurrentBillingPeriodInput.SubscriptionItemWithPriceSlugInput
+      | AdjustSubscriptionAtEndOfCurrentBillingPeriodInput.TerseSubscriptionItem
     >;
 
     timing: 'at_end_of_current_billing_period';
@@ -369,11 +467,6 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      priceId: string;
-
-      /**
-       * A positive integer
-       */
       quantity: number;
 
       subscriptionId: string;
@@ -391,12 +484,16 @@ export namespace SubscriptionAdjustParams {
 
       externalId?: string | null;
 
+      manuallyCreated?: boolean;
+
       /**
        * JSON object
        */
       metadata?: { [key: string]: string | number | boolean } | null;
 
       name?: string | null;
+
+      priceId?: string | null;
     }
 
     export interface StaticSubscriptionItemClientSelectSchema {
@@ -416,13 +513,14 @@ export namespace SubscriptionAdjustParams {
 
       livemode: boolean;
 
+      manuallyCreated: boolean;
+
       name: string | null;
 
-      priceId: string;
+      priceId: string | null;
 
-      /**
-       * A positive integer
-       */
+      pricingModelId: string;
+
       quantity: number;
 
       subscriptionId: string;
@@ -447,6 +545,244 @@ export namespace SubscriptionAdjustParams {
        * JSON object
        */
       metadata?: { [key: string]: string | number | boolean } | null;
+    }
+
+    export interface SubscriptionItemWithPriceSlugInput {
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      externalId?: string | null;
+
+      manuallyCreated?: boolean;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      name?: string | null;
+
+      priceId?: string | null;
+
+      /**
+       * The slug of the price to subscribe to. If not provided, priceId is required.
+       * Price slugs are scoped to the customer's pricing model. Used to determine
+       * whether the subscription is usage-based or not, and set other defaults such as
+       * trial period and billing intervals.
+       */
+      priceSlug?: string;
+    }
+
+    export interface TerseSubscriptionItem {
+      /**
+       * The id of the price to subscribe to. If not provided, priceSlug is required.
+       * Used to determine whether the subscription is usage-based or not, and set other
+       * defaults such as trial period and billing intervals.
+       */
+      priceId?: string;
+
+      /**
+       * The slug of the price to subscribe to. If not provided, priceId is required.
+       * Price slugs are scoped to the customer's pricing model. Used to determine
+       * whether the subscription is usage-based or not, and set other defaults such as
+       * trial period and billing intervals.
+       */
+      priceSlug?: string;
+
+      /**
+       * The quantity of units. Defaults to 1.
+       */
+      quantity?: number;
+    }
+  }
+
+  export interface AdjustSubscriptionAutoTimingInput {
+    newSubscriptionItems: Array<
+      | AdjustSubscriptionAutoTimingInput.StaticSubscriptionItemClientInsertSchema
+      | AdjustSubscriptionAutoTimingInput.StaticSubscriptionItemClientSelectSchema
+      | AdjustSubscriptionAutoTimingInput.SubscriptionItemWithPriceSlugInput
+      | AdjustSubscriptionAutoTimingInput.TerseSubscriptionItem
+    >;
+
+    /**
+     * Automatically determine timing: upgrades happen immediately, downgrades at end
+     * of period.
+     */
+    timing: 'auto';
+
+    /**
+     * Whether to prorate if the adjustment is applied immediately. Defaults to true.
+     */
+    prorateCurrentBillingPeriod?: boolean;
+  }
+
+  export namespace AdjustSubscriptionAutoTimingInput {
+    export interface StaticSubscriptionItemClientInsertSchema {
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      externalId?: string | null;
+
+      manuallyCreated?: boolean;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      name?: string | null;
+
+      priceId?: string | null;
+    }
+
+    export interface StaticSubscriptionItemClientSelectSchema {
+      id: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      manuallyCreated: boolean;
+
+      name: string | null;
+
+      priceId: string | null;
+
+      pricingModelId: string;
+
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+    }
+
+    export interface SubscriptionItemWithPriceSlugInput {
+      /**
+       * Epoch milliseconds.
+       */
+      addedDate: number;
+
+      quantity: number;
+
+      subscriptionId: string;
+
+      type: 'static';
+
+      unitPrice: number;
+
+      /**
+       * Used as a flag to soft delete a subscription item without losing its history for
+       * auditability. If set, it will be removed from the subscription items list and
+       * will not be included in the billing period item list. Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      externalId?: string | null;
+
+      manuallyCreated?: boolean;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      name?: string | null;
+
+      priceId?: string | null;
+
+      /**
+       * The slug of the price to subscribe to. If not provided, priceId is required.
+       * Price slugs are scoped to the customer's pricing model. Used to determine
+       * whether the subscription is usage-based or not, and set other defaults such as
+       * trial period and billing intervals.
+       */
+      priceSlug?: string;
+    }
+
+    export interface TerseSubscriptionItem {
+      /**
+       * The id of the price to subscribe to. If not provided, priceSlug is required.
+       * Used to determine whether the subscription is usage-based or not, and set other
+       * defaults such as trial period and billing intervals.
+       */
+      priceId?: string;
+
+      /**
+       * The slug of the price to subscribe to. If not provided, priceId is required.
+       * Price slugs are scoped to the customer's pricing model. Used to determine
+       * whether the subscription is usage-based or not, and set other defaults such as
+       * trial period and billing intervals.
+       */
+      priceSlug?: string;
+
+      /**
+       * The quantity of units. Defaults to 1.
+       */
+      quantity?: number;
     }
   }
 }

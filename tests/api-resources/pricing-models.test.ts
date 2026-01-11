@@ -10,7 +10,7 @@ const client = new Flowglad({
 describe('resource pricingModels', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
-    const responsePromise = client.pricingModels.create({ pricingModel: { name: 'name' } });
+    const responsePromise = client.pricingModels.create({ pricingModel: { name: 'x' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,7 +23,7 @@ describe('resource pricingModels', () => {
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.pricingModels.create({
-      pricingModel: { name: 'name', isDefault: true },
+      pricingModel: { name: 'x', isDefault: true },
       defaultPlanIntervalUnit: 'day',
     });
   });

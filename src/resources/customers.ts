@@ -125,6 +125,8 @@ export interface NonRenewingSubscriptionDetails {
 
   defaultPaymentMethodId: string | null;
 
+  doNotCharge: boolean | null;
+
   /**
    * Omitted.
    */
@@ -143,7 +145,9 @@ export interface NonRenewingSubscriptionDetails {
 
   organizationId: string;
 
-  priceId: string | null;
+  priceId: string;
+
+  pricingModelId: string;
 
   renews: boolean;
 
@@ -209,6 +213,8 @@ export namespace NonRenewingSubscriptionDetails {
 
     livemode: boolean;
 
+    manuallyCreated: boolean;
+
     name: string | null;
 
     price:
@@ -216,11 +222,10 @@ export namespace NonRenewingSubscriptionDetails {
       | PricesAPI.SinglePaymentPriceClientSelectSchema
       | PricesAPI.UsagePriceClientSelectSchema;
 
-    priceId: string;
+    priceId: string | null;
 
-    /**
-     * A positive integer
-     */
+    pricingModelId: string;
+
     quantity: number;
 
     subscriptionId: string;
@@ -254,12 +259,65 @@ export namespace NonRenewingSubscriptionDetails {
     featureItems: Array<
       | CustomersAPI.ToggleSubscriptionItemFeatureRecord
       | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
+      | Experimental.ResourceSubscriptionItemFeatureRecord
     >;
 
     usageMeterBalances: Array<Experimental.UsageMeterBalance>;
   }
 
   export namespace Experimental {
+    export interface ResourceSubscriptionItemFeatureRecord {
+      id: string;
+
+      amount: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      featureId: string;
+
+      livemode: boolean;
+
+      manuallyCreated: boolean;
+
+      name: string;
+
+      pricingModelId: string;
+
+      resourceId: string;
+
+      slug: string;
+
+      subscriptionItemId: string;
+
+      type: 'resource';
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      detachedAt?: number | null;
+
+      detachedReason?: string | null;
+
+      /**
+       * Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      productFeatureId?: string | null;
+
+      renewalFrequency?: null;
+
+      usageMeterId?: null;
+    }
+
     /**
      * A usage meter and the available balance for that meter, scoped to a given
      * subscription.
@@ -284,12 +342,18 @@ export namespace NonRenewingSubscriptionDetails {
 
       livemode: boolean;
 
+      /**
+       * The name of the usage meter
+       */
       name: string;
 
       organizationId: string;
 
       pricingModelId: string;
 
+      /**
+       * The slug of the usage meter
+       */
       slug: string;
 
       subscriptionId: string;
@@ -320,6 +384,8 @@ export interface StandardSubscriptionDetails {
 
   defaultPaymentMethodId: string | null;
 
+  doNotCharge: boolean | null;
+
   interval: 'day' | 'week' | 'month' | 'year';
 
   /**
@@ -335,7 +401,9 @@ export interface StandardSubscriptionDetails {
 
   organizationId: string;
 
-  priceId: string | null;
+  priceId: string;
+
+  pricingModelId: string;
 
   renews: true;
 
@@ -425,6 +493,8 @@ export namespace StandardSubscriptionDetails {
 
     livemode: boolean;
 
+    manuallyCreated: boolean;
+
     name: string | null;
 
     price:
@@ -432,11 +502,10 @@ export namespace StandardSubscriptionDetails {
       | PricesAPI.SinglePaymentPriceClientSelectSchema
       | PricesAPI.UsagePriceClientSelectSchema;
 
-    priceId: string;
+    priceId: string | null;
 
-    /**
-     * A positive integer
-     */
+    pricingModelId: string;
+
     quantity: number;
 
     subscriptionId: string;
@@ -470,12 +539,65 @@ export namespace StandardSubscriptionDetails {
     featureItems: Array<
       | CustomersAPI.ToggleSubscriptionItemFeatureRecord
       | CustomersAPI.UsageCreditGrantSubscriptionItemFeatureRecord
+      | Experimental.ResourceSubscriptionItemFeatureRecord
     >;
 
     usageMeterBalances: Array<Experimental.UsageMeterBalance>;
   }
 
   export namespace Experimental {
+    export interface ResourceSubscriptionItemFeatureRecord {
+      id: string;
+
+      amount: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      featureId: string;
+
+      livemode: boolean;
+
+      manuallyCreated: boolean;
+
+      name: string;
+
+      pricingModelId: string;
+
+      resourceId: string;
+
+      slug: string;
+
+      subscriptionItemId: string;
+
+      type: 'resource';
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      detachedAt?: number | null;
+
+      detachedReason?: string | null;
+
+      /**
+       * Epoch milliseconds.
+       */
+      expiredAt?: number | null;
+
+      productFeatureId?: string | null;
+
+      renewalFrequency?: null;
+
+      usageMeterId?: null;
+    }
+
     /**
      * A usage meter and the available balance for that meter, scoped to a given
      * subscription.
@@ -500,12 +622,18 @@ export namespace StandardSubscriptionDetails {
 
       livemode: boolean;
 
+      /**
+       * The name of the usage meter
+       */
       name: string;
 
       organizationId: string;
 
       pricingModelId: string;
 
+      /**
+       * The slug of the usage meter
+       */
       slug: string;
 
       subscriptionId: string;
@@ -533,6 +661,8 @@ export interface ToggleSubscriptionItemFeatureRecord {
   manuallyCreated: boolean;
 
   name: string;
+
+  pricingModelId: string;
 
   slug: string;
 
@@ -563,6 +693,8 @@ export interface ToggleSubscriptionItemFeatureRecord {
 
   renewalFrequency?: null;
 
+  resourceId?: null;
+
   usageMeterId?: null;
 }
 
@@ -583,6 +715,8 @@ export interface UsageCreditGrantSubscriptionItemFeatureRecord {
   manuallyCreated: boolean;
 
   name: string;
+
+  pricingModelId: string;
 
   renewalFrequency: 'once' | 'every_billing_period';
 
@@ -612,6 +746,8 @@ export interface UsageCreditGrantSubscriptionItemFeatureRecord {
   expiredAt?: number | null;
 
   productFeatureId?: string | null;
+
+  resourceId?: null;
 }
 
 export interface CustomerCreateResponse {
@@ -645,13 +781,14 @@ export namespace CustomerCreateResponse {
 
       livemode: boolean;
 
+      manuallyCreated: boolean;
+
       name: string | null;
 
-      priceId: string;
+      priceId: string | null;
 
-      /**
-       * A positive integer
-       */
+      pricingModelId: string;
+
       quantity: number;
 
       subscriptionId: string;
@@ -796,6 +933,8 @@ export namespace CustomerRetrieveBillingResponse {
 
     priceType: 'subscription';
 
+    pricingModelId: string;
+
     proposal: string | null;
 
     /**
@@ -883,6 +1022,8 @@ export namespace CustomerRetrieveBillingResponse {
 
     priceType: 'single_payment';
 
+    pricingModelId: string;
+
     proposal: string | null;
 
     /**
@@ -969,6 +1110,8 @@ export namespace CustomerRetrieveBillingResponse {
     pricePerBillingCycle: null;
 
     priceType: 'usage';
+
+    pricingModelId: string;
 
     proposal: string | null;
 
@@ -1058,8 +1201,6 @@ export namespace CustomerUpdateParams {
     logoURL?: string | null;
 
     name?: string;
-
-    pricingModelId?: string | null;
 
     userId?: string | null;
   }
