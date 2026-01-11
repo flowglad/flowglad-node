@@ -25,7 +25,6 @@ import {
   CheckoutSessionListResponse,
   CheckoutSessionRetrieveResponse,
   CheckoutSessions,
-  InvoiceCheckoutSessionClientSelectSchema,
   ProductCheckoutSessionClientSelectSchema,
   PurchaseCheckoutSessionClientSelectSchema,
 } from './resources/checkout-sessions';
@@ -122,6 +121,25 @@ import {
   ProductUpdateResponse,
   Products,
 } from './resources/products';
+import {
+  ResourceClaimClaimParams,
+  ResourceClaimClaimResponse,
+  ResourceClaimReleaseParams,
+  ResourceClaimReleaseResponse,
+  ResourceClaimUsageParams,
+  ResourceClaimUsageResponse,
+  ResourceClaims,
+} from './resources/resource-claims';
+import {
+  ResourceCreateParams,
+  ResourceCreateResponse,
+  ResourceListParams,
+  ResourceListResponse,
+  ResourceRetrieveResponse,
+  ResourceUpdateParams,
+  ResourceUpdateResponse,
+  Resources,
+} from './resources/resources';
 import {
   SubscriptionAdjustParams,
   SubscriptionAdjustResponse,
@@ -861,6 +879,8 @@ export class Flowglad {
   subscriptions: API.Subscriptions = new API.Subscriptions(this);
   usageEvents: API.UsageEvents = new API.UsageEvents(this);
   usageMeters: API.UsageMeters = new API.UsageMeters(this);
+  resources: API.Resources = new API.Resources(this);
+  resourceClaims: API.ResourceClaims = new API.ResourceClaims(this);
 }
 
 Flowglad.Invoices = Invoices;
@@ -876,6 +896,8 @@ Flowglad.PaymentMethods = PaymentMethods;
 Flowglad.Subscriptions = Subscriptions;
 Flowglad.UsageEvents = UsageEvents;
 Flowglad.UsageMeters = UsageMeters;
+Flowglad.Resources = Resources;
+Flowglad.ResourceClaims = ResourceClaims;
 
 export declare namespace Flowglad {
   export type RequestOptions = Opts.RequestOptions;
@@ -913,7 +935,6 @@ export declare namespace Flowglad {
     CheckoutSessions as CheckoutSessions,
     type ActivateSubscriptionCheckoutSessionClientSelectSchema as ActivateSubscriptionCheckoutSessionClientSelectSchema,
     type AddPaymentMethodCheckoutSessionClientSelectSchema as AddPaymentMethodCheckoutSessionClientSelectSchema,
-    type InvoiceCheckoutSessionClientSelectSchema as InvoiceCheckoutSessionClientSelectSchema,
     type ProductCheckoutSessionClientSelectSchema as ProductCheckoutSessionClientSelectSchema,
     type PurchaseCheckoutSessionClientSelectSchema as PurchaseCheckoutSessionClientSelectSchema,
     type CheckoutSessionCreateResponse as CheckoutSessionCreateResponse,
@@ -1026,6 +1047,27 @@ export declare namespace Flowglad {
     type UsageMeterCreateParams as UsageMeterCreateParams,
     type UsageMeterUpdateParams as UsageMeterUpdateParams,
     type UsageMeterListParams as UsageMeterListParams,
+  };
+
+  export {
+    Resources as Resources,
+    type ResourceCreateResponse as ResourceCreateResponse,
+    type ResourceRetrieveResponse as ResourceRetrieveResponse,
+    type ResourceUpdateResponse as ResourceUpdateResponse,
+    type ResourceListResponse as ResourceListResponse,
+    type ResourceCreateParams as ResourceCreateParams,
+    type ResourceUpdateParams as ResourceUpdateParams,
+    type ResourceListParams as ResourceListParams,
+  };
+
+  export {
+    ResourceClaims as ResourceClaims,
+    type ResourceClaimClaimResponse as ResourceClaimClaimResponse,
+    type ResourceClaimReleaseResponse as ResourceClaimReleaseResponse,
+    type ResourceClaimUsageResponse as ResourceClaimUsageResponse,
+    type ResourceClaimClaimParams as ResourceClaimClaimParams,
+    type ResourceClaimReleaseParams as ResourceClaimReleaseParams,
+    type ResourceClaimUsageParams as ResourceClaimUsageParams,
   };
 
   export type BillingAddress = API.BillingAddress;

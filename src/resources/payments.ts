@@ -207,6 +207,8 @@ export interface PaymentClientSelectSchema {
 
   paymentMethodId: string | null;
 
+  pricingModelId: string;
+
   purchaseId: string | null;
 
   refunded: boolean;

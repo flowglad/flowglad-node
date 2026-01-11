@@ -11,8 +11,18 @@ describe('resource products', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.products.create({
-      price: { intervalCount: 1, intervalUnit: 'day', isDefault: true, type: 'subscription', unitPrice: 0 },
-      product: { active: true, name: 'name', pricingModelId: 'pricingModelId' },
+      price: {
+        intervalCount: 1,
+        intervalUnit: 'day',
+        isDefault: true,
+        type: 'subscription',
+        unitPrice: 0,
+      },
+      product: {
+        active: true,
+        name: 'name',
+        pricingModelId: 'pricingModelId',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -69,7 +79,11 @@ describe('resource products', () => {
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.products.update('id', {
-      product: { id: 'id', active: true, name: 'name' },
+      product: {
+        id: 'id',
+        active: true,
+        name: 'name',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

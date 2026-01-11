@@ -7,16 +7,14 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource discounts', () => {
+describe('resource resources', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
-    const responsePromise = client.discounts.create({
-      discount: {
-        amount: 1,
-        amountType: 'percent',
-        code: 'code',
-        duration: 'once',
+    const responsePromise = client.resources.create({
+      resource: {
         name: 'name',
+        pricingModelId: 'pricingModelId',
+        slug: 'slug',
       },
     });
     const rawResponse = await responsePromise.asResponse();
@@ -30,22 +28,19 @@ describe('resource discounts', () => {
 
   // Prism tests are disabled
   test.skip('create: required and optional params', async () => {
-    const response = await client.discounts.create({
-      discount: {
-        amount: 1,
-        amountType: 'percent',
-        code: 'code',
-        duration: 'once',
+    const response = await client.resources.create({
+      resource: {
         name: 'name',
+        pricingModelId: 'pricingModelId',
+        slug: 'slug',
         active: true,
-        numberOfPayments: null,
       },
     });
   });
 
   // Prism tests are disabled
   test.skip('retrieve', async () => {
-    const responsePromise = client.discounts.retrieve('id');
+    const responsePromise = client.resources.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -57,15 +52,7 @@ describe('resource discounts', () => {
 
   // Prism tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.discounts.update('id', {
-      discount: {
-        id: 'id',
-        amount: 1,
-        amountType: 'percent',
-        code: 'code',
-        duration: 'once',
-      },
-    });
+    const responsePromise = client.resources.update('id', { resource: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -77,23 +64,19 @@ describe('resource discounts', () => {
 
   // Prism tests are disabled
   test.skip('update: required and optional params', async () => {
-    const response = await client.discounts.update('id', {
-      discount: {
+    const response = await client.resources.update('id', {
+      resource: {
         id: 'id',
-        amount: 1,
-        amountType: 'percent',
-        code: 'code',
-        duration: 'once',
         active: true,
         name: 'name',
-        numberOfPayments: null,
+        slug: 'slug',
       },
     });
   });
 
   // Prism tests are disabled
-  test.skip('list', async () => {
-    const responsePromise = client.discounts.list();
+  test.skip('list: only required params', async () => {
+    const responsePromise = client.resources.list({ pricingModelId: 'pricingModelId' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -104,10 +87,7 @@ describe('resource discounts', () => {
   });
 
   // Prism tests are disabled
-  test.skip('list: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.discounts.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
-    ).rejects.toThrow(Flowglad.NotFoundError);
+  test.skip('list: required and optional params', async () => {
+    const response = await client.resources.list({ pricingModelId: 'pricingModelId' });
   });
 });

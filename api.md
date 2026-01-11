@@ -67,7 +67,6 @@ Types:
 
 - <code><a href="./src/resources/checkout-sessions.ts">ActivateSubscriptionCheckoutSessionClientSelectSchema</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">AddPaymentMethodCheckoutSessionClientSelectSchema</a></code>
-- <code><a href="./src/resources/checkout-sessions.ts">InvoiceCheckoutSessionClientSelectSchema</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">ProductCheckoutSessionClientSelectSchema</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">PurchaseCheckoutSessionClientSelectSchema</a></code>
 - <code><a href="./src/resources/checkout-sessions.ts">CheckoutSessionCreateResponse</a></code>
@@ -230,3 +229,33 @@ Methods:
 - <code title="get /api/v1/usage-meters/{id}">client.usageMeters.<a href="./src/resources/usage-meters.ts">retrieve</a>(id) -> UsageMeterRetrieveResponse</code>
 - <code title="put /api/v1/usage-meters/{id}">client.usageMeters.<a href="./src/resources/usage-meters.ts">update</a>(id, { ...params }) -> UsageMeterUpdateResponse</code>
 - <code title="get /api/v1/usage-meters">client.usageMeters.<a href="./src/resources/usage-meters.ts">list</a>({ ...params }) -> UsageMeterListResponse</code>
+
+# Resources
+
+Types:
+
+- <code><a href="./src/resources/resources.ts">ResourceCreateResponse</a></code>
+- <code><a href="./src/resources/resources.ts">ResourceRetrieveResponse</a></code>
+- <code><a href="./src/resources/resources.ts">ResourceUpdateResponse</a></code>
+- <code><a href="./src/resources/resources.ts">ResourceListResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/resources">client.resources.<a href="./src/resources/resources.ts">create</a>({ ...params }) -> ResourceCreateResponse</code>
+- <code title="get /api/v1/resources/{id}">client.resources.<a href="./src/resources/resources.ts">retrieve</a>(id) -> ResourceRetrieveResponse</code>
+- <code title="put /api/v1/resources/{id}">client.resources.<a href="./src/resources/resources.ts">update</a>(id, { ...params }) -> ResourceUpdateResponse</code>
+- <code title="get /api/v1/resources">client.resources.<a href="./src/resources/resources.ts">list</a>({ ...params }) -> ResourceListResponse</code>
+
+# ResourceClaims
+
+Types:
+
+- <code><a href="./src/resources/resource-claims.ts">ResourceClaimClaimResponse</a></code>
+- <code><a href="./src/resources/resource-claims.ts">ResourceClaimReleaseResponse</a></code>
+- <code><a href="./src/resources/resource-claims.ts">ResourceClaimUsageResponse</a></code>
+
+Methods:
+
+- <code title="post /api/v1/resource-claims/{subscriptionId}/claim">client.resourceClaims.<a href="./src/resources/resource-claims.ts">claim</a>(subscriptionID, { ...params }) -> ResourceClaimClaimResponse</code>
+- <code title="post /api/v1/resource-claims/{subscriptionId}/release">client.resourceClaims.<a href="./src/resources/resource-claims.ts">release</a>(subscriptionID, { ...params }) -> ResourceClaimReleaseResponse</code>
+- <code title="get /api/v1/resource-claims/{subscriptionId}/usage">client.resourceClaims.<a href="./src/resources/resource-claims.ts">usage</a>(subscriptionID, { ...params }) -> ResourceClaimUsageResponse</code>

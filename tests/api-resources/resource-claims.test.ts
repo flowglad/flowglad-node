@@ -7,19 +7,10 @@ const client = new Flowglad({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource prices', () => {
+describe('resource resourceClaims', () => {
   // Prism tests are disabled
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.prices.create({
-      price: {
-        intervalCount: 1,
-        intervalUnit: 'day',
-        isDefault: true,
-        productId: 'productId',
-        type: 'subscription',
-        unitPrice: 0,
-      },
-    });
+  test.skip('claim: only required params', async () => {
+    const responsePromise = client.resourceClaims.claim('subscriptionId', { resourceSlug: 'resourceSlug' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -30,34 +21,19 @@ describe('resource prices', () => {
   });
 
   // Prism tests are disabled
-  test.skip('create: required and optional params', async () => {
-    const response = await client.prices.create({
-      price: {
-        intervalCount: 1,
-        intervalUnit: 'day',
-        isDefault: true,
-        productId: 'productId',
-        type: 'subscription',
-        unitPrice: 0,
-        active: true,
-        name: 'name',
-        slug: 'slug',
-        trialPeriodDays: 0,
-        usageEventsPerUnit: null,
-        usageMeterId: null,
-      },
+  test.skip('claim: required and optional params', async () => {
+    const response = await client.resourceClaims.claim('subscriptionId', {
+      resourceSlug: 'resourceSlug',
+      externalId: 'externalId',
+      externalIds: ['string'],
+      metadata: { foo: 'string' },
+      quantity: 1,
     });
   });
 
   // Prism tests are disabled
-  test.skip('update: only required params', async () => {
-    const responsePromise = client.prices.update('id', {
-      price: {
-        id: 'id',
-        isDefault: true,
-        type: 'subscription',
-      },
-    });
+  test.skip('release: only required params', async () => {
+    const responsePromise = client.resourceClaims.release('subscriptionId', { resourceSlug: 'resourceSlug' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -68,22 +44,19 @@ describe('resource prices', () => {
   });
 
   // Prism tests are disabled
-  test.skip('update: required and optional params', async () => {
-    const response = await client.prices.update('id', {
-      price: {
-        id: 'id',
-        isDefault: true,
-        type: 'subscription',
-        active: true,
-        name: 'name',
-        slug: 'slug',
-      },
+  test.skip('release: required and optional params', async () => {
+    const response = await client.resourceClaims.release('subscriptionId', {
+      resourceSlug: 'resourceSlug',
+      claimIds: ['string'],
+      externalId: 'externalId',
+      externalIds: ['string'],
+      quantity: 1,
     });
   });
 
   // Prism tests are disabled
-  test.skip('list', async () => {
-    const responsePromise = client.prices.list();
+  test.skip('usage', async () => {
+    const responsePromise = client.resourceClaims.usage('subscriptionId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -94,10 +67,14 @@ describe('resource prices', () => {
   });
 
   // Prism tests are disabled
-  test.skip('list: request options and params are passed correctly', async () => {
+  test.skip('usage: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.prices.list({ cursor: 'cursor', limit: 'limit' }, { path: '/_stainless_unknown_path' }),
+      client.resourceClaims.usage(
+        'subscriptionId',
+        { resourceSlug: 'resourceSlug' },
+        { path: '/_stainless_unknown_path' },
+      ),
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 });

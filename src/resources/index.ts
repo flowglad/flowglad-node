@@ -5,7 +5,6 @@ export {
   CheckoutSessions,
   type ActivateSubscriptionCheckoutSessionClientSelectSchema,
   type AddPaymentMethodCheckoutSessionClientSelectSchema,
-  type InvoiceCheckoutSessionClientSelectSchema,
   type ProductCheckoutSessionClientSelectSchema,
   type PurchaseCheckoutSessionClientSelectSchema,
   type CheckoutSessionCreateResponse,
@@ -107,6 +106,25 @@ export {
   type ProductUpdateParams,
   type ProductListParams,
 } from './products';
+export {
+  ResourceClaims,
+  type ResourceClaimClaimResponse,
+  type ResourceClaimReleaseResponse,
+  type ResourceClaimUsageResponse,
+  type ResourceClaimClaimParams,
+  type ResourceClaimReleaseParams,
+  type ResourceClaimUsageParams,
+} from './resource-claims';
+export {
+  Resources,
+  type ResourceCreateResponse,
+  type ResourceRetrieveResponse,
+  type ResourceUpdateResponse,
+  type ResourceListResponse,
+  type ResourceCreateParams,
+  type ResourceUpdateParams,
+  type ResourceListParams,
+} from './resources';
 export {
   Subscriptions,
   type SubscriptionCreateResponse,

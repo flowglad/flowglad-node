@@ -11,7 +11,11 @@ describe('resource usageEvents', () => {
   // Prism tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageEvents.create({
-      usageEvent: { amount: 1, subscriptionId: 'subscriptionId', transactionId: 'transactionId' },
+      usageEvent: {
+        amount: 1,
+        subscriptionId: 'subscriptionId',
+        transactionId: 'transactionId',
+      },
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -33,6 +37,8 @@ describe('resource usageEvents', () => {
         priceSlug: 'priceSlug',
         properties: { foo: 'bar' },
         usageDate: -9007199254740991,
+        usageMeterId: 'usageMeterId',
+        usageMeterSlug: 'usageMeterSlug',
       },
     });
   });
