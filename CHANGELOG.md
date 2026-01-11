@@ -1,4 +1,40 @@
 # Changelog
+## 0.25.0 (2026-01-11)
+
+Full Changelog: [v0.24.0...v0.25.0](https://github.com/flowglad/flowglad-node/compare/v0.24.0...v0.25.0)
+
+### ⚠ BREAKING CHANGES
+
+* **mcp:** remove deprecated tool schemes
+* **mcp:** **Migration:** To migrate, simply modify the command used to invoke the MCP server. Currently, the only supported tool scheme is code mode. Now, starting the server with just `node /path/to/mcp/server` or `npx package-name` will invoke code tools: changing your command to one of these is likely all you will need to do.
+
+### Features
+
+* **api:** manual updates ([29826ca](https://github.com/flowglad/flowglad-node/commit/29826ca3deedb1382c79982f0b985a89e34b6303))
+
+
+### Bug Fixes
+
+* **mcp:** add client instantiation options to code tool ([9af9932](https://github.com/flowglad/flowglad-node/commit/9af99329f36d61f792255d4695210d67940260c0))
+* **mcp:** correct code tool api output types ([197ce20](https://github.com/flowglad/flowglad-node/commit/197ce20b7ee748d289a72f2635adfd771758791c))
+* **mcp:** fix env parsing ([8a5559a](https://github.com/flowglad/flowglad-node/commit/8a5559af7e05604e83adc7490fadd8a9e8f6fbda))
+* **mcp:** fix options parsing ([ea70ab3](https://github.com/flowglad/flowglad-node/commit/ea70ab343003f46bcde3854187f595f8b338e48c))
+* **mcp:** pass base url to code tool ([3ad4714](https://github.com/flowglad/flowglad-node/commit/3ad4714d57a8aa9abe6a903a253033516c944fae))
+* **mcp:** update code tool prompt ([79cec40](https://github.com/flowglad/flowglad-node/commit/79cec4063636ccab620615bbcbad29be4c64b7ab))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([749834d](https://github.com/flowglad/flowglad-node/commit/749834df7ecb9ba1ad1835b056dad9efcf9752e0))
+* **internal:** codegen related update ([7992c52](https://github.com/flowglad/flowglad-node/commit/7992c52fc93041d6cf70a64218c3145b3342008c))
+* **mcp:** remove deprecated tool schemes ([6d54339](https://github.com/flowglad/flowglad-node/commit/6d5433967c016f96cea8294cbc9bc7b34d869a6e))
+* **mcp:** update lockfile ([06783ad](https://github.com/flowglad/flowglad-node/commit/06783ad1f379228e59aac505e5eba2fa824d8e94))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([e385728](https://github.com/flowglad/flowglad-node/commit/e3857289316efbb6e1487b0dde5c1396b1178d35))
+
 ## 0.24.0 (2025-12-08)
 
 Full Changelog: [v0.23.0...v0.24.0](https://github.com/flowglad/flowglad-node/compare/v0.23.0...v0.24.0)
