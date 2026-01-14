@@ -153,6 +153,8 @@ export interface PaymentMethodClientSelectSchema {
 
   paymentMethodData: { [key: string]: unknown };
 
+  pricingModelId: string;
+
   type: 'card' | 'link' | 'us_bank_account' | 'sepa_debit';
 
   /**
