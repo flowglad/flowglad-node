@@ -101,6 +101,10 @@ export namespace ResourceClaimClaimResponse {
     capacity: number;
 
     claimed: number;
+
+    resourceId: string;
+
+    resourceSlug: string;
   }
 }
 
@@ -162,14 +166,65 @@ export namespace ResourceClaimReleaseResponse {
     capacity: number;
 
     claimed: number;
+
+    resourceId: string;
+
+    resourceSlug: string;
   }
 }
 
 export interface ResourceClaimUsageResponse {
+  claims: Array<ResourceClaimUsageResponse.Claim>;
+
   usage: Array<ResourceClaimUsageResponse.Usage>;
 }
 
 export namespace ResourceClaimUsageResponse {
+  export interface Claim {
+    id: string;
+
+    /**
+     * Epoch milliseconds.
+     */
+    claimedAt: number;
+
+    /**
+     * Epoch milliseconds.
+     */
+    createdAt: number;
+
+    externalId: string | null;
+
+    livemode: boolean;
+
+    organizationId: string;
+
+    pricingModelId: string;
+
+    releaseReason: string | null;
+
+    resourceId: string;
+
+    subscriptionId: string;
+
+    subscriptionItemFeatureId: string;
+
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
+
+    /**
+     * JSON object
+     */
+    metadata?: { [key: string]: string | number | boolean } | null;
+
+    /**
+     * Epoch milliseconds.
+     */
+    releasedAt?: number | null;
+  }
+
   export interface Usage {
     available: number;
 
@@ -190,12 +245,13 @@ export interface ResourceClaimClaimParams {
   resourceSlug: string;
 
   /**
-   * Create a single pet-style claim with this external identifier.
+   * Create a single named claim with this external identifier (idempotent).
    */
   externalId?: string;
 
   /**
-   * Create multiple pet-style claims with these external identifiers.
+   * Create multiple named claims with these external identifiers (idempotent per
+   * ID).
    */
   externalIds?: Array<string>;
 
@@ -205,8 +261,7 @@ export interface ResourceClaimClaimParams {
   metadata?: { [key: string]: string | number | boolean };
 
   /**
-   * Create N anonymous (cattle-style) claims. Each claim will have externalId =
-   * null.
+   * Create N anonymous claims without external identifiers.
    */
   quantity?: number;
 }
@@ -218,24 +273,24 @@ export interface ResourceClaimReleaseParams {
   resourceSlug: string;
 
   /**
-   * Release specific claims by their claim IDs (works for both cattle and pet
-   * claims)
+   * Release specific claims by their claim IDs (works for both anonymous and named
+   * claims).
    */
   claimIds?: Array<string>;
 
   /**
-   * Release a specific pet-style claim by its externalId
+   * Release a specific named claim by its external identifier.
    */
   externalId?: string;
 
   /**
-   * Release multiple pet-style claims by their externalIds
+   * Release multiple named claims by their external identifiers.
    */
   externalIds?: Array<string>;
 
   /**
-   * Release N anonymous (cattle-style) claims. Only releases claims where externalId
-   * IS NULL. Will not release pet-style claims with externalIds.
+   * Release N anonymous claims (FIFO order). Only releases claims without external
+   * identifiers.
    */
   quantity?: number;
 }

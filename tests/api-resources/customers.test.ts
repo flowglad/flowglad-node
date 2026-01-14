@@ -37,7 +37,6 @@ describe('resource customers', () => {
         domain: 'domain',
         iconURL: 'iconURL',
         logoURL: 'logoURL',
-        pricingModelId: 'pricingModelId',
         userId: 'userId',
       },
     });
