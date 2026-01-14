@@ -80,7 +80,7 @@ export interface CustomerClientSelectSchema {
 
   organizationId: string;
 
-  pricingModelId: string | null;
+  pricingModelId: string;
 
   /**
    * Epoch milliseconds.
@@ -1177,8 +1177,6 @@ export namespace CustomerCreateParams {
     iconURL?: string | null;
 
     logoURL?: string | null;
-
-    pricingModelId?: string | null;
 
     userId?: string | null;
   }
