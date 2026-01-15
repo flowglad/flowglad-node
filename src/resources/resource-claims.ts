@@ -31,8 +31,8 @@ export class ResourceClaims extends APIResource {
   }
 
   /**
-   * Get resource usage information for a subscription. Optionally filter by
-   * resourceSlug.
+   * Get resource usage information for a subscription. Exactly one of resourceSlug
+   * or resourceId must be provided.
    */
   usage(
     subscriptionID: string,
@@ -173,10 +173,13 @@ export namespace ResourceClaimReleaseResponse {
   }
 }
 
+/**
+ * The usage data for a resource.
+ */
 export interface ResourceClaimUsageResponse {
   claims: Array<ResourceClaimUsageResponse.Claim>;
 
-  usage: Array<ResourceClaimUsageResponse.Usage>;
+  usage: ResourceClaimUsageResponse.Usage;
 }
 
 export namespace ResourceClaimUsageResponse {
@@ -296,6 +299,8 @@ export interface ResourceClaimReleaseParams {
 }
 
 export interface ResourceClaimUsageParams {
+  resourceId?: string;
+
   resourceSlug?: string;
 }
 
