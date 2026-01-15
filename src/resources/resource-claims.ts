@@ -19,6 +19,17 @@ export class ResourceClaims extends APIResource {
   }
 
   /**
+   * List resource usage information for all resources on the subscription.
+   */
+  listUsages(
+    subscriptionID: string,
+    query: ResourceClaimListUsagesParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ResourceClaimListUsagesResponse> {
+    return this._client.get(path`/api/v1/resource-claims/${subscriptionID}/usages`, { query, ...options });
+  }
+
+  /**
    * Release claimed resources for a subscription. Exactly one of quantity,
    * externalId, externalIds, or claimIds must be provided.
    */
@@ -34,11 +45,11 @@ export class ResourceClaims extends APIResource {
    * Get resource usage information for a subscription. Exactly one of resourceSlug
    * or resourceId must be provided.
    */
-  usage(
+  retrieveUsage(
     subscriptionID: string,
-    query: ResourceClaimUsageParams | null | undefined = {},
+    query: ResourceClaimRetrieveUsageParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<ResourceClaimUsageResponse> {
+  ): APIPromise<ResourceClaimRetrieveUsageResponse> {
     return this._client.get(path`/api/v1/resource-claims/${subscriptionID}/usage`, { query, ...options });
   }
 }
@@ -105,6 +116,82 @@ export namespace ResourceClaimClaimResponse {
     resourceId: string;
 
     resourceSlug: string;
+  }
+}
+
+/**
+ * List of resource usage data for the subscription.
+ */
+export type ResourceClaimListUsagesResponse =
+  Array<ResourceClaimListUsagesResponse.ResourceClaimListUsagesResponseItem>;
+
+export namespace ResourceClaimListUsagesResponse {
+  /**
+   * The usage data for a resource.
+   */
+  export interface ResourceClaimListUsagesResponseItem {
+    claims: Array<ResourceClaimListUsagesResponseItem.Claim>;
+
+    usage: ResourceClaimListUsagesResponseItem.Usage;
+  }
+
+  export namespace ResourceClaimListUsagesResponseItem {
+    export interface Claim {
+      id: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      claimedAt: number;
+
+      /**
+       * Epoch milliseconds.
+       */
+      createdAt: number;
+
+      externalId: string | null;
+
+      livemode: boolean;
+
+      organizationId: string;
+
+      pricingModelId: string;
+
+      releaseReason: string | null;
+
+      resourceId: string;
+
+      subscriptionId: string;
+
+      subscriptionItemFeatureId: string;
+
+      /**
+       * Epoch milliseconds.
+       */
+      updatedAt: number;
+
+      /**
+       * JSON object
+       */
+      metadata?: { [key: string]: string | number | boolean } | null;
+
+      /**
+       * Epoch milliseconds.
+       */
+      releasedAt?: number | null;
+    }
+
+    export interface Usage {
+      available: number;
+
+      capacity: number;
+
+      claimed: number;
+
+      resourceId: string;
+
+      resourceSlug: string;
+    }
   }
 }
 
@@ -176,13 +263,13 @@ export namespace ResourceClaimReleaseResponse {
 /**
  * The usage data for a resource.
  */
-export interface ResourceClaimUsageResponse {
-  claims: Array<ResourceClaimUsageResponse.Claim>;
+export interface ResourceClaimRetrieveUsageResponse {
+  claims: Array<ResourceClaimRetrieveUsageResponse.Claim>;
 
-  usage: ResourceClaimUsageResponse.Usage;
+  usage: ResourceClaimRetrieveUsageResponse.Usage;
 }
 
-export namespace ResourceClaimUsageResponse {
+export namespace ResourceClaimRetrieveUsageResponse {
   export interface Claim {
     id: string;
 
@@ -269,6 +356,12 @@ export interface ResourceClaimClaimParams {
   quantity?: number;
 }
 
+export interface ResourceClaimListUsagesParams {
+  resourceIds?: Array<string>;
+
+  resourceSlugs?: Array<string>;
+}
+
 export interface ResourceClaimReleaseParams {
   /**
    * The slug of the resource to release
@@ -298,7 +391,7 @@ export interface ResourceClaimReleaseParams {
   quantity?: number;
 }
 
-export interface ResourceClaimUsageParams {
+export interface ResourceClaimRetrieveUsageParams {
   resourceId?: string;
 
   resourceSlug?: string;
@@ -307,10 +400,12 @@ export interface ResourceClaimUsageParams {
 export declare namespace ResourceClaims {
   export {
     type ResourceClaimClaimResponse as ResourceClaimClaimResponse,
+    type ResourceClaimListUsagesResponse as ResourceClaimListUsagesResponse,
     type ResourceClaimReleaseResponse as ResourceClaimReleaseResponse,
-    type ResourceClaimUsageResponse as ResourceClaimUsageResponse,
+    type ResourceClaimRetrieveUsageResponse as ResourceClaimRetrieveUsageResponse,
     type ResourceClaimClaimParams as ResourceClaimClaimParams,
+    type ResourceClaimListUsagesParams as ResourceClaimListUsagesParams,
     type ResourceClaimReleaseParams as ResourceClaimReleaseParams,
-    type ResourceClaimUsageParams as ResourceClaimUsageParams,
+    type ResourceClaimRetrieveUsageParams as ResourceClaimRetrieveUsageParams,
   };
 }

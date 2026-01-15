@@ -251,11 +251,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/resource-claims.ts">ResourceClaimClaimResponse</a></code>
+- <code><a href="./src/resources/resource-claims.ts">ResourceClaimListUsagesResponse</a></code>
 - <code><a href="./src/resources/resource-claims.ts">ResourceClaimReleaseResponse</a></code>
-- <code><a href="./src/resources/resource-claims.ts">ResourceClaimUsageResponse</a></code>
+- <code><a href="./src/resources/resource-claims.ts">ResourceClaimRetrieveUsageResponse</a></code>
 
 Methods:
 
 - <code title="post /api/v1/resource-claims/{subscriptionId}/claim">client.resourceClaims.<a href="./src/resources/resource-claims.ts">claim</a>(subscriptionID, { ...params }) -> ResourceClaimClaimResponse</code>
+- <code title="get /api/v1/resource-claims/{subscriptionId}/usages">client.resourceClaims.<a href="./src/resources/resource-claims.ts">listUsages</a>(subscriptionID, { ...params }) -> ResourceClaimListUsagesResponse</code>
 - <code title="post /api/v1/resource-claims/{subscriptionId}/release">client.resourceClaims.<a href="./src/resources/resource-claims.ts">release</a>(subscriptionID, { ...params }) -> ResourceClaimReleaseResponse</code>
-- <code title="get /api/v1/resource-claims/{subscriptionId}/usage">client.resourceClaims.<a href="./src/resources/resource-claims.ts">usage</a>(subscriptionID, { ...params }) -> ResourceClaimUsageResponse</code>
+- <code title="get /api/v1/resource-claims/{subscriptionId}/usage">client.resourceClaims.<a href="./src/resources/resource-claims.ts">retrieveUsage</a>(subscriptionID, { ...params }) -> ResourceClaimRetrieveUsageResponse</code>

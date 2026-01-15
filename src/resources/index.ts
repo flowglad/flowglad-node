@@ -109,11 +109,13 @@ export {
 export {
   ResourceClaims,
   type ResourceClaimClaimResponse,
+  type ResourceClaimListUsagesResponse,
   type ResourceClaimReleaseResponse,
-  type ResourceClaimUsageResponse,
+  type ResourceClaimRetrieveUsageResponse,
   type ResourceClaimClaimParams,
+  type ResourceClaimListUsagesParams,
   type ResourceClaimReleaseParams,
-  type ResourceClaimUsageParams,
+  type ResourceClaimRetrieveUsageParams,
 } from './resource-claims';
 export {
   Resources,
