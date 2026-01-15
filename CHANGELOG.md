@@ -1,4 +1,17 @@
 # Changelog
+## 0.27.0 (2026-01-15)
+
+Full Changelog: [v0.26.0...v0.27.0](https://github.com/flowglad/flowglad-node/compare/v0.26.0...v0.27.0)
+
+### Features
+
+* **api:** manual updates ([d31080b](https://github.com/flowglad/flowglad-node/commit/d31080bff349dcec053302f6ddf882b27baea1b6))
+
+
+### Chores
+
+* **internal:** upgrade babel, qs, js-yaml ([8dee709](https://github.com/flowglad/flowglad-node/commit/8dee7098002c176157e1b586f99954bf34b0d51a))
+
 ## 0.26.0 (2026-01-14)
 
 Full Changelog: [v0.25.0...v0.26.0](https://github.com/flowglad/flowglad-node/compare/v0.25.0...v0.26.0)
