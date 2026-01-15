@@ -72,7 +72,7 @@ describe('resource resourceClaims', () => {
     await expect(
       client.resourceClaims.usage(
         'subscriptionId',
-        { resourceSlug: 'resourceSlug' },
+        { resourceId: 'resourceId', resourceSlug: 'resourceSlug' },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Flowglad.NotFoundError);
