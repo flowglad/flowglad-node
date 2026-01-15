@@ -32,6 +32,30 @@ describe('resource resourceClaims', () => {
   });
 
   // Prism tests are disabled
+  test.skip('listUsages', async () => {
+    const responsePromise = client.resourceClaims.listUsages('subscriptionId');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  // Prism tests are disabled
+  test.skip('listUsages: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.resourceClaims.listUsages(
+        'subscriptionId',
+        { resourceIds: ['string'], resourceSlugs: ['string'] },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(Flowglad.NotFoundError);
+  });
+
+  // Prism tests are disabled
   test.skip('release: only required params', async () => {
     const responsePromise = client.resourceClaims.release('subscriptionId', { resourceSlug: 'resourceSlug' });
     const rawResponse = await responsePromise.asResponse();
@@ -55,8 +79,8 @@ describe('resource resourceClaims', () => {
   });
 
   // Prism tests are disabled
-  test.skip('usage', async () => {
-    const responsePromise = client.resourceClaims.usage('subscriptionId');
+  test.skip('retrieveUsage', async () => {
+    const responsePromise = client.resourceClaims.retrieveUsage('subscriptionId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -67,10 +91,10 @@ describe('resource resourceClaims', () => {
   });
 
   // Prism tests are disabled
-  test.skip('usage: request options and params are passed correctly', async () => {
+  test.skip('retrieveUsage: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.resourceClaims.usage(
+      client.resourceClaims.retrieveUsage(
         'subscriptionId',
         { resourceId: 'resourceId', resourceSlug: 'resourceSlug' },
         { path: '/_stainless_unknown_path' },
