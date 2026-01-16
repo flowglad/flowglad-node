@@ -1,4 +1,12 @@
 # Changelog
+## 0.28.0 (2026-01-15)
+
+Full Changelog: [v0.27.0...v0.28.0](https://github.com/flowglad/flowglad-node/compare/v0.27.0...v0.28.0)
+
+### Features
+
+* **api:** manual updates ([d854d31](https://github.com/flowglad/flowglad-node/commit/d854d31e91def59b95839a8773e8fbb7f86bf97e))
+
 ## 0.27.0 (2026-01-15)
 
 Full Changelog: [v0.26.0...v0.27.0](https://github.com/flowglad/flowglad-node/compare/v0.26.0...v0.27.0)
