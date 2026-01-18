@@ -1,4 +1,17 @@
 # Changelog
+## 0.29.0 (2026-01-18)
+
+Full Changelog: [v0.28.0...v0.29.0](https://github.com/flowglad/flowglad-node/compare/v0.28.0...v0.29.0)
+
+### Features
+
+* **api:** manual updates ([72f67e6](https://github.com/flowglad/flowglad-node/commit/72f67e6f50b9d4b3e9ea73cef084145d8319172c))
+
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([eff5d28](https://github.com/flowglad/flowglad-node/commit/eff5d28d4f55686d613abafaa37e70431cc5e1ac))
+
 ## 0.28.0 (2026-01-15)
 
 Full Changelog: [v0.27.0...v0.28.0](https://github.com/flowglad/flowglad-node/compare/v0.27.0...v0.28.0)
