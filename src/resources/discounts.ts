@@ -73,6 +73,8 @@ export interface DefaultDiscountClientSelectSchema {
 
   organizationId: string;
 
+  pricingModelId: string;
+
   /**
    * Epoch milliseconds.
    */
@@ -110,6 +112,8 @@ export interface ForeverDiscountClientSelectSchema {
   name: string;
 
   organizationId: string;
+
+  pricingModelId: string;
 
   /**
    * Epoch milliseconds.
@@ -153,6 +157,8 @@ export interface NumberOfPaymentsDiscountClientSelectSchema {
   numberOfPayments: number;
 
   organizationId: string;
+
+  pricingModelId: string;
 
   /**
    * Epoch milliseconds.
@@ -274,6 +280,8 @@ export namespace DiscountCreateParams {
     active?: boolean;
 
     numberOfPayments?: null;
+
+    pricingModelId?: string;
   }
 
   export interface NumberOfPaymentsDiscountClientInsertSchema {
@@ -299,6 +307,8 @@ export namespace DiscountCreateParams {
     numberOfPayments: number;
 
     active?: boolean;
+
+    pricingModelId?: string;
   }
 
   export interface ForeverDiscountClientInsertSchema {
@@ -321,6 +331,8 @@ export namespace DiscountCreateParams {
     active?: boolean;
 
     numberOfPayments?: null;
+
+    pricingModelId?: string;
   }
 }
 

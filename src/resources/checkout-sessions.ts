@@ -445,7 +445,7 @@ export namespace CheckoutSessionCreateParams {
 
     /**
      * The quantity of the purchase or subscription created when this checkout session
-     * succeeds. Ignored if the checkout session is of type `invoice`.
+     * succeeds. Must be a positive integer. Defaults to 1 if not provided.
      */
     quantity?: number;
   }
@@ -499,7 +499,7 @@ export namespace CheckoutSessionCreateParams {
 
     /**
      * The quantity of the purchase or subscription created when this checkout session
-     * succeeds. Ignored if the checkout session is of type `invoice`.
+     * succeeds. Must be a positive integer. Defaults to 1 if not provided.
      */
     quantity?: number;
   }

@@ -39,6 +39,7 @@ describe('resource discounts', () => {
         name: 'name',
         active: true,
         numberOfPayments: null,
+        pricingModelId: 'pricingModelId',
       },
     });
   });

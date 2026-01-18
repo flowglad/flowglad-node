@@ -41,7 +41,7 @@ describe('resource checkoutSessions', () => {
         preserveBillingCycleAnchor: true,
         priceId: 'priceId',
         priceSlug: 'priceSlug',
-        quantity: 0,
+        quantity: 1,
       },
     });
   });
