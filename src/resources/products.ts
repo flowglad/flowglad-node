@@ -217,7 +217,9 @@ export namespace ProductCreateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
@@ -255,7 +257,9 @@ export namespace ProductCreateParams {
 
   export interface ProductSinglePaymentPriceInsert {
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
@@ -309,7 +313,9 @@ export namespace ProductCreateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
@@ -412,10 +418,15 @@ export namespace ProductUpdateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
+    /**
+     * The product this price belongs to. Required for subscription prices.
+     */
     productId: string;
 
     type: 'subscription';
@@ -452,10 +463,15 @@ export namespace ProductUpdateParams {
 
   export interface SinglePaymentPriceClientInsertSchema {
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
+    /**
+     * The product this price belongs to. Required for single payment prices.
+     */
     productId: string;
 
     type: 'single_payment';
@@ -508,11 +524,11 @@ export namespace ProductUpdateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
-
-    productId: string;
 
     type: 'usage';
 
@@ -538,6 +554,11 @@ export namespace ProductUpdateParams {
     active?: boolean;
 
     name?: string | null;
+
+    /**
+     * Omitted.
+     */
+    productId?: null;
 
     slug?: string | null;
 

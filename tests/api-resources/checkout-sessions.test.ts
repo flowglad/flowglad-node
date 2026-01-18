@@ -40,7 +40,7 @@ describe('resource checkoutSessions', () => {
         outputName: 'outputName',
         preserveBillingCycleAnchor: true,
         priceId: 'abc',
-        quantity: 0,
+        quantity: 1,
       },
     });
   });

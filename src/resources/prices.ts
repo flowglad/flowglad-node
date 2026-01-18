@@ -181,7 +181,9 @@ export interface SinglePaymentPriceClientSelectSchema {
     | 'ZMW';
 
   /**
-   * Whether or not this price is the default price for the product.
+   * Whether or not this price is the default price. For product prices, this
+   * indicates the default price for that product. For usage prices, this indicates
+   * the default price for that usage meter.
    */
   isDefault: boolean;
 
@@ -191,6 +193,9 @@ export interface SinglePaymentPriceClientSelectSchema {
 
   pricingModelId: string;
 
+  /**
+   * The product this price belongs to. Required for single payment prices.
+   */
   productId: string;
 
   slug: string | null;
@@ -392,7 +397,9 @@ export interface SubscriptionPriceClientSelectSchema {
   intervalUnit: 'day' | 'week' | 'month' | 'year';
 
   /**
-   * Whether or not this price is the default price for the product.
+   * Whether or not this price is the default price. For product prices, this
+   * indicates the default price for that product. For usage prices, this indicates
+   * the default price for that usage meter.
    */
   isDefault: boolean;
 
@@ -402,6 +409,9 @@ export interface SubscriptionPriceClientSelectSchema {
 
   pricingModelId: string;
 
+  /**
+   * The product this price belongs to. Required for subscription prices.
+   */
   productId: string;
 
   slug: string | null;
@@ -594,7 +604,9 @@ export interface UsagePriceClientSelectSchema {
   intervalUnit: 'day' | 'week' | 'month' | 'year';
 
   /**
-   * Whether or not this price is the default price for the product.
+   * Whether or not this price is the default price. For product prices, this
+   * indicates the default price for that product. For usage prices, this indicates
+   * the default price for that usage meter.
    */
   isDefault: boolean;
 
@@ -604,7 +616,7 @@ export interface UsagePriceClientSelectSchema {
 
   pricingModelId: string;
 
-  productId: string;
+  productId: null;
 
   slug: string | null;
 
@@ -685,10 +697,15 @@ export namespace PriceCreateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
+    /**
+     * The product this price belongs to. Required for subscription prices.
+     */
     productId: string;
 
     type: 'subscription';
@@ -725,10 +742,15 @@ export namespace PriceCreateParams {
 
   export interface SinglePaymentPriceClientInsertSchema {
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
+    /**
+     * The product this price belongs to. Required for single payment prices.
+     */
     productId: string;
 
     type: 'single_payment';
@@ -781,11 +803,11 @@ export namespace PriceCreateParams {
     intervalUnit: 'day' | 'week' | 'month' | 'year';
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
-
-    productId: string;
 
     type: 'usage';
 
@@ -812,6 +834,11 @@ export namespace PriceCreateParams {
 
     name?: string | null;
 
+    /**
+     * Omitted.
+     */
+    productId?: null;
+
     slug?: string | null;
 
     /**
@@ -833,7 +860,9 @@ export namespace PriceUpdateParams {
     id: string;
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
@@ -850,7 +879,9 @@ export namespace PriceUpdateParams {
     id: string;
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 
@@ -867,7 +898,9 @@ export namespace PriceUpdateParams {
     id: string;
 
     /**
-     * Whether or not this price is the default price for the product.
+     * Whether or not this price is the default price. For product prices, this
+     * indicates the default price for that product. For usage prices, this indicates
+     * the default price for that usage meter.
      */
     isDefault: boolean;
 

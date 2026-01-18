@@ -239,7 +239,7 @@ export interface PricingModelDetailsRecord {
    */
   updatedAt: number;
 
-  usageMeters: Array<UsageMeterClientSelectSchema>;
+  usageMeters: Array<PricingModelDetailsRecord.UsageMeter>;
 
   /**
    * The default product for the pricing model. If no product is explicitly set as
@@ -347,6 +347,52 @@ export namespace PricingModelDetailsRecord {
 
       usageMeterId?: null;
     }
+  }
+
+  export interface UsageMeter {
+    id: string;
+
+    /**
+     * The type of aggregation to perform on the usage meter. Defaults to "sum", which
+     * aggregates all the usage event amounts for the billing period.
+     * "count_distinct_properties" counts the number of distinct properties in the
+     * billing period for a given meter.
+     */
+    aggregationType: 'sum' | 'count_distinct_properties';
+
+    /**
+     * Epoch milliseconds.
+     */
+    createdAt: number;
+
+    livemode: boolean;
+
+    /**
+     * The name of the usage meter
+     */
+    name: string;
+
+    organizationId: string;
+
+    prices: Array<PricesAPI.UsagePriceClientSelectSchema>;
+
+    pricingModelId: string;
+
+    /**
+     * The slug of the usage meter
+     */
+    slug: string;
+
+    /**
+     * Epoch milliseconds.
+     */
+    updatedAt: number;
+
+    /**
+     * The default price for the usage meter. If no price is explicitly set as default,
+     * will return the first price.
+     */
+    defaultPrice?: PricesAPI.UsagePriceClientSelectSchema;
   }
 
   /**
