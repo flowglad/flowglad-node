@@ -323,7 +323,7 @@ export interface PurchaseCheckoutSessionClientSelectSchema {
 
   paymentMethodType?: 'card' | 'link' | 'us_bank_account' | 'sepa_debit' | null;
 
-  preserveBillingCycleAnchor?: boolean;
+  preserveBillingCycleAnchor?: false;
 
   successUrl?: string | null;
 
@@ -411,7 +411,7 @@ export namespace CheckoutSessionCreateParams {
 
     type: 'product';
 
-    anonymous?: boolean;
+    anonymous?: false;
 
     /**
      * JSON object
