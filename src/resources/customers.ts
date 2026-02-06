@@ -149,7 +149,7 @@ export interface NonRenewingSubscriptionDetails {
 
   pricingModelId: string;
 
-  renews: boolean;
+  renews: false;
 
   replacedBySubscriptionId: string | null;
 
@@ -226,13 +226,13 @@ export namespace NonRenewingSubscriptionDetails {
 
     pricingModelId: string;
 
-    quantity: number;
+    quantity: 0;
 
     subscriptionId: string;
 
     type: 'static';
 
-    unitPrice: number;
+    unitPrice: 0;
 
     /**
      * Epoch milliseconds.
@@ -506,13 +506,13 @@ export namespace StandardSubscriptionDetails {
 
     pricingModelId: string;
 
-    quantity: number;
+    quantity: 0;
 
     subscriptionId: string;
 
     type: 'static';
 
-    unitPrice: number;
+    unitPrice: 0;
 
     /**
      * Epoch milliseconds.
@@ -789,13 +789,13 @@ export namespace CustomerCreateResponse {
 
       pricingModelId: string;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Epoch milliseconds.
@@ -907,7 +907,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     customerId: string;
 
-    firstInvoiceValue: number;
+    firstInvoiceValue: 0;
 
     /**
      * A positive integer
@@ -949,7 +949,7 @@ export namespace CustomerRetrieveBillingResponse {
      */
     totalPurchaseValue: null;
 
-    trialPeriodDays: number;
+    trialPeriodDays: 0;
 
     /**
      * Epoch milliseconds.
@@ -993,7 +993,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     customerId: string;
 
-    firstInvoiceValue: number;
+    firstInvoiceValue: 0;
 
     /**
      * Omitted.
@@ -1033,7 +1033,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent';
 
-    totalPurchaseValue: number;
+    totalPurchaseValue: 0;
 
     /**
      * Omitted.
@@ -1082,7 +1082,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     customerId: string;
 
-    firstInvoiceValue: number;
+    firstInvoiceValue: 0;
 
     /**
      * Omitted.
@@ -1122,7 +1122,7 @@ export namespace CustomerRetrieveBillingResponse {
 
     status: 'open' | 'pending' | 'failed' | 'paid' | 'refunded' | 'partial_refund' | 'fraudulent';
 
-    totalPurchaseValue: number;
+    totalPurchaseValue: 0;
 
     /**
      * Omitted.

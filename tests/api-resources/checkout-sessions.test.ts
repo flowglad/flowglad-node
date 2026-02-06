@@ -35,7 +35,7 @@ describe('resource checkoutSessions', () => {
         customerExternalId: 'customerExternalId',
         successUrl: 'successUrl',
         type: 'product',
-        anonymous: true,
+        anonymous: false,
         outputMetadata: { foo: 'string' },
         outputName: 'outputName',
         preserveBillingCycleAnchor: true,
