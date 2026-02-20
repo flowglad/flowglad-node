@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource pricingModels', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.pricingModels.create({ pricingModel: { name: 'x' } });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource pricingModels', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.pricingModels.create({
       pricingModel: { name: 'x', isDefault: true },
@@ -28,7 +28,7 @@ describe('resource pricingModels', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.pricingModels.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -40,7 +40,7 @@ describe('resource pricingModels', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.pricingModels.update('id', { pricingModel: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
@@ -52,7 +52,7 @@ describe('resource pricingModels', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.pricingModels.update('id', {
       pricingModel: {
@@ -63,7 +63,7 @@ describe('resource pricingModels', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.pricingModels.list();
     const rawResponse = await responsePromise.asResponse();
@@ -75,7 +75,7 @@ describe('resource pricingModels', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -83,7 +83,7 @@ describe('resource pricingModels', () => {
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('clone: only required params', async () => {
     const responsePromise = client.pricingModels.clone('id', { name: 'name' });
     const rawResponse = await responsePromise.asResponse();
@@ -95,7 +95,7 @@ describe('resource pricingModels', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('clone: required and optional params', async () => {
     const response = await client.pricingModels.clone('id', {
       name: 'name',
@@ -103,7 +103,7 @@ describe('resource pricingModels', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveDefault', async () => {
     const responsePromise = client.pricingModels.retrieveDefault();
     const rawResponse = await responsePromise.asResponse();

@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource usageMeters', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageMeters.create({
       usageMeter: {
@@ -26,7 +26,7 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.usageMeters.create({
       usageMeter: {
@@ -43,7 +43,7 @@ describe('resource usageMeters', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.usageMeters.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -55,7 +55,7 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.usageMeters.update('id', { usageMeter: { id: 'id' } });
     const rawResponse = await responsePromise.asResponse();
@@ -67,7 +67,7 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.usageMeters.update('id', {
       usageMeter: {
@@ -79,7 +79,7 @@ describe('resource usageMeters', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.usageMeters.list();
     const rawResponse = await responsePromise.asResponse();
@@ -91,7 +91,7 @@ describe('resource usageMeters', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
