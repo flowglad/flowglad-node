@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource subscriptions', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create', async () => {
     const responsePromise = client.subscriptions.create({});
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.subscriptions.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -32,7 +32,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.subscriptions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -44,7 +44,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -52,7 +52,7 @@ describe('resource subscriptions', () => {
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('adjust: only required params', async () => {
     const responsePromise = client.subscriptions.adjust('id', {
       adjustment: {
@@ -77,7 +77,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('adjust: required and optional params', async () => {
     const response = await client.subscriptions.adjust('id', {
       adjustment: {
@@ -102,7 +102,7 @@ describe('resource subscriptions', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('cancel: only required params', async () => {
     const responsePromise = client.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
@@ -116,14 +116,14 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('cancel: required and optional params', async () => {
     const response = await client.subscriptions.cancel('id', {
       cancellation: { timing: 'at_end_of_current_billing_period' },
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('uncancel', async () => {
     const responsePromise = client.subscriptions.uncancel('id');
     const rawResponse = await responsePromise.asResponse();

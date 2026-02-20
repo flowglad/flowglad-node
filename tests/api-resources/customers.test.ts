@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource customers', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.customers.create({
       customer: {
@@ -26,7 +26,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.customers.create({
       customer: {
@@ -42,7 +42,7 @@ describe('resource customers', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.customers.retrieve('externalId');
     const rawResponse = await responsePromise.asResponse();
@@ -54,7 +54,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.customers.update('externalId', { customer: {} });
     const rawResponse = await responsePromise.asResponse();
@@ -66,7 +66,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.customers.update('externalId', {
       customer: {
@@ -81,7 +81,7 @@ describe('resource customers', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.customers.list();
     const rawResponse = await responsePromise.asResponse();
@@ -93,7 +93,7 @@ describe('resource customers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -101,7 +101,7 @@ describe('resource customers', () => {
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveBilling', async () => {
     const responsePromise = client.customers.retrieveBilling('externalId');
     const rawResponse = await responsePromise.asResponse();
