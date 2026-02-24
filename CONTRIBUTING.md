@@ -60,7 +60,7 @@ $ yarn link @flowglad/node
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global @flowglad/node
+$ pnpm link --global @flowglad/node
 ```
 
 ## Running tests
