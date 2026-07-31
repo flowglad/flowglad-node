@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource usageEvents', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.usageEvents.create({
       usageEvent: {
@@ -26,7 +26,7 @@ describe('resource usageEvents', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.usageEvents.create({
       usageEvent: {
@@ -43,7 +43,7 @@ describe('resource usageEvents', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.usageEvents.retrieve('id');
     const rawResponse = await responsePromise.asResponse();

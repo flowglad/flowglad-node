@@ -8,7 +8,7 @@ const client = new Flowglad({
 });
 
 describe('resource resourceClaims', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('claim: only required params', async () => {
     const responsePromise = client.resourceClaims.claim('subscriptionId', { resourceSlug: 'resourceSlug' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource resourceClaims', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('claim: required and optional params', async () => {
     const response = await client.resourceClaims.claim('subscriptionId', {
       resourceSlug: 'resourceSlug',
@@ -31,7 +31,7 @@ describe('resource resourceClaims', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listUsages', async () => {
     const responsePromise = client.resourceClaims.listUsages('subscriptionId');
     const rawResponse = await responsePromise.asResponse();
@@ -43,7 +43,7 @@ describe('resource resourceClaims', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('listUsages: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -55,7 +55,7 @@ describe('resource resourceClaims', () => {
     ).rejects.toThrow(Flowglad.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('release: only required params', async () => {
     const responsePromise = client.resourceClaims.release('subscriptionId', { resourceSlug: 'resourceSlug' });
     const rawResponse = await responsePromise.asResponse();
@@ -67,7 +67,7 @@ describe('resource resourceClaims', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('release: required and optional params', async () => {
     const response = await client.resourceClaims.release('subscriptionId', {
       resourceSlug: 'resourceSlug',
@@ -78,7 +78,7 @@ describe('resource resourceClaims', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveUsage', async () => {
     const responsePromise = client.resourceClaims.retrieveUsage('subscriptionId');
     const rawResponse = await responsePromise.asResponse();
@@ -90,7 +90,7 @@ describe('resource resourceClaims', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveUsage: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

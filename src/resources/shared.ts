@@ -96,7 +96,7 @@ export interface NonRenewingSubscriptionRecord {
 
   pricingModelId: string;
 
-  renews: boolean;
+  renews: false;
 
   replacedBySubscriptionId: string | null;
 

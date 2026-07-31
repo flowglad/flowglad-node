@@ -34,7 +34,7 @@ export class Payments extends APIResource {
 export interface PaymentClientSelectSchema {
   id: string;
 
-  amount: number;
+  amount: 0;
 
   applicationFee: number | null;
 

@@ -136,13 +136,13 @@ export namespace SubscriptionAdjustResponse {
 
     pricingModelId: string;
 
-    quantity: number;
+    quantity: 0;
 
     subscriptionId: string;
 
     type: 'static';
 
-    unitPrice: number;
+    unitPrice: 0;
 
     /**
      * Epoch milliseconds.
@@ -303,13 +303,13 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
@@ -357,13 +357,13 @@ export namespace SubscriptionAdjustParams {
 
       pricingModelId: string;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Epoch milliseconds.
@@ -389,13 +389,13 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
@@ -467,13 +467,13 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
@@ -521,13 +521,13 @@ export namespace SubscriptionAdjustParams {
 
       pricingModelId: string;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Epoch milliseconds.
@@ -553,13 +553,13 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
@@ -640,13 +640,13 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for
@@ -694,13 +694,13 @@ export namespace SubscriptionAdjustParams {
 
       pricingModelId: string;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Epoch milliseconds.
@@ -726,13 +726,13 @@ export namespace SubscriptionAdjustParams {
        */
       addedDate: number;
 
-      quantity: number;
+      quantity: 0;
 
       subscriptionId: string;
 
       type: 'static';
 
-      unitPrice: number;
+      unitPrice: 0;
 
       /**
        * Used as a flag to soft delete a subscription item without losing its history for

@@ -230,7 +230,7 @@ export namespace ProductCreateParams {
      * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
      * cents.
      */
-    unitPrice: number;
+    unitPrice: 0;
 
     active?: boolean;
 
@@ -242,7 +242,7 @@ export namespace ProductCreateParams {
      * The trial period in days. If the trial period is 0 or null, there will be no
      * trial period.
      */
-    trialPeriodDays?: number | null;
+    trialPeriodDays?: 0 | null;
 
     /**
      * Omitted.
@@ -270,7 +270,7 @@ export namespace ProductCreateParams {
      * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
      * cents.
      */
-    unitPrice: number;
+    unitPrice: 0;
 
     active?: boolean;
 
@@ -326,7 +326,7 @@ export namespace ProductCreateParams {
      * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
      * cents.
      */
-    unitPrice: number;
+    unitPrice: 0;
 
     /**
      * The number of usage events per unit. Used to determine how to map usage events
@@ -436,7 +436,7 @@ export namespace ProductUpdateParams {
      * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
      * cents.
      */
-    unitPrice: number;
+    unitPrice: 0;
 
     active?: boolean;
 
@@ -448,7 +448,7 @@ export namespace ProductUpdateParams {
      * The trial period in days. If the trial period is 0 or null, there will be no
      * trial period.
      */
-    trialPeriodDays?: number | null;
+    trialPeriodDays?: 0 | null;
 
     /**
      * Omitted.
@@ -481,7 +481,7 @@ export namespace ProductUpdateParams {
      * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
      * cents.
      */
-    unitPrice: number;
+    unitPrice: 0;
 
     active?: boolean;
 
@@ -537,7 +537,7 @@ export namespace ProductUpdateParams {
      * example, if the currency is USD, GBP, CAD, EUR or SGD, the price should be in
      * cents.
      */
-    unitPrice: number;
+    unitPrice: 0;
 
     /**
      * The number of usage events per unit. Used to determine how to map usage events
