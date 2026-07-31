@@ -1,4 +1,55 @@
 # Changelog
+## 0.30.0 (2026-07-31)
+
+Full Changelog: [v0.29.0...v0.30.0](https://github.com/flowglad/flowglad-node/compare/v0.29.0...v0.30.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([2808908](https://github.com/flowglad/flowglad-node/commit/28089081cbc8b0c2b7a18b110711d58c9c5ed861))
+* support setting headers via env ([f11a428](https://github.com/flowglad/flowglad-node/commit/f11a428c27039ecfe3c3463c7503e6ecd4412dce))
+
+
+### Bug Fixes
+
+* **ci:** bump @arethetypeswrong/cli to ^0.18.0 and run CI workflows on Node 24 ([882bc36](https://github.com/flowglad/flowglad-node/commit/882bc36db35aa52b25df7d1000fee49660b57562))
+* **client:** avoid memory leak with abort signals ([56900be](https://github.com/flowglad/flowglad-node/commit/56900bed3729ab2a7f4d872fad1692a888cbf802))
+* **client:** avoid removing abort listener too early ([db6b522](https://github.com/flowglad/flowglad-node/commit/db6b522ba19e11051a8d26be9905d8a88796d455))
+* **client:** preserve URL params already embedded in path ([2e95c34](https://github.com/flowglad/flowglad-node/commit/2e95c3400584f0b269b3d03bf32baf5c9845ac0d))
+* **client:** send content-type header for requests with an omitted optional body ([6c8003d](https://github.com/flowglad/flowglad-node/commit/6c8003d99ba7bb1357b557e6c1618f29504456c9))
+* **docs/contributing:** correct pnpm link command ([be11d0a](https://github.com/flowglad/flowglad-node/commit/be11d0a5c085b7c83925d729adda0c419195e9de))
+* **stlc:** stop hand-edited CI workflows from blocking seals and builds ([3cc0a7c](https://github.com/flowglad/flowglad-node/commit/3cc0a7c8157c5dfb7caf0a94d0d8b15cf7fb2b0c))
+* **types:** correctly define false enum ([d98d3e7](https://github.com/flowglad/flowglad-node/commit/d98d3e7d87551397703c141d873e8b4234a8a889))
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([ce0b41d](https://github.com/flowglad/flowglad-node/commit/ce0b41db297739443c68e79a149ed862b6bbb4ef))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([535a81c](https://github.com/flowglad/flowglad-node/commit/535a81c7223a2b25aef440e1d7aa16bd8be2bbe9))
+* **ci:** skip uploading artifacts on stainless-internal branches ([2e885d3](https://github.com/flowglad/flowglad-node/commit/2e885d3664f770c40e2e2ad106791a9108a7a26b))
+* **ci:** upgrade `actions/github-script` ([ab1bfe8](https://github.com/flowglad/flowglad-node/commit/ab1bfe8705631f229c10ac023bc8ae205c4edd46))
+* **client:** do not parse responses with empty content-length ([fdf2834](https://github.com/flowglad/flowglad-node/commit/fdf283447a556e939343febecc89663c4b2ac9e6))
+* **client:** restructure abort controller binding ([55978f2](https://github.com/flowglad/flowglad-node/commit/55978f2f8d4ece515b0613b7e47833a5dd7c1a84))
+* **format:** run eslint and prettier separately ([5fd099e](https://github.com/flowglad/flowglad-node/commit/5fd099eb41153efbbeb5b15242afea4d9ea40221))
+* **internal/client:** fix form-urlencoded requests ([a7577d3](https://github.com/flowglad/flowglad-node/commit/a7577d3c4b321509d224b71464e184e8df875888))
+* **internal:** avoid type checking errors with ts-reset ([a460ca8](https://github.com/flowglad/flowglad-node/commit/a460ca893ece9bf09c768db7fd3122c5b60d7caa))
+* **internal:** codegen related update ([f31919f](https://github.com/flowglad/flowglad-node/commit/f31919f1848bdd384d75b5b850119c5b03416c06))
+* **internal:** codegen related update ([aee370f](https://github.com/flowglad/flowglad-node/commit/aee370fd4d291e2c9082a3441fefb2f77dc7084e))
+* **internal:** codegen related update ([94ece56](https://github.com/flowglad/flowglad-node/commit/94ece5603462a3ff45d3140fa6ca7dd58c40895e))
+* **internal:** codegen related update ([be7a426](https://github.com/flowglad/flowglad-node/commit/be7a426b5810fd9d183b005f097175c8b230d5a6))
+* **internal:** codegen related update ([d8899f9](https://github.com/flowglad/flowglad-node/commit/d8899f9ab15a0a6900be9342ed65916ea4a92fc2))
+* **internal:** codegen related update ([4d3051b](https://github.com/flowglad/flowglad-node/commit/4d3051b8e49e6df7c2f37ef00f5734dab256bf3d))
+* **internal:** codegen related update ([ad2acff](https://github.com/flowglad/flowglad-node/commit/ad2acffa62f31f17960868ae3aeab9cb52139552))
+* **internal:** codegen related update ([1fa19be](https://github.com/flowglad/flowglad-node/commit/1fa19be68f6a9fa3fb441055d9e7cbfea2d75de5))
+* **internal:** more robust bootstrap script ([a5910a6](https://github.com/flowglad/flowglad-node/commit/a5910a66a047c6dc6b067fb5a7a8310eacabdf87))
+* **internal:** move stringifyQuery implementation to internal function ([3792b09](https://github.com/flowglad/flowglad-node/commit/3792b09d9a46f121bd4d45e1b7142170ce039c3d))
+* **internal:** remove mock server code ([c43d01f](https://github.com/flowglad/flowglad-node/commit/c43d01f473f3df46d3c718b61ddfa7892b5283c2))
+* **internal:** tweak CI branches ([f6b03e1](https://github.com/flowglad/flowglad-node/commit/f6b03e1a88298b87982b912bff58aee377bcd3cc))
+* **internal:** update dependencies to address dependabot vulnerabilities ([a5c0a52](https://github.com/flowglad/flowglad-node/commit/a5c0a5203845a06b1ea7e42e9b20ac43c3a56c6c))
+* **internal:** update gitignore ([b586d6c](https://github.com/flowglad/flowglad-node/commit/b586d6c260bf9c09d0b9077092a6478e4e25e038))
+* redact api-key headers in debug logs ([6420eb0](https://github.com/flowglad/flowglad-node/commit/6420eb0370c498b66e6d9e1fb5aff4924a3629b5))
+* **tests:** remove redundant File import ([aa9716d](https://github.com/flowglad/flowglad-node/commit/aa9716df3bfa07a43ceccccc4a84400ee2960159))
+* update mock server docs ([ffdfd49](https://github.com/flowglad/flowglad-node/commit/ffdfd49ee108db6b215a92b7f7953041cef7ee67))
+
 ## 0.29.0 (2026-01-18)
 
 Full Changelog: [v0.28.0...v0.29.0](https://github.com/flowglad/flowglad-node/compare/v0.28.0...v0.29.0)
